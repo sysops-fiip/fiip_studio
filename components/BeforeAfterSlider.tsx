@@ -18,7 +18,7 @@ export function BeforeAfterSlider({
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
-  const rafId = useRef<number>();
+  const rafId = useRef<number | null>(null);
 
   const handleMouseDown = useCallback(() => {
     isDragging.current = true;
