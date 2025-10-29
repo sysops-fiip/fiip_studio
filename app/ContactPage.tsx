@@ -71,7 +71,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
-                    <p className="text-gray-300 text-base">Chennai, India</p>
+                    <p className="text-gray-300 text-base">2, Senthamarai Salai, Venkateswara Nagar, New Colony, Kottivakkam, Chennai, Tamil Nadu 600041</p>
                   </div>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function ContactPage() {
                 height="100%"
                 frameBorder={0}
                 title="Fix It In Post Studios Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2584163261577!2d80.27044072346908!3d13.005381687301707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526fe5e8d4e8d9%3A0x1234567890abcdef!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890123"
+                src="https://maps.google.com/maps?q=2%20Senthamarai%20Salai%20Venkateswara%20Nagar%20New%20Colony%20Kottivakkam%20Chennai%20Tamil%20Nadu%20600041&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 allowFullScreen
                 loading="lazy"
               ></iframe>
