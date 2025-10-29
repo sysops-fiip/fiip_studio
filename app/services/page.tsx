@@ -87,7 +87,7 @@ export default function Services() {
       </section>
 
       {/* Detailed Service Info */}
-      <section className="section-padding bg-gradient-to-b from-dark-900 to-dark-800">
+      <section className="section-padding bg-dark-900">
         <div className="container-responsive">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -192,7 +192,7 @@ export default function Services() {
       </section>
 
       {/* FAQ */}
-      <section className="section-padding bg-gradient-to-b from-dark-900 to-dark-800">
+      <section className="section-padding bg-dark-900">
         <div className="container-responsive max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

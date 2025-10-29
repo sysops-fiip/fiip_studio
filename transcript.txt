@@ -1,0 +1,181 @@
+# Fix It In Post Studio - Page by Page Content Transcript
+
+## Home Page (/)
+**Hero Section:**
+- Badge: "🎬 AI-Powered VFX Studio"
+- Headline: "We don't just fix it in post we reinvent it"
+- Subheadline: "AI-assisted post-production and VFX for creators, brands, and studios. Cinematic quality, faster turnaround, innovative creativity."
+- CTA Buttons: "View Our Reel" (links to /portfolio), "Get a Quote" (links to /contact)
+
+**Stats:**
+- 50+ Projects Delivered
+- 99% Client Satisfaction  
+- 24h Avg Turnaround
+
+**Services Section:**
+- AI-Enhanced Post: ₹300–500 - Smart automation for color correction, editing, and effects. Features: Automated color grading, AI-powered editing, Quick turnaround, Perfect for creators
+- Hybrid VFX: ₹600–900 - Blend of AI tools and professional craftsmanship. Features: Custom VFX sequences, Advanced compositing, Brand-quality output, Creative consultation  
+- Generative Visuals: ₹1200+ - AI-generated shots and entirely new creative sequences. Features: AI scene generation, Custom model training, Cinematic quality, Studio-grade delivery
+
+**Before/After Section:**
+- Headline: "The Difference We Make"
+- Description: "Drag the slider to see the transformation power of our VFX."
+
+**Who We Work With:**
+- Filmmakers, Brands, Studios, YouTubers, Agencies, Music Labels, Production Houses, OTT Platforms
+
+**CTA Banner:**
+- "Start Your Project Today"
+- "Get a Quote Now"
+
+## About Page (/about)
+**Hero Section:**
+- Headline: "About Fix It In Post"
+- Description: "We merge human storytelling with AI precision to deliver cinematic visuals faster than ever before."
+
+**Our Story:**
+- Founded in Chennai, India
+- Vision: Empower creators and studios with cutting-edge AI technology without compromising on artistic quality
+- Team of VFX artists, AI engineers, and creative directors
+- Bridge the gap between indie creators and large production houses
+- AI is our tool, but storytelling is our passion
+
+**Values:**
+- Innovation: Stay ahead with latest AI and VFX technologies
+- Quality: Maintain cinematic standards while embracing AI efficiency  
+- Accessibility: Make premium services affordable for all creators
+
+**Team:**
+- Arjun Sharma - AI VFX Lead: Specialized in AI-generated VFX and Fusion compositing with 8+ years experience
+- Priya Patel - Colorist & Post-Producer: Expert in DaVinci Resolve color grading and creative post-production workflows
+- Vikram Singh - AI Artist & Developer: Develops custom AI workflows using ComfyUI, Stable Diffusion, and Runway
+- Isha Reddy - Creative Producer: Manages projects from concept to delivery, ensuring creative excellence
+
+**Tech Stack:**
+- Color Grading & VFX: DaVinci Resolve, Fusion, Nuke
+- 3D & Animation: Blender, After Effects, Cinema 4D
+- AI & Generative: ComfyUI, Stable Diffusion, Runway
+- Post-Production: Premiere Pro, Media Encoder, ffmpeg
+
+**Stats:**
+- 50+ Projects Delivered
+- 100+ Satisfied Clients
+- 500+ Minutes of Content
+- 99% Client Satisfaction
+
+## Services Page (/services)
+**Hero Section:**
+- Headline: "Our Services"
+- Description: "Three tiers of AI-powered post-production excellence, designed for every project scale."
+
+**Services (Detailed):**
+- AI-Enhanced Post (₹300–500): Automated color grading, AI-powered editing, Quick turnaround, Perfect for creators
+- Hybrid VFX (₹600–900): Custom VFX sequences, Advanced compositing, Brand-quality output, Creative consultation
+- Generative Visuals (₹1200+): AI scene generation, Custom model training, Cinematic quality, Studio-grade delivery
+
+**Detailed Features by Tier:**
+- Creator Plan: AI-powered color correction, Auto-generated subtitles, Basic VFX compositing, Standard delivery (MP4/ProRes), 24-hour turnaround, 1 revision round. Ideal for: YouTube Shorts, Instagram Reels, TikTok Videos
+- Brand Plan: Advanced color grading, Custom VFX sequences, Motion graphics & design, 4K + ProRes delivery, 48-hour turnaround, 3 revision rounds, Project consultation. Ideal for: Ad Films, Brand Videos, Social Campaigns  
+- Studio Plan: AI-generated VFX shots, Custom scene creation, Full cinematic color grading, 8K + RAW delivery, 72-hour turnaround, Unlimited revisions, Creative consulting, Custom AI model training. Ideal for: OTT Content, Feature Films, High-end Commercials
+
+**Tools & Technology:**
+- DaVinci Resolve, Fusion, Blender, ComfyUI, Stable Diffusion, Runway, After Effects, Nuke
+
+**FAQ:**
+- What's the typical turnaround time? Creator: 24h, Brand: 48h, Studio: 72h. Rush delivery available.
+- Can I request revisions? Yes - Creator: 1 round, Brand: 3 rounds, Studio: unlimited
+- What formats do you deliver? MP4, ProRes, DCP, and RAW formats depending on plan
+- Do you offer discounts for bulk orders? Absolutely! Contact for custom bulk pricing
+
+## Portfolio Page (/portfolio)
+**Hero Section:**
+- Headline: "Our Portfolio"
+- Description: "Explore our recent projects and see the power of AI-assisted VFX in action."
+
+**Categories:**
+- All, Ads, Music Videos, AI Shots, Post-Production, Social Media
+
+**Projects:**
+- Tech Brand Ad Film (Ads): High-energy brand advertisement with AI-enhanced VFX
+- Music Video Cinematic (Music Videos): Cinematic music video with generative VFX elements
+- AI-Generated Sequence (AI Shots): Entirely AI-generated visual sequence
+- Short Film Color Grade (Post-Production): Professional color grading and post-production
+- Advertising Campaign (Ads): Multi-shot advertising campaign with hybrid VFX
+- Documentary Sequence (AI Shots): AI-assisted editing for documentary content
+- Product Demo Video (Ads): Sleek product demonstration with motion graphics
+- Music Video - Synthwave (Music Videos): Synthwave-inspired music video with AI graphics
+- Reels Collection (Social Media): Fast-paced social media content creation
+
+**Stats:**
+- 50+ Projects Completed
+- 100+ Happy Clients
+- 500+ Mins of Content
+- 99% Satisfaction Rate
+
+## Pricing Page (/pricing)
+**Hero Section:**
+- Headline: "Transparent Pricing"
+- Description: "Fair, flexible pricing for projects of all sizes. No hidden fees."
+
+**Pricing Calculator:**
+- Instant Estimate Calculator - Enter video length to see pricing across all tiers
+
+**Pricing Tiers:**
+- Creator Plan: ₹300–500 per second - AI-Assisted Post-Production
+- Brand Plan: ₹600–900 per second - Hybrid VFX & Professional Post (Most Popular)
+- Studio Plan: ₹1200+ per second - Generative VFX & Full Production
+
+**Feature Comparison Table:**
+- Video Length: Creator (Up to 5 min), Brand (Up to 20 min), Studio (Unlimited)
+- Turnaround Time: Creator (24 hours), Brand (48 hours), Studio (72 hours)
+- Revisions: Creator (1 round), Brand (3 rounds), Studio (Unlimited)
+- Delivery Formats: Creator (MP4, ProRes), Brand (MP4, ProRes, DCP), Studio (All formats + RAW)
+- AI Integration Level: Creator (Basic), Brand (Advanced), Studio (Custom)
+- Color Grading: Creator (Standard), Brand (Advanced), Studio (Cinematic)
+- Creative Consultation: Creator (—), Brand (✓), Studio (✓)
+- Custom AI Training: Creator (—), Brand (—), Studio (✓)
+
+**Pricing FAQ:**
+- What's the typical turnaround time? Creator: 24h, Brand: 48h, Studio: 72h. Rush delivery available.
+- Can I request revisions? Yes - Creator: 1 round, Brand: 3 rounds, Studio: unlimited
+- What formats do you deliver? MP4, ProRes, DCP, and RAW formats depending on plan
+- Do you offer discounts for bulk orders? Absolutely! Contact for custom bulk pricing
+
+## Contact Page (/contact)
+**Hero Section:**
+- Headline: "Let's Talk"
+- Description: "Have a project in mind? We'd love to hear about it. Get in touch and let's create something amazing together."
+
+**Contact Information:**
+- Location: Chennai, India
+- Email: hello@fixitinpost.studio
+- WhatsApp: +91 9876 543 210
+- Response Time: Usually within 24 hours
+
+**Contact Form Fields:**
+- Full Name (required)
+- Email (required)
+- Phone (optional)
+- Project Type: VFX Work, Post-Production, AI-Generated Content, Commercial/Ad Film, Music Video, Other
+- Estimated Duration (seconds)
+- Message (required)
+
+**FAQ:**
+- What's your typical response time? We aim to respond to all inquiries within 24 hours on business days.
+- Can I call you directly? Yes! You can reach us via WhatsApp for quick inquiries. Email works best for detailed briefs.
+- Do you offer free consultations? Absolutely! Initial consultations are free. Let's discuss your project and see if we're a good fit.
+- What payment methods do you accept? We accept bank transfers, UPI, and PayPal. Custom payment plans available for large projects.
+
+**Map Section:**
+- Embedded Google Maps showing Chennai location
+
+---
+
+**Overall Brand Identity:**
+- Tagline: "We don't just fix it in post we reinvent it"
+- Focus: AI-powered VFX studio combining human creativity with AI efficiency
+- Location: Chennai, India
+- Target Audience: Creators, brands, studios, YouTubers, filmmakers, production houses
+- Core Services: AI-Enhanced Post, Hybrid VFX, Generative Visuals
+- Tech Stack: DaVinci Resolve, Fusion, Blender, ComfyUI, Stable Diffusion, Runway, After Effects, Nuke
+- Pricing Model: Per-second pricing across three tiers (Creator ₹300–500, Brand ₹600–900, Studio ₹1200+)

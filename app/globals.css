@@ -16,8 +16,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-  background-attachment: fixed;
+  background: #0f172a;
   color: #ffffff;
   font-family: 'Poppins', 'Inter', sans-serif;
   line-height: 1.6;
@@ -92,7 +91,7 @@ body > * {
 
 /* Utility classes */
 .gradient-text {
-  background: linear-gradient(to right, rgb(96, 165, 250), rgb(249, 115, 22), rgb(59, 130, 246));
+  background: linear-gradient(to right, rgb(251, 191, 36), rgb(217, 119, 6), rgb(251, 191, 36));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -208,6 +207,33 @@ body > * {
   to {
     opacity: 1;
   }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }
 
 /* Cards */

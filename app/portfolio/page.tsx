@@ -114,7 +114,7 @@ export default function Portfolio() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-gradient-to-b from-dark-900 to-dark-800">
+      <section className="section-padding bg-dark-900">
         <div className="container-responsive">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

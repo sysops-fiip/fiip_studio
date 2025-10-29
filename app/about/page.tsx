@@ -27,7 +27,7 @@ export default function About() {
       </section>
 
       {/* Story Section */}
-      <section className="section-padding bg-gradient-to-b from-dark-900 to-dark-800">
+      <section className="section-padding bg-dark-900">
         <div className="container-responsive max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -107,7 +107,7 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="section-padding bg-gradient-to-b from-dark-900 to-dark-800">
+      <section className="section-padding bg-dark-900">
         <div className="container-responsive">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -200,7 +200,7 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="section-padding bg-gradient-to-b from-dark-900 to-dark-800">
+      <section className="section-padding bg-dark-900">
         <div className="container-responsive">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

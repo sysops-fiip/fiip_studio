@@ -77,7 +77,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+             className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
             We don't just fix it in post
             <br />

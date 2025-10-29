@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -18,54 +18,81 @@ export function BeforeAfterSlider({
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const rafId = useRef<number>();
 
-  const handleMouseDown = () => {
+  const handleMouseDown = useCallback(() => {
     isDragging.current = true;
-  };
+  }, []);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     isDragging.current = false;
-  };
+  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current || !containerRef.current) return;
+  const updateSliderPosition = useCallback((clientX: number) => {
+    if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const newPosition = ((e.clientX - rect.left) / rect.width) * 100;
+    const newPosition = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
 
-    if (newPosition >= 0 && newPosition <= 100) {
-      setSliderPosition(newPosition);
+    setSliderPosition(newPosition);
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging.current) return;
+
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
     }
-  };
 
-  const handleTouchStart = () => {
+    rafId.current = requestAnimationFrame(() => {
+      updateSliderPosition(e.clientX);
+    });
+  }, [updateSliderPosition]);
+
+  const handleTouchStart = useCallback(() => {
     isDragging.current = true;
-  };
+  }, []);
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     isDragging.current = false;
-  };
+  }, []);
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging.current || !containerRef.current) return;
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging.current) return;
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const newPosition = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
-
-    if (newPosition >= 0 && newPosition <= 100) {
-      setSliderPosition(newPosition);
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
     }
-  };
+
+    rafId.current = requestAnimationFrame(() => {
+      updateSliderPosition(e.touches[0].clientX);
+    });
+  }, [updateSliderPosition]);
 
   useEffect(() => {
-    window.addEventListener('mouseup', handleMouseUp);
-    return () => window.removeEventListener('mouseup', handleMouseUp);
+    const handleGlobalMouseUp = () => {
+      isDragging.current = false;
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+    };
+
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    window.addEventListener('touchend', handleGlobalMouseUp);
+
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      window.removeEventListener('touchend', handleGlobalMouseUp);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+    };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl cursor-col-resize"
+      className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl cursor-col-resize select-none"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
@@ -82,25 +109,26 @@ export function BeforeAfterSlider({
 
       {/* After Image - Clipped */}
       <div
-        className="absolute top-0 left-0 h-full w-full overflow-hidden"
-        style={{ width: `${sliderPosition}%` }}
+        className="absolute top-0 left-0 h-full w-full"
+        style={{
+          clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
+        }}
       >
         <img
           src={afterImage}
           alt={afterLabel}
-          className="w-full h-full object-cover"
-          style={{ width: `${100 / (sliderPosition / 100)}%` }}
+          className="w-full h-full object-cover absolute top-0 left-0"
           draggable={false}
         />
       </div>
 
       {/* Slider Handle */}
       <div
-        className="absolute top-0 h-full w-1 bg-primary-500 transition-all"
+        className="absolute top-0 h-full w-1 bg-primary-500 transition-all duration-75 z-10"
         style={{ left: `${sliderPosition}%` }}
       >
         {/* Handle Circle */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-primary-500 rounded-full shadow-glow-lg flex items-center justify-center cursor-grab active:cursor-grabbing">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-primary-500 rounded-full shadow-glow-lg flex items-center justify-center cursor-grab active:cursor-grabbing border-2 border-white">
           <div className="flex gap-1">
             <div className="w-1 h-4 bg-white rounded-full"></div>
             <div className="w-1 h-4 bg-white rounded-full"></div>
@@ -110,10 +138,10 @@ export function BeforeAfterSlider({
       </div>
 
       {/* Labels */}
-      <div className="absolute top-4 left-4 text-white font-semibold text-sm bg-black/50 px-3 py-2 rounded">
+      <div className="absolute top-4 left-4 text-white font-semibold text-sm bg-black/70 backdrop-blur-sm px-3 py-2 rounded z-10">
         {beforeLabel}
       </div>
-      <div className="absolute top-4 right-4 text-white font-semibold text-sm bg-black/50 px-3 py-2 rounded">
+      <div className="absolute top-4 right-4 text-white font-semibold text-sm bg-black/70 backdrop-blur-sm px-3 py-2 rounded z-10">
         {afterLabel}
       </div>
     </div>
