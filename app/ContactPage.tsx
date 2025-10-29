@@ -277,7 +277,7 @@ export default function ContactPage() {
                 height="100%"
                 frameBorder={0}
                 title="Fix It In Post Studios Location"
-                src="https://maps.google.com/maps?q=2%20Senthamarai%20Salai%20Venkateswara%20Nagar%20New%20Colony%20Kottivakkam%20Chennai%20Tamil%20Nadu%20600041&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=2%2C%20Senthamarai%20Salai%2C%20Venkateswara%20Nagar%2C%20New%20Colony%2C%20Kottivakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600041&output=embed"
                 allowFullScreen
                 loading="lazy"
               ></iframe>
