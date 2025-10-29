@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\Users\\iniya\\OneDrive\\Documents\\fiip-studio\")",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(npm run build:*)",
+      "Bash(taskkill:*)",
+      "Bash(wmic process where name=\"node.exe\" delete)",
+      "Bash(npm run dev:*)",
+      "Bash(dir:*)",
+      "Bash(cmd /c \"taskkill /IM node.exe /F\")",
+      "Bash(cmd /c \"rmdir /s /q .next\")",
+      "Bash(powershell -Command:*)",
+      "Bash(netstat:*)",
+      "Bash(cmd /c \"taskkill /PID 23612 /F\")",
+      "Bash(cmd /c \"taskkill /F /IM node.exe\")",
+      "Bash(cmd /c \"del \"\"C:\\Users\\iniya\\OneDrive\\Documents\\fiip-studio\\tailwind.config.ts\"\"\")",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(timeout /t 2)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nRemove blue color gradients and simplify background styling\n\n- Remove radial gradient from hero section background\n- Replace gradient backgrounds with solid dark-900 color\n- Simplify Services section background\n- Simplify Who We Work With section background\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git reset:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Full project setup\n\nAdd all project files including:\n- Next.js app with pages for home, services, portfolio, pricing, contact, about\n- React components for navbar, footer, service cards, pricing calculator, etc.\n- Tailwind CSS configuration with dark theme\n- Global styles and animations\n- Data files for pricing, projects, and team\n- Configuration files for Next.js, TypeScript, PostCSS\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

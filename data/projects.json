@@ -1,0 +1,76 @@
+{
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Tech Brand Ad Film",
+      "category": "Ads",
+      "image": "https://images.unsplash.com/photo-1579462768519-a2236a7efd47?w=800&h=450&fit=crop",
+      "description": "High-energy brand advertisement with AI-enhanced VFX",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-2",
+      "title": "Music Video Cinematic",
+      "category": "Music Videos",
+      "image": "https://images.unsplash.com/photo-1514723203753-44ea8780019c?w=800&h=450&fit=crop",
+      "description": "Cinematic music video with generative VFX elements",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-3",
+      "title": "AI-Generated Sequence",
+      "category": "AI Shots",
+      "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=450&fit=crop",
+      "description": "Entirely AI-generated visual sequence",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-4",
+      "title": "Short Film Color Grade",
+      "category": "Post-Production",
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=450&fit=crop",
+      "description": "Professional color grading and post-production",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-5",
+      "title": "Advertising Campaign",
+      "category": "Ads",
+      "image": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=450&fit=crop",
+      "description": "Multi-shot advertising campaign with hybrid VFX",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-6",
+      "title": "Documentary Sequence",
+      "category": "AI Shots",
+      "image": "https://images.unsplash.com/photo-1497998633935-ab54819a5a53?w=800&h=450&fit=crop",
+      "description": "AI-assisted editing for documentary content",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-7",
+      "title": "Product Demo Video",
+      "category": "Ads",
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=450&fit=crop",
+      "description": "Sleek product demonstration with motion graphics",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-8",
+      "title": "Music Video - Synthwave",
+      "category": "Music Videos",
+      "image": "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=800&h=450&fit=crop",
+      "description": "Synthwave-inspired music video with AI graphics",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    },
+    {
+      "id": "project-9",
+      "title": "Reels Collection",
+      "category": "Social Media",
+      "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&h=450&fit=crop",
+      "description": "Fast-paced social media content creation",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ"
+    }
+  ]
+}

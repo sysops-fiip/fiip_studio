@@ -1,0 +1,76 @@
+{
+  "tiers": [
+    {
+      "id": "creator",
+      "name": "Creator Plan",
+      "description": "AI-Assisted Post-Production",
+      "minPrice": 300,
+      "maxPrice": 500,
+      "unit": "per second",
+      "features": [
+        "AI-powered color correction",
+        "Auto-generated subtitles",
+        "Basic VFX compositing",
+        "Standard delivery (MP4/ProRes)",
+        "24-hour turnaround",
+        "1 revision round"
+      ],
+      "examples": ["YouTube Shorts", "Instagram Reels", "TikTok Videos"]
+    },
+    {
+      "id": "brand",
+      "name": "Brand Plan",
+      "description": "Hybrid VFX & Professional Post",
+      "minPrice": 600,
+      "maxPrice": 900,
+      "unit": "per second",
+      "features": [
+        "Advanced color grading",
+        "Custom VFX sequences",
+        "Motion graphics & design",
+        "4K + ProRes delivery",
+        "48-hour turnaround",
+        "3 revision rounds",
+        "Project consultation"
+      ],
+      "examples": ["Ad Films", "Brand Videos", "Social Campaigns"]
+    },
+    {
+      "id": "studio",
+      "name": "Studio Plan",
+      "description": "Generative VFX & Full Production",
+      "minPrice": 1200,
+      "maxPrice": 2000,
+      "unit": "per second",
+      "features": [
+        "AI-generated VFX shots",
+        "Custom scene creation",
+        "Full cinematic color grading",
+        "8K + RAW delivery",
+        "72-hour turnaround",
+        "Unlimited revisions",
+        "Creative consulting",
+        "Custom AI model training"
+      ],
+      "examples": ["OTT Content", "Feature Films", "High-end Commercials"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What's the typical turnaround time?",
+      "answer": "Creator Plan: 24 hours, Brand Plan: 48 hours, Studio Plan: 72 hours. Rush delivery available upon request."
+    },
+    {
+      "question": "Can I request revisions?",
+      "answer": "Yes! Each plan includes revision rounds. Creator Plan: 1 round, Brand Plan: 3 rounds, Studio Plan: unlimited."
+    },
+    {
+      "question": "What formats do you deliver?",
+      "answer": "MP4, ProRes, DCP, and RAW formats depending on the plan. Custom formats available upon request."
+    },
+    {
+      "question": "Do you offer discounts for bulk orders?",
+      "answer": "Absolutely! Contact us for custom bulk pricing and long-term partnerships."
+    }
+  ]
+}

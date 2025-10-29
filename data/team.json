@@ -1,0 +1,32 @@
+{
+  "team": [
+    {
+      "id": "team-1",
+      "name": "Arjun Sharma",
+      "role": "AI VFX Lead",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      "bio": "Specialized in AI-generated VFX and Fusion compositing with 8+ years of experience."
+    },
+    {
+      "id": "team-2",
+      "name": "Priya Patel",
+      "role": "Colorist & Post-Producer",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+      "bio": "Expert in DaVinci Resolve color grading and creative post-production workflows."
+    },
+    {
+      "id": "team-3",
+      "name": "Vikram Singh",
+      "role": "AI Artist & Developer",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+      "bio": "Develops custom AI workflows using ComfyUI, Stable Diffusion, and Runway for unique visual solutions."
+    },
+    {
+      "id": "team-4",
+      "name": "Isha Reddy",
+      "role": "Creative Producer",
+      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      "bio": "Manages projects from concept to delivery, ensuring creative excellence and client satisfaction."
+    }
+  ]
+}
