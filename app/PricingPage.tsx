@@ -123,7 +123,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison Table */}
+      {/* Key Differences */}
       <section className="section-padding bg-dark-900">
         <div className="container-responsive">
           <motion.div
@@ -131,43 +131,48 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-center">
-              Feature Comparison
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+              Key Differences
             </h2>
-
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left py-4 px-4 text-white font-semibold">Feature</th>
-                    <th className="text-center py-4 px-4 text-white font-semibold">Creator</th>
-                    <th className="text-center py-4 px-4 text-white font-semibold">Brand</th>
-                    <th className="text-center py-4 px-4 text-white font-semibold">Studio</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { feature: 'Video Length', creator: 'Up to 5 min', brand: 'Up to 20 min', studio: 'Unlimited' },
-                    { feature: 'Turnaround Time', creator: '24 hours', brand: '48 hours', studio: '72 hours' },
-                    { feature: 'Revisions', creator: '1 round', brand: '3 rounds', studio: 'Unlimited' },
-                    { feature: 'Delivery Formats', creator: 'MP4, ProRes', brand: 'MP4, ProRes, DCP', studio: 'All formats + RAW' },
-                    { feature: 'AI Integration Level', creator: 'Basic', brand: 'Advanced', studio: 'Custom' },
-                    { feature: 'Color Grading', creator: 'Standard', brand: 'Advanced', studio: 'Cinematic' },
-                    { feature: 'Creative Consultation', creator: '—', brand: '✓', studio: '✓' },
-                    { feature: 'Custom AI Training', creator: '—', brand: '—', studio: '✓' },
-                  ].map((row, index) => (
-                    <tr key={index} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                      <td className="py-4 px-4 text-gray-300">{row.feature}</td>
-                      <td className="py-4 px-4 text-center text-gray-400">{row.creator}</td>
-                      <td className="py-4 px-4 text-center text-gray-400">{row.brand}</td>
-                      <td className="py-4 px-4 text-center text-gray-400">{row.studio}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <p className="text-gray-400 text-lg">
+              Choose the right plan for your project needs
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Creator Plan',
+                highlights: ['Up to 5 min videos', '24hr turnaround', '1 revision round', 'Basic AI tools']
+              },
+              {
+                title: 'Brand Plan',
+                highlights: ['Up to 20 min videos', '48hr turnaround', '3 revision rounds', 'Advanced VFX']
+              },
+              {
+                title: 'Studio Plan',
+                highlights: ['Unlimited length', '72hr turnaround', 'Unlimited revisions', 'Custom AI training']
+              }
+            ].map((plan, index) => (
+              <motion.div
+                key={plan.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass-effect p-6 rounded-xl text-center"
+              >
+                <h3 className="text-xl font-bold text-white mb-4">{plan.title}</h3>
+                <ul className="space-y-2">
+                  {plan.highlights.map((highlight, i) => (
+                    <li key={i} className="text-gray-300 text-sm">• {highlight}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

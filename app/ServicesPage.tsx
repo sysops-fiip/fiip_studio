@@ -2,8 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ServiceCard } from '@/components/ServiceCard';
-import { Zap, Palette, Sparkles, CheckCircle } from 'lucide-react';
-import pricingData from '@/data/pricing.json';
+import { Zap, Palette, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ServicesPage() {
@@ -12,7 +11,6 @@ export default function ServicesPage() {
       icon: Zap,
       title: 'AI-Enhanced Post',
       description: 'Smart automation for color correction, editing, and effects.',
-      price: '₹300–500',
       features: [
         'Automated color grading',
         'AI-powered editing',
@@ -24,7 +22,6 @@ export default function ServicesPage() {
       icon: Palette,
       title: 'Hybrid VFX',
       description: 'Blend of AI tools and professional craftsmanship.',
-      price: '₹600–900',
       features: [
         'Custom VFX sequences',
         'Advanced compositing',
@@ -36,7 +33,6 @@ export default function ServicesPage() {
       icon: Sparkles,
       title: 'Generative Visuals',
       description: 'AI-generated shots and entirely new creative sequences.',
-      price: '₹1200+',
       features: [
         'AI scene generation',
         'Custom model training',
@@ -71,81 +67,20 @@ export default function ServicesPage() {
       <section className="section-padding">
         <div className="container-responsive">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-16 auto-rows-max">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                price={service.price}
-                features={service.features}
-                delay={index * 0.2}
-              />
-            ))}
+             {services.map((service, index) => (
+               <ServiceCard
+                 key={index}
+                 icon={service.icon}
+                 title={service.title}
+                 description={service.description}
+                 features={service.features}
+                 delay={index * 0.2}
+               />
+             ))}
           </div>
         </div>
       </section>
 
-      {/* Detailed Service Info */}
-      <section className="section-padding bg-dark-900">
-        <div className="container-responsive">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Detailed Features & Benefits
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 auto-rows-max">
-            {pricingData.tiers.map((tier, index) => (
-              <motion.div
-                key={tier.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="glass-effect p-8 sm:p-10 rounded-xl border border-primary-500/20 flex flex-col h-full"
-              >
-                <h3 className="text-2xl font-bold text-white mb-3">{tier.name}</h3>
-                <p className="text-gray-400 text-base mb-8">{tier.description}</p>
-
-                <div className="mb-6">
-                  <p className="text-3xl font-bold text-transparent bg-gradient-to-r from-primary-400 to-accent-500 bg-clip-text">
-                    ₹{tier.minPrice}–{tier.maxPrice}
-                  </p>
-                  <p className="text-gray-400 text-xs">{tier.unit}</p>
-                </div>
-
-                <h4 className="font-semibold text-white mb-6 text-lg">Features:</h4>
-                <ul className="space-y-4 mb-8 flex-grow">
-                  {tier.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300 text-base">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-auto">
-                  <h4 className="font-semibold text-white mb-4 text-lg">Ideal for:</h4>
-                  <ul className="space-y-3">
-                    {tier.examples.map((example, i) => (
-                      <li key={i} className="text-gray-400 text-base">
-                        • {example}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Tools & Technology */}
       <section className="section-padding">
@@ -191,40 +126,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section-padding bg-dark-900">
-        <div className="container-responsive max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-
-          <div className="space-y-6">
-            {pricingData.faq.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="glass-effect p-6 rounded-xl"
-              >
-                <h3 className="text-lg font-semibold text-white mb-3">
-                  {item.question}
-                </h3>
-                <p className="text-gray-300">{item.answer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="section-padding">

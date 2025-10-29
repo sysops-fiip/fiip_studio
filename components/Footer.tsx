@@ -79,23 +79,23 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 text-primary-500 mt-1 flex-shrink-0" />
-                <a
-                  href="mailto:hello@fixitinpost.studio"
-                  className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
-                >
-                  hello@fixitinpost.studio
-                </a>
+                 <a
+                   href="mailto:hello@fixitinpost.in"
+                   className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
+                 >
+                   hello@fixitinpost.in
+                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 text-primary-500 mt-1 flex-shrink-0" />
-                <a
-                  href="https://wa.me/919876543210"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-1"
-                >
-                  WhatsApp <ExternalLink className="w-3 h-3" />
-                </a>
+                 <a
+                   href="https://wa.me/919500104320"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-gray-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-1"
+                 >
+                   WhatsApp <ExternalLink className="w-3 h-3" />
+                 </a>
               </li>
             </ul>
           </div>

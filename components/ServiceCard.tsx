@@ -8,7 +8,6 @@ interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  price: string;
   features: string[];
   delay?: number;
 }
@@ -17,7 +16,6 @@ export function ServiceCard({
   icon: Icon,
   title,
   description,
-  price,
   features,
   delay = 0,
 }: ServiceCardProps) {
@@ -34,19 +32,11 @@ export function ServiceCard({
         <Icon className="w-7 h-7 text-white" />
       </div>
 
-      {/* Content */}
-      <h3 className="text-2xl font-semibold text-white mb-3">{title}</h3>
-      <p className="text-gray-400 text-base mb-6">{description}</p>
+       {/* Content */}
+       <h3 className="text-2xl font-semibold text-white mb-3">{title}</h3>
+       <p className="text-gray-400 text-base mb-6">{description}</p>
 
-      {/* Price */}
-      <div className="mb-8">
-        <p className="text-3xl font-bold text-transparent bg-gradient-to-r from-primary-400 to-accent-500 bg-clip-text">
-          {price}
-        </p>
-        <p className="text-gray-400 text-sm">per second</p>
-      </div>
-
-      {/* Features */}
+       {/* Features */}
       <ul className="space-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start gap-3 text-gray-300 text-base">

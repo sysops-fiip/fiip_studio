@@ -48,13 +48,13 @@ export default function PortfolioPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="section-padding">
+      <section className="py-8">
         <div className="container-responsive">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="flex flex-wrap justify-center gap-4 mb-8"
           >
             {categories.map((category) => (
               <button
