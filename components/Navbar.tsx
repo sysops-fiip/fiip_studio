@@ -64,14 +64,14 @@ export function Navbar() {
 
           {/* CTA Button and Mobile Menu */}
           <div className="flex items-center gap-6">
-            <div className="hidden sm:block ml-4">
-              <Link
-                href="/contact"
-                className="inline-block px-6 py-3 bg-primary-500 text-white rounded-lg font-semibold hover:bg-primary-600 transition-all duration-300 hover:shadow-glow-md"
-              >
-                Get Quote
-              </Link>
-            </div>
+             <div className="hidden sm:block ml-4">
+               <Link
+                 href="/contact"
+                 className="inline-block px-4 py-2 bg-primary-500 text-white rounded-lg font-semibold hover:bg-primary-600 transition-all duration-300 hover:shadow-glow-md text-sm"
+               >
+                 Get Quote
+               </Link>
+             </div>
 
             {/* Mobile Menu Button - Always on the right */}
             <button
@@ -97,13 +97,13 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="block w-full mt-4 px-6 py-3 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Get Quote
-              </Link>
+               <Link
+                 href="/contact"
+                 className="block w-full mt-4 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors text-center text-sm"
+                 onClick={() => setIsOpen(false)}
+               >
+                 Get Quote
+               </Link>
             </div>
           </div>
         )}
