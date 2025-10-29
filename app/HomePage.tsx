@@ -102,18 +102,18 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
-            <Link
-              href="/portfolio"
-              className="px-8 py-4 bg-primary-500 text-white font-semibold rounded-lg hover:bg-primary-600 hover:shadow-glow-lg transition-all duration-300 active:scale-95"
-            >
-              View Our Reel
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-4 border-2 border-primary-500 text-primary-300 font-semibold rounded-lg hover:bg-primary-500/10 hover:shadow-glow-md transition-all duration-300"
-            >
-              Get a Quote
-            </Link>
+             <Link
+               href="/portfolio"
+               className="px-6 py-3 bg-primary-500 text-white font-semibold rounded-lg hover:bg-primary-600 hover:shadow-glow-lg transition-all duration-300 active:scale-95 text-sm"
+             >
+               View Our Reel
+             </Link>
+             <Link
+               href="/contact"
+               className="px-6 py-3 border-2 border-primary-500 text-primary-300 font-semibold rounded-lg hover:bg-primary-500/10 hover:shadow-glow-md transition-all duration-300 text-sm"
+             >
+               Get a Quote
+             </Link>
           </motion.div>
 
           {/* Stats */}
