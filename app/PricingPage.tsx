@@ -3,97 +3,102 @@
 import { motion } from 'framer-motion';
 import { PricingCalculator } from '@/components/PricingCalculator';
 import pricingData from '@/data/pricing.json';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-dark-950 text-white">
+    <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary-400 mb-3 inline-block">
-            Transparent Production Scoping
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-            Studio Engagement Models
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
+            Commissioning &amp; Scope
+          </p>
+          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
+            Production Engagement
           </h1>
-          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Every production has unique camera formats, deliverable requirements, and revision cycles.
-            We provide clear, milestone-driven bids tailored to your delivery schedule.
+          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
+            Every production timeline involves tailored camera formats, deliverable specifications, and suite requirements.
+            We provide milestone-driven commissioning for commercial campaigns, episodic OTT, and feature films.
           </p>
         </motion.div>
       </section>
 
-      {/* Interactive Scope Estimator */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">
-            Interactive Project Scope Builder
+      {/* Interactive Scope Builder */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-neutral-900">
+        <div className="text-center mb-10">
+          <h2 className="text-xl sm:text-3xl font-bold uppercase tracking-tight mb-2">
+            Project Scope Builder
           </h2>
-          <p className="text-xs sm:text-sm text-gray-400">
-            Select your format and required disciplines to generate a project brief
+          <p className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
+            Configure format and required disciplines for an official studio quotation
           </p>
         </div>
         <PricingCalculator />
       </section>
 
-      {/* Engagement Models Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+      {/* Engagement Slates (Editorial Structure) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-neutral-900">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-            Standard Studio Engagement Tiers
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-400">
-            From single commercial turnarounds to long-term feature post partnerships
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+            Standard Slates
           </p>
+          <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight">
+            Studio Retainer &amp; Project Models
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pricingData.engagementModels.map((model, index) => (
             <motion.div
               key={model.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ delay: index * 0.08, duration: 0.4 }}
               viewport={{ once: true }}
-              className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 shadow-cinema-card ${
+              className={`p-8 border flex flex-col justify-between transition-colors ${
                 model.featured
-                  ? 'bg-dark-900 border-2 border-primary-400 shadow-glow-gold'
-                  : 'bg-dark-900/60 border border-white/[0.08] hover:border-white/20'
+                  ? 'border-white bg-neutral-950'
+                  : 'border-neutral-800 bg-black hover:border-neutral-700'
               }`}
             >
               <div>
-                {model.featured && (
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary-500 text-dark-950 mb-4 inline-block">
-                    Recommended Model
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+                    SLATE 0{index + 1}
                   </span>
-                )}
-                <h3 className="text-2xl font-bold text-white mb-1 tracking-tight">
+                  {model.featured && (
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-white text-white">
+                      COMMERCIAL STANDARD
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-1">
                   {model.name}
                 </h3>
-                <p className="text-xs font-semibold text-primary-400 mb-4">{model.tagline}</p>
-                <p className="text-xs text-gray-400 mb-6 leading-relaxed">{model.idealFor}</p>
+                <p className="text-xs font-mono text-neutral-400 uppercase mb-6">{model.tagline}</p>
+                <p className="text-xs text-neutral-400 leading-relaxed mb-6 font-mono">{model.idealFor}</p>
 
-                <div className="p-4 rounded-xl bg-dark-950 border border-white/5 space-y-2 mb-6 text-xs">
+                <div className="p-4 bg-neutral-900 border border-neutral-800 space-y-2 mb-6 font-mono text-xs">
                   <div>
-                    <span className="text-gray-400">Turnaround: </span>
-                    <span className="font-semibold text-white">{model.turnaround}</span>
+                    <span className="text-neutral-400 block text-[10px] uppercase">TARGET TURNAROUND</span>
+                    <span className="text-white font-medium">{model.turnaround}</span>
                   </div>
-                  <div>
-                    <span className="text-gray-400">Master Deliverables: </span>
-                    <span className="font-semibold text-white">{model.deliverables}</span>
+                  <div className="pt-2 border-t border-neutral-800">
+                    <span className="text-neutral-400 block text-[10px] uppercase">DELIVERABLES MASTER</span>
+                    <span className="text-white font-medium">{model.deliverables}</span>
                   </div>
                 </div>
 
-                <ul className="space-y-3 pt-4 border-t border-white/5 text-xs text-gray-300">
+                <ul className="space-y-2 pt-4 border-t border-neutral-900 font-mono text-xs text-neutral-400">
                   {model.features.map((feat, i) => (
-                    <li key={i} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary-400 shrink-0 mt-0.5" />
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-white">·</span>
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -103,10 +108,10 @@ export default function PricingPage() {
               <div className="pt-8">
                 <Link
                   href={`/contact?tier=${model.id}`}
-                  className={`w-full block text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 ${
+                  className={`w-full block text-center py-3.5 font-mono text-xs uppercase tracking-wider font-semibold transition-colors ${
                     model.featured
-                      ? 'bg-primary-500 text-dark-950 hover:bg-primary-400 shadow-glow-gold'
-                      : 'bg-white/[0.04] text-white hover:bg-white/[0.08] border border-white/10'
+                      ? 'bg-white text-black hover:bg-neutral-200'
+                      : 'border border-neutral-800 text-neutral-300 hover:border-white hover:text-white'
                   }`}
                 >
                   Consult on {model.name}
@@ -117,29 +122,30 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Direct Booking CTA */}
-      <section className="max-w-4xl mx-auto px-4 text-center">
-        <div className="p-8 sm:p-12 rounded-3xl bg-dark-900 border border-white/10 shadow-2xl">
-          <h2 className="text-2xl sm:text-4xl font-extrabold mb-4 tracking-tight">
-            Need an NDA or Custom Pipeline Review?
-          </h2>
-          <p className="text-gray-300 text-xs sm:text-sm mb-6 max-w-xl mx-auto leading-relaxed">
-            Our pipeline architects can audit your project timeline, raw camera codecs, and deliverable specifications directly.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="px-6 py-3 bg-primary-500 hover:bg-primary-400 text-dark-950 font-bold rounded-xl text-xs uppercase tracking-wider transition-all shadow-glow-gold"
-            >
-              Open Direct Studio Inquiry
-            </Link>
-            <a
-              href="mailto:hello@fixitinpost.in"
-              className="px-6 py-3 border border-white/15 bg-white/[0.02] text-gray-200 font-semibold rounded-xl text-xs uppercase tracking-wider hover:bg-white/[0.08] transition-all"
-            >
-              hello@fixitinpost.in
-            </a>
-          </div>
+      {/* NDA / Direct Review Slate */}
+      <section className="max-w-4xl mx-auto px-4 py-16 text-center">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+          Confidentiality &amp; Pipeline
+        </p>
+        <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-4">
+          NDA &amp; Custom Workflow Audit
+        </h2>
+        <p className="text-neutral-400 text-xs sm:text-sm font-mono mb-8 max-w-xl mx-auto leading-relaxed">
+          For unreleased feature scripts, NDA brand campaigns, and custom technical pipeline integrations, contact our studio supervisors directly.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/contact"
+            className="px-8 py-3.5 bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-neutral-200 transition-colors"
+          >
+            Direct Inquiry
+          </Link>
+          <a
+            href="mailto:hello@fixitinpost.in"
+            className="px-8 py-3.5 border border-neutral-800 text-white font-mono text-xs uppercase tracking-wider font-semibold hover:border-white transition-colors"
+          >
+            hello@fixitinpost.in
+          </a>
         </div>
       </section>
     </div>

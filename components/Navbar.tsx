@@ -11,7 +11,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -19,20 +19,20 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'About', href: '/about' },
+    { label: 'Overview', href: '/' },
+    { label: 'Disciplines', href: '/services' },
+    { label: 'Archive', href: '/portfolio' },
+    { label: 'Commissioning', href: '/pricing' },
+    { label: 'Studio', href: '/about' },
     { label: 'Contact', href: '/contact' },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
         isScrolled
-          ? 'bg-dark-950/85 backdrop-blur-xl border-b border-white/[0.08]'
-          : 'bg-transparent'
+          ? 'bg-black/90 backdrop-blur-md border-b border-neutral-900'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="w-full px-6 sm:px-8 lg:px-12">
@@ -44,7 +44,7 @@ export function Navbar() {
               alt="Fix It In Post Studios"
               width={130}
               height={40}
-              className="h-9 w-auto opacity-95 hover:opacity-100 transition-opacity"
+              className="h-8 w-auto opacity-90 hover:opacity-100 transition-opacity"
               priority
             />
           </Link>
@@ -55,7 +55,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-gray-300 hover:text-primary-300 transition-colors"
+                className="text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
               >
                 {item.label}
               </Link>
@@ -64,43 +64,42 @@ export function Navbar() {
               href="https://frames.fixitinpost.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] font-mono tracking-wider px-2.5 py-1 rounded bg-white/[0.04] border border-white/10 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400/40 transition-all"
+              className="text-[11px] font-mono tracking-wider px-2.5 py-1 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-colors"
             >
               Frames Portal ↗
             </a>
           </div>
 
-          {/* CTA Button and Mobile Menu */}
+          {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-4">
             <div className="hidden sm:block">
               <Link
                 href="/contact"
-                className="inline-block px-5 py-2.5 bg-primary-500 text-dark-950 rounded-lg font-bold hover:bg-primary-400 transition-all duration-300 hover:shadow-glow-gold text-xs tracking-wide uppercase"
+                className="px-5 py-2.5 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-neutral-200 transition-colors"
               >
-                Get Quote
+                Inquire
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+              className="md:hidden text-white p-2 hover:bg-neutral-900 transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle navigation"
             >
-              {isOpen ? <X size={22} /> : <Menu size={22} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Dropdown */}
         {isOpen && (
-          <div className="md:hidden bg-dark-950/95 backdrop-blur-2xl border-t border-white/[0.08] px-4 py-6 space-y-3">
+          <div className="md:hidden bg-black border-t border-neutral-900 px-4 py-6 space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-base font-medium text-gray-200 hover:text-primary-300 py-2 border-b border-white/5"
+                className="block text-sm font-mono uppercase tracking-wider text-neutral-400 hover:text-white py-2 border-b border-neutral-900"
               >
                 {item.label}
               </Link>
@@ -110,16 +109,16 @@ export function Navbar() {
                 href="https://frames.fixitinpost.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono px-3 py-2 rounded bg-white/[0.04] border border-white/10 text-primary-300 text-center"
+                className="text-xs font-mono uppercase tracking-wider py-2.5 border border-neutral-800 text-neutral-300 text-center"
               >
                 Frames Review Portal ↗
               </a>
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="w-full text-center py-3 bg-primary-500 text-dark-950 font-bold rounded-lg text-sm"
+                className="w-full text-center py-3 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider"
               >
-                Get Quote
+                Inquire
               </Link>
             </div>
           </div>

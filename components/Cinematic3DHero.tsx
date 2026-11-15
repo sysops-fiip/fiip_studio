@@ -32,7 +32,6 @@ export function Cinematic3DHero() {
   }, []);
 
   useEffect(() => {
-    // Check if device is mobile or low-power
     const checkMobile = () => {
       const isTouch = window.matchMedia('(pointer: coarse)').matches;
       const isSmall = window.innerWidth < 768;
@@ -66,101 +65,99 @@ export function Cinematic3DHero() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
+    renderer.toneMappingExposure = 1.0;
     container.appendChild(renderer.domElement);
 
-    // --- Lighting ---
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    // --- Monochrome Studio Lighting ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
     scene.add(ambientLight);
 
-    // Warm Key Light (Tungsten Studio Lamp)
-    const keyLight = new THREE.DirectionalLight(0xf5d48c, 2.8);
-    keyLight.position.set(10, 10, 15);
+    // Key Light (Crisp White Studio Projector)
+    const keyLight = new THREE.DirectionalLight(0xffffff, 3.2);
+    keyLight.position.set(10, 12, 14);
     scene.add(keyLight);
 
-    // Anamorphic Cold Rim Light (Icy Cyan Streak)
-    const rimLight = new THREE.DirectionalLight(0x38bdf8, 2.2);
-    rimLight.position.set(-15, -10, -5);
+    // Rim Light (Silver Edge Specular)
+    const rimLight = new THREE.DirectionalLight(0xd4d4d4, 2.0);
+    rimLight.position.set(-14, -8, -6);
     scene.add(rimLight);
 
-    // --- 3D Anamorphic Cinema Lens Assembly ---
+    // --- 3D Monochrome Cinema Anamorphic Assembly ---
     const lensGroup = new THREE.Group();
     scene.add(lensGroup);
 
-    // Materials
-    const titaniumMat = new THREE.MeshStandardMaterial({
-      color: 0x1f1f28,
-      metalness: 0.95,
-      roughness: 0.25,
+    // Materials: Obsidian Carbon, Brushed Chrome, Pure Optic Crystal
+    const obsidianMat = new THREE.MeshStandardMaterial({
+      color: 0x0f0f0f,
+      metalness: 0.9,
+      roughness: 0.3,
       wireframe: false,
     });
 
-    const goldAccentMat = new THREE.MeshStandardMaterial({
-      color: 0xd9a738,
-      metalness: 0.9,
-      roughness: 0.3,
-      emissive: 0x422b0c,
-      emissiveIntensity: 0.4,
+    const chromeMat = new THREE.MeshStandardMaterial({
+      color: 0xe5e5e5,
+      metalness: 0.98,
+      roughness: 0.15,
     });
 
-    const opticGlassMat = new THREE.MeshPhysicalMaterial({
-      color: 0xa5f3fc,
-      metalness: 0.1,
-      roughness: 0.05,
-      transmission: 0.9,
-      thickness: 1.2,
-      ior: 1.52,
-      reflectivity: 0.9,
+    const opticCrystalMat = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      metalness: 0.05,
+      roughness: 0.04,
+      transmission: 0.94,
+      thickness: 1.5,
+      ior: 1.54,
+      reflectivity: 0.95,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.7,
     });
 
-    const wireRingMat = new THREE.MeshBasicMaterial({
-      color: 0xeabf60,
+    const wireScaleMat = new THREE.MeshBasicMaterial({
+      color: 0x888888,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.3,
     });
 
-    // 1. Outer Cinema Lens Barrel
-    const barrelGeo = new THREE.CylinderGeometry(5.2, 5.2, 2.2, 48, 1, true);
-    const barrel = new THREE.Mesh(barrelGeo, titaniumMat);
+    // 1. Outer Cinema Lens Barrel (Obsidian Matte Titanium)
+    const barrelGeo = new THREE.CylinderGeometry(5.2, 5.2, 2.4, 48, 1, true);
+    const barrel = new THREE.Mesh(barrelGeo, obsidianMat);
     barrel.rotation.x = Math.PI / 2;
     lensGroup.add(barrel);
 
-    // 2. Front Anamorphic Optical Glass Element
+    // 2. Front Spherical Optic Glass Element
     const glassGeo = new THREE.CylinderGeometry(5.0, 5.0, 0.3, 48);
-    const glass = new THREE.Mesh(glassGeo, opticGlassMat);
+    const glass = new THREE.Mesh(glassGeo, opticCrystalMat);
     glass.rotation.x = Math.PI / 2;
     glass.position.z = 1.0;
     lensGroup.add(glass);
 
-    // 3. Precision Focus Gear Ring (Outer Grooves)
-    const gearRingGeo = new THREE.TorusGeometry(5.35, 0.12, 16, 64);
-    const gearRing = new THREE.Mesh(gearRingGeo, goldAccentMat);
+    // 3. Precision Focus Gear Rings (Brushed Chrome & Carbon)
+    const gearRingGeo = new THREE.TorusGeometry(5.35, 0.1, 16, 64);
+    const gearRing = new THREE.Mesh(gearRingGeo, chromeMat);
     gearRing.position.z = 0.5;
     lensGroup.add(gearRing);
 
-    const gearRing2 = new THREE.Mesh(gearRingGeo, titaniumMat);
+    const gearRing2 = new THREE.Mesh(gearRingGeo, obsidianMat);
     gearRing2.position.z = -0.6;
     lensGroup.add(gearRing2);
 
-    // 4. Calibrated Optical Markings Wireframe Rings
-    const wireRing1 = new THREE.Mesh(new THREE.TorusGeometry(4.7, 0.05, 8, 48), wireRingMat);
+    // 4. Optical Calibration Index Rings
+    const wireRing1 = new THREE.Mesh(new THREE.TorusGeometry(4.8, 0.04, 8, 48), wireScaleMat);
     wireRing1.position.z = 1.1;
     lensGroup.add(wireRing1);
 
-    const wireRing2 = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.04, 8, 36), wireRingMat);
+    const wireRing2 = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.03, 8, 36), wireScaleMat);
     wireRing2.position.z = 0.8;
     lensGroup.add(wireRing2);
 
-    // 5. Aperture Iris Blades (Internal Hexagonal/Octagonal Mechanism)
+    // 5. Aperture Iris Blades (8 Precision Titanium Leaves)
     const irisGroup = new THREE.Group();
-    const bladeGeo = new THREE.BoxGeometry(2.4, 0.4, 0.08);
+    const bladeGeo = new THREE.BoxGeometry(2.4, 0.38, 0.06);
     const bladeMat = new THREE.MeshStandardMaterial({
-      color: 0x111116,
-      metalness: 0.8,
-      roughness: 0.4,
+      color: 0x1a1a1a,
+      metalness: 0.85,
+      roughness: 0.25,
     });
 
     const bladeCount = 8;
@@ -175,59 +172,44 @@ export function Cinematic3DHero() {
     irisGroup.position.z = 0.1;
     lensGroup.add(irisGroup);
 
-    // 6. Signature Anamorphic Horizontal Flare Streaks
-    const streakGeo = new THREE.PlaneGeometry(24, 0.15);
+    // 6. Monochromatic Anamorphic Streak (Pure Silver Refraction)
+    const streakGeo = new THREE.PlaneGeometry(26, 0.12);
     const streakMat = new THREE.MeshBasicMaterial({
-      color: 0x38bdf8,
+      color: 0xffffff,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.45,
       blending: THREE.AdditiveBlending,
       side: THREE.DoubleSide,
     });
     const streak = new THREE.Mesh(streakGeo, streakMat);
-    streak.position.z = 1.3;
+    streak.position.z = 1.25;
     lensGroup.add(streak);
 
-    const streakWarmMat = new THREE.MeshBasicMaterial({
-      color: 0xf5d48c,
-      transparent: true,
-      opacity: 0.4,
-      blending: THREE.AdditiveBlending,
-      side: THREE.DoubleSide,
-    });
-    const streakWarm = new THREE.Mesh(streakGeo, streakWarmMat);
-    streakWarm.position.z = 1.25;
-    streakWarm.scale.set(0.7, 0.8, 1);
-    lensGroup.add(streakWarm);
-
-    // --- Floating Film Particles / Bokeh Embers ---
-    const particleCount = 200;
+    // --- Floating Film Silver Dust Particles ---
+    const particleCount = 180;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
-    const scales = new Float32Array(particleCount);
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 35;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 25;
+      positions[i * 3] = (Math.random() - 0.5) * 36;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 26;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-      scales[i] = Math.random() * 0.4 + 0.1;
     }
 
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    // Particle Shader / Material
     const particleMat = new THREE.PointsMaterial({
-      color: 0xf5d48c,
-      size: 0.18,
+      color: 0xd4d4d4,
+      size: 0.14,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.5,
       blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // --- Interactive Mouse & Inertia Tracking ---
+    // --- Mouse & Inertia Tracking ---
     let mouseX = 0;
     let mouseY = 0;
     let targetRotationX = 0;
@@ -255,10 +237,10 @@ export function Cinematic3DHero() {
         previousPointerX = e.clientX;
         previousPointerY = e.clientY;
       } else {
-        targetRotationY = mouseX * 0.85;
-        targetRotationX = mouseY * 0.65;
-        targetPosX = mouseX * 2.2;
-        targetPosY = -mouseY * 1.5;
+        targetRotationY = mouseX * 0.8;
+        targetRotationX = mouseY * 0.6;
+        targetPosX = mouseX * 2.0;
+        targetPosY = -mouseY * 1.4;
       }
     };
 
@@ -278,7 +260,6 @@ export function Cinematic3DHero() {
     container.addEventListener('mousedown', onPointerDown);
     window.addEventListener('mouseup', onPointerUp);
 
-    // --- Resize Handling ---
     const handleResize = () => {
       if (!container) return;
       camera.aspect = container.clientWidth / container.clientHeight;
@@ -287,16 +268,14 @@ export function Cinematic3DHero() {
     };
     window.addEventListener('resize', handleResize);
 
-    // --- Animation Loop ---
+    // --- Render Loop ---
     let animationId: number;
     let clock = new THREE.Clock();
 
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth mechanical inertia (lerp)
       if (!isDragging) {
         lensGroup.rotation.y += (targetRotationY - lensGroup.rotation.y) * 0.05;
         lensGroup.rotation.x += (targetRotationX - lensGroup.rotation.x) * 0.05;
@@ -304,29 +283,25 @@ export function Cinematic3DHero() {
         lensGroup.position.y += (targetPosY - lensGroup.position.y) * 0.05;
       }
 
-      // Gentle continuous optical breathing
-      lensGroup.position.z = Math.sin(elapsedTime * 0.8) * 0.35;
-      irisGroup.rotation.z = Math.sin(elapsedTime * 0.4) * 0.25;
+      lensGroup.position.z = Math.sin(elapsedTime * 0.7) * 0.3;
+      irisGroup.rotation.z = Math.sin(elapsedTime * 0.35) * 0.2;
 
-      // Bokeh particles drifting
       const positionsAttr = particleGeo.attributes.position as THREE.BufferAttribute;
       const posArray = positionsAttr.array as Float32Array;
       for (let i = 0; i < particleCount; i++) {
-        posArray[i * 3 + 1] += Math.sin(elapsedTime + i) * 0.005;
-        posArray[i * 3] += Math.cos(elapsedTime * 0.5 + i) * 0.003;
+        posArray[i * 3 + 1] += Math.sin(elapsedTime + i) * 0.004;
+        posArray[i * 3] += Math.cos(elapsedTime * 0.5 + i) * 0.002;
       }
       positionsAttr.needsUpdate = true;
 
-      // Dynamically swing anamorphic key light with cursor
-      keyLight.position.x = 10 + mouseX * 12;
-      keyLight.position.y = 10 - mouseY * 12;
+      keyLight.position.x = 10 + mouseX * 10;
+      keyLight.position.y = 12 - mouseY * 10;
 
       renderer.render(scene, camera);
     };
 
     animate();
 
-    // --- Cleanup ---
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('mousemove', onPointerMove);
@@ -334,7 +309,6 @@ export function Cinematic3DHero() {
       window.removeEventListener('mouseup', onPointerUp);
       window.removeEventListener('resize', handleResize);
 
-      // Dispose Three.js objects
       barrelGeo.dispose();
       glassGeo.dispose();
       gearRingGeo.dispose();
@@ -342,13 +316,12 @@ export function Cinematic3DHero() {
       streakGeo.dispose();
       particleGeo.dispose();
 
-      titaniumMat.dispose();
-      goldAccentMat.dispose();
-      opticGlassMat.dispose();
-      wireRingMat.dispose();
+      obsidianMat.dispose();
+      chromeMat.dispose();
+      opticCrystalMat.dispose();
+      wireScaleMat.dispose();
       bladeMat.dispose();
       streakMat.dispose();
-      streakWarmMat.dispose();
       particleMat.dispose();
 
       renderer.dispose();
@@ -365,33 +338,27 @@ export function Cinematic3DHero() {
         <div
           ref={containerRef}
           className="absolute inset-0 w-full h-full pointer-events-auto cursor-grab active:cursor-grabbing"
-          title="Click and drag to rotate the 3D cinema anamorphic lens"
+          title="Drag to inspect 3D optical lens"
         />
       )}
 
-      {/* Atmospheric Cinema Lighting Accents (Mobile & Desktop backdrop) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary-500/10 rounded-full blur-[160px]" />
-        <div className="absolute top-1/3 right-10 w-80 h-80 bg-accent-400/8 rounded-full blur-[140px]" />
-      </div>
-
-      {/* Cinema Telemetry HUD (Desktop Only) */}
+      {/* Film Slate Telemetry HUD (Desktop Only - Pure Monochrome) */}
       {!isMobile && (
-        <div className="hidden lg:flex absolute bottom-8 left-8 right-8 justify-between items-end pointer-events-none text-[11px] font-mono text-gray-400">
-          <div className="space-y-1 bg-black/40 backdrop-blur-md px-4 py-2.5 rounded-lg border border-white/5">
+        <div className="hidden lg:flex absolute bottom-8 left-8 right-8 justify-between items-end pointer-events-none text-[11px] font-mono text-neutral-400">
+          <div className="space-y-1 bg-black/60 backdrop-blur-md px-4 py-2.5 rounded-none border border-neutral-800">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-white font-semibold">OPTICAL ENGINE · READY</span>
+              <span className="w-1.5 h-1.5 bg-white" />
+              <span className="text-white font-medium tracking-wider">OPTICS · 50MM ANAMORPHIC T1.3</span>
             </div>
-            <p className="text-gray-400">COOKE ANAMORPHIC /i 2.0x · T1.3 WIDE OPEN</p>
-            <p className="text-primary-300/80">ACEScc AP1 · ARRI LOG-C4 FINISHING</p>
+            <p className="text-neutral-400">ACES 2065-1 / DCI-P3 · ARRI LOG-C4 FINISHING</p>
+            <p className="text-neutral-300">10G NVME COLLABORATIVE TIMELINES</p>
           </div>
 
-          <div className="text-right space-y-1 bg-black/40 backdrop-blur-md px-4 py-2.5 rounded-lg border border-white/5">
-            <p className="text-gray-400">REC 709 / P3-DCI REFERENCE</p>
-            <p className="text-white font-bold tracking-widest">{timecode}</p>
-            <p className="text-[10px] text-gray-500">
-              {isInteracting ? 'INTERACTING WITH 3D LENS' : 'HOVER TO AIM · DRAG TO ROTATE'}
+          <div className="text-right space-y-1 bg-black/60 backdrop-blur-md px-4 py-2.5 rounded-none border border-neutral-800">
+            <p className="text-neutral-400">REF: 24.000 FPS · REC 709 / MASTER</p>
+            <p className="text-white font-semibold tracking-widest">{timecode}</p>
+            <p className="text-[10px] text-neutral-300">
+              {isInteracting ? 'MANUAL ROTATION ACTIVE' : 'DRAG TO ROTATE 3D LENS'}
             </p>
           </div>
         </div>

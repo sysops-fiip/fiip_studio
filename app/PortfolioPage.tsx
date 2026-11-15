@@ -26,37 +26,37 @@ export default function PortfolioPage() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-dark-950 text-white">
+    <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center border-b border-neutral-900">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary-400 mb-3 inline-block">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
             Production Archive
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-            Commercials, Features &amp; VFX Showcases
+          </p>
+          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
+            Commercials &amp; Feature Slate
           </h1>
-          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            From national broadcast brand commercials to feature film DI finishing and photoreal 3D/AI visuals.
+          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
+            Selected broadcast campaigns, theatrical DI color mastering, and visual effects sequences delivered across India.
           </p>
         </motion.div>
       </section>
 
       {/* Filter Tabs */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-wrap justify-center gap-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
                 selectedCategory === category
-                  ? 'bg-primary-500 text-dark-950 font-bold shadow-glow-gold'
-                  : 'bg-white/[0.03] text-gray-300 hover:bg-white/[0.08] border border-white/10'
+                  ? 'bg-white text-black font-semibold'
+                  : 'bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600'
               }`}
             >
               {category}
@@ -66,18 +66,18 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ delay: index * 0.04 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ delay: index * 0.03 }}
               layout
             >
               <PortfolioCard

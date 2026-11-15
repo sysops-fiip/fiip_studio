@@ -73,9 +73,9 @@ export const metadata: Metadata = {
     images: ['/logo/Fix it in post Logo_Horizontal-White.png'],
   },
   other: {
-    'theme-color': '#060608',
+    'theme-color': '#000000',
     'color-scheme': 'dark',
-    'msapplication-TileColor': '#060608',
+    'msapplication-TileColor': '#000000',
   },
 };
 
@@ -86,7 +86,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-dark-950 text-white antialiased">
+      <body className="bg-black text-white antialiased font-sans">
         <Navbar />
         <main className="min-h-screen">
           {children}

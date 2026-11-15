@@ -21,37 +21,35 @@ export function ServiceCard({
 }: ServiceCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5 }}
+      transition={{ delay, duration: 0.4 }}
       viewport={{ once: true }}
-      className="group p-8 sm:p-10 rounded-2xl bg-dark-900 border border-white/[0.08] hover:border-primary-400/40 transition-all duration-300 hover:shadow-cinema-card h-full flex flex-col"
+      className="p-8 border border-neutral-800 bg-neutral-950 hover:border-neutral-600 transition-colors h-full flex flex-col justify-between"
     >
-      {/* Icon */}
-      <div className="w-13 h-13 bg-primary-500/10 border border-primary-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-105 group-hover:border-primary-400/40 transition-all">
-        <Icon className="w-6 h-6 text-primary-400" />
+      <div>
+        <div className="w-12 h-12 border border-neutral-800 bg-neutral-900 flex items-center justify-center mb-6">
+          <Icon className="w-5 h-5 text-white" />
+        </div>
+
+        <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-3">{title}</h3>
+        <p className="text-neutral-400 text-sm leading-relaxed mb-6">{description}</p>
+
+        <ul className="space-y-2.5 mb-8 text-xs font-mono text-neutral-400">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-start gap-2">
+              <span className="text-white">·</span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Content */}
-      <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight">{title}</h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-6">{description}</p>
-
-      {/* Features */}
-      <ul className="space-y-3 mb-8 flex-grow">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2.5 text-gray-300 text-xs sm:text-sm">
-            <span className="text-primary-400 font-bold flex-shrink-0 mt-0.5">✓</span>
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* CTA */}
       <Link
         href="/contact"
-        className="inline-block w-full text-center px-6 py-3 bg-white/[0.03] hover:bg-primary-500 text-gray-200 hover:text-dark-950 border border-white/10 hover:border-primary-400 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 mt-auto"
+        className="block w-full text-center py-3.5 bg-neutral-900 hover:bg-white text-neutral-300 hover:text-black border border-neutral-800 hover:border-white font-mono text-xs uppercase tracking-wider font-semibold transition-colors mt-auto"
       >
-        Request Quote
+        Inquire for Project
       </Link>
     </motion.div>
   );

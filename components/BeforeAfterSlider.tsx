@@ -12,8 +12,8 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  beforeLabel = 'Before',
-  afterLabel = 'After',
+  beforeLabel = 'RAW / LOG',
+  afterLabel = 'FINAL GRADE',
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -92,7 +92,7 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl cursor-col-resize select-none"
+      className="relative w-full max-w-4xl mx-auto overflow-hidden border border-neutral-800 cursor-col-resize select-none bg-black"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
@@ -122,26 +122,22 @@ export function BeforeAfterSlider({
         />
       </div>
 
-      {/* Slider Handle */}
+      {/* Slider Line */}
       <div
-        className="absolute top-0 h-full w-1 bg-primary-500 transition-all duration-75 z-10"
+        className="absolute top-0 h-full w-[1px] bg-white z-10"
         style={{ left: `${sliderPosition}%` }}
       >
-        {/* Handle Circle */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-primary-500 rounded-full shadow-glow-lg flex items-center justify-center cursor-grab active:cursor-grabbing border-2 border-white">
-          <div className="flex gap-1">
-            <div className="w-1 h-4 bg-white rounded-full"></div>
-            <div className="w-1 h-4 bg-white rounded-full"></div>
-            <div className="w-1 h-4 bg-white rounded-full"></div>
-          </div>
+        {/* Handle Button */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-black border border-white text-white flex items-center justify-center font-mono text-xs cursor-grab active:cursor-grabbing">
+          ↔
         </div>
       </div>
 
-      {/* Labels */}
-      <div className="absolute top-4 left-4 text-white font-semibold text-sm bg-black/70 backdrop-blur-sm px-3 py-2 rounded z-10">
+      {/* Film Slate Labels */}
+      <div className="absolute top-3 left-3 text-white font-mono text-[10px] uppercase tracking-wider bg-black/90 border border-neutral-800 px-2 py-1 z-10">
         {beforeLabel}
       </div>
-      <div className="absolute top-4 right-4 text-white font-semibold text-sm bg-black/70 backdrop-blur-sm px-3 py-2 rounded z-10">
+      <div className="absolute top-3 right-3 text-white font-mono text-[10px] uppercase tracking-wider bg-black/90 border border-neutral-800 px-2 py-1 z-10">
         {afterLabel}
       </div>
     </div>

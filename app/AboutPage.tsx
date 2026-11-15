@@ -7,48 +7,50 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-dark-950 text-white">
+    <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary-400 mb-3 inline-block">
-            Studio Heritage &amp; Philosophy
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
-            Craft, Cinematography &amp; <br />
-            <span className="gradient-text">Advanced Post Infrastructure</span>
+          <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
+            Studio Profile
+          </p>
+          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
+            Craft, Cinematography &amp; Post Architecture
           </h1>
-          <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Fix It In Post is a specialized post-production house built from the ground up for high-fidelity editorial,
+          <p className="text-sm sm:text-base text-neutral-400 max-w-3xl mx-auto leading-relaxed font-mono">
+            Fix It In Post is a specialized post-production house built for high-fidelity editorial,
             theatrical DI color grading, and photoreal visual effects.
           </p>
         </motion.div>
       </section>
 
       {/* Studio Story Section */}
-      <section className="py-16 bg-dark-900 border-y border-white/[0.08]">
+      <section className="py-20 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-4xl font-extrabold mb-8 tracking-tight">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+              Facility History
+            </p>
+            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-8">
               Built by Filmmakers, Engineered for Scale
             </h2>
 
-            <div className="space-y-6 text-gray-300 text-sm sm:text-base leading-relaxed">
+            <div className="space-y-6 text-neutral-400 text-sm sm:text-base leading-relaxed font-mono">
               <p>
-                Based in Chennai, India, Fix It In Post Studios was founded with a singular commitment: to eliminate the friction, latency, and compromises typical of traditional post pipelines.
+                Based in Chennai, India, Fix It In Post Studios was founded to eliminate the friction, latency, and compromises typical of traditional post pipelines.
               </p>
 
               <p>
-                Our facility is architected around synchronized DaVinci Resolve Studio color suites, dedicated editorial offline bays, and high-performance 3D/VFX nodes connected over an enterprise 10Gbps NVMe collaborative storage network.
+                Our facility is architected around synchronized DaVinci Resolve Studio color suites, dedicated editorial bays, and high-performance 3D/VFX nodes connected over an enterprise 10Gbps NVMe collaborative storage network.
               </p>
 
               <p>
@@ -59,51 +61,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Studio Values */}
-      <section className="py-24 bg-dark-950">
+      {/* Core Studio Standards */}
+      <section className="py-20 bg-black border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-xs font-mono uppercase tracking-widest text-primary-400 mb-3">
-              Guiding Principles
-            </h2>
-            <p className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-              Our Studio Standards
+          <div className="text-center mb-16">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+              Studio Benchmarks
             </p>
-          </motion.div>
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
+              Operational Standards
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
+                index: '01',
                 title: 'Color Fidelity & ACES Pipeline',
-                description: 'Calibrated reference monitoring and ACEScc color science ensure our grades translate impeccably across theatrical DCPs, broadcast HDR, and mobile OLED screens.',
+                description: 'Calibrated reference monitoring and ACES 2065-1 color science ensure our grades translate impeccably across theatrical DCPs, broadcast HDR, and mobile OLED screens.',
               },
               {
+                index: '02',
                 title: 'Invisible Artistry',
                 description: 'The greatest visual effects are the ones the audience never notices—flawless camera cleanups, dynamic rig removals, and seamless photoreal integration.',
               },
               {
+                index: '03',
                 title: 'Zero Friction Collaboration',
                 description: 'Our proprietary Frames portal empowers directors and agencies to review cuts, leave frame-accurate annotations, and compare version splits in real-time.',
               },
             ].map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.08, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl bg-dark-900 border border-white/[0.08] hover:border-primary-400/30 transition-all shadow-cinema-card"
+                className="p-8 border border-neutral-800 bg-neutral-950 hover:border-neutral-600 transition-colors"
               >
-                <h3 className="text-xl font-bold text-white mb-4 tracking-tight">
+                <span className="font-mono text-xs text-neutral-400 block mb-4">{value.index} / STANDARD</span>
+                <h3 className="text-lg font-bold uppercase tracking-tight text-white mb-3">
                   {value.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{value.description}</p>
+                <p className="text-neutral-400 text-xs sm:text-sm font-mono leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -111,25 +111,21 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-dark-900 border-t border-white/[0.08]">
+      <section className="py-20 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-xs font-mono uppercase tracking-widest text-primary-400 mb-3">
-              The Post Roster
-            </h2>
-            <p className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
-              Artists, Colorists &amp; Engineers
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+                Studio Roster
+              </p>
+              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
+                Artists, Colorists &amp; Engineers
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 font-mono">
+              Nine multidisciplinary artists collaborating across narrative editorial, visual effects, and DI color grading.
             </p>
-            <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-              Our multidisciplinary team collaborating across narrative editorial, visual effects, and DI color grading.
-            </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {teamData.team.map((member, index) => (
@@ -141,7 +137,7 @@ export default function AboutPage() {
                 image={member.image}
                 fallbackInitials={member.fallbackInitials}
                 bio={member.bio}
-                delay={index * 0.05}
+                delay={index * 0.03}
               />
             ))}
           </div>
@@ -149,18 +145,21 @@ export default function AboutPage() {
       </section>
 
       {/* Studio CTA */}
-      <section className="py-20 bg-dark-950 border-t border-white/[0.08]">
+      <section className="py-20 bg-black">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-5xl font-extrabold mb-4 tracking-tight">
-            Let&apos;s Build Something Unforgettable
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+            Suite Availability
+          </p>
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-4">
+            Consult on Upcoming Slate
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-            Ready to discuss your project timeline, review raw footage tests, or book suite time?
+          <p className="text-neutral-400 text-xs sm:text-sm font-mono mb-8 max-w-md mx-auto leading-relaxed">
+            Ready to review camera test footage, discuss deliverables, or schedule suite time?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="px-8 py-3.5 bg-primary-500 hover:bg-primary-400 text-dark-950 font-bold rounded-xl text-xs uppercase tracking-wider transition-all shadow-glow-gold"
+              className="px-8 py-4 bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-neutral-200 transition-colors"
             >
               Get in Touch with Studio
             </Link>

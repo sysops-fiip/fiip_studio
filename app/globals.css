@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,123 +12,76 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #060608;
+  background-color: #000000;
   color-scheme: dark;
 }
 
 body {
-  background: #060608;
-  color: #f8fafc;
+  background: #000000;
+  color: #ffffff;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle Film Grain Noise Texture */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(circle at 50% 0%, rgba(217, 167, 56, 0.04) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Selection color */
+/* Crisp Monochrome Selection */
 ::selection {
-  background-color: rgba(217, 167, 56, 0.35);
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* Custom Cinema Darkroom Scrollbar */
+/* Minimalist Editorial Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #060608;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f1f28;
-  border-radius: 4px;
-  border: 2px solid #060608;
+  background: #262626;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d9a738;
+  background: #525252;
 }
 
-/* Typography & Utility classes */
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #fae8be 45%, #d9a738 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
-.gradient-text-gold {
-  background: linear-gradient(135deg, #fae8be 0%, #eabf60 50%, #b88423 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
+/* Editorial Typography */
+.gradient-text,
+.gradient-text-gold,
 .gradient-text-silver {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 60%, #64748b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: initial;
 }
 
-.glass-card {
-  background: rgba(19, 19, 24, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.text-muted {
+  color: #8c8c8c;
 }
 
-.glass-card:hover {
-  border-color: rgba(217, 167, 56, 0.35);
+.editorial-border {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-.cinema-badge {
+.editorial-border-light {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.mono-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 4px 10px;
-  border-radius: 9999px;
-  color: #cbd5e1;
 }
 
-/* Animations */
-@keyframes pulseSubtle {
-  0%, 100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.animate-pulse-subtle {
-  animation: pulseSubtle 4s ease-in-out infinite;
+/* Film slate hairline borders */
+.slate-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
 }

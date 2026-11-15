@@ -2,46 +2,46 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark-950 border-t border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+    <footer className="bg-black border-t border-neutral-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-1">
             <Image
               src="/logo/Fix it in post Logo_Horizontal-White.png"
               alt="Fix It In Post Studios"
               width={140}
               height={40}
-              className="h-8 w-auto mb-4 opacity-90"
+              className="h-8 w-auto mb-4 opacity-85"
             />
-            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
-              Boutique Post-Production House specializing in Narrative Editorial,
-              Photoreal Visual Effects &amp; Theatrical Color Grading (DI).
+            <p className="text-neutral-400 text-xs font-mono leading-relaxed uppercase">
+              Boutique Post-Production Facility specializing in Editorial,
+              Photoreal VFX &amp; Theatrical DI Color Grading.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h3 className="font-semibold text-white text-sm mb-4 font-mono uppercase tracking-wider">Navigation</h3>
-            <ul className="space-y-2">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">Navigation</h3>
+            <ul className="space-y-2.5">
               {[
-                { label: 'Home', href: '/' },
-                { label: 'Services', href: '/services' },
-                { label: 'Portfolio', href: '/portfolio' },
-                { label: 'Pricing & Scope', href: '/pricing' },
-                { label: 'About Studio', href: '/about' },
-                { label: 'Contact', href: '/contact' },
+                { label: 'Overview', href: '/' },
+                { label: 'Disciplines', href: '/services' },
+                { label: 'Project Archive', href: '/portfolio' },
+                { label: 'Commissioning & Scope', href: '/pricing' },
+                { label: 'Studio Profile', href: '/about' },
+                { label: 'Direct Inquiry', href: '/contact' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-primary-300 transition-colors text-xs sm:text-sm"
+                    className="text-neutral-400 hover:text-white transition-colors text-xs font-mono uppercase tracking-wider"
                   >
                     {item.label}
                   </Link>
@@ -50,15 +50,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Pipelines & Suiting */}
+          {/* Suites & Pipeline */}
           <div>
-            <h3 className="font-semibold text-white text-sm mb-4 font-mono uppercase tracking-wider">Disciplines</h3>
-            <ul className="space-y-2">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">Infrastructure</h3>
+            <ul className="space-y-2.5">
               {[
                 { label: 'Narrative & Commercial Edit', href: '/services' },
-                { label: 'Photoreal VFX & 3D Shading', href: '/services' },
+                { label: 'Photoreal 3D CGI & Fusion VFX', href: '/services' },
                 { label: 'DaVinci Resolve DI Color Suites', href: '/services' },
-                { label: 'Frames Review Portal', href: 'https://frames.fixitinpost.in', external: true },
+                { label: 'Frames Client Review Portal', href: 'https://frames.fixitinpost.in', external: true },
               ].map((item) => (
                 <li key={item.label}>
                   {item.external ? (
@@ -66,14 +66,14 @@ export function Footer() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-primary-300 transition-colors text-xs sm:text-sm inline-flex items-center gap-1"
+                      className="text-neutral-400 hover:text-white transition-colors text-xs font-mono uppercase tracking-wider inline-flex items-center gap-1"
                     >
-                      {item.label} <ExternalLink className="w-3 h-3" />
+                      {item.label} <ArrowUpRight className="w-3 h-3" />
                     </a>
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-gray-400 hover:text-primary-300 transition-colors text-xs sm:text-sm"
+                      className="text-neutral-400 hover:text-white transition-colors text-xs font-mono uppercase tracking-wider"
                     >
                       {item.label}
                     </Link>
@@ -83,45 +83,45 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Direct Studio Desk */}
           <div>
-            <h3 className="font-semibold text-white text-sm mb-4 font-mono uppercase tracking-wider">Studio Suiting</h3>
-            <ul className="space-y-3">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">Studio Desk</h3>
+            <ul className="space-y-3 text-xs font-mono text-neutral-400">
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-400 text-xs sm:text-sm">Chennai, India</span>
+                <MapPin className="w-4 h-4 text-white mt-0.5 shrink-0" />
+                <span>Chennai, Tamil Nadu, India</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-white mt-0.5 shrink-0" />
                 <a
                   href="mailto:hello@fixitinpost.in"
-                  className="text-gray-400 hover:text-primary-300 transition-colors text-xs sm:text-sm"
+                  className="hover:text-white transition-colors"
                 >
                   hello@fixitinpost.in
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-white mt-0.5 shrink-0" />
                 <a
                   href="https://wa.me/919500104320"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-primary-300 transition-colors text-xs sm:text-sm flex items-center gap-1"
+                  className="hover:text-white transition-colors inline-flex items-center gap-1"
                 >
-                  WhatsApp Studio Line <ExternalLink className="w-3 h-3" />
+                  +91 9500 104 320 <ArrowUpRight className="w-3 h-3" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-white/[0.08] pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
-          <p>© {currentYear} Fix It In Post Studios. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0 font-mono text-[11px]">
-            <span>ACEScc / DCI-P3 WORKFLOW</span>
+        {/* Bottom Slate */}
+        <div className="border-t border-neutral-900 pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-neutral-400">
+          <p>© {currentYear} FIX IT IN POST STUDIOS. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-6 mt-4 md:mt-0 text-[11px] uppercase tracking-wider">
+            <span>ACES 2065-1</span>
+            <span>DCI-P3 4K</span>
             <span>10G NVME COLLAB</span>
-            <span>DAVINCI RESOLVE STUDIO</span>
           </div>
         </div>
       </div>

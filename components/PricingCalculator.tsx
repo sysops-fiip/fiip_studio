@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, ArrowRight, Sparkles, Film, Palette, Clapperboard } from 'lucide-react';
+import { ArrowRight, Film, Palette, Clapperboard, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export function PricingCalculator() {
@@ -13,7 +13,7 @@ export function PricingCalculator() {
   const [timeline, setTimeline] = useState<'rush' | 'standard' | 'flexible'>('standard');
 
   const projectTypes = [
-    { id: 'commercial', label: 'Commercial TVC', icon: Clapperboard, desc: '15s to 90s TV & Digital Ad' },
+    { id: 'commercial', label: 'Commercial TVC', icon: Clapperboard, desc: '15s to 90s Broadcast / Digital Ad' },
     { id: 'feature', label: 'Feature / OTT Series', icon: Film, desc: 'Episodic or Theatrical Long-Form' },
     { id: 'brand', label: 'Brand Film / Music Video', icon: Palette, desc: 'Cinematic Narrative Showcase' },
     { id: 'vfx', label: 'VFX & 3D Sequence', icon: Sparkles, desc: 'Complex CGI & Node Compositing' },
@@ -39,13 +39,13 @@ export function PricingCalculator() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-3xl bg-dark-900 border border-white/[0.08] p-6 sm:p-10 shadow-2xl backdrop-blur-md">
+    <div className="w-full max-w-4xl mx-auto border border-neutral-800 bg-neutral-950 p-6 sm:p-10">
       {/* Step 1: Project Type */}
       <div className="mb-10">
-        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-primary-400 mb-4">
-          Step 1: Select Production Format
+        <label className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">
+          01 / Select Production Format
         </label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {projectTypes.map((t) => {
             const Icon = t.icon;
             const isSelected = projectType === t.id;
@@ -54,19 +54,23 @@ export function PricingCalculator() {
                 key={t.id}
                 type="button"
                 onClick={() => setProjectType(t.id as any)}
-                className={`p-4 rounded-2xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                className={`p-4 text-left border transition-colors cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-primary-500/10 border-primary-400 shadow-glow-sm'
-                    : 'bg-dark-950/60 border-white/5 hover:border-white/20'
+                    ? 'bg-white text-black border-white'
+                    : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
                 }`}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <Icon className={`w-5 h-5 ${isSelected ? 'text-primary-400' : 'text-gray-400'}`} />
-                  {isSelected && <Check className="w-4 h-4 text-primary-400" />}
+                <div className="flex items-center justify-between mb-4">
+                  <Icon className={`w-4 h-4 ${isSelected ? 'text-black' : 'text-neutral-400'}`} />
+                  <span className={`text-[10px] font-mono uppercase ${isSelected ? 'text-black font-bold' : 'text-neutral-400'}`}>
+                    {isSelected ? 'SELECTED' : 'OPTION'}
+                  </span>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-white mb-0.5">{t.label}</p>
-                  <p className="text-xs text-gray-400">{t.desc}</p>
+                  <p className={`text-sm font-bold uppercase tracking-tight mb-1 ${isSelected ? 'text-black' : 'text-white'}`}>
+                    {t.label}
+                  </p>
+                  <p className={`text-xs ${isSelected ? 'text-neutral-700' : 'text-neutral-400'}`}>{t.desc}</p>
                 </div>
               </button>
             );
@@ -76,10 +80,10 @@ export function PricingCalculator() {
 
       {/* Step 2: Services Needed */}
       <div className="mb-10">
-        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-primary-400 mb-4">
-          Step 2: Required Post Disciplines
+        <label className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">
+          02 / Required Disciplines
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
           {serviceOptions.map((srv) => {
             const isSelected = selectedServices.includes(srv);
             return (
@@ -87,14 +91,14 @@ export function PricingCalculator() {
                 key={srv}
                 type="button"
                 onClick={() => toggleService(srv)}
-                className={`px-4 py-3 rounded-xl text-left border text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                className={`px-4 py-3 text-left border transition-colors cursor-pointer flex items-center justify-between uppercase ${
                   isSelected
-                    ? 'bg-white/10 border-primary-400/60 text-white'
-                    : 'bg-dark-950/40 border-white/5 text-gray-400 hover:border-white/15'
+                    ? 'bg-neutral-200 text-black border-neutral-200 font-semibold'
+                    : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
                 }`}
               >
                 <span>{srv}</span>
-                {isSelected && <Check className="w-3.5 h-3.5 text-primary-400" />}
+                <span>{isSelected ? '✓' : '+'}</span>
               </button>
             );
           })}
@@ -103,52 +107,56 @@ export function PricingCalculator() {
 
       {/* Step 3: Turnaround Window */}
       <div className="mb-10">
-        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-primary-400 mb-4">
-          Step 3: Target Turnaround
+        <label className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">
+          03 / Schedule Turnaround
         </label>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { id: 'rush', label: 'Fast-Track / Rush', desc: '3–5 Business Days' },
-            { id: 'standard', label: 'Standard Schedule', desc: '1–2 Weeks' },
-            { id: 'flexible', label: 'Multi-Milestone', desc: 'Long-form / Episodic' },
+            { id: 'rush', label: 'Rush Turnaround', desc: '3–5 Days' },
+            { id: 'standard', label: 'Standard Delivery', desc: '1–2 Weeks' },
+            { id: 'flexible', label: 'Feature Timeline', desc: 'Long-Form Milestones' },
           ].map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => setTimeline(item.id as any)}
-              className={`p-3 rounded-xl border text-center transition-all cursor-pointer ${
+              className={`p-3 border text-center transition-colors cursor-pointer ${
                 timeline === item.id
-                  ? 'bg-primary-500/10 border-primary-400 text-white'
-                  : 'bg-dark-950/40 border-white/5 text-gray-400 hover:border-white/15'
+                  ? 'bg-white text-black border-white'
+                  : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
               }`}
             >
-              <p className="text-xs font-bold text-white mb-0.5">{item.label}</p>
-              <p className="text-[11px] text-gray-400">{item.desc}</p>
+              <p className={`text-xs font-mono font-bold uppercase mb-0.5 ${timeline === item.id ? 'text-black' : 'text-white'}`}>
+                {item.label}
+              </p>
+              <p className={`text-[10px] font-mono ${timeline === item.id ? 'text-neutral-700' : 'text-neutral-400'}`}>
+                {item.desc}
+              </p>
             </button>
           ))}
         </div>
       </div>
 
       {/* Scope Summary & Direct Consultation CTA */}
-      <div className="p-6 rounded-2xl bg-dark-950 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="p-6 bg-black border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-primary-400">
-            Tailored Studio Project Bid
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 block mb-1">
+            Production Scope Specification
           </span>
-          <h4 className="text-lg font-bold text-white mt-0.5">
+          <h4 className="text-base font-bold uppercase tracking-tight text-white">
             {projectTypes.find(p => p.id === projectType)?.label} · {selectedServices.length} Disciplines
           </h4>
-          <p className="text-xs text-gray-400 mt-1">
-            Bids are tailored by raw camera sensor specs, cut length, and deliverable masters.
+          <p className="text-xs font-mono text-neutral-400 mt-1">
+            Bids are calibrated by raw camera codecs (Arri, RED, Sony Venice) and deliverable masters.
           </p>
         </div>
 
         <Link
           href={`/contact?type=${projectType}&services=${encodeURIComponent(selectedServices.join(','))}&timeline=${timeline}`}
-          className="px-6 py-3 bg-primary-500 hover:bg-primary-400 text-dark-950 rounded-xl font-bold text-sm transition-all shadow-glow-gold flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-6 py-3.5 bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-neutral-200 transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
         >
-          Request Official Studio Bid
-          <ArrowRight className="w-4 h-4" />
+          Submit Project Scope
+          <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
     </div>
