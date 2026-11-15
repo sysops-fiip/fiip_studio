@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Film, Sparkles, Palette, CheckCircle2, ArrowRight, MonitorPlay, ShieldCheck, Cpu } from 'lucide-react';
+import { Film, Sparkles, Palette, CheckCircle2, ArrowRight, MonitorPlay, Cpu } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ServicesPage() {
@@ -48,7 +48,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-dark-900 text-white">
+    <div className="min-h-screen pt-28 pb-20 bg-dark-950 text-white">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 text-center">
         <motion.div
@@ -56,13 +56,13 @@ export default function ServicesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-primary-400 mb-3 inline-block">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary-400 mb-3 inline-block">
             Studio Capabilities
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
             Edit · Visual Effects · Grade
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
             A boutique post-production house built for directors, agencies, and producers who demand cinematic precision with zero pipeline friction.
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {coreServices.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -80,14 +80,14 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl bg-dark-800/80 border border-white/10 hover:border-primary-500/50 transition-all duration-300 flex flex-col justify-between"
+                className="p-8 rounded-2xl bg-dark-900 border border-white/[0.08] hover:border-primary-400/40 transition-all duration-300 flex flex-col justify-between shadow-cinema-card"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-primary-500/10 border border-primary-500/30 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center">
                       <Icon className="w-6 h-6 text-primary-400" />
                     </div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/10">
+                    <span className="text-[10px] font-mono uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-white/[0.04] text-gray-300 border border-white/10">
                       {service.badge}
                     </span>
                   </div>
@@ -112,7 +112,7 @@ export default function ServicesPage() {
                 <div className="pt-8 mt-6">
                   <Link
                     href="/contact"
-                    className="w-full py-3 bg-white/5 hover:bg-primary-500 hover:text-white border border-white/10 rounded-xl font-semibold text-xs transition-all text-center block"
+                    className="w-full py-3 bg-white/[0.03] hover:bg-primary-500 text-gray-200 hover:text-dark-950 border border-white/10 hover:border-primary-400 rounded-xl font-bold text-xs uppercase tracking-wider transition-all text-center block"
                   >
                     Inquire for Project →
                   </Link>
@@ -124,10 +124,10 @@ export default function ServicesPage() {
       </section>
 
       {/* The Frames Pipeline Interface Walkthrough */}
-      <section className="py-20 bg-dark-950 border-y border-white/10">
+      <section className="py-20 bg-dark-900 border-y border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/30 text-xs font-semibold text-primary-300 mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-xs font-mono text-primary-300 mb-4">
               <Cpu className="w-3.5 h-3.5" />
               Client Experience
             </div>
@@ -135,37 +135,37 @@ export default function ServicesPage() {
               How You Interface With Us
             </h2>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              No lost email chains, expiring WeTransfer links, or ambiguous revision timestamps.
+              No lost email chains, expiring transfer links, or ambiguous revision timestamps.
               Our proprietary <strong>Frames portal</strong> bridges your team directly into our editing and color suites.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl bg-dark-900 border border-white/10">
-              <div className="w-10 h-10 rounded-lg bg-primary-500/20 text-primary-400 font-bold flex items-center justify-center mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div className="p-6 rounded-2xl bg-dark-950 border border-white/[0.08]">
+              <div className="w-10 h-10 rounded-lg bg-primary-500/15 text-primary-400 font-mono font-bold flex items-center justify-center mb-4">
                 01
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Ingest & Instant Dailies</h4>
+              <h4 className="text-lg font-bold text-white mb-2">Ingest &amp; Instant Dailies</h4>
               <p className="text-xs text-gray-400 leading-relaxed">
                 Raw footage streams directly into our 10Gbps NVMe pool. Proxies and dailies are generated and accessible to your team in Frames within hours of wrap.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-dark-900 border border-white/10">
-              <div className="w-10 h-10 rounded-lg bg-primary-500/20 text-primary-400 font-bold flex items-center justify-center mb-4">
+            <div className="p-6 rounded-2xl bg-dark-950 border border-white/[0.08]">
+              <div className="w-10 h-10 rounded-lg bg-primary-500/15 text-primary-400 font-mono font-bold flex items-center justify-center mb-4">
                 02
               </div>
               <h4 className="text-lg font-bold text-white mb-2">Frame-Accurate Reviews</h4>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Pause on any millisecond, draw annotations, and leave notes. Markers push straight into our editors' and colorists' DaVinci Resolve timelines.
+                Pause on any millisecond, draw annotations, and leave notes. Markers push straight into our editors&apos; and colorists&apos; DaVinci Resolve timelines.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-dark-900 border border-white/10">
-              <div className="w-10 h-10 rounded-lg bg-primary-500/20 text-primary-400 font-bold flex items-center justify-center mb-4">
+            <div className="p-6 rounded-2xl bg-dark-950 border border-white/[0.08]">
+              <div className="w-10 h-10 rounded-lg bg-primary-500/15 text-primary-400 font-mono font-bold flex items-center justify-center mb-4">
                 03
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">Master Package & Delivery</h4>
+              <h4 className="text-lg font-bold text-white mb-2">Master Package &amp; Delivery</h4>
               <p className="text-xs text-gray-400 leading-relaxed">
                 Approved cuts generate automated delivery bundles—DCP, ProRes 4444 XQ, web-optimized MP4s, and broadcast deliverables with full QC logs.
               </p>
@@ -177,9 +177,9 @@ export default function ServicesPage() {
               href="https://frames.fixitinpost.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-dark-900 rounded-xl font-bold text-sm hover:bg-gray-200 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-dark-950 rounded-xl font-bold text-sm hover:bg-gray-200 transition-all"
             >
-              <MonitorPlay className="w-4 h-4 text-primary-600" />
+              <MonitorPlay className="w-4 h-4 text-primary-500" />
               Visit frames.fixitinpost.in
               <ArrowRight className="w-4 h-4" />
             </a>

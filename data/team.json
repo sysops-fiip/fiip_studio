@@ -3,83 +3,83 @@
     {
       "id": "team-iniyavan",
       "name": "Iniyavan",
-      "role": "Founder & Creative Director",
-      "specialty": "Pipeline Architecture & AI VFX",
+      "role": "Creative Director & Pipeline Architect",
+      "specialty": "VFX Supervision & Creative Editorial",
       "image": "/team/iniyavan.jpg",
       "fallbackInitials": "IN",
-      "bio": "Directs studio creative vision and technical pipeline, merging narrative editing with advanced 3D, Fusion compositing, and proprietary AI workflows."
+      "bio": "Directs studio creative vision and technical post architecture, bridging long-form narrative pacing with advanced 3D CGI, Fusion node compositing, and proprietary AI workflows."
     },
     {
       "id": "team-udhay",
       "name": "Udhaya Kumar",
-      "role": "Lead Colorist",
-      "specialty": "Feature Film & Commercial DI",
+      "role": "Supervising Colorist (DI)",
+      "specialty": "Theatrical Look Dev & HDR Mastering",
       "image": "/team/udhay.jpg",
       "fallbackInitials": "UK",
-      "bio": "Spearheads the studio's primary DaVinci Resolve color grading suite, delivering nuanced cinematic looks for feature films, episodic OTT, and high-end commercials."
+      "bio": "Spearheads the studio's primary DaVinci Resolve color grading suite, delivering nuanced cinematic looks and color space management for feature films, episodic OTT, and flagship brand TVCs."
     },
     {
       "id": "team-ganesh",
       "name": "Ganesh",
-      "role": "Senior Editor",
-      "specialty": "Long-Form & Commercial Editorial",
+      "role": "Lead Narrative & Commercial Editor",
+      "specialty": "Offline Story Architecture & Pacing",
       "image": "/team/ganesh.jpg",
       "fallbackInitials": "GA",
-      "bio": "Master of pacing and dramatic rhythm across long-form narrative series, broadcast commercials, and multi-camera post workflows."
+      "bio": "Master of rhythm and emotional cadence across feature narratives, high-impact commercials, and complex multi-camera episodic timelines."
     },
     {
       "id": "team-ahil",
       "name": "Ahilendra D",
-      "role": "Conform & Finishing Editor",
-      "specialty": "Online Conform & Master Delivery",
+      "role": "Mastering & Online Conform Artist",
+      "specialty": "DaVinci Resolve Conforms & Multi-Format Delivery",
       "image": "/team/ahil.jpg",
       "fallbackInitials": "AH",
-      "bio": "Bridges offline editorial to final theatrical and broadcast delivery, managing complex timeline conforms, color rounds, and master packaging."
+      "bio": "Bridges offline editorial to final theatrical and broadcast delivery, managing high-precision timeline conforms, round-trips, IMF/DCP packaging, and QC standards."
     },
     {
       "id": "team-kousik",
       "name": "Kousik Raj",
-      "role": "Editor & VFX Artist",
-      "specialty": "Editorial & Visual Effects",
+      "role": "VFX Compositor & Editorial Artist",
+      "specialty": "Node Compositing, Cleanups & CG Integration",
       "image": "/team/kousik.jpg",
       "fallbackInitials": "KR",
-      "bio": "Combines acute editorial timing with cleanups, dynamic visual effects, screen replacements, and invisible compositing."
+      "bio": "Combines acute editorial timing with seamless invisible compositing, blemish cleanups, rig removals, screen replacements, and photoreal CG plate integration."
     },
     {
       "id": "team-sanjay",
       "name": "Sanjay Kandasamy",
-      "role": "Editor & AI/VFX Pipeline",
-      "specialty": "Generative VFX & ComfyUI",
+      "role": "Generative VFX & Pipeline Engineer",
+      "specialty": "Neural VFX, Inpainting & Custom ComfyUI Nodes",
       "image": "/team/sanjay.jpg",
       "fallbackInitials": "SK",
-      "bio": "Specializes in cutting-edge generative AI synthesis, ComfyUI custom pipelines, and visual effects integration for high-speed creative delivery."
+      "bio": "Pioneers cutting-edge neural synthesis workflows, custom ComfyUI diffusion pipelines, and hybrid generative visual effects integrated into production pipelines."
     },
     {
       "id": "team-venkat",
       "name": "Venkat",
-      "role": "Editor & Post Coordinator",
-      "specialty": "Assembly & Workflow Coordination",
+      "role": "Post Production Supervisor & Assembly Editor",
+      "specialty": "Editorial Workflows, Media Ingest & Conformance",
       "image": "/team/venkat.jpg",
       "fallbackInitials": "VE",
-      "bio": "Oversees project assembly, rough cut conform, media management, and frictionless handoffs between client teams and finishing suites."
+      "bio": "Oversees raw camera ingest, synchronized dailies assembly, project metadata hygiene, and frictionless handoffs between client teams and finishing suites."
     },
     {
       "id": "team-balaji",
       "name": "Balaji Sripathi",
-      "role": "Senior Colorist",
-      "specialty": "Studio Partner — Color / DI",
+      "role": "Guest Supervising Colorist",
+      "specialty": "Feature Film DI & Theatrical Grading",
       "image": "/team/balaji.jpg",
       "fallbackInitials": "BS",
-      "bio": "Veteran external colorist partnering with FIIP for flagship feature films and stylized narrative color grading."
+      "bio": "Veteran external colorist partnering with FIIP suites for flagship feature films, high-contrast period aesthetics, and theatrical DCI-P3 color grading."
     },
     {
       "id": "team-shivraj",
       "name": "Shivraj",
-      "role": "Senior Colorist",
-      "specialty": "Studio Partner — Color / DI",
+      "role": "Guest Commercial Colorist",
+      "specialty": "Automotive, Beauty & Premium Brand TVCs",
       "image": "/team/shivraj.jpg",
       "fallbackInitials": "SH",
-      "bio": "Renowned color artist collaborating at FIIP on premium brand TVCs, high-fashion campaigns, and commercial film grades."
+      "bio": "Renowned color artist collaborating at FIIP on premium automotive campaigns, high-fashion beauty films, and national broadcast commercial grades."
     }
   ]
 }

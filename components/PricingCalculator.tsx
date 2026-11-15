@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Check, ArrowRight, Sparkles, Film, Palette, Clapperboard } from 'lucide-react';
 import Link from 'next/link';
 
@@ -40,10 +39,10 @@ export function PricingCalculator() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-3xl bg-dark-800/80 border border-white/10 p-6 sm:p-10 shadow-2xl backdrop-blur-md">
+    <div className="w-full max-w-4xl mx-auto rounded-3xl bg-dark-900 border border-white/[0.08] p-6 sm:p-10 shadow-2xl backdrop-blur-md">
       {/* Step 1: Project Type */}
       <div className="mb-10">
-        <label className="block text-xs font-bold uppercase tracking-wider text-primary-400 mb-4">
+        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-primary-400 mb-4">
           Step 1: Select Production Format
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -57,8 +56,8 @@ export function PricingCalculator() {
                 onClick={() => setProjectType(t.id as any)}
                 className={`p-4 rounded-2xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-primary-500/15 border-primary-500 shadow-glow-sm'
-                    : 'bg-dark-900/60 border-white/5 hover:border-white/20'
+                    ? 'bg-primary-500/10 border-primary-400 shadow-glow-sm'
+                    : 'bg-dark-950/60 border-white/5 hover:border-white/20'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
@@ -77,7 +76,7 @@ export function PricingCalculator() {
 
       {/* Step 2: Services Needed */}
       <div className="mb-10">
-        <label className="block text-xs font-bold uppercase tracking-wider text-primary-400 mb-4">
+        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-primary-400 mb-4">
           Step 2: Required Post Disciplines
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -91,7 +90,7 @@ export function PricingCalculator() {
                 className={`px-4 py-3 rounded-xl text-left border text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer flex items-center justify-between ${
                   isSelected
                     ? 'bg-white/10 border-primary-400/60 text-white'
-                    : 'bg-dark-900/40 border-white/5 text-gray-400 hover:border-white/15'
+                    : 'bg-dark-950/40 border-white/5 text-gray-400 hover:border-white/15'
                 }`}
               >
                 <span>{srv}</span>
@@ -104,7 +103,7 @@ export function PricingCalculator() {
 
       {/* Step 3: Turnaround Window */}
       <div className="mb-10">
-        <label className="block text-xs font-bold uppercase tracking-wider text-primary-400 mb-4">
+        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-primary-400 mb-4">
           Step 3: Target Turnaround
         </label>
         <div className="grid grid-cols-3 gap-3">
@@ -119,8 +118,8 @@ export function PricingCalculator() {
               onClick={() => setTimeline(item.id as any)}
               className={`p-3 rounded-xl border text-center transition-all cursor-pointer ${
                 timeline === item.id
-                  ? 'bg-primary-500/10 border-primary-500 text-white'
-                  : 'bg-dark-900/40 border-white/5 text-gray-400 hover:border-white/15'
+                  ? 'bg-primary-500/10 border-primary-400 text-white'
+                  : 'bg-dark-950/40 border-white/5 text-gray-400 hover:border-white/15'
               }`}
             >
               <p className="text-xs font-bold text-white mb-0.5">{item.label}</p>
@@ -131,9 +130,9 @@ export function PricingCalculator() {
       </div>
 
       {/* Scope Summary & Direct Consultation CTA */}
-      <div className="p-6 rounded-2xl bg-dark-900 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="p-6 rounded-2xl bg-dark-950 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <span className="text-[11px] font-semibold tracking-wider uppercase text-primary-400">
+          <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-primary-400">
             Tailored Studio Project Bid
           </span>
           <h4 className="text-lg font-bold text-white mt-0.5">
@@ -146,7 +145,7 @@ export function PricingCalculator() {
 
         <Link
           href={`/contact?type=${projectType}&services=${encodeURIComponent(selectedServices.join(','))}&timeline=${timeline}`}
-          className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-bold text-sm transition-all shadow-glow-sm flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-6 py-3 bg-primary-500 hover:bg-primary-400 text-dark-950 rounded-xl font-bold text-sm transition-all shadow-glow-gold flex items-center gap-2 shrink-0 cursor-pointer"
         >
           Request Official Studio Bid
           <ArrowRight className="w-4 h-4" />

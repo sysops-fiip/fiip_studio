@@ -11,10 +11,10 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 40);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,7 +31,7 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-dark-900/80 backdrop-blur-md border-b border-white/10'
+          ? 'bg-dark-950/85 backdrop-blur-xl border-b border-white/[0.08]'
           : 'bg-transparent'
       }`}
     >
@@ -42,9 +42,9 @@ export function Navbar() {
             <Image
               src="/logo/Fix it in post Logo_Horizontal-White.png"
               alt="Fix It In Post Studios"
-              width={120}
+              width={130}
               height={40}
-              className="h-10 w-auto"
+              className="h-9 w-auto opacity-95 hover:opacity-100 transition-opacity"
               priority
             />
           </Link>
@@ -55,7 +55,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-gray-300 hover:text-primary-400 transition-colors"
+                className="text-sm font-medium text-gray-300 hover:text-primary-300 transition-colors"
               >
                 {item.label}
               </Link>
@@ -64,54 +64,63 @@ export function Navbar() {
               href="https://frames.fixitinpost.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/10 text-primary-300 hover:bg-primary-500/10 hover:border-primary-500/30 transition-all"
+              className="text-[11px] font-mono tracking-wider px-2.5 py-1 rounded bg-white/[0.04] border border-white/10 text-primary-300 hover:bg-primary-500/10 hover:border-primary-400/40 transition-all"
             >
               Frames Portal ↗
             </a>
           </div>
 
           {/* CTA Button and Mobile Menu */}
-          <div className="flex items-center gap-6">
-             <div className="hidden sm:block ml-4">
-               <Link
-                 href="/contact"
-                 className="inline-block px-4 py-2 bg-primary-500 text-white rounded-lg font-semibold hover:bg-primary-600 transition-all duration-300 hover:shadow-glow-md text-sm"
-               >
-                 Get Quote
-               </Link>
-             </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:block">
+              <Link
+                href="/contact"
+                className="inline-block px-5 py-2.5 bg-primary-500 text-dark-950 rounded-lg font-bold hover:bg-primary-400 transition-all duration-300 hover:shadow-glow-gold text-xs tracking-wide uppercase"
+              >
+                Get Quote
+              </Link>
+            </div>
 
-            {/* Mobile Menu Button - Always on the right */}
+            {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle navigation"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Dropdown */}
         {isOpen && (
-          <div className="md:hidden bg-dark-900/95 backdrop-blur-md border-t border-white/10">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary-400 hover:bg-white/5 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-               <Link
-                 href="/contact"
-                 className="block w-full mt-4 px-4 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors text-center text-sm"
-                 onClick={() => setIsOpen(false)}
-               >
-                 Get Quote
-               </Link>
+          <div className="md:hidden bg-dark-950/95 backdrop-blur-2xl border-t border-white/[0.08] px-4 py-6 space-y-3">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="block text-base font-medium text-gray-200 hover:text-primary-300 py-2 border-b border-white/5"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-2 flex flex-col gap-3">
+              <a
+                href="https://frames.fixitinpost.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-mono px-3 py-2 rounded bg-white/[0.04] border border-white/10 text-primary-300 text-center"
+              >
+                Frames Review Portal ↗
+              </a>
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="w-full text-center py-3 bg-primary-500 text-dark-950 font-bold rounded-lg text-sm"
+              >
+                Get Quote
+              </Link>
             </div>
           </div>
         )}
