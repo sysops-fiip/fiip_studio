@@ -122,15 +122,17 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {teamData.team.map((member, index) => (
               <TeamCard
                 key={member.id}
                 name={member.name}
                 role={member.role}
+                specialty={member.specialty}
                 image={member.image}
+                fallbackInitials={member.fallbackInitials}
                 bio={member.bio}
-                delay={index * 0.1}
+                delay={index * 0.05}
               />
             ))}
           </div>

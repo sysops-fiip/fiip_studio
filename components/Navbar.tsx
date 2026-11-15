@@ -60,6 +60,14 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="https://frames.fixitinpost.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/10 text-primary-300 hover:bg-primary-500/10 hover:border-primary-500/30 transition-all"
+            >
+              Frames Portal ↗
+            </a>
           </div>
 
           {/* CTA Button and Mobile Menu */}

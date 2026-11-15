@@ -1,76 +1,73 @@
 {
-  "tiers": [
+  "engagementModels": [
     {
-      "id": "creator",
-      "name": "Creator Plan",
-      "description": "AI-Assisted Post-Production",
-      "minPrice": 300,
-      "maxPrice": 500,
-      "unit": "per second",
+      "id": "commercial",
+      "name": "Commercial & Brand Campaign",
+      "tagline": "Turnkey Post for Agencies & Brands",
+      "idealFor": "National TVCs, Digital Brand Films & High-Impact Ad Campaigns",
+      "turnaround": "Fast-track schedule (3–7 days)",
+      "deliverables": "Broadcast Masters, Web 4K, Social Cutdowns (9:16 / 1:1)",
       "features": [
-        "AI-powered color correction",
-        "Auto-generated subtitles",
-        "Basic VFX compositing",
-        "Standard delivery (MP4/ProRes)",
-        "24-hour turnaround",
-        "1 revision round"
+        "High-Energy Commercial Editorial & Creative Assembly",
+        "Flagship DaVinci Resolve Color Grade (Commercial DI)",
+        "Invisible Cleanups, Screen Replacements & Logo Retouching",
+        "Multi-Format Delivery with Broadcast Safe Audio & Video Specs",
+        "Direct Client Collaboration via the Frames Review Portal",
+        "Up to 3 Dedicated Iteration & Polish Rounds"
       ],
-      "examples": ["YouTube Shorts", "Instagram Reels", "TikTok Videos"]
+      "featured": true
     },
     {
-      "id": "brand",
-      "name": "Brand Plan",
-      "description": "Hybrid VFX & Professional Post",
-      "minPrice": 600,
-      "maxPrice": 900,
-      "unit": "per second",
+      "id": "feature-ott",
+      "name": "Feature Film & Episodic OTT",
+      "tagline": "Long-Form DI, Conform & Finishing",
+      "idealFor": "Theatrical Features, OTT Series & Documentaries",
+      "turnaround": "Milestone-based production schedule",
+      "deliverables": "Theatrical DCI DCP, Apple ProRes 4444 XQ, IMF Master Packages",
       "features": [
-        "Advanced color grading",
-        "Custom VFX sequences",
-        "Motion graphics & design",
-        "4K + ProRes delivery",
-        "48-hour turnaround",
-        "3 revision rounds",
-        "Project consultation"
+        "Offline-to-Online Timeline Conform & Master Relinking",
+        "Lead Colorist DI Grading (Theatrical P3 / Rec.709 / HDR10)",
+        "Episodic Multi-Language Dub & Audio Track Synchronization",
+        "Feature VFX Cleanups, Matte Painting & Wire Removals",
+        "QC Compliance & Automated Archive Bundles",
+        "Dedicated Shared Storage Pool on Studio NVMe Network"
       ],
-      "examples": ["Ad Films", "Brand Videos", "Social Campaigns"]
+      "featured": false
     },
     {
-      "id": "studio",
-      "name": "Studio Plan",
-      "description": "Generative VFX & Full Production",
-      "minPrice": 1200,
-      "maxPrice": 2000,
-      "unit": "per second",
+      "id": "studio-retainer",
+      "name": "Production House Retainer",
+      "tagline": "Dedicated Post Capacity & Pipeline",
+      "idealFor": "Content Studios, High-Volume Brands & Production Houses",
+      "turnaround": "Continuous rolling deliverables with priority SLA",
+      "deliverables": "Unlimited Monthly Deliverables under Dedicated Suite",
       "features": [
-        "AI-generated VFX shots",
-        "Custom scene creation",
-        "Full cinematic color grading",
-        "8K + RAW delivery",
-        "72-hour turnaround",
-        "Unlimited revisions",
-        "Creative consulting",
-        "Custom AI model training"
+        "Reserved Suite Capacity (Editor + Colorist + VFX Artist)",
+        "High-Speed 10GbE Direct Cloud Ingest & Real-Time Sync",
+        "Custom ComfyUI Generative AI Model Training for Brand Assets",
+        "Unlimited Revision Cycles within Retainer Scope",
+        "White-Glove Production Coordination & Daily Status Briefings",
+        "Custom Frames App Client Portal Instance"
       ],
-      "examples": ["OTT Content", "Feature Films", "High-end Commercials"]
+      "featured": false
     }
   ],
   "faq": [
     {
-      "question": "What's the typical turnaround time?",
-      "answer": "Creator Plan: 24 hours, Brand Plan: 48 hours, Studio Plan: 72 hours. Rush delivery available upon request."
+      "question": "How do we bid and estimate a new project?",
+      "answer": "We review your treatment, shooting script, raw footage specs (cameras, resolution, frame rates), and desired delivery deadlines to provide a comprehensive, transparent project bid within 24 hours."
     },
     {
-      "question": "Can I request revisions?",
-      "answer": "Yes! Each plan includes revision rounds. Creator Plan: 1 round, Brand Plan: 3 rounds, Studio Plan: unlimited."
+      "question": "How do clients review cuts and give feedback?",
+      "answer": "All reviews take place on our proprietary Frames portal (frames.fixitinpost.in). You can pause on any frame, draw notes, and leave timestamped comments that push straight to our editors' DaVinci Resolve timelines."
     },
     {
-      "question": "What formats do you deliver?",
-      "answer": "MP4, ProRes, DCP, and RAW formats depending on the plan. Custom formats available upon request."
+      "question": "What raw camera formats do you handle?",
+      "answer": "Our suites handle ARRI RAW, REDCODE RAW (R3D), Sony X-OCN, Blackmagic RAW (BRAW), Canon Cinema RAW Light, and ProRes 4444 XQ natively in full resolution over 10Gbps NVMe storage."
     },
     {
-      "question": "Do you offer discounts for bulk orders?",
-      "answer": "Absolutely! Contact us for custom bulk pricing and long-term partnerships."
+      "question": "Can external colorists or directors work out of your facility?",
+      "answer": "Yes. Our studio in Chennai features calibrated monitoring suites, collaborative PostgreSQL project databases, and high-speed network infrastructure, hosting both in-house and partner colorists."
     }
   ]
 }

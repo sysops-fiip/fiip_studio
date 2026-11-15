@@ -1,32 +1,85 @@
 {
   "team": [
     {
-      "id": "team-1",
-      "name": "Arjun Sharma",
-      "role": "AI VFX Lead",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-      "bio": "Specialized in AI-generated VFX and Fusion compositing with 8+ years of experience."
+      "id": "team-iniyavan",
+      "name": "Iniyavan",
+      "role": "Founder & Creative Director",
+      "specialty": "Pipeline Architecture & AI VFX",
+      "image": "/team/iniyavan.jpg",
+      "fallbackInitials": "IN",
+      "bio": "Directs studio creative vision and technical pipeline, merging narrative editing with advanced 3D, Fusion compositing, and proprietary AI workflows."
     },
     {
-      "id": "team-2",
-      "name": "Priya Patel",
-      "role": "Colorist & Post-Producer",
-      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-      "bio": "Expert in DaVinci Resolve color grading and creative post-production workflows."
+      "id": "team-udhay",
+      "name": "Udhaya Kumar",
+      "role": "Lead Colorist",
+      "specialty": "Feature Film & Commercial DI",
+      "image": "/team/udhay.jpg",
+      "fallbackInitials": "UK",
+      "bio": "Spearheads the studio's primary DaVinci Resolve color grading suite, delivering nuanced cinematic looks for feature films, episodic OTT, and high-end commercials."
     },
     {
-      "id": "team-3",
-      "name": "Vikram Singh",
-      "role": "AI Artist & Developer",
-      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-      "bio": "Develops custom AI workflows using ComfyUI, Stable Diffusion, and Runway for unique visual solutions."
+      "id": "team-ganesh",
+      "name": "Ganesh",
+      "role": "Senior Editor",
+      "specialty": "Long-Form & Commercial Editorial",
+      "image": "/team/ganesh.jpg",
+      "fallbackInitials": "GA",
+      "bio": "Master of pacing and dramatic rhythm across long-form narrative series, broadcast commercials, and multi-camera post workflows."
     },
     {
-      "id": "team-4",
-      "name": "Isha Reddy",
-      "role": "Creative Producer",
-      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-      "bio": "Manages projects from concept to delivery, ensuring creative excellence and client satisfaction."
+      "id": "team-ahil",
+      "name": "Ahilendra D",
+      "role": "Conform & Finishing Editor",
+      "specialty": "Online Conform & Master Delivery",
+      "image": "/team/ahil.jpg",
+      "fallbackInitials": "AH",
+      "bio": "Bridges offline editorial to final theatrical and broadcast delivery, managing complex timeline conforms, color rounds, and master packaging."
+    },
+    {
+      "id": "team-kousik",
+      "name": "Kousik Raj",
+      "role": "Editor & VFX Artist",
+      "specialty": "Editorial & Visual Effects",
+      "image": "/team/kousik.jpg",
+      "fallbackInitials": "KR",
+      "bio": "Combines acute editorial timing with cleanups, dynamic visual effects, screen replacements, and invisible compositing."
+    },
+    {
+      "id": "team-sanjay",
+      "name": "Sanjay Kandasamy",
+      "role": "Editor & AI/VFX Pipeline",
+      "specialty": "Generative VFX & ComfyUI",
+      "image": "/team/sanjay.jpg",
+      "fallbackInitials": "SK",
+      "bio": "Specializes in cutting-edge generative AI synthesis, ComfyUI custom pipelines, and visual effects integration for high-speed creative delivery."
+    },
+    {
+      "id": "team-venkat",
+      "name": "Venkat",
+      "role": "Editor & Post Coordinator",
+      "specialty": "Assembly & Workflow Coordination",
+      "image": "/team/venkat.jpg",
+      "fallbackInitials": "VE",
+      "bio": "Oversees project assembly, rough cut conform, media management, and frictionless handoffs between client teams and finishing suites."
+    },
+    {
+      "id": "team-balaji",
+      "name": "Balaji Sripathi",
+      "role": "Senior Colorist",
+      "specialty": "Studio Partner — Color / DI",
+      "image": "/team/balaji.jpg",
+      "fallbackInitials": "BS",
+      "bio": "Veteran external colorist partnering with FIIP for flagship feature films and stylized narrative color grading."
+    },
+    {
+      "id": "team-shivraj",
+      "name": "Shivraj",
+      "role": "Senior Colorist",
+      "specialty": "Studio Partner — Color / DI",
+      "image": "/team/shivraj.jpg",
+      "fallbackInitials": "SH",
+      "bio": "Renowned color artist collaborating at FIIP on premium brand TVCs, high-fashion campaigns, and commercial film grades."
     }
   ]
 }
