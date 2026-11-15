@@ -4,19 +4,19 @@ import { Footer } from '@/components/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fixitinpost.studio'),
+  metadataBase: new URL('https://fixitinpost.in'),
   title: {
-    default: 'Fix It In Post Studios - AI-Assisted VFX & Video Production',
-    template: '%s | Fix It In Post Studios'
+    default: 'Fix It In Post Studios | Editorial · Visual Effects · DI Color Suites',
+    template: '%s | Fix It In Post Studios',
   },
-  description: 'Premium AI-assisted post-production and VFX services for creators, brands, and studios. We don\'t just fix it in post—we reinvent it. Cinematic quality, faster turnaround, innovative creativity.',
+  description: 'Boutique post-production house delivering narrative editorial, photoreal 3D/VFX, and flagship DaVinci Resolve color grading for feature films, episodic OTT, and national commercial campaigns.',
   keywords: [
-    'VFX', 'AI', 'Post-Production', 'Video Editing', 'Video Production',
-    'AI-Assisted VFX', 'Cinematic VFX', 'Professional Video Editing',
-    'Content Creation', 'Film Production', 'Visual Effects', 'India',
-    'Chennai', 'DaVinci Resolve', 'Fusion', 'Blender', 'Stable Diffusion'
+    'Post-Production Studio', 'Film Editorial', 'DaVinci Resolve DI',
+    'Color Grading Suite', 'Visual Effects', 'Photoreal 3D', 'Blender CGI',
+    'Commercial Post Production', 'Chennai VFX Studio', 'India Post House',
+    'ACES Color Management', 'Feature Film Conform'
   ],
-  authors: [{ name: 'Fix It In Post Studios', url: 'https://fixitinpost.studio' }],
+  authors: [{ name: 'Fix It In Post Studios', url: 'https://fixitinpost.in' }],
   creator: 'Fix It In Post Studios',
   publisher: 'Fix It In Post Studios',
   formatDetection: {
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     telephone: false,
     address: false,
   },
-  category: 'Technology',
-  classification: 'Video Production & VFX Services',
+  category: 'Post Production',
+  classification: 'Film & Commercial Post-Production Services',
   robots: {
     index: true,
     follow: true,
@@ -47,27 +47,20 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://fixitinpost.studio',
+    canonical: 'https://fixitinpost.in',
   },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://fixitinpost.studio',
+    url: 'https://fixitinpost.in',
     siteName: 'Fix It In Post Studios',
-    title: 'Fix It In Post Studios - AI-Assisted VFX & Video Production',
-    description: 'Premium AI-assisted post-production and VFX services for creators, brands, and studios. We don\'t just fix it in post—we reinvent it.',
+    title: 'Fix It In Post Studios | Editorial · Visual Effects · DI Color Suites',
+    description: 'Boutique post-production house delivering narrative editorial, photoreal 3D/VFX, and flagship DaVinci Resolve color grading for feature films, episodic OTT, and national commercial campaigns.',
     images: [
       {
-        url: '/web-app-manifest-512x512.png',
-        width: 512,
-        height: 512,
-        alt: 'Fix It In Post Studios - AI-Assisted VFX & Video Production',
-        type: 'image/png',
-      },
-      {
         url: '/logo/Fix it in post Logo_Horizontal-White.png',
-        width: 400,
-        height: 120,
+        width: 1200,
+        height: 630,
         alt: 'Fix It In Post Studios Logo',
         type: 'image/png',
       },
@@ -75,20 +68,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@fixitinpost', // Add your Twitter handle if available
-    creator: '@fixitinpost', // Add your Twitter handle if available
-    title: 'Fix It In Post Studios - AI-Assisted VFX & Video Production',
-    description: 'Premium AI-assisted post-production and VFX services. We don\'t just fix it in post—we reinvent it.',
-    images: ['/web-app-manifest-512x512.png'],
-  },
-  verification: {
-    google: 'your-google-site-verification-code', // Add your Google Search Console verification code
+    title: 'Fix It In Post Studios | Editorial · Visual Effects · DI Color Suites',
+    description: 'Boutique post-production house delivering narrative editorial, photoreal 3D/VFX, and flagship DaVinci Resolve color grading.',
+    images: ['/logo/Fix it in post Logo_Horizontal-White.png'],
   },
   other: {
-    'theme-color': '#0f172a',
+    'theme-color': '#060608',
     'color-scheme': 'dark',
-    'msapplication-TileColor': '#0f172a',
-    'msapplication-config': '/browserconfig.xml',
+    'msapplication-TileColor': '#060608',
   },
 };
 
@@ -98,8 +85,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-dark-900 text-white">
+    <html lang="en" className="dark">
+      <body className="bg-dark-950 text-white antialiased">
         <Navbar />
         <main className="min-h-screen">
           {children}
