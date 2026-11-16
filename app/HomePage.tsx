@@ -114,20 +114,25 @@ export default function HomePage() {
             className="relative max-w-5xl mx-auto overflow-hidden border border-neutral-800 bg-neutral-950 group aspect-video cursor-pointer"
             onClick={() => setShowHeroVideo(true)}
           >
-            <img
-              src="https://img.youtube.com/vi/zF-ztC0lzJs/maxresdefault.jpg"
-              alt="Fix It In Post 2025 Showreel"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102 opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/20 flex flex-col items-center justify-center p-6">
+            {/* Branded reel plate — deliberately no auto-pulled YouTube thumbnail:
+                the poster crop read as a random face and cheapened the hero. */}
+            <ProceduralTexture variant="mesh" className="opacity-[0.10]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,#1d1d1d_0%,#0b0b0b_55%,#050505_100%)]" />
+            {/* Anamorphic gate marks */}
+            <div className="absolute inset-6 sm:inset-10 pointer-events-none">
+              {['top-0 left-0 border-t border-l','top-0 right-0 border-t border-r','bottom-0 left-0 border-b border-l','bottom-0 right-0 border-b border-r'].map((c)=>(
+                <span key={c} className={`absolute w-8 h-8 border-white/25 ${c}`} />
+              ))}
+            </div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-white/20 bg-black/80 text-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all mb-4">
                 <Play className="w-6 h-6 ml-0.5 fill-current" />
               </div>
               <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-white">
                 FIIP STUDIOS — 2025 VFX &amp; POST REEL
               </span>
-              <span className="text-[11px] font-mono text-neutral-400 mt-1">
-                4K DCI · 24.00 FPS · 2:45 MIN
+              <span className="text-[11px] font-mono text-neutral-500 mt-1 tracking-widest">
+                2025 · 4K DCI · 24.00 FPS · 2:45 MIN
               </span>
             </div>
           </motion.div>
