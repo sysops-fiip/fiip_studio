@@ -130,18 +130,18 @@ body {
 .glass-interactive { transition: translate 250ms ease, box-shadow 250ms ease; }
 @media (hover: hover) {
   .glass-interactive:hover { translate: 0 -3px; --glass-edge: rgb(255 255 255 / 0.32); }
-  .glass-interactive:hover > .procedural-texture { opacity: 0.04; }
+  .glass-interactive:hover > .procedural-texture { opacity: 0.09; }
 }
 .glass-nav { position: fixed; --glass-fill: rgb(5 5 5 / 0.78); border-radius: 0 0 14px 14px; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass-panel { background: rgb(19 19 19 / 0.97); }
   .glass-light { background: rgb(242 242 242 / 0.97); }
 }
-.procedural-texture { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.03; border-radius: inherit; transition: opacity 250ms ease; }
-.texture-grain { opacity: 0.035; }
+.procedural-texture { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.08; border-radius: inherit; transition: opacity 250ms ease; }
+.texture-grain { opacity: 0.06; }
 .texture-dots { mask-image: radial-gradient(ellipse at center, black, transparent 80%); }
 .texture-band { position: relative; }
-.site-grain { position: fixed; z-index: 1; opacity: 0.025; }
+.site-grain { position: fixed; z-index: 1; opacity: 0.04; }
 /* Backgrounds paint below the fixed grain; section content paints above it. */
 body { isolation: isolate; }
 footer > div,

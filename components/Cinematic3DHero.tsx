@@ -1,42 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { GlassPanel } from '@/components/ui/GlassPanel';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 export function Cinematic3DHero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [timecode, setTimecode] = useState('01:00:24:18');
-  const [isMobile, setIsMobile] = useState(false);
-  const isInteracting = false;
-
-  // Live SMPTE Timecode Counter
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let frame = 18;
-    let sec = 24;
-    let min = 0;
-    const interval = setInterval(() => {
-      frame++;
-      if (frame >= 24) {
-        frame = 0;
-        sec++;
-        if (sec >= 60) {
-          sec = 0;
-          min++;
-        }
-      }
-      const pad = (n: number) => n.toString().padStart(2, '0');
-      setTimecode(`01:${pad(min)}:${pad(sec)}:${pad(frame)}`);
-    }, 1000 / 24);
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    setIsMobile(window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768);
 
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const scene = new THREE.Scene();
@@ -233,27 +205,8 @@ export function Cinematic3DHero() {
           className="absolute inset-0 w-full h-full hero-optics"
         />
 
-      {/* Film Slate Telemetry HUD (Desktop Only - Pure Monochrome) */}
-      {!isMobile && (
-        <div className="hidden md:flex absolute z-10 bottom-4 left-4 right-4 lg:bottom-8 lg:left-8 lg:right-8 gap-4 justify-between items-end pointer-events-none text-[11px] font-mono text-neutral-400">
-          <GlassPanel className="space-y-1 px-4 py-2.5">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-white" />
-              <span className="text-white font-medium tracking-wider">OPTICS · 50MM ANAMORPHIC T1.3</span>
-            </div>
-            <p className="text-neutral-400">ACES 2065-1 / DCI-P3 · ARRI LOG-C4 FINISHING</p>
-            <p className="text-neutral-300">10G NVME COLLABORATIVE TIMELINES</p>
-          </GlassPanel>
-
-          <GlassPanel className="text-right space-y-1 px-4 py-2.5">
-            <p className="text-neutral-400">REF: 24.000 FPS · REC 709 / MASTER</p>
-            <p className="text-white font-semibold tracking-widest">{timecode}</p>
-            <p className="text-[10px] text-neutral-300">
-              {isInteracting ? 'MANUAL ROTATION ACTIVE' : 'DRAG TO ROTATE 3D LENS'}
-            </p>
-          </GlassPanel>
-        </div>
-      )}
+      {/* Telemetry HUD removed: read as gimmicky overlay noise and spilled over the
+          section below. Hero is a clean product shot now. */}
     </div>
   );
 }
