@@ -2,84 +2,122 @@
   "team": [
     {
       "id": "team-iniyavan",
-      "name": "Iniyavan",
-      "role": "Creative Director & Pipeline Architect",
-      "specialty": "VFX Supervision & Creative Editorial",
+      "name": "Iniyavan Pandiyan",
+      "role": "Creative Director & VFX Producer",
+      "specialty": "VFX production, editorial, pipeline architecture",
+      "alsoDoes": [
+        "Editor",
+        "Pipeline architecture"
+      ],
       "image": "/team/iniyavan.jpg",
       "fallbackInitials": "IN",
-      "bio": "Directs studio creative vision and technical post architecture, bridging long-form narrative pacing with advanced 3D CGI, Fusion node compositing, and proprietary AI workflows."
+      "bio": "Runs the studio end to end — creative direction, VFX production and supervision, and the editorial eye behind the cut. Builds the pipeline the studio works on, from ingest through delivery, and has VFX supervised, produced or edited credits across Tamil and Telugu features, OTT series and brand films.",
+      "external": false
     },
     {
       "id": "team-udhay",
       "name": "Udhaya Kumar",
-      "role": "Supervising Colorist (DI)",
-      "specialty": "Theatrical Look Dev & HDR Mastering",
+      "role": "VFX Generalist",
+      "specialty": "Compositing, cleanups, plate work",
+      "alsoDoes": [
+        "Editorial support"
+      ],
       "image": "/team/udhay.jpg",
       "fallbackInitials": "UK",
-      "bio": "Spearheads the studio's primary DaVinci Resolve color grading suite, delivering nuanced cinematic looks and color space management for feature films, episodic OTT, and flagship brand TVCs."
+      "bio": "Hands-on generalist covering the day-to-day VFX load — cleanups, paint, rig and wire removal, comps and plate fixes — with enough editorial sense to work straight off the timeline.",
+      "external": false
     },
     {
       "id": "team-ganesh",
       "name": "Ganesh",
-      "role": "Lead Narrative & Commercial Editor",
-      "specialty": "Offline Story Architecture & Pacing",
+      "role": "Commercial Editor",
+      "specialty": "Ad films and brand content",
+      "alsoDoes": [
+        "Conform",
+        "Mastering"
+      ],
       "image": "/team/ganesh.jpg",
       "fallbackInitials": "GA",
-      "bio": "Master of rhythm and emotional cadence across feature narratives, high-impact commercials, and complex multi-camera episodic timelines."
+      "bio": "Cuts commercials and brand films, and carries the same work through conform and mastering so the approved cut is the delivered cut.",
+      "external": false
     },
     {
       "id": "team-ahil",
       "name": "Ahilendra D",
-      "role": "Mastering & Online Conform Artist",
-      "specialty": "DaVinci Resolve Conforms & Multi-Format Delivery",
+      "role": "Conform & Mastering Artist",
+      "specialty": "Finishing, conform, delivery masters",
+      "alsoDoes": [
+        "Colour (developing)"
+      ],
       "image": "/team/ahil.jpg",
       "fallbackInitials": "AH",
-      "bio": "Bridges offline editorial to final theatrical and broadcast delivery, managing high-precision timeline conforms, round-trips, IMF/DCP packaging, and QC standards."
+      "bio": "Owns finishing: conforms, online, and broadcast/theatrical masters. Also building out as a colourist under the studio's DI work.",
+      "external": false
     },
     {
       "id": "team-kousik",
-      "name": "Kousik Raj",
-      "role": "VFX Compositor & Editorial Artist",
-      "specialty": "Node Compositing, Cleanups & CG Integration",
+      "name": "Koushik Raj",
+      "role": "Colorist & Conform Artist",
+      "specialty": "Grading and finishing",
+      "alsoDoes": [
+        "VFX",
+        "Editing",
+        "Cinematography"
+      ],
       "image": "/team/kousik.jpg",
       "fallbackInitials": "KR",
-      "bio": "Combines acute editorial timing with seamless invisible compositing, blemish cleanups, rig removals, screen replacements, and photoreal CG plate integration."
+      "bio": "Grades and conforms, with a cinematographer's eye for how the image was shot and a generalist's range across VFX and editorial.",
+      "external": false
     },
     {
       "id": "team-sanjay",
       "name": "Sanjay Kandasamy",
-      "role": "Generative VFX & Pipeline Engineer",
-      "specialty": "Neural VFX, Inpainting & Custom ComfyUI Nodes",
+      "role": "Editor",
+      "specialty": "Narrative editing, story structure",
+      "alsoDoes": [
+        "Generative / AI-assisted VFX"
+      ],
       "image": "/team/sanjay.jpg",
       "fallbackInitials": "SK",
-      "bio": "Pioneers cutting-edge neural synthesis workflows, custom ComfyUI diffusion pipelines, and hybrid generative visual effects integrated into production pipelines."
+      "bio": "Editor working on story and narrative structure, and fluent in generative and AI-assisted techniques for shots that can't be got any other way.",
+      "external": false
     },
     {
       "id": "team-venkat",
       "name": "Venkat",
-      "role": "Post Production Supervisor & Assembly Editor",
-      "specialty": "Editorial Workflows, Media Ingest & Conformance",
+      "role": "Post Production Supervisor & Editor",
+      "specialty": "Post supervision, editorial",
+      "alsoDoes": [
+        "VFX",
+        "Grading",
+        "Script and story"
+      ],
       "image": "/team/venkat.jpg",
       "fallbackInitials": "VE",
-      "bio": "Oversees raw camera ingest, synchronized dailies assembly, project metadata hygiene, and frictionless handoffs between client teams and finishing suites."
+      "bio": "Supervises post from the studio side — schedules, handoffs and delivery — and edits. All-rounder across VFX, grade and story, which is what makes the supervision work.",
+      "external": false
     },
     {
-      "id": "team-balaji",
+      "id": "collab-balaji",
       "name": "Balaji Sripathi",
-      "role": "Guest Supervising Colorist",
-      "specialty": "Feature Film DI & Theatrical Grading",
+      "role": "Cinematographer",
+      "specialty": "Long-running collaborator",
+      "alsoDoes": [],
       "image": "/team/balaji.jpg",
       "fallbackInitials": "BS",
-      "bio": "Veteran external colorist partnering with FIIP suites for flagship feature films, high-contrast period aesthetics, and theatrical DCI-P3 color grading."
+      "bio": "Currently shooting the Asian Paints commercial with the studio.",
+      "external": true
     },
     {
-      "id": "team-shivraj",
+      "id": "collab-shivraj",
       "name": "Shivraj",
-      "role": "Guest Commercial Colorist",
-      "specialty": "Automotive, Beauty & Premium Brand TVCs",
+      "role": "Cinematographer",
+      "specialty": "Long-running collaborator",
+      "alsoDoes": [],
       "image": "/team/shivraj.jpg",
       "fallbackInitials": "SH",
-      "bio": "Renowned color artist collaborating at FIIP on premium automotive campaigns, high-fashion beauty films, and national broadcast commercial grades."
+      "bio": "Shot The Akaali feature, graded at the studio; also the Pumbu Har ad series and other shorts and ads.",
+      "external": true
     }
   ]
 }

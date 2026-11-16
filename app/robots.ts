@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://fixitinpost.studio/sitemap.xml',
+    sitemap: 'https://fixitinpost.in/sitemap.xml',
   }
 }

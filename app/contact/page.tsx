@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Fix It In Post Studios',
     description: 'Get in touch with our Chennai-based VFX studio for AI-assisted post-production services. Response within 24 hours.',
-    url: 'https://fixitinpost.studio/contact',
+    url: 'https://fixitinpost.in/contact',
     images: [
       {
         url: '/web-app-manifest-512x512.png',

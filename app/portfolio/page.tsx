@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Portfolio - AI-Assisted VFX Projects',
     description: 'Explore our portfolio showcasing the transformation power of AI-assisted VFX across ads, music videos, and post-production.',
-    url: 'https://fixitinpost.studio/portfolio',
+    url: 'https://fixitinpost.in/portfolio',
     images: [
       {
         url: '/web-app-manifest-512x512.png',

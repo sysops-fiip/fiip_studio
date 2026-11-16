@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pricing - Transparent AI-Assisted VFX Services',
     description: 'Transparent pricing for AI-assisted VFX services. Three tiers with instant calculator to estimate your project costs.',
-    url: 'https://fixitinpost.studio/pricing',
+    url: 'https://fixitinpost.in/pricing',
     images: [
       {
         url: '/web-app-manifest-512x512.png',

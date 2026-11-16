@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://fixitinpost.studio'
+  const baseUrl = 'https://fixitinpost.in'
 
   return [
     {

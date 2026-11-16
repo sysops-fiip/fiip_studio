@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Fix It In Post Studios - AI-Assisted VFX & Video Production',
     description: 'Learn about our Chennai-based VFX studio pioneering AI-assisted post-production. Meet our team of VFX artists, AI engineers, and creative directors.',
-    url: 'https://fixitinpost.studio/about',
+    url: 'https://fixitinpost.in/about',
     images: [
       {
         url: '/web-app-manifest-512x512.png',

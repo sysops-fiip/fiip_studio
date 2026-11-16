@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Our Services - AI-Powered VFX & Post-Production',
     description: 'Three tiers of AI-powered VFX excellence: AI-Enhanced Post, Hybrid VFX, and Generative Visuals. From creator-friendly to studio-grade.',
-    url: 'https://fixitinpost.studio/services',
+    url: 'https://fixitinpost.in/services',
     images: [
       {
         url: '/web-app-manifest-512x512.png',
