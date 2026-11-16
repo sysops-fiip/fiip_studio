@@ -7,10 +7,11 @@ export function Cinematic3DHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [timecode, setTimecode] = useState('01:00:24:18');
   const [isMobile, setIsMobile] = useState(false);
-  const [isInteracting, setIsInteracting] = useState(false);
+  const isInteracting = false;
 
   // Live SMPTE Timecode Counter
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let frame = 18;
     let sec = 24;
     let min = 0;
@@ -32,315 +33,201 @@ export function Cinematic3DHero() {
   }, []);
 
   useEffect(() => {
-    const checkMobile = () => {
-      const isTouch = window.matchMedia('(pointer: coarse)').matches;
-      const isSmall = window.innerWidth < 768;
-      setIsMobile(isTouch || isSmall);
-      return isTouch || isSmall;
-    };
-
-    if (checkMobile()) {
-      return;
-    }
-
     const container = containerRef.current;
     if (!container) return;
+    setIsMobile(window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768);
 
-    // --- Three.js Scene Setup ---
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const scene = new THREE.Scene();
-
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      container.clientWidth / container.clientHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 18;
-
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance',
-    });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
+    renderer.toneMappingExposure = 1.15;
     container.appendChild(renderer.domElement);
 
-    // --- Monochrome Studio Lighting ---
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
-    scene.add(ambientLight);
+    // A single large studio softbox provides broad, neutral metal reflections.
+    const studio = new THREE.Scene();
+    studio.background = new THREE.Color(0x161616);
+    const softboxGeometry = new THREE.PlaneGeometry(9, 12);
+    const softboxMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const softbox = new THREE.Mesh(softboxGeometry, softboxMaterial);
+    softbox.position.set(-5, 7, 8);
+    softbox.lookAt(0, 0, 0);
+    studio.add(softbox);
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    const environment = pmrem.fromScene(studio, 0.08);
+    scene.environment = environment.texture;
+    pmrem.dispose();
+    softboxGeometry.dispose();
+    softboxMaterial.dispose();
 
-    // Key Light (Crisp White Studio Projector)
-    const keyLight = new THREE.DirectionalLight(0xffffff, 3.2);
-    keyLight.position.set(10, 12, 14);
-    scene.add(keyLight);
+    const key = new THREE.DirectionalLight(0xffffff, 3);
+    key.position.set(-5, 7, 8);
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, 2);
+    rim.position.set(5, 2, -4);
+    scene.add(rim);
 
-    // Rim Light (Silver Edge Specular)
-    const rimLight = new THREE.DirectionalLight(0xd4d4d4, 2.0);
-    rimLight.position.set(-14, -8, -6);
-    scene.add(rimLight);
-
-    // --- 3D Monochrome Cinema Anamorphic Assembly ---
-    const lensGroup = new THREE.Group();
-    scene.add(lensGroup);
-
-    // Materials: Obsidian Carbon, Brushed Chrome, Pure Optic Crystal
-    const obsidianMat = new THREE.MeshStandardMaterial({
-      color: 0x0f0f0f,
-      metalness: 0.9,
-      roughness: 0.3,
-      wireframe: false,
+    const graphite = new THREE.MeshStandardMaterial({
+      color: 0x242424, metalness: 0.95, roughness: 0.36,
     });
-
-    const chromeMat = new THREE.MeshStandardMaterial({
-      color: 0xe5e5e5,
-      metalness: 0.98,
-      roughness: 0.15,
+    const titanium = new THREE.MeshStandardMaterial({
+      color: 0x777777, metalness: 1, roughness: 0.3,
     });
-
-    const opticCrystalMat = new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
-      metalness: 0.05,
-      roughness: 0.04,
-      transmission: 0.94,
-      thickness: 1.5,
-      ior: 1.54,
-      reflectivity: 0.95,
-      transparent: true,
-      opacity: 0.7,
+    const bladeMaterial = new THREE.MeshStandardMaterial({
+      color: 0x383838, metalness: 0.9, roughness: 0.4, side: THREE.DoubleSide,
     });
-
-    const wireScaleMat = new THREE.MeshBasicMaterial({
-      color: 0x888888,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.3,
+    const glassMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xdadada, metalness: 0, roughness: 0.12,
+      transmission: 0.65, thickness: 0.12, ior: 1.5,
+      clearcoat: 1, clearcoatRoughness: 0.1, envMapIntensity: 0.7,
     });
+    const assembly = new THREE.Group();
+    scene.add(assembly);
 
-    // 1. Outer Cinema Lens Barrel (Obsidian Matte Titanium)
-    const barrelGeo = new THREE.CylinderGeometry(5.2, 5.2, 2.4, 48, 1, true);
-    const barrel = new THREE.Mesh(barrelGeo, obsidianMat);
-    barrel.rotation.x = Math.PI / 2;
-    lensGroup.add(barrel);
+    // All cylinder axes run along Z. Annular faces leave a real optical cavity.
+    const addRing = (outer: number, inner: number, depth: number, z: number,
+      material: THREE.MeshStandardMaterial) => {
+      const wall = new THREE.Mesh(
+        new THREE.CylinderGeometry(outer, outer, depth, 96, 1, true), material,
+      );
+      wall.rotation.x = Math.PI / 2;
+      wall.position.z = z;
+      assembly.add(wall);
+      const innerMaterial = material.clone();
+      innerMaterial.side = THREE.BackSide;
+      const inside = new THREE.Mesh(
+        new THREE.CylinderGeometry(inner, inner, depth, 96, 1, true), innerMaterial,
+      );
+      inside.rotation.x = Math.PI / 2;
+      inside.position.z = z;
+      assembly.add(inside);
+      for (const side of [-1, 1]) {
+        const face = new THREE.Mesh(new THREE.RingGeometry(inner, outer, 96), material);
+        face.position.z = z + side * depth / 2;
+        if (side < 0) face.rotation.y = Math.PI;
+        assembly.add(face);
+      }
+    };
+    // Five machined barrel steps taper toward the rear mount.
+    [
+      [2.65, 2.35, 0.38, 1.15],
+      [2.53, 2.28, 0.56, 0.68],
+      [2.4, 2.2, 0.72, 0.04],
+      [2.21, 2.03, 0.6, -0.62],
+      [1.98, 1.8, 0.52, -1.18],
+    ].forEach(([outer, inner, depth, z]) => addRing(outer, inner, depth, z, graphite));
+    addRing(2.67, 2.34, 0.055, 1.37, titanium);
+    addRing(2.43, 2.2, 0.07, 0.33, titanium);
+    addRing(2.08, 1.72, 0.17, -1.5, titanium);
+    // Fine circumferential machining, with no crossing geometry.
+    for (let i = 0; i < 14; i++) {
+      addRing(2.545, 2.515, 0.012, 0.44 + i * 0.032, graphite);
+    }
+    addRing(2.3, 1.84, 0.18, 0.89, graphite);
 
-    // 2. Front Spherical Optic Glass Element
-    const glassGeo = new THREE.CylinderGeometry(5.0, 5.0, 0.3, 48);
-    const glass = new THREE.Mesh(glassGeo, opticCrystalMat);
+    const iris = new THREE.Group();
+    iris.position.z = 0.63;
+    assembly.add(iris);
+    const bladeShape = new THREE.Shape();
+    bladeShape.moveTo(0.68, -0.28);
+    bladeShape.quadraticCurveTo(1.15, -1.12, 1.83, -0.72);
+    bladeShape.lineTo(2.04, 0.45);
+    bladeShape.quadraticCurveTo(1.18, 0.25, 0.68, -0.28);
+    const bladeGeometry = new THREE.ExtrudeGeometry(bladeShape, {
+      depth: 0.012, bevelEnabled: false, curveSegments: 20,
+    });
+    for (let i = 0; i < 8; i++) {
+      const blade = new THREE.Mesh(bladeGeometry, bladeMaterial);
+      blade.rotation.z = i * Math.PI / 4;
+      blade.position.z = i * 0.014;
+      iris.add(blade);
+    }
+    // Recessed anamorphic glass: an oval optical surface, never a sphere.
+    const glass = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 0.08, 96), glassMaterial);
     glass.rotation.x = Math.PI / 2;
-    glass.position.z = 1.0;
-    lensGroup.add(glass);
+    glass.scale.z = 0.82;
+    glass.position.z = 1.03;
+    assembly.add(glass);
 
-    // 3. Precision Focus Gear Rings (Brushed Chrome & Carbon)
-    const gearRingGeo = new THREE.TorusGeometry(5.35, 0.1, 16, 64);
-    const gearRing = new THREE.Mesh(gearRingGeo, chromeMat);
-    gearRing.position.z = 0.5;
-    lensGroup.add(gearRing);
-
-    const gearRing2 = new THREE.Mesh(gearRingGeo, obsidianMat);
-    gearRing2.position.z = -0.6;
-    lensGroup.add(gearRing2);
-
-    // 4. Optical Calibration Index Rings
-    const wireRing1 = new THREE.Mesh(new THREE.TorusGeometry(4.8, 0.04, 8, 48), wireScaleMat);
-    wireRing1.position.z = 1.1;
-    lensGroup.add(wireRing1);
-
-    const wireRing2 = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.03, 8, 36), wireScaleMat);
-    wireRing2.position.z = 0.8;
-    lensGroup.add(wireRing2);
-
-    // 5. Aperture Iris Blades (8 Precision Titanium Leaves)
-    const irisGroup = new THREE.Group();
-    const bladeGeo = new THREE.BoxGeometry(2.4, 0.38, 0.06);
-    const bladeMat = new THREE.MeshStandardMaterial({
-      color: 0x1a1a1a,
-      metalness: 0.85,
-      roughness: 0.25,
-    });
-
-    const bladeCount = 8;
-    for (let i = 0; i < bladeCount; i++) {
-      const angle = (i / bladeCount) * Math.PI * 2;
-      const blade = new THREE.Mesh(bladeGeo, bladeMat);
-      blade.position.x = Math.cos(angle) * 1.8;
-      blade.position.y = Math.sin(angle) * 1.8;
-      blade.rotation.z = angle + 0.4;
-      irisGroup.add(blade);
-    }
-    irisGroup.position.z = 0.1;
-    lensGroup.add(irisGroup);
-
-    // 6. Monochromatic Anamorphic Streak (Pure Silver Refraction)
-    const streakGeo = new THREE.PlaneGeometry(26, 0.12);
-    const streakMat = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.45,
-      blending: THREE.AdditiveBlending,
-      side: THREE.DoubleSide,
-    });
-    const streak = new THREE.Mesh(streakGeo, streakMat);
-    streak.position.z = 1.25;
-    lensGroup.add(streak);
-
-    // --- Floating Film Silver Dust Particles ---
-    const particleCount = 180;
-    const particleGeo = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 36;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 26;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-    }
-
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const particleMat = new THREE.PointsMaterial({
-      color: 0xd4d4d4,
-      size: 0.14,
-      transparent: true,
-      opacity: 0.5,
-      blending: THREE.AdditiveBlending,
-    });
-
-    const particles = new THREE.Points(particleGeo, particleMat);
-    scene.add(particles);
-
-    // --- Mouse & Inertia Tracking ---
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetRotationX = 0;
-    let targetRotationY = 0;
-    let targetPosX = 0;
-    let targetPosY = 0;
-
-    let isDragging = false;
-    let previousPointerX = 0;
-    let previousPointerY = 0;
-
-    const onPointerMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-      mouseX = x;
-      mouseY = y;
-
-      if (isDragging) {
-        const deltaX = e.clientX - previousPointerX;
-        const deltaY = e.clientY - previousPointerY;
-        lensGroup.rotation.y += deltaX * 0.008;
-        lensGroup.rotation.x += deltaY * 0.008;
-        previousPointerX = e.clientX;
-        previousPointerY = e.clientY;
-      } else {
-        targetRotationY = mouseX * 0.8;
-        targetRotationX = mouseY * 0.6;
-        targetPosX = mouseX * 2.0;
-        targetPosY = -mouseY * 1.4;
-      }
+    let pointerX = 0;
+    let pointerY = 0;
+    let scroll = 0;
+    let frame = 0;
+    let lastTime = 0;
+    const onPointerMove = (event: PointerEvent) => {
+      pointerX = THREE.MathUtils.clamp(event.clientX / window.innerWidth - 0.5, -0.5, 0.5);
+      pointerY = THREE.MathUtils.clamp(event.clientY / window.innerHeight - 0.5, -0.5, 0.5);
     };
-
-    const onPointerDown = (e: MouseEvent) => {
-      isDragging = true;
-      setIsInteracting(true);
-      previousPointerX = e.clientX;
-      previousPointerY = e.clientY;
-    };
-
-    const onPointerUp = () => {
-      isDragging = false;
-      setIsInteracting(false);
-    };
-
-    window.addEventListener('mousemove', onPointerMove, { passive: true });
-    container.addEventListener('mousedown', onPointerDown);
-    window.addEventListener('mouseup', onPointerUp);
-
-    const handleResize = () => {
-      if (!container) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    };
-    window.addEventListener('resize', handleResize);
-
-    // --- Render Loop ---
-    let animationId: number;
-    let clock = new THREE.Clock();
-
-    const animate = () => {
-      animationId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
-
-      if (!isDragging) {
-        lensGroup.rotation.y += (targetRotationY - lensGroup.rotation.y) * 0.05;
-        lensGroup.rotation.x += (targetRotationX - lensGroup.rotation.x) * 0.05;
-        lensGroup.position.x += (targetPosX - lensGroup.position.x) * 0.05;
-        lensGroup.position.y += (targetPosY - lensGroup.position.y) * 0.05;
-      }
-
-      lensGroup.position.z = Math.sin(elapsedTime * 0.7) * 0.3;
-      irisGroup.rotation.z = Math.sin(elapsedTime * 0.35) * 0.2;
-
-      const positionsAttr = particleGeo.attributes.position as THREE.BufferAttribute;
-      const posArray = positionsAttr.array as Float32Array;
-      for (let i = 0; i < particleCount; i++) {
-        posArray[i * 3 + 1] += Math.sin(elapsedTime + i) * 0.004;
-        posArray[i * 3] += Math.cos(elapsedTime * 0.5 + i) * 0.002;
-      }
-      positionsAttr.needsUpdate = true;
-
-      keyLight.position.x = 10 + mouseX * 10;
-      keyLight.position.y = 12 - mouseY * 10;
-
+    const render = (time: number) => {
+      const dt = Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      const reduced = motionQuery.matches;
+      const ease = 1 - Math.exp(-dt * 3);
+      scroll = reduced ? 0 : THREE.MathUtils.lerp(scroll,
+        THREE.MathUtils.clamp(window.scrollY / Math.max(window.innerHeight, 1), 0, 1), ease);
+      assembly.rotation.set(-0.12 + scroll * 0.12, -0.42 + scroll * 0.24, -0.08);
+      if (!reduced) iris.rotation.z += dt * 0.035;
+      else iris.rotation.z = 0;
+      camera.position.x = reduced ? 0 : THREE.MathUtils.lerp(camera.position.x, pointerX * 0.32, ease);
+      camera.position.y = reduced ? 0.35 : THREE.MathUtils.lerp(camera.position.y, 0.35 - pointerY * 0.22, ease);
+      camera.position.z = (camera.aspect < 1 ? 15 : 12) - scroll * 0.7;
+      camera.lookAt(0, 0, 0);
       renderer.render(scene, camera);
+      if (!reduced) frame = requestAnimationFrame(render);
     };
-
-    animate();
+    const resize = () => {
+      const width = Math.max(container.clientWidth, 1);
+      const height = Math.max(container.clientHeight, 1);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(width, height);
+      if (motionQuery.matches) render(performance.now());
+    };
+    const onMotionChange = () => {
+      cancelAnimationFrame(frame);
+      lastTime = performance.now();
+      render(lastTime);
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(container);
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    motionQuery.addEventListener('change', onMotionChange);
+    resize();
+    onMotionChange();
 
     return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('mousemove', onPointerMove);
-      container.removeEventListener('mousedown', onPointerDown);
-      window.removeEventListener('mouseup', onPointerUp);
-      window.removeEventListener('resize', handleResize);
-
-      barrelGeo.dispose();
-      glassGeo.dispose();
-      gearRingGeo.dispose();
-      bladeGeo.dispose();
-      streakGeo.dispose();
-      particleGeo.dispose();
-
-      obsidianMat.dispose();
-      chromeMat.dispose();
-      opticCrystalMat.dispose();
-      wireScaleMat.dispose();
-      bladeMat.dispose();
-      streakMat.dispose();
-      particleMat.dispose();
-
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener('pointermove', onPointerMove);
+      motionQuery.removeEventListener('change', onMotionChange);
+      const geometries = new Set<THREE.BufferGeometry>();
+      const materials = new Set<THREE.Material>();
+      scene.traverse(object => {
+        if (object instanceof THREE.Mesh) {
+          geometries.add(object.geometry);
+          const meshMaterials = Array.isArray(object.material) ? object.material : [object.material];
+          meshMaterials.forEach(material => materials.add(material));
+        }
+      });
+      geometries.forEach(geometry => geometry.dispose());
+      materials.forEach(material => material.dispose());
+      environment.dispose();
       renderer.dispose();
-      if (container && renderer.domElement) {
-        container.removeChild(renderer.domElement);
-      }
+      renderer.domElement.remove();
     };
   }, []);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
-      {/* 3D WebGL Canvas Layer on Desktop */}
-      {!isMobile && (
+      {/* Responsive optical product shot */}
         <div
           ref={containerRef}
-          className="absolute inset-0 w-full h-full pointer-events-auto cursor-grab active:cursor-grabbing"
-          title="Drag to inspect 3D optical lens"
+          className="absolute inset-0 w-full h-full"
+          style={{ background: 'radial-gradient(ellipse at 48% 38%, #242424 0%, #101010 45%, #050505 85%)' }}
         />
-      )}
 
       {/* Film Slate Telemetry HUD (Desktop Only - Pure Monochrome) */}
       {!isMobile && (

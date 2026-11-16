@@ -129,24 +129,19 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Studio Telemetry Row */}
+          {/* Studio capabilities row — plain language, no jargon */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-16 pt-10 border-t border-neutral-900 text-left">
-            <div>
-              <p className="font-mono text-2xl font-bold text-white tracking-tight">10G NVME</p>
-              <p className="text-xs text-neutral-400 mt-1 font-mono uppercase tracking-wider">Multi-Seat Shared SAN</p>
-            </div>
-            <div>
-              <p className="font-mono text-2xl font-bold text-white tracking-tight">4K / 8K RAW</p>
-              <p className="text-xs text-neutral-400 mt-1 font-mono uppercase tracking-wider">DaVinci Resolve Suites</p>
-            </div>
-            <div>
-              <p className="font-mono text-2xl font-bold text-white tracking-tight">30+ DELIVERIES</p>
-              <p className="text-xs text-neutral-400 mt-1 font-mono uppercase tracking-wider">National Commercials</p>
-            </div>
-            <div>
-              <p className="font-mono text-2xl font-bold text-white tracking-tight">FRAMES APP</p>
-              <p className="text-xs text-neutral-400 mt-1 font-mono uppercase tracking-wider">Frame-Accurate Portal</p>
-            </div>
+            {[
+              { k: 'EDITORIAL', v: 'Features, episodic & commercial cutdowns' },
+              { k: 'VFX & 3D', v: 'Compositing, clean-up, CG integration' },
+              { k: 'DI COLOR', v: 'DaVinci Resolve grading suites' },
+              { k: 'FRAMES', v: 'Frame-accurate client review' },
+            ].map((item) => (
+              <div key={item.k}>
+                <p className="font-mono text-lg font-bold text-white tracking-tight">{item.k}</p>
+                <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{item.v}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
