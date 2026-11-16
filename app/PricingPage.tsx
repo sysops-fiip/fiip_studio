@@ -1,9 +1,9 @@
 'use client';
-
+import { StaggerGroup } from '@/components/ui/StaggerGroup';
+import { Reveal } from '@/components/ui/Reveal';
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
-import { motion } from 'framer-motion';
 import { PricingCalculator } from '@/components/PricingCalculator';
 import pricingData from '@/data/pricing.json';
 import Link from 'next/link';
@@ -13,11 +13,7 @@ export default function PricingPage() {
     <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
             Commissioning &amp; Scope
           </p>
@@ -28,41 +24,37 @@ export default function PricingPage() {
             Every production timeline involves tailored camera formats, deliverable specifications, and suite requirements.
             We provide milestone-driven commissioning for commercial campaigns, episodic OTT, and feature films.
           </p>
-        </motion.div>
+        </Reveal>
       </section>
 
       {/* Interactive Scope Builder */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-neutral-900">
         <div className="text-center mb-10">
-          <h2 className="text-xl sm:text-3xl font-bold uppercase tracking-tight mb-2">
+          <Reveal as="h2" className="text-xl sm:text-3xl font-bold uppercase tracking-tight mb-2">
             Project Scope Builder
-          </h2>
-          <p className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
+          </Reveal>
+          <Reveal as="p" className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
             Configure format and required disciplines for an official studio quotation
-          </p>
+          </Reveal>
         </div>
-        <PricingCalculator />
+        <Reveal><PricingCalculator /></Reveal>
       </section>
 
       {/* Engagement Slates (Editorial Structure) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-neutral-900">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+          <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
             Standard Slates
-          </p>
-          <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight">
+          </Reveal>
+          <Reveal as="h2" className="text-2xl sm:text-4xl font-black uppercase tracking-tight">
             Studio Retainer &amp; Project Models
-          </h2>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pricingData.engagementModels.map((model, index) => (
-            <motion.div
+            <div
               key={model.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.08, duration: 0.4 }}
-              viewport={{ once: true }}
               className="h-full"
             >
               <GlassPanel tone={model.featured ? 'tinted' : 'dark'} elevation={model.featured ? 2 : 1} className="p-8 h-full flex flex-col justify-between glass-interactive">
@@ -119,22 +111,22 @@ export default function PricingPage() {
                 </Link>
               </div>
               </GlassPanel>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       {/* NDA / Direct Review Slate */}
       <section className="max-w-4xl mx-auto px-4 py-16 text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+        <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
           Confidentiality &amp; Pipeline
-        </p>
-        <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-4">
+        </Reveal>
+        <Reveal as="h2" className="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-4">
           NDA &amp; Custom Workflow Audit
-        </h2>
-        <p className="text-neutral-400 text-xs sm:text-sm font-mono mb-8 max-w-xl mx-auto leading-relaxed">
+        </Reveal>
+        <Reveal as="p" className="text-neutral-400 text-xs sm:text-sm font-mono mb-8 max-w-xl mx-auto leading-relaxed">
           For unreleased feature scripts, NDA brand campaigns, and custom technical pipeline integrations, contact our studio supervisors directly.
-        </p>
+        </Reveal>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/contact"

@@ -1,5 +1,6 @@
 'use client';
-
+import { StaggerGroup } from '@/components/ui/StaggerGroup';
+import { Reveal } from '@/components/ui/Reveal';
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
@@ -158,9 +159,9 @@ export default function HomePage() {
       <section className="py-8 border-b border-neutral-900 bg-neutral-950 overflow-hidden texture-band">
         <ProceduralTexture variant="dots" density={1.2} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+          <Reveal as="p" className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
             Select Commercial Clients &amp; Agency Partners
-          </p>
+          </Reveal>
         </div>
         <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 max-w-6xl mx-auto px-4">
           {clientBrands.map((brand, i) => (
@@ -180,21 +181,22 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
                 Post Infrastructure
-              </p>
-              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
+              </Reveal>
+              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
                 Core Disciplines
-              </h2>
+              </Reveal>
             </div>
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 leading-relaxed font-mono">
+            <Reveal as="p" className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 leading-relaxed font-mono">
               Synchronized editorial bays, node-based VFX compositing, and calibrated reference color suites on a unified media pipeline.
-            </p>
+            </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Discipline 01 */}
             <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
+              <ProceduralTexture variant="grain" />
               <div>
                 <span className="font-mono text-xs text-neutral-400 block mb-6">01 / EDITORIAL</span>
                 <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
@@ -214,6 +216,7 @@ export default function HomePage() {
 
             {/* Discipline 02 */}
             <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
+              <ProceduralTexture variant="grain" />
               <div>
                 <span className="font-mono text-xs text-neutral-400 block mb-6">02 / VISUAL EFFECTS &amp; 3D</span>
                 <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
@@ -233,6 +236,7 @@ export default function HomePage() {
 
             {/* Discipline 03 */}
             <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
+              <ProceduralTexture variant="grain" />
               <div>
                 <span className="font-mono text-xs text-neutral-400 block mb-6">03 / DI COLOR &amp; FINISHING</span>
                 <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
@@ -249,7 +253,7 @@ export default function HomePage() {
                 <p>· Theatrical DCP &amp; Broadcast HDR/SDR</p>
               </div>
             </GlassPanel>
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -258,30 +262,30 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
                 Client Review Suite
-              </p>
-              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-6">
+              </Reveal>
+              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-6">
                 Frames Portal Integration
-              </h2>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-8">
+              </Reveal>
+              <Reveal as="p" className="text-neutral-400 text-sm leading-relaxed mb-8">
                 Eliminate scattered WhatsApp threads and expired download links.
                 Directors, agencies, and producers interface directly with our suites through <strong>Frames</strong>,
                 our dedicated frame-accurate review application.
-              </p>
+              </Reveal>
 
               <div className="space-y-4 mb-8 font-mono text-xs text-neutral-400 border-l border-neutral-800 pl-4">
                 <div>
-                  <p className="text-white font-medium">Frame-Accurate Timecode Notes</p>
-                  <p className="text-neutral-400 mt-0.5">Annotate exact millisecond timestamps directly from desktop or mobile.</p>
+                  <Reveal as="p" className="text-white font-medium">Frame-Accurate Timecode Notes</Reveal>
+                  <Reveal as="p" className="text-neutral-400 mt-0.5">Annotate exact millisecond timestamps directly from desktop or mobile.</Reveal>
                 </div>
                 <div>
-                  <p className="text-white font-medium">Split-Screen Version Comparison</p>
-                  <p className="text-neutral-400 mt-0.5">Compare V1 vs V2 or Raw Log vs Graded Master in real time.</p>
+                  <Reveal as="p" className="text-white font-medium">Split-Screen Version Comparison</Reveal>
+                  <Reveal as="p" className="text-neutral-400 mt-0.5">Compare V1 vs V2 or Raw Log vs Graded Master in real time.</Reveal>
                 </div>
                 <div>
-                  <p className="text-white font-medium">DaVinci Resolve Timeline Sync</p>
-                  <p className="text-neutral-400 mt-0.5">Client approval markers load directly onto editor timelines.</p>
+                  <Reveal as="p" className="text-white font-medium">DaVinci Resolve Timeline Sync</Reveal>
+                  <Reveal as="p" className="text-neutral-400 mt-0.5">Client approval markers load directly onto editor timelines.</Reveal>
                 </div>
               </div>
 
@@ -297,7 +301,7 @@ export default function HomePage() {
             </div>
 
             {/* Portal Interface Preview */}
-            <div className="lg:col-span-7">
+            <Reveal className="lg:col-span-7">
               <GlassPanel elevation={2} className="p-4 sm:p-6">
                 <div className="flex items-center justify-between pb-3 border-b border-neutral-900 mb-4 font-mono text-[11px] text-neutral-400">
                   <span>FRAMES.FIXITINPOST.IN · SUITE MONITOR</span>
@@ -331,7 +335,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </GlassPanel>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -342,12 +346,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
                 Selected Archive
-              </p>
-              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
+              </Reveal>
+              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
                 Recent Works
-              </h2>
+              </Reveal>
             </div>
             <Link
               href="/portfolio"
@@ -357,8 +361,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project, index) => (
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredProjects.map((project) => (
               <PortfolioCard
                 key={project.id}
                 id={project.id}
@@ -370,10 +374,9 @@ export default function HomePage() {
                 youtubeId={project.youtubeId}
                 description={project.description}
                 services={project.services}
-                delay={index * 0.04}
               />
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -382,20 +385,20 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
+              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
                 Studio Roster
-              </p>
-              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
+              </Reveal>
+              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
                 Artists &amp; Colorists
-              </h2>
+              </Reveal>
             </div>
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 font-mono">
+            <Reveal as="p" className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 font-mono">
               Nine editors, colorists, and VFX supervisors collaborating across shared studio suites.
-            </p>
+            </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coreTeam.map((member, index) => (
+          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {coreTeam.map((member) => (
               <TeamCard
                 key={member.id}
                 name={member.name}
@@ -404,10 +407,9 @@ export default function HomePage() {
                 image={member.image}
                 fallbackInitials={member.fallbackInitials}
                 bio={member.bio}
-                delay={index * 0.03}
               />
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -415,15 +417,15 @@ export default function HomePage() {
       <section className="py-24 bg-black">
         <GlassPanel className="max-w-4xl mx-auto p-6 sm:p-10 text-center">
           <ProceduralTexture variant="grain" />
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
+          <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
             Commissioning &amp; Bookings
-          </p>
-          <h2 className="text-3xl sm:text-6xl font-black uppercase tracking-tight mb-6">
+          </Reveal>
+          <Reveal as="h2" className="text-3xl sm:text-6xl font-black uppercase tracking-tight mb-6">
             Initiate Project Timeline
-          </h2>
-          <p className="text-neutral-400 text-sm sm:text-base mb-10 max-w-xl mx-auto leading-relaxed">
+          </Reveal>
+          <Reveal as="p" className="text-neutral-400 text-sm sm:text-base mb-10 max-w-xl mx-auto leading-relaxed">
             Whether for a national commercial broadcast turnaround, feature film DI color grade, or complex VFX sequence, let&apos;s review your raw camera specs and schedule.
-          </p>
+          </Reveal>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"

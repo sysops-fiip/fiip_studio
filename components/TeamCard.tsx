@@ -1,7 +1,8 @@
 'use client';
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
 interface TeamCardProps {
   name: string;
@@ -10,7 +11,6 @@ interface TeamCardProps {
   image: string;
   fallbackInitials?: string;
   bio?: string;
-  delay?: number;
 }
 
 export function TeamCard({
@@ -20,19 +20,15 @@ export function TeamCard({
   image,
   fallbackInitials,
   bio,
-  delay = 0,
 }: TeamCardProps) {
   const [imgError, setImgError] = useState(false);
   const initials = fallbackInitials || name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.4 }}
-      viewport={{ once: true }}
-      className="border border-neutral-800 bg-neutral-950 hover:border-neutral-600 transition-colors group flex flex-col h-full"
+    <GlassPanel tone="light" elevation={1}
+      className="glass-interactive group flex flex-col h-full overflow-hidden"
     >
+      <ProceduralTexture variant="grain" />
       {/* Image Container / Fallback Avatar */}
       <div className="relative overflow-hidden aspect-[4/3] bg-neutral-900 flex items-center justify-center border-b border-neutral-900">
         {!imgError ? (
@@ -73,6 +69,6 @@ export function TeamCard({
           )}
         </div>
       </div>
-    </motion.div>
+    </GlassPanel>
   );
 }

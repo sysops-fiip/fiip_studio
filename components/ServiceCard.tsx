@@ -1,9 +1,7 @@
 'use client';
-
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
 
@@ -12,7 +10,6 @@ interface ServiceCardProps {
   title: string;
   description: string;
   features: string[];
-  delay?: number;
 }
 
 export function ServiceCard({
@@ -20,14 +17,9 @@ export function ServiceCard({
   title,
   description,
   features,
-  delay = 0,
 }: ServiceCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.4 }}
-      viewport={{ once: true }}
+    <div
       className="h-full"
     >
       <GlassPanel className="glass-interactive p-8 h-full flex flex-col justify-between">
@@ -57,6 +49,6 @@ export function ServiceCard({
         Inquire for Project
       </Link>
       </GlassPanel>
-    </motion.div>
+    </div>
   );
 }

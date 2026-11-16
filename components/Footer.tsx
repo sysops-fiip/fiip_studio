@@ -1,5 +1,7 @@
 'use client';
 
+import { Reveal } from '@/components/ui/Reveal';
+
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
@@ -11,7 +13,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black border-t border-neutral-900 text-white">
+    <Reveal as="footer" className="bg-black border-t border-neutral-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <GlassPanel className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12 p-6 sm:p-8">
           <ProceduralTexture variant="grain" />
@@ -24,10 +26,10 @@ export function Footer() {
               height={40}
               className="h-8 w-auto mb-4 opacity-85"
             />
-            <p className="text-neutral-400 text-xs font-mono leading-relaxed uppercase">
+            <Reveal as="p" className="text-neutral-400 text-xs font-mono leading-relaxed uppercase">
               Boutique Post-Production Facility specializing in Editorial,
               Photoreal VFX &amp; Theatrical DI Color Grading.
-            </p>
+            </Reveal>
           </div>
 
           {/* Navigation */}
@@ -121,7 +123,7 @@ export function Footer() {
 
         {/* Bottom Slate */}
         <div className="border-t border-neutral-900 pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-neutral-400">
-          <p>© {currentYear} FIX IT IN POST STUDIOS. ALL RIGHTS RESERVED.</p>
+          <Reveal as="p">© {currentYear} FIX IT IN POST STUDIOS. ALL RIGHTS RESERVED.</Reveal>
           <div className="flex gap-6 mt-4 md:mt-0 text-[11px] uppercase tracking-wider">
             <span>ACES 2065-1</span>
             <span>DCI-P3 4K</span>
@@ -129,6 +131,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </Reveal>
   );
 }

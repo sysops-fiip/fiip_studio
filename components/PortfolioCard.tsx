@@ -1,10 +1,8 @@
 'use client';
-
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Play, X } from 'lucide-react';
 
 interface PortfolioCardProps {
@@ -17,7 +15,6 @@ interface PortfolioCardProps {
   youtubeId?: string;
   description?: string;
   services?: string[];
-  delay?: number;
 }
 
 export function PortfolioCard({
@@ -29,7 +26,6 @@ export function PortfolioCard({
   youtubeId,
   description,
   services,
-  delay = 0,
 }: PortfolioCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -38,11 +34,7 @@ export function PortfolioCard({
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay, duration: 0.4 }}
-        viewport={{ once: true }}
+      <div
         className="group h-full"
       >
       <GlassPanel className="glass-interactive overflow-hidden h-full flex flex-col">
@@ -120,7 +112,7 @@ export function PortfolioCard({
           )}
         </div>
       </GlassPanel>
-      </motion.div>
+      </div>
 
       {/* Embedded Video Modal */}
       {isPlaying && resolvedYoutubeId && (

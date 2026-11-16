@@ -1,7 +1,11 @@
 'use client';
 
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { StaggerGroup } from '@/components/ui/StaggerGroup';
+import { Reveal } from '@/components/ui/Reveal';
+
 import { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { PortfolioCard } from '@/components/PortfolioCard';
 import projectsData from '@/data/projects.json';
 
@@ -29,26 +33,27 @@ export default function PortfolioPage() {
     <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center border-b border-neutral-900">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
-            Production Archive
-          </p>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
-            Commercials &amp; Feature Slate
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
-            Selected broadcast campaigns, theatrical DI color mastering, and visual effects sequences delivered across India.
-          </p>
-        </motion.div>
+        <Reveal>
+          <GlassPanel tone="light" elevation={2} className="p-6 sm:p-10">
+            <ProceduralTexture variant="scan" className="opacity-[0.04]" />
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
+              Production Archive
+            </p>
+            <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
+              Commercials &amp; Feature Slate
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
+              Selected broadcast campaigns, theatrical DI color mastering, and visual effects sequences delivered across India.
+            </p>
+          </GlassPanel>
+        </Reveal>
       </section>
 
       {/* Filter Tabs */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-wrap justify-center gap-2">
+        <Reveal>
+          <GlassPanel tone="light" elevation={0} className="glass-interactive p-4 flex flex-wrap justify-center gap-2">
+                <ProceduralTexture variant="mesh" className="opacity-[0.04]" />
           {categories.map((category) => (
             <button
               key={category}
@@ -62,24 +67,17 @@ export default function PortfolioPage() {
               {category}
             </button>
           ))}
-        </div>
+        </GlassPanel>
+        </Reveal>
       </section>
 
       {/* Portfolio Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <motion.div
-          layout
+        <StaggerGroup key={selectedCategory}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ delay: index * 0.03 }}
-              layout
-            >
+          {filteredProjects.map((project) => (
+            <div key={project.id} className="h-full">
               <PortfolioCard
                 id={project.id}
                 title={project.title}
@@ -91,9 +89,9 @@ export default function PortfolioPage() {
                 description={project.description}
                 services={project.services}
               />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </StaggerGroup>
       </section>
     </div>
   );

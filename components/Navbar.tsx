@@ -56,7 +56,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
+                className="nav-link text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
               >
                 {item.label}
               </Link>
@@ -101,7 +101,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-sm font-mono uppercase tracking-wider text-neutral-400 hover:text-white py-2 border-b border-neutral-900"
+                className="nav-link block text-sm font-mono uppercase tracking-wider text-neutral-400 hover:text-white py-2 border-b border-neutral-900"
               >
                 {item.label}
               </Link>

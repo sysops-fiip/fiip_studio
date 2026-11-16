@@ -1,10 +1,9 @@
 'use client';
-
+import { Reveal } from '@/components/ui/Reveal';
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export default function ContactPage() {
@@ -37,11 +36,7 @@ export default function ContactPage() {
     <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
             Direct Studio Inquiry
           </p>
@@ -51,18 +46,14 @@ export default function ContactPage() {
           <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
             Connect directly with our post supervisors to audit raw camera codecs, schedule review sessions, and discuss delivery timelines.
           </p>
-        </motion.div>
+        </Reveal>
       </section>
 
       {/* Contact Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Contact Info Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+          <Reveal
             className="lg:col-span-5 space-y-4"
           >
             <GlassPanel className="p-6">
@@ -128,14 +119,10 @@ export default function ContactPage() {
                 </div>
               </div>
             </GlassPanel>
-          </motion.div>
+          </Reveal>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
+          <Reveal
             className="lg:col-span-7"
           >
             <GlassPanel elevation={2} className="p-8 sm:p-10">
@@ -256,7 +243,7 @@ export default function ContactPage() {
               </div>
             </form>
             </GlassPanel>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </div>

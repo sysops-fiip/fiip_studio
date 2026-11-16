@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 interface GlassPanelProps {
   className?: string;
   children: ReactNode;
-  /** Dark sections use dark; light sections use light. */
+  /** Light glass on dark sections; dark glass on light sections. */
   tone?: 'light' | 'dark' | 'tinted';
   elevation?: 0 | 1 | 2;
 }
