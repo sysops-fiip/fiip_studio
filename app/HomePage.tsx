@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       {/* Brand Credits Slate */}
-      <section className="py-8 border-b border-neutral-900 bg-neutral-950 overflow-hidden texture-band">
+      <section className="glass-stage py-8 border-b border-neutral-900 bg-neutral-950 overflow-hidden texture-band">
         <ProceduralTexture variant="dots" density={1.2} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-4">
           <Reveal as="p" className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
@@ -176,7 +176,7 @@ export default function HomePage() {
       </section>
 
       {/* Editorial Disciplines Section (Non-SaaS) */}
-      <section className="py-24 bg-black border-b border-neutral-900 texture-band">
+      <section className="glass-stage py-24 bg-black border-b border-neutral-900 texture-band">
         <ProceduralTexture variant="mesh" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
@@ -258,7 +258,7 @@ export default function HomePage() {
       </section>
 
       {/* The Frames Review App Feature */}
-      <section className="py-24 bg-neutral-950 border-b border-neutral-900">
+      <section className="glass-stage py-24 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
@@ -341,7 +341,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Works Grid */}
-      <section className="py-24 bg-black border-b border-neutral-900 texture-band">
+      <section className="glass-stage py-24 bg-black border-b border-neutral-900 texture-band">
         <ProceduralTexture variant="mesh" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
@@ -381,7 +381,7 @@ export default function HomePage() {
       </section>
 
       {/* Studio Team Roster */}
-      <section className="py-24 bg-neutral-950 border-b border-neutral-900">
+      <section className="glass-stage py-24 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
@@ -414,7 +414,7 @@ export default function HomePage() {
       </section>
 
       {/* Direct Studio Inquiry Slate */}
-      <section className="py-24 bg-black">
+      <section className="glass-stage py-24 bg-black">
         <GlassPanel className="max-w-4xl mx-auto p-6 sm:p-10 text-center">
           <ProceduralTexture variant="grain" />
           <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">

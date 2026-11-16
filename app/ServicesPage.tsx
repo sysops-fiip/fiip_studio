@@ -124,7 +124,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Frames Client Interface Walkthrough */}
-      <section className="py-20 bg-neutral-950 border-b border-neutral-900">
+      <section className="glass-stage py-20 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">

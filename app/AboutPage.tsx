@@ -32,7 +32,7 @@ export default function AboutPage() {
       </section>
 
       {/* Studio Story Section */}
-      <section className="py-20 bg-neutral-950 border-b border-neutral-900">
+      <section className="glass-stage py-20 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
@@ -60,7 +60,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Studio Standards */}
-      <section className="py-20 bg-black border-b border-neutral-900">
+      <section className="glass-stage py-20 bg-black border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
@@ -106,7 +106,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-neutral-950 border-b border-neutral-900">
+      <section className="glass-stage py-20 bg-neutral-950 border-b border-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
       </section>
 
       {/* Studio CTA */}
-      <section className="py-20 bg-black">
+      <section className="glass-stage py-20 bg-black">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
             Suite Availability

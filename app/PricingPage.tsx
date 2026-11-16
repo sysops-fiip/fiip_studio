@@ -12,7 +12,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
+      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
             Commissioning &amp; Scope
@@ -28,7 +28,7 @@ export default function PricingPage() {
       </section>
 
       {/* Interactive Scope Builder */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-neutral-900">
+      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-neutral-900">
         <div className="text-center mb-10">
           <Reveal as="h2" className="text-xl sm:text-3xl font-bold uppercase tracking-tight mb-2">
             Project Scope Builder
@@ -41,7 +41,7 @@ export default function PricingPage() {
       </section>
 
       {/* Engagement Slates (Editorial Structure) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-neutral-900">
+      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-neutral-900">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
             Standard Slates
@@ -117,7 +117,7 @@ export default function PricingPage() {
       </section>
 
       {/* NDA / Direct Review Slate */}
-      <section className="max-w-4xl mx-auto px-4 py-16 text-center">
+      <section className="glass-stage max-w-4xl mx-auto px-4 py-16 text-center">
         <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
           Confidentiality &amp; Pipeline
         </Reveal>

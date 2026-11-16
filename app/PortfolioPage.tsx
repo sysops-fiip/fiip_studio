@@ -32,7 +32,7 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center border-b border-neutral-900">
+      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center border-b border-neutral-900">
         <Reveal>
           <GlassPanel tone="light" elevation={2} className="p-6 sm:p-10">
             <ProceduralTexture variant="scan" className="opacity-[0.04]" />
@@ -50,7 +50,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Reveal>
           <GlassPanel tone="light" elevation={0} className="glass-interactive p-4 flex flex-wrap justify-center gap-2">
                 <ProceduralTexture variant="mesh" className="opacity-[0.04]" />
@@ -72,7 +72,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <StaggerGroup key={selectedCategory}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >

@@ -207,3 +207,22 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
   button:active, a:active { scale: 1; }
   .scroll-progress { opacity: 0; }
 }
+
+/* Light behind the panels. Glass only reads when there is something to refract:
+   over pure black a 6% white fill just looks like a grey box. */
+.glass-stage { position: relative; isolation: isolate; }
+.glass-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 48% at 18% 0%, rgb(255 255 255 / 0.075), transparent 72%),
+    radial-gradient(46% 42% at 86% 12%, rgb(255 255 255 / 0.05), transparent 76%),
+    radial-gradient(rgb(255 255 255 / 0.16) 1px, transparent 1px);
+  background-size: auto, auto, 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 25%, transparent 85%);
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 25%, transparent 85%);
+  opacity: 0.55;
+}
