@@ -1,5 +1,8 @@
 'use client';
 
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
@@ -130,7 +133,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Studio capabilities row — plain language, no jargon */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-16 pt-10 border-t border-neutral-900 text-left">
+          <GlassPanel className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-16 p-6 sm:p-10 text-left">
             {[
               { k: 'EDITORIAL', v: 'Features, episodic & commercial cutdowns' },
               { k: 'VFX & 3D', v: 'Compositing, clean-up, CG integration' },
@@ -142,12 +145,13 @@ export default function HomePage() {
                 <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{item.v}</p>
               </div>
             ))}
-          </div>
+          </GlassPanel>
         </div>
       </section>
 
       {/* Brand Credits Slate */}
-      <section className="py-8 border-b border-neutral-900 bg-neutral-950 overflow-hidden">
+      <section className="py-8 border-b border-neutral-900 bg-neutral-950 overflow-hidden texture-band">
+        <ProceduralTexture variant="dots" density={1.2} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
             Select Commercial Clients &amp; Agency Partners
@@ -166,7 +170,8 @@ export default function HomePage() {
       </section>
 
       {/* Editorial Disciplines Section (Non-SaaS) */}
-      <section className="py-24 bg-black border-b border-neutral-900">
+      <section className="py-24 bg-black border-b border-neutral-900 texture-band">
+        <ProceduralTexture variant="mesh" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
@@ -184,7 +189,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Discipline 01 */}
-            <div className="border border-neutral-900 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors bg-neutral-950">
+            <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
               <div>
                 <span className="font-mono text-xs text-neutral-400 block mb-6">01 / EDITORIAL</span>
                 <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
@@ -200,10 +205,10 @@ export default function HomePage() {
                 <p>· Online Master Conform &amp; QC</p>
                 <p>· Multi-Language Dub &amp; Audio Alignment</p>
               </div>
-            </div>
+            </GlassPanel>
 
             {/* Discipline 02 */}
-            <div className="border border-neutral-800 p-8 flex flex-col justify-between hover:border-neutral-600 transition-colors bg-neutral-900/60">
+            <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
               <div>
                 <span className="font-mono text-xs text-neutral-400 block mb-6">02 / VISUAL EFFECTS &amp; 3D</span>
                 <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
@@ -219,10 +224,10 @@ export default function HomePage() {
                 <p>· Photoreal 3D Shading &amp; Animation</p>
                 <p>· Fusion Node Compositing &amp; Matte Painting</p>
               </div>
-            </div>
+            </GlassPanel>
 
             {/* Discipline 03 */}
-            <div className="border border-neutral-900 p-8 flex flex-col justify-between hover:border-neutral-700 transition-colors bg-neutral-950">
+            <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
               <div>
                 <span className="font-mono text-xs text-neutral-400 block mb-6">03 / DI COLOR &amp; FINISHING</span>
                 <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
@@ -238,7 +243,7 @@ export default function HomePage() {
                 <p>· High-Fashion Commercial Beauty Grades</p>
                 <p>· Theatrical DCP &amp; Broadcast HDR/SDR</p>
               </div>
-            </div>
+            </GlassPanel>
           </div>
         </div>
       </section>
@@ -288,7 +293,7 @@ export default function HomePage() {
 
             {/* Portal Interface Preview */}
             <div className="lg:col-span-7">
-              <div className="border border-neutral-800 bg-black p-4 sm:p-6">
+              <GlassPanel elevation={2} className="p-4 sm:p-6">
                 <div className="flex items-center justify-between pb-3 border-b border-neutral-900 mb-4 font-mono text-[11px] text-neutral-400">
                   <span>FRAMES.FIXITINPOST.IN · SUITE MONITOR</span>
                   <span className="text-white">LIVE PIPELINE</span>
@@ -320,14 +325,15 @@ export default function HomePage() {
                     <span className="text-white font-medium block">APPROVED</span>
                   </div>
                 </div>
-              </div>
+              </GlassPanel>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Works Grid */}
-      <section className="py-24 bg-black border-b border-neutral-900">
+      <section className="py-24 bg-black border-b border-neutral-900 texture-band">
+        <ProceduralTexture variant="mesh" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
             <div>
@@ -402,7 +408,8 @@ export default function HomePage() {
 
       {/* Direct Studio Inquiry Slate */}
       <section className="py-24 bg-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <GlassPanel className="max-w-4xl mx-auto p-6 sm:p-10 text-center">
+          <ProceduralTexture variant="grain" />
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
             Commissioning &amp; Bookings
           </p>
@@ -426,7 +433,7 @@ export default function HomePage() {
               hello@fixitinpost.in
             </a>
           </div>
-        </div>
+        </GlassPanel>
       </section>
 
       {/* Showreel Video Modal */}

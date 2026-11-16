@@ -11,9 +11,10 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 40);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,7 +32,7 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
         isScrolled
-          ? 'bg-black/90 backdrop-blur-md border-b border-neutral-900'
+          ? 'glass-panel glass-dark glass-elevation-1 glass-nav'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -85,6 +86,7 @@ export function Navbar() {
               className="md:hidden text-white p-2 hover:bg-neutral-900 transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle navigation"
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>

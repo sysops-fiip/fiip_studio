@@ -1,5 +1,8 @@
 'use client';
 
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
@@ -62,7 +65,7 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-4"
           >
-            <div className="p-6 border border-neutral-800 bg-neutral-950">
+            <GlassPanel className="p-6">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-neutral-800 bg-neutral-900 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-white" />
@@ -74,9 +77,9 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </GlassPanel>
 
-            <div className="p-6 border border-neutral-800 bg-neutral-950">
+            <GlassPanel className="p-6">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-neutral-800 bg-neutral-900 flex items-center justify-center shrink-0">
                   <Mail className="w-5 h-5 text-white" />
@@ -91,9 +94,9 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-            </div>
+            </GlassPanel>
 
-            <div className="p-6 border border-neutral-800 bg-neutral-950">
+            <GlassPanel className="p-6">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-neutral-800 bg-neutral-900 flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5 text-white" />
@@ -110,9 +113,9 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-            </div>
+            </GlassPanel>
 
-            <div className="p-6 border border-neutral-800 bg-neutral-950">
+            <GlassPanel className="p-6">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-neutral-800 bg-neutral-900 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5 text-white" />
@@ -124,7 +127,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </GlassPanel>
           </motion.div>
 
           {/* Contact Form */}
@@ -135,7 +138,9 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <form onSubmit={handleSubmit} className="p-8 sm:p-10 border border-neutral-800 bg-neutral-950">
+            <GlassPanel elevation={2} className="p-8 sm:p-10">
+              <ProceduralTexture variant="grain" />
+            <form onSubmit={handleSubmit}>
               <h2 className="text-xl font-bold uppercase tracking-tight text-white mb-6">Production Brief</h2>
 
               {submitted && (
@@ -250,6 +255,7 @@ export default function ContactPage() {
                 </button>
               </div>
             </form>
+            </GlassPanel>
           </motion.div>
         </div>
       </section>

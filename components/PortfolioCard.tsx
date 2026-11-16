@@ -1,5 +1,8 @@
 'use client';
 
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, X } from 'lucide-react';
@@ -40,8 +43,10 @@ export function PortfolioCard({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay, duration: 0.4 }}
         viewport={{ once: true }}
-        className="group relative overflow-hidden border border-neutral-800 bg-neutral-950 hover:border-neutral-600 transition-colors flex flex-col"
+        className="group h-full"
       >
+      <GlassPanel className="glass-interactive overflow-hidden h-full flex flex-col">
+        <ProceduralTexture variant="grain" />
         {/* Video Thumbnail / Preview Container */}
         <div className="relative aspect-video w-full overflow-hidden bg-black">
           <img
@@ -114,6 +119,7 @@ export function PortfolioCard({
             </div>
           )}
         </div>
+      </GlassPanel>
       </motion.div>
 
       {/* Embedded Video Modal */}

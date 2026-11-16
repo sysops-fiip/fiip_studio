@@ -1,5 +1,8 @@
 'use client';
 
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
@@ -10,7 +13,8 @@ export function Footer() {
   return (
     <footer className="bg-black border-t border-neutral-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <GlassPanel className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12 p-6 sm:p-8">
+          <ProceduralTexture variant="grain" />
           {/* Brand */}
           <div className="md:col-span-1">
             <Image
@@ -113,7 +117,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-        </div>
+        </GlassPanel>
 
         {/* Bottom Slate */}
         <div className="border-t border-neutral-900 pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-neutral-400">

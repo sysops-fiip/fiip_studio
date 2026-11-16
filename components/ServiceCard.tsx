@@ -1,5 +1,8 @@
 'use client';
 
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
@@ -25,8 +28,10 @@ export function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.4 }}
       viewport={{ once: true }}
-      className="p-8 border border-neutral-800 bg-neutral-950 hover:border-neutral-600 transition-colors h-full flex flex-col justify-between"
+      className="h-full"
     >
+      <GlassPanel className="glass-interactive p-8 h-full flex flex-col justify-between">
+        <ProceduralTexture variant="grain" />
       <div>
         <div className="w-12 h-12 border border-neutral-800 bg-neutral-900 flex items-center justify-center mb-6">
           <Icon className="w-5 h-5 text-white" />
@@ -51,6 +56,7 @@ export function ServiceCard({
       >
         Inquire for Project
       </Link>
+      </GlassPanel>
     </motion.div>
   );
 }

@@ -85,3 +85,78 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
+
+/* Shared optical surfaces. Pseudo layers never intercept content. */
+.glass-panel {
+  --glass-fill: rgb(255 255 255 / 0.035);
+  --glass-edge: rgb(255 255 255 / 0.18);
+  position: relative;
+  isolation: isolate;
+  border-radius: 14px;
+  background: var(--glass-fill);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(160deg, var(--glass-edge), rgb(255 255 255 / 0.035) 45%, rgb(255 255 255 / 0.07));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+.glass-panel::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.18), transparent);
+  pointer-events: none;
+}
+.glass-light { --glass-fill: rgb(0 0 0 / 0.03); --glass-edge: rgb(0 0 0 / 0.18); }
+.glass-tinted { --glass-fill: rgb(110 110 110 / 0.08); }
+.glass-elevation-0 { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05); }
+.glass-elevation-1 { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 8px 28px rgb(0 0 0 / 0.12); }
+.glass-elevation-2 { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.09), 0 14px 44px rgb(0 0 0 / 0.2); }
+.glass-interactive { transition: translate 250ms ease, box-shadow 250ms ease; }
+@media (hover: hover) {
+  .glass-interactive:hover { translate: 0 -3px; --glass-edge: rgb(255 255 255 / 0.32); }
+  .glass-interactive:hover > .procedural-texture { opacity: 0.04; }
+}
+.glass-nav { position: fixed; --glass-fill: rgb(5 5 5 / 0.78); border-radius: 0 0 14px 14px; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-panel { background: rgb(19 19 19 / 0.97); }
+  .glass-light { background: rgb(242 242 242 / 0.97); }
+}
+.procedural-texture { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.03; border-radius: inherit; transition: opacity 250ms ease; }
+.texture-grain { opacity: 0.035; }
+.texture-dots { mask-image: radial-gradient(ellipse at center, black, transparent 80%); }
+.texture-band { position: relative; }
+.site-grain { position: fixed; z-index: 1; opacity: 0.025; }
+/* Backgrounds paint below the fixed grain; section content paints above it. */
+body { isolation: isolate; }
+footer > div,
+main section > div:not([aria-hidden="true"]) { position: relative; z-index: 2; }
+.texture-band { isolation: auto; }
+.texture-band > .procedural-texture { z-index: 0; }
+.glass-panel > .procedural-texture { z-index: -1; }
+.hero-optics { background: radial-gradient(ellipse at 78% 30%, #151515 0%, #080808 45%, #050505 85%); }
+@media (max-width: 767px) {
+  .texture-dots, .texture-mesh { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .glass-interactive:hover { translate: none; }
+  /* Framer entrance transforms must not leave content hidden. */
+  [style*="opacity: 0"] { opacity: 1 !important; transform: none !important; }
+}

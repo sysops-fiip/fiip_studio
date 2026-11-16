@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { GlassPanel } from '@/components/ui/GlassPanel';
 import * as THREE from 'three';
 
 export function Cinematic3DHero() {
@@ -43,7 +44,7 @@ export function Cinematic3DHero() {
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 0.72;
     container.appendChild(renderer.domElement);
 
     // A single large studio softbox provides broad, neutral metal reflections.
@@ -62,10 +63,10 @@ export function Cinematic3DHero() {
     softboxGeometry.dispose();
     softboxMaterial.dispose();
 
-    const key = new THREE.DirectionalLight(0xffffff, 3);
+    const key = new THREE.DirectionalLight(0xffffff, 1.6);
     key.position.set(-5, 7, 8);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xffffff, 2);
+    const rim = new THREE.DirectionalLight(0xffffff, 1);
     rim.position.set(5, 2, -4);
     scene.add(rim);
 
@@ -73,17 +74,18 @@ export function Cinematic3DHero() {
       color: 0x242424, metalness: 0.95, roughness: 0.36,
     });
     const titanium = new THREE.MeshStandardMaterial({
-      color: 0x777777, metalness: 1, roughness: 0.3,
+      color: 0x363636, metalness: 1, roughness: 0.3,
     });
     const bladeMaterial = new THREE.MeshStandardMaterial({
       color: 0x383838, metalness: 0.9, roughness: 0.4, side: THREE.DoubleSide,
     });
     const glassMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xdadada, metalness: 0, roughness: 0.12,
-      transmission: 0.65, thickness: 0.12, ior: 1.5,
-      clearcoat: 1, clearcoatRoughness: 0.1, envMapIntensity: 0.7,
+      color: 0x454545, metalness: 0, roughness: 0.12,
+      transmission: 0.18, thickness: 0.12, ior: 1.5,
+      clearcoat: 0.35, clearcoatRoughness: 0.1, envMapIntensity: 0.3,
     });
     const assembly = new THREE.Group();
+    assembly.scale.setScalar(0.6);
     scene.add(assembly);
 
     // All cylinder axes run along Z. Annular faces leave a real optical cavity.
@@ -182,6 +184,9 @@ export function Cinematic3DHero() {
       const height = Math.max(container.clientHeight, 1);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      // Position at the right third in projected space for every aspect ratio.
+      const viewWidth = 2 * (camera.aspect < 1 ? 15 : 12) * Math.tan(THREE.MathUtils.degToRad(17)) * camera.aspect;
+      assembly.position.set(viewWidth * 0.29, 0.8, 0);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(width, height);
       if (motionQuery.matches) render(performance.now());
@@ -221,33 +226,32 @@ export function Cinematic3DHero() {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
       {/* Responsive optical product shot */}
         <div
           ref={containerRef}
-          className="absolute inset-0 w-full h-full"
-          style={{ background: 'radial-gradient(ellipse at 48% 38%, #242424 0%, #101010 45%, #050505 85%)' }}
+          className="absolute inset-0 w-full h-full hero-optics"
         />
 
       {/* Film Slate Telemetry HUD (Desktop Only - Pure Monochrome) */}
       {!isMobile && (
-        <div className="hidden lg:flex absolute bottom-8 left-8 right-8 justify-between items-end pointer-events-none text-[11px] font-mono text-neutral-400">
-          <div className="space-y-1 bg-black/60 backdrop-blur-md px-4 py-2.5 rounded-none border border-neutral-800">
+        <div className="hidden md:flex absolute z-10 bottom-4 left-4 right-4 lg:bottom-8 lg:left-8 lg:right-8 gap-4 justify-between items-end pointer-events-none text-[11px] font-mono text-neutral-400">
+          <GlassPanel className="space-y-1 px-4 py-2.5">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-white" />
               <span className="text-white font-medium tracking-wider">OPTICS · 50MM ANAMORPHIC T1.3</span>
             </div>
             <p className="text-neutral-400">ACES 2065-1 / DCI-P3 · ARRI LOG-C4 FINISHING</p>
             <p className="text-neutral-300">10G NVME COLLABORATIVE TIMELINES</p>
-          </div>
+          </GlassPanel>
 
-          <div className="text-right space-y-1 bg-black/60 backdrop-blur-md px-4 py-2.5 rounded-none border border-neutral-800">
+          <GlassPanel className="text-right space-y-1 px-4 py-2.5">
             <p className="text-neutral-400">REF: 24.000 FPS · REC 709 / MASTER</p>
             <p className="text-white font-semibold tracking-widest">{timecode}</p>
             <p className="text-[10px] text-neutral-300">
               {isInteracting ? 'MANUAL ROTATION ACTIVE' : 'DRAG TO ROTATE 3D LENS'}
             </p>
-          </div>
+          </GlassPanel>
         </div>
       )}
     </div>

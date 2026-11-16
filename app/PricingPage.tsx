@@ -1,5 +1,8 @@
 'use client';
 
+import { GlassPanel } from '@/components/ui/GlassPanel';
+import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
+
 import { motion } from 'framer-motion';
 import { PricingCalculator } from '@/components/PricingCalculator';
 import pricingData from '@/data/pricing.json';
@@ -60,12 +63,10 @@ export default function PricingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08, duration: 0.4 }}
               viewport={{ once: true }}
-              className={`p-8 border flex flex-col justify-between transition-colors ${
-                model.featured
-                  ? 'border-white bg-neutral-950'
-                  : 'border-neutral-800 bg-black hover:border-neutral-700'
-              }`}
+              className="h-full"
             >
+              <GlassPanel tone={model.featured ? 'tinted' : 'dark'} elevation={model.featured ? 2 : 1} className="p-8 h-full flex flex-col justify-between glass-interactive">
+                <ProceduralTexture variant="grain" />
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
@@ -117,6 +118,7 @@ export default function PricingPage() {
                   Consult on {model.name}
                 </Link>
               </div>
+              </GlassPanel>
             </motion.div>
           ))}
         </div>
