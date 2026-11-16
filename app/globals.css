@@ -222,7 +222,9 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
     radial-gradient(46% 42% at 86% 12%, rgb(255 255 255 / 0.05), transparent 76%),
     radial-gradient(rgb(255 255 255 / 0.16) 1px, transparent 1px);
   background-size: auto, auto, 24px 24px;
-  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 25%, transparent 85%);
-  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 25%, transparent 85%);
-  opacity: 0.55;
+  /* Fade out well before the container edge: the stage sits on max-width
+     wrappers, so a field that reaches the edge draws a visible rectangle. */
+  -webkit-mask-image: radial-gradient(ellipse 64% 58% at 50% 42%, black 8%, transparent 76%);
+  mask-image: radial-gradient(ellipse 64% 58% at 50% 42%, black 8%, transparent 76%);
+  opacity: 0.5;
 }
