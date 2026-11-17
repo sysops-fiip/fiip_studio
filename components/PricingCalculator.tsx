@@ -56,21 +56,21 @@ export function PricingCalculator() {
                 onClick={() => setProjectType(t.id as any)}
                 className={`p-4 text-left border transition-colors cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-white text-black border-white'
+                    ? 'accent-soft-bg accent-line text-white'
                     : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
                 }`}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <Icon className={`w-4 h-4 ${isSelected ? 'text-black' : 'text-neutral-400'}`} />
-                  <span className={`text-[10px] font-mono uppercase ${isSelected ? 'text-black font-bold' : 'text-neutral-400'}`}>
+                  <Icon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-neutral-400'}`} />
+                  <span className={`text-[10px] font-mono uppercase ${isSelected ? 'text-white font-bold' : 'text-neutral-400'}`}>
                     {isSelected ? 'SELECTED' : 'OPTION'}
                   </span>
                 </div>
                 <div>
-                  <p className={`text-sm font-bold uppercase tracking-tight mb-1 ${isSelected ? 'text-black' : 'text-white'}`}>
+                  <p className="text-sm font-bold uppercase tracking-tight mb-1 text-white">
                     {t.label}
                   </p>
-                  <p className={`text-xs ${isSelected ? 'text-neutral-700' : 'text-neutral-400'}`}>{t.desc}</p>
+                  <p className="text-xs text-neutral-400">{t.desc}</p>
                 </div>
               </button>
             );
@@ -93,7 +93,7 @@ export function PricingCalculator() {
                 onClick={() => toggleService(srv)}
                 className={`px-4 py-3 text-left border transition-colors cursor-pointer flex items-center justify-between uppercase ${
                   isSelected
-                    ? 'bg-neutral-200 text-black border-neutral-200 font-semibold'
+                    ? 'accent-soft-bg accent-line text-white font-semibold'
                     : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
                 }`}
               >
@@ -122,14 +122,14 @@ export function PricingCalculator() {
               onClick={() => setTimeline(item.id as any)}
               className={`p-3 border text-center transition-colors cursor-pointer ${
                 timeline === item.id
-                  ? 'bg-white text-black border-white'
+                  ? 'accent-soft-bg accent-line text-white'
                   : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
               }`}
             >
-              <p className={`text-xs font-mono font-bold uppercase mb-0.5 ${timeline === item.id ? 'text-black' : 'text-white'}`}>
+              <p className="text-xs font-mono font-bold uppercase mb-0.5 text-white">
                 {item.label}
               </p>
-              <p className={`text-[10px] font-mono ${timeline === item.id ? 'text-neutral-700' : 'text-neutral-400'}`}>
+              <p className="text-[10px] font-mono text-neutral-400">
                 {item.desc}
               </p>
             </button>
@@ -143,7 +143,7 @@ export function PricingCalculator() {
           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 block mb-1">
             Production Scope Specification
           </span>
-          <h4 className="text-base font-bold uppercase tracking-tight text-white">
+          <h4 className="text-base font-bold uppercase tracking-tight accent-text">
             {projectTypes.find(p => p.id === projectType)?.label} · {selectedServices.length} Disciplines
           </h4>
           <p className="text-xs font-mono text-neutral-400 mt-1">

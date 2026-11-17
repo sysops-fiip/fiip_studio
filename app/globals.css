@@ -228,3 +228,17 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
   mask-image: radial-gradient(ellipse 64% 58% at 50% 42%, black 8%, transparent 76%);
   opacity: 0.5;
 }
+
+/* Commissioning signal colour: available only inside the pricing page. */
+.accent-commission {
+  --accent: 202 148 62;
+  --accent-soft: rgb(202 148 62 / 0.14);
+  --accent-line: rgb(202 148 62 / 0.45);
+}
+.accent-commission .accent-text { color: rgb(var(--accent)); }
+.accent-commission .accent-bg { background-color: rgb(var(--accent)); }
+.accent-commission .accent-line { border-color: var(--accent-line); }
+.accent-commission .accent-soft-bg { background-color: var(--accent-soft); }
+.accent-commission .accent-bg:hover {
+  background-color: color-mix(in srgb, rgb(var(--accent)), white 12%);
+}

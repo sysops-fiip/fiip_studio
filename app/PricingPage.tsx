@@ -10,11 +10,11 @@ import Link from 'next/link';
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
+    <div className="accent-commission min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Header */}
       <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
+          <p className="font-mono text-xs uppercase tracking-[0.25em] accent-text mb-3">
             Commissioning &amp; Scope
           </p>
           <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
@@ -59,13 +59,16 @@ export default function PricingPage() {
             >
               <GlassPanel tone={model.featured ? 'tinted' : 'dark'} elevation={model.featured ? 2 : 1} className="p-8 h-full flex flex-col justify-between glass-interactive">
                 <ProceduralTexture variant="grain" />
+                {model.featured && (
+                  <span aria-hidden="true" className="absolute inset-x-0 top-0 border-t accent-line pointer-events-none" />
+                )}
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+                  <span className="font-mono text-xs uppercase tracking-wider accent-text">
                     SLATE 0{index + 1}
                   </span>
                   {model.featured && (
-                    <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-white text-white">
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border accent-line accent-text">
                       COMMERCIAL STANDARD
                     </span>
                   )}
@@ -103,7 +106,7 @@ export default function PricingPage() {
                   href={`/contact?tier=${model.id}`}
                   className={`w-full block text-center py-3.5 font-mono text-xs uppercase tracking-wider font-semibold transition-colors ${
                     model.featured
-                      ? 'bg-white text-black hover:bg-neutral-200'
+                      ? 'accent-bg text-black'
                       : 'border border-neutral-800 text-neutral-300 hover:border-white hover:text-white'
                   }`}
                 >
