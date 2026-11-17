@@ -2,213 +2,124 @@
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { useVisualQuality } from './ui/VisualQuality';
 
 export function Cinematic3DHero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
+  const container = useRef<HTMLDivElement>(null);
+  const { tier, canAnimate, devicePixelBudget, reportFrame, bindContext, reportFailure } = useVisualQuality();
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.72;
-    container.appendChild(renderer.domElement);
-
-    // A single large studio softbox provides broad, neutral metal reflections.
-    const studio = new THREE.Scene();
-    studio.background = new THREE.Color(0x161616);
-    const softboxGeometry = new THREE.PlaneGeometry(9, 12);
-    const softboxMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-    const softbox = new THREE.Mesh(softboxGeometry, softboxMaterial);
-    softbox.position.set(-5, 7, 8);
-    softbox.lookAt(0, 0, 0);
-    studio.add(softbox);
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    const environment = pmrem.fromScene(studio, 0.08);
-    scene.environment = environment.texture;
-    pmrem.dispose();
-    softboxGeometry.dispose();
-    softboxMaterial.dispose();
-
-    const key = new THREE.DirectionalLight(0xffffff, 1.6);
-    key.position.set(-5, 7, 8);
-    scene.add(key);
-    const rim = new THREE.DirectionalLight(0xffffff, 1);
-    rim.position.set(5, 2, -4);
-    scene.add(rim);
-
-    const graphite = new THREE.MeshStandardMaterial({
-      color: 0x242424, metalness: 0.95, roughness: 0.36,
-    });
-    const titanium = new THREE.MeshStandardMaterial({
-      color: 0x363636, metalness: 1, roughness: 0.3,
-    });
-    const bladeMaterial = new THREE.MeshStandardMaterial({
-      color: 0x383838, metalness: 0.9, roughness: 0.4, side: THREE.DoubleSide,
-    });
-    const glassMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0x454545, metalness: 0, roughness: 0.12,
-      transmission: 0.18, thickness: 0.12, ior: 1.5,
-      clearcoat: 0.35, clearcoatRoughness: 0.1, envMapIntensity: 0.3,
-    });
-    const assembly = new THREE.Group();
-    assembly.scale.setScalar(0.6);
-    scene.add(assembly);
-
-    // All cylinder axes run along Z. Annular faces leave a real optical cavity.
-    const addRing = (outer: number, inner: number, depth: number, z: number,
-      material: THREE.MeshStandardMaterial) => {
-      const wall = new THREE.Mesh(
-        new THREE.CylinderGeometry(outer, outer, depth, 96, 1, true), material,
-      );
-      wall.rotation.x = Math.PI / 2;
-      wall.position.z = z;
-      assembly.add(wall);
-      const innerMaterial = material.clone();
-      innerMaterial.side = THREE.BackSide;
-      const inside = new THREE.Mesh(
-        new THREE.CylinderGeometry(inner, inner, depth, 96, 1, true), innerMaterial,
-      );
-      inside.rotation.x = Math.PI / 2;
-      inside.position.z = z;
-      assembly.add(inside);
-      for (const side of [-1, 1]) {
-        const face = new THREE.Mesh(new THREE.RingGeometry(inner, outer, 96), material);
-        face.position.z = z + side * depth / 2;
-        if (side < 0) face.rotation.y = Math.PI;
-        assembly.add(face);
-      }
-    };
-    // Five machined barrel steps taper toward the rear mount.
-    [
-      [2.65, 2.35, 0.38, 1.15],
-      [2.53, 2.28, 0.56, 0.68],
-      [2.4, 2.2, 0.72, 0.04],
-      [2.21, 2.03, 0.6, -0.62],
-      [1.98, 1.8, 0.52, -1.18],
-    ].forEach(([outer, inner, depth, z]) => addRing(outer, inner, depth, z, graphite));
-    addRing(2.67, 2.34, 0.055, 1.37, titanium);
-    addRing(2.43, 2.2, 0.07, 0.33, titanium);
-    addRing(2.08, 1.72, 0.17, -1.5, titanium);
-    // Fine circumferential machining, with no crossing geometry.
-    for (let i = 0; i < 14; i++) {
-      addRing(2.545, 2.515, 0.012, 0.44 + i * 0.032, graphite);
-    }
-    addRing(2.3, 1.84, 0.18, 0.89, graphite);
-
-    const iris = new THREE.Group();
-    iris.position.z = 0.63;
-    assembly.add(iris);
-    const bladeShape = new THREE.Shape();
-    bladeShape.moveTo(0.68, -0.28);
-    bladeShape.quadraticCurveTo(1.15, -1.12, 1.83, -0.72);
-    bladeShape.lineTo(2.04, 0.45);
-    bladeShape.quadraticCurveTo(1.18, 0.25, 0.68, -0.28);
-    const bladeGeometry = new THREE.ExtrudeGeometry(bladeShape, {
-      depth: 0.012, bevelEnabled: false, curveSegments: 20,
-    });
-    for (let i = 0; i < 8; i++) {
-      const blade = new THREE.Mesh(bladeGeometry, bladeMaterial);
-      blade.rotation.z = i * Math.PI / 4;
-      blade.position.z = i * 0.014;
-      iris.add(blade);
-    }
-    // Recessed anamorphic glass: an oval optical surface, never a sphere.
-    const glass = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 0.08, 96), glassMaterial);
-    glass.rotation.x = Math.PI / 2;
-    glass.scale.z = 0.82;
-    glass.position.z = 1.03;
-    assembly.add(glass);
-
-    let pointerX = 0;
-    let pointerY = 0;
-    let scroll = 0;
-    let frame = 0;
-    let lastTime = 0;
-    const onPointerMove = (event: PointerEvent) => {
-      pointerX = THREE.MathUtils.clamp(event.clientX / window.innerWidth - 0.5, -0.5, 0.5);
-      pointerY = THREE.MathUtils.clamp(event.clientY / window.innerHeight - 0.5, -0.5, 0.5);
-    };
-    const render = (time: number) => {
-      const dt = Math.min((time - lastTime) / 1000, 0.05);
-      lastTime = time;
-      const reduced = motionQuery.matches;
-      const ease = 1 - Math.exp(-dt * 3);
-      scroll = reduced ? 0 : THREE.MathUtils.lerp(scroll,
-        THREE.MathUtils.clamp(window.scrollY / Math.max(window.innerHeight, 1), 0, 1), ease);
-      assembly.rotation.set(-0.12 + scroll * 0.12, -0.42 + scroll * 0.24, -0.08);
-      if (!reduced) iris.rotation.z += dt * 0.035;
-      else iris.rotation.z = 0;
-      camera.position.x = reduced ? 0 : THREE.MathUtils.lerp(camera.position.x, pointerX * 0.32, ease);
-      camera.position.y = reduced ? 0.35 : THREE.MathUtils.lerp(camera.position.y, 0.35 - pointerY * 0.22, ease);
-      camera.position.z = (camera.aspect < 1 ? 15 : 12) - scroll * 0.7;
-      camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
-      if (!reduced) frame = requestAnimationFrame(render);
-    };
-    const resize = () => {
-      const width = Math.max(container.clientWidth, 1);
-      const height = Math.max(container.clientHeight, 1);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      // Position at the right third in projected space for every aspect ratio.
-      const viewWidth = 2 * (camera.aspect < 1 ? 15 : 12) * Math.tan(THREE.MathUtils.degToRad(17)) * camera.aspect;
-      assembly.position.set(viewWidth * 0.29, 0.8, 0);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(width, height);
-      if (motionQuery.matches) render(performance.now());
-    };
-    const onMotionChange = () => {
-      cancelAnimationFrame(frame);
-      lastTime = performance.now();
-      render(lastTime);
-    };
-    const observer = new ResizeObserver(resize);
-    observer.observe(container);
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-    motionQuery.addEventListener('change', onMotionChange);
-    resize();
-    onMotionChange();
-
-    return () => {
-      cancelAnimationFrame(frame);
-      observer.disconnect();
-      window.removeEventListener('pointermove', onPointerMove);
-      motionQuery.removeEventListener('change', onMotionChange);
-      const geometries = new Set<THREE.BufferGeometry>();
-      const materials = new Set<THREE.Material>();
-      scene.traverse(object => {
-        if (object instanceof THREE.Mesh) {
-          geometries.add(object.geometry);
-          const meshMaterials = Array.isArray(object.material) ? object.material : [object.material];
-          meshMaterials.forEach(material => materials.add(material));
+    if (!canAnimate || !container.current) return;
+    const host = container.current;
+    let dispose = () => {};
+    let cancelled = false;
+    // Two paint opportunities leave the server-rendered headline ahead of GPU setup.
+    let deferred = requestAnimationFrame(() => { deferred = requestAnimationFrame(() => {
+      if (cancelled) return;
+      let renderer: THREE.WebGLRenderer;
+      try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: tier === 'full', powerPreference: 'low-power' }); }
+      catch { reportFailure(); return; }
+      const unbind = bindContext(renderer.domElement);
+      renderer.domElement.style.cssText = 'width:100%;height:100%;opacity:0';
+      host.appendChild(renderer.domElement);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(32, 1, .1, 50);
+      const lens = new THREE.Group(); scene.add(lens);
+      const dark = new THREE.MeshStandardMaterial({ color: 0x181818, metalness: .55, roughness: .32, side: THREE.DoubleSide });
+      const edge = new THREE.MeshStandardMaterial({ color: 0x777777, metalness: .65, roughness: .24, side: THREE.DoubleSide });
+      const blades = new THREE.MeshStandardMaterial({ vertexColors: true, metalness: .35, roughness: .48, side: THREE.DoubleSide });
+      const buckets: THREE.BufferGeometry[][] = [[], [], []];
+      const ring = (outer: number, inner: number, depth: number, z: number, bucket = 0) => {
+        const wall = new THREE.CylinderGeometry(outer, outer, depth, 80, 1, true); wall.rotateX(Math.PI / 2); wall.translate(0, 0, z); buckets[bucket].push(wall);
+        const cavity = new THREE.CylinderGeometry(inner, inner, depth, 80, 1, true); cavity.rotateX(Math.PI / 2); cavity.translate(0, 0, z); buckets[bucket].push(cavity);
+        for (const side of [-1, 1]) { const face = new THREE.RingGeometry(inner, outer, 80); face.translate(0, 0, z + side * depth / 2); buckets[bucket].push(face); }
+      };
+      ring(2.55, 2.21, .35, 1.15); ring(2.45, 2.08, .8, .57); ring(2.26, 1.85, .8, -.23); ring(1.98, 1.5, .6, -.93);
+      ring(2.57, 2.53, .025, 1.34, 1); ring(2.23, 2.20, .025, 1.34, 1); ring(2.47, 2.4, .025, .93, 1); ring(2.28, 2.19, .025, -.01, 1);
+      // Repeated machining is merged into the barrel's single draw call.
+      for (let i = 0; i < 20; i++) ring(2.47, 2.44, .014, .22 + i * .03);
+      ring(2.19, 1.78, .36, .74); ring(1.8, 1.48, .22, .33);
+      // Swept sectors meet at a regular nonagon: no star-shaped gaps between blades.
+      const bladeCount = 9, step = Math.PI * 2 / bladeCount;
+      for (let i = 0; i < bladeCount; i++) {
+        const shape = new THREE.Shape();
+        const inner = .53, outer = 1.84, sweep = .48;
+        shape.moveTo(inner, 0);
+        shape.lineTo(outer * Math.cos(sweep), outer * Math.sin(sweep));
+        shape.absarc(0, 0, outer, sweep, sweep + step, false);
+        shape.lineTo(inner * Math.cos(step), inner * Math.sin(step));
+        shape.closePath();
+        const g = new THREE.ShapeGeometry(shape, 24);
+        g.rotateZ(i * step); g.translate(0, 0, .21);
+        const colors = [];
+        const positions = g.getAttribute('position');
+        for (let v = 0; v < positions.count; v++) {
+          const radius = Math.hypot(positions.getX(v), positions.getY(v));
+          const shade = .035 + (i % 3) * .012 + .025 * (radius / outer);
+          colors.push(shade, shade, shade);
         }
+        g.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        buckets[2].push(g);
+      }
+      buckets.forEach((parts, i) => { const merged = mergeGeometries(parts); parts.forEach(g => g.dispose()); if (merged) lens.add(new THREE.Mesh(merged, [dark, edge, blades][i])); });
+      const optical = new THREE.ShaderMaterial({
+        transparent: true, depthWrite: false,
+        vertexShader: `varying vec2 vUv; varying vec3 vNormal; varying vec3 vView;
+          void main(){vUv=uv; vec4 p=modelViewMatrix*vec4(position,1.);vNormal=normalize(normalMatrix*normal);vView=-p.xyz;gl_Position=projectionMatrix*p;}`,
+        fragmentShader: `varying vec2 vUv; varying vec3 vNormal; varying vec3 vView;
+          void main(){vec2 p=(vUv-.5)*2.;float r=length(p);vec2 q=p*(1.+.035*r*r);
+          float fres=pow(1.-abs(dot(normalize(vNormal),normalize(vView))),3.);
+          float box1=exp(-pow(abs((q.x+.48+q.y*.22)/.115),4.)-pow(abs((q.y-.24)/.52),4.));
+          float box2=exp(-pow(abs((q.x-.59+q.y*.15)/.045),4.)-pow(abs((q.y+.12)/.4),4.));
+          float a=atan(p.y,p.x);float polygon=cos(3.14159265/9.)/cos(mod(a+3.14159265/9.,6.2831853/9.)-3.14159265/9.);
+          float aperture=smoothstep(.29*polygon,.32*polygon,r);
+          float value=clamp(.008+fres*.33+box1*.24+box2*.42,0.,.72);
+          gl_FragColor=vec4(vec3(value),clamp(.12+fres*.5+(box1+box2)*.65+(1.-aperture)*.5,0.,.88));}`,
       });
-      geometries.forEach(geometry => geometry.dispose());
-      materials.forEach(material => material.dispose());
-      environment.dispose();
-      renderer.dispose();
-      renderer.domElement.remove();
-    };
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
-      {/* Responsive optical product shot */}
-        <div
-          ref={containerRef}
-          className="absolute inset-0 w-full h-full hero-optics"
-        />
-
-      {/* Telemetry HUD removed: read as gimmicky overlay noise and spilled over the
-          section below. Hero is a clean product shot now. */}
-    </div>
-  );
+      const glass = new THREE.Mesh(new THREE.CircleGeometry(1.77, 96), optical); glass.position.z = .48; lens.add(glass);
+      const black = new THREE.MeshBasicMaterial({ color: 0x010101 });
+      const back = new THREE.Mesh(new THREE.CircleGeometry(1.5, 80), black); back.position.z = -.4; lens.add(back);
+      scene.add(new THREE.AmbientLight(0xffffff, .5));
+      const key = new THREE.DirectionalLight(0xffffff, 4); key.position.set(-3, 5, 6); scene.add(key);
+      const rim = new THREE.DirectionalLight(0xffffff, 2); rim.position.set(5, -1, 2); scene.add(rim);
+      let frame = 0, last = 0, visible = false, mouseX = 0, mouseY = 0, portraitFrame = false;
+      const fine = matchMedia('(hover: hover) and (pointer: fine)');
+      const pointer = (e: PointerEvent) => { if (!fine.matches || e.pointerType !== 'mouse' || !e.isTrusted) return; mouseX = (e.clientX / innerWidth - .5) * .12; mouseY = (e.clientY / innerHeight - .5) * .09; };
+      const render = (time: number) => {
+        frame = 0;
+        if (!visible || document.hidden || cancelled) return;
+        if (last) reportFrame(time - last); last = time;
+        lens.rotation.y += (-.48 + mouseX - lens.rotation.y) * .045;
+        lens.rotation.x += ((portraitFrame ? .3 : .16) + mouseY - lens.rotation.x) * .045;
+        try { renderer.render(scene, camera); renderer.domElement.style.opacity = '1'; host.parentElement?.classList.add('lens-ready'); }
+        catch { reportFailure(); return; }
+        frame = requestAnimationFrame(render);
+      };
+      const resume = () => { cancelAnimationFrame(frame); last = 0; if (visible && !document.hidden) frame = requestAnimationFrame(render); };
+      const resize = () => {
+        const w = Math.max(host.clientWidth, 1), h = Math.max(host.clientHeight, 1);
+        const portrait = w < 768; portraitFrame = portrait;
+        camera.aspect = w / h; camera.position.set(0, 0, portrait ? 10.8 : 10); camera.updateProjectionMatrix();
+        // Portrait: a high, cropped three-quarter product study, with copy below.
+        lens.position.set(portrait ? .85 : 2.7, portrait ? 1.65 : .1, 0);
+        lens.scale.setScalar(portrait ? .48 : .78);
+        lens.rotation.set(portrait ? .3 : .16, -.48, portrait ? -.24 : -.1);
+        renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2, Math.sqrt(devicePixelBudget / (w * h))));
+        renderer.setSize(w, h, false); resume();
+      };
+      const sizing = new ResizeObserver(resize); sizing.observe(host);
+      const intersection = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; resume(); }); intersection.observe(host);
+      window.addEventListener('pointermove', pointer, { passive: true }); document.addEventListener('visibilitychange', resume);
+      resize();
+      dispose = () => { cancelAnimationFrame(frame); sizing.disconnect(); intersection.disconnect(); unbind(); window.removeEventListener('pointermove', pointer); document.removeEventListener('visibilitychange', resume);
+        scene.traverse(o => { if (o instanceof THREE.Mesh) o.geometry.dispose(); }); [dark, edge, blades, optical, black].forEach(m => m.dispose()); renderer.dispose(); renderer.domElement.remove(); host.parentElement?.classList.remove('lens-ready'); };
+    }); });
+    return () => { cancelled = true; cancelAnimationFrame(deferred); dispose(); };
+  }, [tier, canAnimate, devicePixelBudget, reportFrame, bindContext, reportFailure]);
+  return <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+    <div className="lens-poster"><div className="lens-poster-barrel"><div className="lens-poster-cavity"><div className="lens-poster-iris" /></div></div></div>
+    <div ref={container} className="absolute inset-0" />
+  </div>;
 }
-
 export default Cinematic3DHero;

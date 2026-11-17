@@ -9,7 +9,7 @@
         "Editor",
         "Pipeline architecture"
       ],
-      "image": "/team/iniyavan.jpg",
+      "image": null,
       "fallbackInitials": "IN",
       "bio": "Runs the studio end to end — creative direction, VFX production and supervision, and the editorial eye behind the cut. Builds the pipeline the studio works on, from ingest through delivery, and has VFX supervised, produced or edited credits across Tamil and Telugu features, OTT series and brand films.",
       "external": false
@@ -22,7 +22,7 @@
       "alsoDoes": [
         "Editorial support"
       ],
-      "image": "/team/udhay.jpg",
+      "image": null,
       "fallbackInitials": "UK",
       "bio": "Hands-on generalist covering the day-to-day VFX load — cleanups, paint, rig and wire removal, comps and plate fixes — with enough editorial sense to work straight off the timeline.",
       "external": false
@@ -36,7 +36,7 @@
         "Conform",
         "Mastering"
       ],
-      "image": "/team/ganesh.jpg",
+      "image": null,
       "fallbackInitials": "GA",
       "bio": "Cuts commercials and brand films, and carries the same work through conform and mastering so the approved cut is the delivered cut.",
       "external": false
@@ -49,7 +49,7 @@
       "alsoDoes": [
         "Colour (developing)"
       ],
-      "image": "/team/ahil.jpg",
+      "image": null,
       "fallbackInitials": "AH",
       "bio": "Owns finishing: conforms, online, and broadcast/theatrical masters. Also building out as a colourist under the studio's DI work.",
       "external": false
@@ -64,7 +64,7 @@
         "Editing",
         "Cinematography"
       ],
-      "image": "/team/kousik.jpg",
+      "image": null,
       "fallbackInitials": "KR",
       "bio": "Grades and conforms, with a cinematographer's eye for how the image was shot and a generalist's range across VFX and editorial.",
       "external": false
@@ -77,7 +77,7 @@
       "alsoDoes": [
         "Generative / AI-assisted VFX"
       ],
-      "image": "/team/sanjay.jpg",
+      "image": null,
       "fallbackInitials": "SK",
       "bio": "Editor working on story and narrative structure, and fluent in generative and AI-assisted techniques for shots that can't be got any other way.",
       "external": false
@@ -92,7 +92,7 @@
         "Grading",
         "Script and story"
       ],
-      "image": "/team/venkat.jpg",
+      "image": null,
       "fallbackInitials": "VE",
       "bio": "Supervises post from the studio side — schedules, handoffs and delivery — and edits. All-rounder across VFX, grade and story, which is what makes the supervision work.",
       "external": false
@@ -103,7 +103,7 @@
       "role": "Cinematographer",
       "specialty": "Long-running collaborator",
       "alsoDoes": [],
-      "image": "/team/balaji.jpg",
+      "image": null,
       "fallbackInitials": "BS",
       "bio": "Currently shooting the Asian Paints commercial with the studio.",
       "external": true
@@ -114,7 +114,7 @@
       "role": "Cinematographer",
       "specialty": "Long-running collaborator",
       "alsoDoes": [],
-      "image": "/team/shivraj.jpg",
+      "image": null,
       "fallbackInitials": "SH",
       "bio": "Shot The Akaali feature, graded at the studio; also the Pumbu Har ad series and other shorts and ads.",
       "external": true

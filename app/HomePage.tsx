@@ -6,9 +6,9 @@ import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { VideoDialog } from '@/components/ui/VideoDialog';
 import Link from 'next/link';
-import { Play, ArrowRight, ArrowUpRight, X } from 'lucide-react';
+import { Play, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { PortfolioCard } from '@/components/PortfolioCard';
 import { TeamCard } from '@/components/TeamCard';
 import projectsData from '@/data/projects.json';
@@ -42,54 +42,42 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       {/* Hero Section with Interactive 3D WebGL Monochromatic Optics */}
-      <section className="relative min-h-[94vh] pt-32 pb-20 flex items-center justify-center overflow-hidden border-b border-neutral-900">
+      <section className="relative pt-28 sm:pt-36 pb-20 overflow-hidden border-b border-neutral-900">
         {/* Monochromatic 3D Cinema Anamorphic Assembly */}
-        <Cinematic3DHero />
+        <div className="absolute inset-x-0 top-0 h-[650px] sm:h-[760px]"><Cinematic3DHero /></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left w-full">
           {/* Studio Discipline Monospace Slate */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 inline-block"
+          <div
+            className="mb-8 mt-52 md:mt-0 inline-block"
           >
             <p className="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-neutral-400 border-b border-neutral-800 pb-2">
               FIIP POST STUDIOS · EDITORIAL · VFX &amp; 3D · DI COLOR
             </p>
-          </motion.div>
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tightest mb-8 leading-[1.02] uppercase text-white"
+          <h1
+            className="text-[clamp(2rem,6.5vw,6rem)] font-black tracking-tightest mb-8 leading-[1.02] uppercase text-white"
           >
             Where Craft,
             <br />
             Cinematography
             <br />
             &amp; Post Converge.
-          </motion.h1>
+          </h1>
 
           {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base sm:text-lg text-neutral-400 mb-12 max-w-2xl mx-auto font-normal leading-relaxed"
+          <p
+            className="text-base sm:text-lg text-neutral-400 mb-12 max-w-xl font-normal leading-relaxed"
           >
             A boutique post-production facility delivering narrative editing, photoreal 3D visual effects,
             and flagship DaVinci Resolve color grading for feature films, episodic television, and national commercial campaigns.
-          </motion.p>
+          </p>
 
           {/* Hero Actions (Editorial Monochrome) */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-18 relative z-20"
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-start items-center mb-20 sm:mb-28 relative z-20"
           >
             <button
               onClick={() => setShowHeroVideo(true)}
@@ -105,14 +93,12 @@ export default function HomePage() {
               Selected Commercials
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-          </motion.div>
+          </div>
 
           {/* Hero Showreel Video Frame (Cinema Letterbox) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative max-w-5xl mx-auto overflow-hidden border border-neutral-800 bg-neutral-950 group aspect-video cursor-pointer"
+          <button
+            type="button" aria-label="Watch 2025 Showreel"
+            className="block w-full relative max-w-5xl mx-auto overflow-hidden border border-neutral-800 bg-neutral-950 group aspect-video cursor-pointer"
             onClick={() => setShowHeroVideo(true)}
           >
             {/* Branded reel plate — deliberately no auto-pulled YouTube thumbnail:
@@ -136,7 +122,7 @@ export default function HomePage() {
                 2025 · 4K DCI · 24.00 FPS · 2:45 MIN
               </span>
             </div>
-          </motion.div>
+          </button>
 
           {/* Studio capabilities row — plain language, no jargon */}
           <GlassPanel className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-16 p-6 sm:p-10 text-left">
@@ -443,35 +429,7 @@ export default function HomePage() {
         </GlassPanel>
       </section>
 
-      {/* Showreel Video Modal */}
-      {showHeroVideo && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 lg:p-8"
-          onClick={() => setShowHeroVideo(false)}
-        >
-          <div
-            className="relative w-full max-w-5xl aspect-video bg-black border border-neutral-800 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowHeroVideo(false)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/80 border border-neutral-700 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer"
-              aria-label="Close Showreel"
-            >
-              <X className="w-4 h-4" />
-            </button>
-            <iframe
-              src="https://www.youtube.com/embed/zF-ztC0lzJs?autoplay=1&rel=0&modestbranding=1"
-              title="Fix it in Post Studios - 2025 VFX Showreel"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full border-0"
-            />
-          </div>
-        </div>
-      )}
+      <VideoDialog open={showHeroVideo} onClose={() => setShowHeroVideo(false)} youtubeId="zF-ztC0lzJs" title="Fix it in Post Studios - 2025 VFX Showreel" />
     </div>
   );
 }

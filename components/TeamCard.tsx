@@ -8,7 +8,7 @@ interface TeamCardProps {
   name: string;
   role: string;
   specialty?: string;
-  image: string;
+  image: string | null;
   fallbackInitials?: string;
   bio?: string;
 }
@@ -31,7 +31,7 @@ export function TeamCard({
       <ProceduralTexture variant="grain" />
       {/* Image Container / Fallback Avatar */}
       <div className="relative overflow-hidden aspect-[4/3] bg-neutral-900 flex items-center justify-center border-b border-neutral-900">
-        {!imgError ? (
+        {image && !imgError ? (
           <img
             src={image}
             alt={name}

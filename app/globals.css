@@ -147,7 +147,7 @@ body {
 /* Backgrounds paint below the fixed grain; section content paints above it. */
 body { isolation: isolate; }
 footer > div,
-main section > div:not([aria-hidden="true"]) { position: relative; z-index: 2; }
+main section > div:not([aria-hidden="true"]):not(.absolute):not(.fixed):not(.sticky) { position: relative; z-index: 2; }
 .texture-band { isolation: auto; }
 .texture-band > .procedural-texture { z-index: 0; }
 /* Textures must sit above the panel fill, not behind it — at z-index:-1 the
@@ -242,3 +242,13 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
 .accent-commission .accent-bg:hover {
   background-color: color-mix(in srgb, rgb(var(--accent)), white 12%);
 }
+
+/* Fixed-size optical stage: poster is present before hydration and on GPU failure. */
+.lens-poster { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 78% 38%, #151515, #050505 65%); }
+.lens-ready .lens-poster-barrel { visibility:hidden; }
+.lens-poster-barrel { position:absolute; width:440px; aspect-ratio:1; right:4%; top:12%; border-radius:50%; transform:rotate(-12deg) scaleX(.83); background:repeating-radial-gradient(circle,#111 0 5px,#242424 6px,#080808 8px 14px); border:2px solid #888; box-shadow:18px 14px 0 #080808,24px 18px 0 1px #353535,42px 28px 0 #080808; }
+.lens-poster-cavity { position:absolute; inset:8%; border-radius:50%; border:2px solid #555; background:radial-gradient(ellipse at 35% 25%,#202020,#030303 65%); box-shadow:inset 0 0 0 14px #080808,inset 0 0 0 16px #333,inset 0 0 35px 30px #000; }
+.lens-poster-cavity::after { content:''; position:absolute; inset:8%; border-radius:50%; background:linear-gradient(110deg,transparent 22%,#ffffff15 28%,#ffffff30 30%,transparent 35%,transparent 67%,#ffffff50 69%,transparent 72%); box-shadow:inset 0 0 0 1px #ffffff20; }
+.lens-poster-iris { position:absolute; inset:24%; background:repeating-conic-gradient(from 12deg,#111 0 1deg,#303030 2deg 39deg,#090909 40deg); border-radius:50%; }
+.lens-poster-iris::after { content:''; position:absolute; inset:28%; background:#000; clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%); }
+@media(max-width:767px) { .lens-poster-barrel { width:280px; right:-48px; top:35px; transform:rotate(-24deg) scaleX(.8); } }

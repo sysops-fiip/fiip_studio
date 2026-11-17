@@ -3,7 +3,8 @@ import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 import { useState } from 'react';
-import { Play, X } from 'lucide-react';
+import { Play } from 'lucide-react';
+import { VideoDialog } from '@/components/ui/VideoDialog';
 
 interface PortfolioCardProps {
   id: string;
@@ -114,35 +115,7 @@ export function PortfolioCard({
       </GlassPanel>
       </div>
 
-      {/* Embedded Video Modal */}
-      {isPlaying && resolvedYoutubeId && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 lg:p-8"
-          onClick={() => setIsPlaying(false)}
-        >
-          <div
-            className="relative w-full max-w-5xl aspect-video bg-black border border-neutral-800 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setIsPlaying(false)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/80 border border-neutral-700 text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer"
-              aria-label="Close video"
-            >
-              <X className="w-4 h-4" />
-            </button>
-            <iframe
-              src={`https://www.youtube.com/embed/${resolvedYoutubeId}?autoplay=1&rel=0&modestbranding=1`}
-              title={title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full border-0"
-            />
-          </div>
-        </div>
-      )}
+      <VideoDialog open={isPlaying && Boolean(resolvedYoutubeId)} onClose={() => setIsPlaying(false)} youtubeId={resolvedYoutubeId || ''} title={title} />
     </>
   );
 }
