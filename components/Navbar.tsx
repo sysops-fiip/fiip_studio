@@ -20,9 +20,9 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { label: 'Overview', href: '/' },
+    { label: 'Home', href: '/' },
     { label: 'Disciplines', href: '/services' },
-    { label: 'Archive', href: '/portfolio' },
+    { label: 'Work', href: '/portfolio' },
     { label: 'Commissioning', href: '/pricing' },
     { label: 'Studio', href: '/about' },
     { label: 'Contact', href: '/contact' },
@@ -51,7 +51,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
+          <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -76,14 +76,14 @@ export function Navbar() {
             <div className="hidden sm:block">
               <Link
                 href="/contact"
-                className="px-5 py-2.5 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-neutral-200 transition-colors"
+                className="rounded-full px-5 py-2.5 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-neutral-200 transition-colors"
               >
-                Inquire
+                Let’s talk
               </Link>
             </div>
 
             <button
-              className="md:hidden text-white p-2 hover:bg-neutral-900 transition-colors cursor-pointer"
+              className="lg:hidden text-white p-2 hover:bg-neutral-900 transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle navigation"
               aria-expanded={isOpen}
@@ -95,7 +95,7 @@ export function Navbar() {
 
         {/* Mobile Navigation Dropdown */}
         {isOpen && (
-          <div className="md:hidden bg-black border-t border-neutral-900 px-4 py-6 space-y-4">
+          <div className="lg:hidden bg-black border-t border-neutral-900 px-4 py-6 space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -120,7 +120,7 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="w-full text-center py-3 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider"
               >
-                Inquire
+                Let’s talk
               </Link>
             </div>
           </div>

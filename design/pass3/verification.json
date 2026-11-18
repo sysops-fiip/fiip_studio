@@ -1,0 +1,65 @@
+{
+  "site": [
+    {
+      "viewport": "desktop",
+      "metrics": {
+        "overflow": false,
+        "height": 5063,
+        "broken": [],
+        "headline": "The final\nfeeling."
+      },
+      "errors": [],
+      "badResponses": []
+    },
+    {
+      "viewport": "mobile",
+      "metrics": {
+        "overflow": false,
+        "height": 5198,
+        "broken": [],
+        "headline": "The final\nfeeling."
+      },
+      "errors": [],
+      "badResponses": []
+    },
+    {
+      "reducedMotion": true,
+      "canvasCount": 0
+    }
+  ],
+  "final": [
+    {
+      "width": 320,
+      "lensLoaded": true,
+      "keyboardAndFocus": true,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "lensLoaded": true,
+      "keyboardAndFocus": true,
+      "pageErrors": []
+    },
+    {
+      "width": 768,
+      "lensLoaded": true,
+      "keyboardAndFocus": true,
+      "pageErrors": []
+    },
+    {
+      "width": 1024,
+      "lensLoaded": true,
+      "keyboardAndFocus": true,
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "lensLoaded": true,
+      "keyboardAndFocus": true,
+      "pageErrors": []
+    },
+    {
+      "webglDisabled": "static image fallback works"
+    }
+  ]
+}

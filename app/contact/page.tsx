@@ -3,11 +3,11 @@ import ContactPage from '../ContactPage';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with Fix It In Post Studios. Located in Chennai, India. Contact us for AI-assisted VFX and post-production services. Response within 24 hours.',
+  description: 'Get in touch with Fix It In Post Studios. Located in Chennai, India. Contact us for AI-assisted VFX and post-production services.',
   keywords: ['contact VFX studio', 'Chennai VFX company', 'AI post-production contact', 'VFX consultation', 'video production inquiry'],
   openGraph: {
     title: 'Contact Fix It In Post Studios',
-    description: 'Get in touch with our Chennai-based VFX studio for AI-assisted post-production services. Response within 24 hours.',
+    description: 'Get in touch with our Chennai-based VFX studio for AI-assisted post-production services.',
     url: 'https://fixitinpost.in/contact',
     images: [
       {

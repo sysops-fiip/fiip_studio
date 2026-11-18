@@ -2,11 +2,26 @@
 
 **Date:** 2026-11-17 · **Repo:** `/home/fiipadmin/workspace/fiip_studio` (this directory)
 **Stack:** Next 16.4.6 · React 19 · Tailwind v4 · framer-motion 12 · three 0.187
-**Production (Vercel):** `fixitinpost.in` — currently serving commit `ae062bd`. Nothing from Pass 1 is deployed.
+**Production (Vercel):** `fixitinpost.in` — Pass 3 deployment is authorized but pending a connected Vercel MCP integration. Live version has not been re-verified in this pass.
 
 Read this whole file before touching code. Then confirm the plan in one short message and start.
 
 ---
+
+## Pass 3 — ready for publication, 2026-11-18
+
+The user explicitly authorized completing and publishing this work: “Do it all,” followed by “keep it going and publish it at sompoint.” This supersedes the historical no-deploy instruction below. The MCP-only deployment method still applies.
+
+- New image-led homepage, three selected projects, composed studio-reel cover, shorter editorial copy, discipline summaries, Frames preview and compact people section.
+- Generated lens hero reference with responsive local WebPs. Optional lit 3D study loads Three.js and its GLB only on request, with keyboard controls and WebGL fallback. The Comfy-generated mesh failed visual QA; the shipped model is a clean reference-led reconstruction, reproducible with `node scripts/build-lens.mjs`.
+- Dedicated `/frames` page and sitemap entry; simplified `/about` and `/services`; revised footer and mobile navigation breakpoint.
+- Portraits await real reference photos. Seven staff and two collaborators retain styled initials. Identity-preserving portrait direction is saved in `design/pass3/PORTRAITS.md`.
+- Contact now explicitly prepares an email draft instead of showing a false submission-success message. Removed unverified contact details from the revised contact page/footer. No backend or mail infrastructure changes.
+- Fixed the existing Preethi archive thumbnail 404 with a working local asset.
+- Build passes, TypeScript clean, all 11 routes prerender. Desktop/mobile route checks: no console errors, HTTP failures, broken loaded images or horizontal overflow. Showreel and lens dialog Escape/focus restoration checked. Reduced-motion default has no canvas. Final 3D framing and no-WebGL checks are recorded in `delivery/pass3/final-check.json`.
+- Review assets and validation records: `delivery/pass3/` (ignored). Implementation/provenance and original lens reference: `design/pass3/`.
+- Vercel target from `.vercel/repo.json`: project `fiip-studio`, `prj_2nI2HSLmTOFoN9tv9Uvl6Y3QZNEQ`, team `team_CTMriR7xexy5mswAMgIixehC`. Vercel integration was not connected in this session; connection was requested. Do not claim it is published or substitute a shell deploy.
+- The Galle archive video points at a motion-graphics reel title card; excluded from the new homepage selection and documented for owner verification.
 
 ## Pass 2 completion — 2026-11-17
 

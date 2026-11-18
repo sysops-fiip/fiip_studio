@@ -1,435 +1,100 @@
 'use client';
-import { StaggerGroup } from '@/components/ui/StaggerGroup';
-import { Reveal } from '@/components/ui/Reveal';
-import { GlassPanel } from '@/components/ui/GlassPanel';
-import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { VideoDialog } from '@/components/ui/VideoDialog';
 import Link from 'next/link';
-import { Play, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { PortfolioCard } from '@/components/PortfolioCard';
-import { TeamCard } from '@/components/TeamCard';
-import projectsData from '@/data/projects.json';
-import teamData from '@/data/team.json';
+import { ArrowDown, ArrowUpRight, Play } from 'lucide-react';
+import { VideoDialog } from '@/components/ui/VideoDialog';
+import { Reveal } from '@/components/ui/Reveal';
+import studio from '@/content/studio.json';
+import projects from '@/data/projects.json';
 
-// Dynamic import with SSR false for Three.js 3D WebGL Hero Canvas
-const Cinematic3DHero = dynamic(() => import('@/components/Cinematic3DHero'), {
-  ssr: false,
-  loading: () => null,
-});
+const LensStudy = dynamic(() => import('@/components/LensStudy'), { ssr: false });
+const copy = studio.homepage;
 
 export default function HomePage() {
-  const [showHeroVideo, setShowHeroVideo] = useState(false);
-  const featuredProjects = projectsData.projects.slice(0, 6);
-  const coreTeam = teamData.team;
-
-  const clientBrands = [
-    'NESTLÉ',
-    'HINDUSTAN UNILEVER',
-    'KALYAN JEWELLERS',
-    'HAVELLS',
-    'NIPPON PAINT',
-    'ASIAN PAINTS',
-    'SONY PICTURES NETWORK',
-    'CASAGRAND',
-    'BRIGADE GROUP',
-    'PREETHI',
-    'GOLDWINNER',
-  ];
-
+  const [video, setVideo] = useState<{ id: string; title: string } | null>(null);
+  const [showLens, setShowLens] = useState(false);
+  const openReel = () => setVideo({ id: copy.reelId, title: 'FIIP studio reel' });
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      {/* Hero Section with Interactive 3D WebGL Monochromatic Optics */}
-      <section className="relative pt-28 sm:pt-36 pb-20 overflow-hidden border-b border-neutral-900">
-        {/* Monochromatic 3D Cinema Anamorphic Assembly */}
-        <div className="absolute inset-x-0 top-0 h-[650px] sm:h-[760px]"><Cinematic3DHero /></div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left w-full">
-          {/* Studio Discipline Monospace Slate */}
-          <div
-            className="mb-8 mt-52 md:mt-0 inline-block"
-          >
-            <p className="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-neutral-400 border-b border-neutral-800 pb-2">
-              FIIP POST STUDIOS · EDITORIAL · VFX &amp; 3D · DI COLOR
-            </p>
+    <div className="studio-home">
+      <section className="optics-hero" aria-labelledby="hero-title">
+        <div className="hero-object absolute" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/images/optics/cinema-lens-mobile.webp" />
+            <img src="/images/optics/cinema-lens.webp" width="1280" height="1280" alt="" fetchPriority="high" />
+          </picture>
+        </div>
+        <div className="hero-editorial page-width">
+          <p className="eyebrow">{copy.eyebrow}</p>
+          <h1 id="hero-title">{copy.headline[0]}<br /><span>{copy.headline[1]}</span></h1>
+          <p className="hero-intro">{copy.intro}</p>
+          <p className="hero-description">{copy.description}</p>
+          <div className="hero-actions">
+            <button className="pill-button pill-light" onClick={openReel}><Play size={13} fill="currentColor" />{copy.watchLabel}</button>
+            <a className="text-link" href="#selected-work">{copy.workLabel}<ArrowDown size={16} /></a>
           </div>
+        </div>
+        <button className="lens-explore" onClick={() => setShowLens(true)}>Explore the lens <ArrowUpRight size={13} /></button>
+        <div className="hero-footnote page-width absolute" aria-hidden="true"><span>FIX IT IN POST</span><span>EDIT / VFX / COLOUR / FINISH</span><span>SCROLL TO DISCOVER <ArrowDown size={12} /></span></div>
+      </section>
 
-          {/* Headline */}
-          <h1
-            className="text-[clamp(2rem,6.5vw,6rem)] font-black tracking-tightest mb-8 leading-[1.02] uppercase text-white"
-          >
-            Where Craft,
-            <br />
-            Cinematography
-            <br />
-            &amp; Post Converge.
-          </h1>
-
-          {/* Subheadline */}
-          <p
-            className="text-base sm:text-lg text-neutral-400 mb-12 max-w-xl font-normal leading-relaxed"
-          >
-            A boutique post-production facility delivering narrative editing, photoreal 3D visual effects,
-            and flagship DaVinci Resolve color grading for feature films, episodic television, and national commercial campaigns.
-          </p>
-
-          {/* Hero Actions (Editorial Monochrome) */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-start items-center mb-20 sm:mb-28 relative z-20"
-          >
-            <button
-              onClick={() => setShowHeroVideo(true)}
-              className="w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-none hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2.5 text-xs font-mono uppercase tracking-wider cursor-pointer"
-            >
-              <Play className="w-3.5 h-3.5 fill-black" />
-              Watch 2025 Showreel
-            </button>
-            <Link
-              href="/portfolio"
-              className="w-full sm:w-auto px-8 py-4 border border-neutral-700 bg-transparent text-white font-semibold rounded-none hover:border-white transition-colors text-xs font-mono uppercase tracking-wider flex items-center justify-center gap-2"
-            >
-              Selected Commercials
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          {/* Hero Showreel Video Frame (Cinema Letterbox) */}
-          <button
-            type="button" aria-label="Watch 2025 Showreel"
-            className="block w-full relative max-w-5xl mx-auto overflow-hidden border border-neutral-800 bg-neutral-950 group aspect-video cursor-pointer"
-            onClick={() => setShowHeroVideo(true)}
-          >
-            {/* Branded reel plate — deliberately no auto-pulled YouTube thumbnail:
-                the poster crop read as a random face and cheapened the hero. */}
-            <ProceduralTexture variant="mesh" className="opacity-[0.10]" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,#1d1d1d_0%,#0b0b0b_55%,#050505_100%)]" />
-            {/* Anamorphic gate marks */}
-            <div className="absolute inset-6 sm:inset-10 pointer-events-none">
-              {['top-0 left-0 border-t border-l','top-0 right-0 border-t border-r','bottom-0 left-0 border-b border-l','bottom-0 right-0 border-b border-r'].map((c)=>(
-                <span key={c} className={`absolute w-8 h-8 border-white/25 ${c}`} />
-              ))}
-            </div>
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-white/20 bg-black/80 text-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all mb-4">
-                <Play className="w-6 h-6 ml-0.5 fill-current" />
-              </div>
-              <span className="text-xs sm:text-sm font-mono tracking-widest uppercase text-white">
-                FIIP STUDIOS — 2025 VFX &amp; POST REEL
-              </span>
-              <span className="text-[11px] font-mono text-neutral-500 mt-1 tracking-widest">
-                2025 · 4K DCI · 24.00 FPS · 2:45 MIN
-              </span>
-            </div>
-          </button>
-
-          {/* Studio capabilities row — plain language, no jargon */}
-          <GlassPanel className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-16 p-6 sm:p-10 text-left">
-            {[
-              { k: 'EDITORIAL', v: 'Features, episodic & commercial cutdowns' },
-              { k: 'VFX & 3D', v: 'Compositing, clean-up, CG integration' },
-              { k: 'DI COLOR', v: 'DaVinci Resolve grading suites' },
-              { k: 'FRAMES', v: 'Frame-accurate client review' },
-            ].map((item) => (
-              <div key={item.k}>
-                <p className="font-mono text-lg font-bold text-white tracking-tight">{item.k}</p>
-                <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{item.v}</p>
-              </div>
-            ))}
-          </GlassPanel>
+      <section id="selected-work" className="selected-work section-space page-width" aria-labelledby="work-title">
+        <div className="section-heading"><div><p className="eyebrow">{copy.workEyebrow}</p><h2 id="work-title">{copy.workTitle}</h2></div><Link href="/portfolio" className="text-link">{copy.archiveLabel}<ArrowUpRight size={17} /></Link></div>
+        <div className="selected-grid">
+          {copy.featured.map((work, index) => {
+            const project = projects.projects.find(p => p.id === work.id)!;
+            return <article key={work.id} className={`selected-film selected-film-${index}`}>
+              <button className="film-image" aria-label={`Watch ${work.name} — ${work.subtitle}`} onClick={() => setVideo({ id: project.youtubeId, title: `${work.name} — ${work.subtitle}` })}>
+                <Image src={work.image} alt={work.alt} fill sizes={index === 0 ? '(max-width: 767px) 100vw, 90vw' : '(max-width: 767px) 100vw, 45vw'} />
+                <span className="film-index">0{index + 1} / {work.subtitle}</span>
+                <span className="film-play"><Play size={18} fill="currentColor" /></span>
+                <span className="film-overlay-title">{work.title}</span>
+              </button>
+              <div className="film-caption"><h3>{work.name}</h3><p>{work.contribution}</p></div>
+            </article>;
+          })}
         </div>
       </section>
 
-      {/* Brand Credits Slate */}
-      <section className="glass-stage py-8 border-b border-neutral-900 bg-neutral-950 overflow-hidden texture-band">
-        <ProceduralTexture variant="dots" density={1.2} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-4">
-          <Reveal as="p" className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
-            Select Commercial Clients &amp; Agency Partners
-          </Reveal>
-        </div>
-        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 max-w-6xl mx-auto px-4">
-          {clientBrands.map((brand, i) => (
-            <span
-              key={i}
-              className="text-xs font-mono tracking-widest text-neutral-400 hover:text-white transition-colors"
-            >
-              {brand}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Editorial Disciplines Section (Non-SaaS) */}
-      <section className="glass-stage py-24 bg-black border-b border-neutral-900 texture-band">
-        <ProceduralTexture variant="mesh" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
-            <div>
-              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
-                Post Infrastructure
-              </Reveal>
-              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
-                Core Disciplines
-              </Reveal>
-            </div>
-            <Reveal as="p" className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 leading-relaxed font-mono">
-              Synchronized editorial bays, node-based VFX compositing, and calibrated reference color suites on a unified media pipeline.
-            </Reveal>
+      <section className="reel-section page-width" aria-label={copy.reelEyebrow}>
+        <button className="reel-cover" onClick={openReel} aria-label="Play FIIP studio reel">
+          <div className="reel-images" aria-hidden="true">
+            <Image src="/images/work/kalyan.webp" alt="" fill sizes="50vw" />
+            <div><Image src="/images/work/comfort.webp" alt="" fill sizes="25vw" /></div>
+            <div><Image src="/images/work/nippon.webp" alt="" fill sizes="25vw" /></div>
           </div>
-
-          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Discipline 01 */}
-            <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
-              <ProceduralTexture variant="grain" />
-              <div>
-                <span className="font-mono text-xs text-neutral-400 block mb-6">01 / EDITORIAL</span>
-                <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
-                  Narrative &amp; Commercial Edit
-                </h3>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-8">
-                  Pacing, dramatic cadence, and structural story architecture across feature films,
-                  high-energy broadcast commercials, and episodic OTT deliveries.
-                </p>
-              </div>
-              <div className="space-y-2 pt-6 border-t border-neutral-900 text-xs font-mono text-neutral-400">
-                <p>· Offline Assembly &amp; Creative Cut</p>
-                <p>· Online Master Conform &amp; QC</p>
-                <p>· Multi-Language Dub &amp; Audio Alignment</p>
-              </div>
-            </GlassPanel>
-
-            {/* Discipline 02 */}
-            <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
-              <ProceduralTexture variant="grain" />
-              <div>
-                <span className="font-mono text-xs text-neutral-400 block mb-6">02 / VISUAL EFFECTS &amp; 3D</span>
-                <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
-                  Photoreal VFX &amp; CGI
-                </h3>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-8">
-                  Seamless rig and blemish cleanups, dynamic screen replacements, Blender 3D photoreal product rendering,
-                  and custom neural diffusion workflows for high-concept visuals.
-                </p>
-              </div>
-              <div className="space-y-2 pt-6 border-t border-neutral-800 text-xs font-mono text-neutral-400">
-                <p>· Invisible Rig, Wire &amp; Skin Cleanups</p>
-                <p>· Photoreal 3D Shading &amp; Animation</p>
-                <p>· Fusion Node Compositing &amp; Matte Painting</p>
-              </div>
-            </GlassPanel>
-
-            {/* Discipline 03 */}
-            <GlassPanel className="p-8 flex flex-col justify-between glass-interactive">
-              <ProceduralTexture variant="grain" />
-              <div>
-                <span className="font-mono text-xs text-neutral-400 block mb-6">03 / DI COLOR &amp; FINISHING</span>
-                <h3 className="text-xl font-bold uppercase tracking-tight mb-3 text-white">
-                  Color Grading &amp; DI Suites
-                </h3>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-8">
-                  Dedicated DaVinci Resolve suites led by resident and partner colorists,
-                  crafting bespoke cinematic looks and theatrical DCI-P3 mastering.
-                </p>
-              </div>
-              <div className="space-y-2 pt-6 border-t border-neutral-900 text-xs font-mono text-neutral-400">
-                <p>· Raw Sensor Debayer &amp; Look Dev</p>
-                <p>· High-Fashion Commercial Beauty Grades</p>
-                <p>· Theatrical DCP &amp; Broadcast HDR/SDR</p>
-              </div>
-            </GlassPanel>
-          </StaggerGroup>
-        </div>
+          <div className="reel-copy"><span className="eyebrow">{copy.reelEyebrow}</span><h2>{copy.reelTitle}</h2><span className="reel-play"><Play size={20} fill="currentColor" /><span>{copy.reelAction}</span></span></div>
+          <span className="reel-marker" aria-hidden="true">FIIP / PICTURE & POST</span>
+        </button>
       </section>
 
-      {/* The Frames Review App Feature */}
-      <section className="glass-stage py-24 bg-neutral-950 border-b border-neutral-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5">
-              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
-                Client Review Suite
-              </Reveal>
-              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-6">
-                Frames Portal Integration
-              </Reveal>
-              <Reveal as="p" className="text-neutral-400 text-sm leading-relaxed mb-8">
-                Eliminate scattered WhatsApp threads and expired download links.
-                Directors, agencies, and producers interface directly with our suites through <strong>Frames</strong>,
-                our dedicated frame-accurate review application.
-              </Reveal>
+      <section className="craft-section section-space page-width" aria-labelledby="craft-title">
+        <div className="section-heading"><div><p className="eyebrow">{copy.craftEyebrow}</p><h2 id="craft-title">{copy.craftTitle}</h2></div><p className="section-intro">{copy.craftIntro}</p></div>
+        <div className="craft-list">{copy.craft.map((item, index) => <Reveal key={item.title}><Link href="/services" className="craft-row"><span className="craft-number">0{index + 1}</span><h3>{item.title}</h3><div><p>{item.text}</p><span>{item.detail}</span></div><ArrowUpRight size={22} /></Link></Reveal>)}</div>
+      </section>
 
-              <div className="space-y-4 mb-8 font-mono text-xs text-neutral-400 border-l border-neutral-800 pl-4">
-                <div>
-                  <Reveal as="p" className="text-white font-medium">Frame-Accurate Timecode Notes</Reveal>
-                  <Reveal as="p" className="text-neutral-400 mt-0.5">Annotate exact millisecond timestamps directly from desktop or mobile.</Reveal>
-                </div>
-                <div>
-                  <Reveal as="p" className="text-white font-medium">Split-Screen Version Comparison</Reveal>
-                  <Reveal as="p" className="text-neutral-400 mt-0.5">Compare V1 vs V2 or Raw Log vs Graded Master in real time.</Reveal>
-                </div>
-                <div>
-                  <Reveal as="p" className="text-white font-medium">DaVinci Resolve Timeline Sync</Reveal>
-                  <Reveal as="p" className="text-neutral-400 mt-0.5">Client approval markers load directly onto editor timelines.</Reveal>
-                </div>
-              </div>
-
-              <a
-                href="https://frames.fixitinpost.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-black text-xs font-mono uppercase tracking-wider font-semibold hover:bg-neutral-200 transition-colors"
-              >
-                Access Frames Portal
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Portal Interface Preview */}
-            <Reveal className="lg:col-span-7">
-              <GlassPanel elevation={2} className="p-4 sm:p-6">
-                <div className="flex items-center justify-between pb-3 border-b border-neutral-900 mb-4 font-mono text-[11px] text-neutral-400">
-                  <span>FRAMES.FIXITINPOST.IN · SUITE MONITOR</span>
-                  <span className="text-white">LIVE PIPELINE</span>
-                </div>
-
-                <div className="relative aspect-video overflow-hidden bg-neutral-900 mb-4">
-                  <img
-                    src="https://img.youtube.com/vi/7YsacApzJqU/maxresdefault.jpg"
-                    alt="Frames Client Interface"
-                    className="w-full h-full object-cover opacity-85"
-                  />
-                  <div className="absolute bottom-3 left-3 right-3 p-3 bg-black/80 backdrop-blur-sm border border-neutral-800 flex items-center justify-between font-mono text-xs">
-                    <span className="text-white">TC: 01:00:14:18 · V2.4</span>
-                    <span className="text-neutral-400 text-[11px] truncate ml-3">"Approved grade contrast on hero plate"</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-3 font-mono text-xs border-t border-neutral-900 pt-3">
-                  <div>
-                    <span className="text-neutral-400 block text-[10px]">PROJECT</span>
-                    <span className="text-white font-medium truncate block">Pushpa 2 x Comfort</span>
-                  </div>
-                  <div>
-                    <span className="text-neutral-400 block text-[10px]">STAGE</span>
-                    <span className="text-white font-medium block">DI Master</span>
-                  </div>
-                  <div>
-                    <span className="text-neutral-400 block text-[10px]">STATUS</span>
-                    <span className="text-white font-medium block">APPROVED</span>
-                  </div>
-                </div>
-              </GlassPanel>
-            </Reveal>
+      <section className="frames-section section-space" aria-labelledby="frames-title">
+        <div className="page-width frames-grid">
+          <div><p className="eyebrow">{copy.framesEyebrow}</p><h2 id="frames-title">{copy.framesTitle}</h2><p className="section-intro">{copy.framesDescription}</p><div className="hero-actions"><Link href="/frames" className="pill-button">{copy.framesLink}<ArrowUpRight size={16} /></Link><a href={studio.frames.url} target="_blank" rel="noopener noreferrer" className="text-link">{copy.framesPortal}<ArrowUpRight size={15} /></a></div></div>
+          <div className="review-study" aria-label="Illustration of frame-based review">
+            <div className="review-header"><span>FRAMES</span><span>PICTURE REVIEW</span><i /></div>
+            <div className="review-image"><Image src="/images/work/comfort.webp" alt="Commercial image used to illustrate reviewing a frame" fill sizes="(max-width: 767px) 90vw, 45vw" /><span className="review-crosshair" aria-hidden="true" /><div className="review-timecode">01:00:14:18 <span>V02</span></div></div>
+            <div className="review-note"><span className="note-dot" /><p>A note. On the exact frame.</p><span>01</span></div>
+            <div className="review-timeline" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i key={i} />)}<span /></div>
           </div>
         </div>
       </section>
 
-      {/* Featured Works Grid */}
-      <section className="glass-stage py-24 bg-black border-b border-neutral-900 texture-band">
-        <ProceduralTexture variant="mesh" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
-            <div>
-              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
-                Selected Archive
-              </Reveal>
-              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
-                Recent Works
-              </Reveal>
-            </div>
-            <Link
-              href="/portfolio"
-              className="mt-4 md:mt-0 font-mono text-xs uppercase tracking-wider text-neutral-400 hover:text-white inline-flex items-center gap-1.5 transition-colors"
-            >
-              View Full 30+ Project Slate <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project) => (
-              <PortfolioCard
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                client={project.client}
-                category={project.category}
-                image={project.image}
-                videoUrl={project.videoUrl}
-                youtubeId={project.youtubeId}
-                description={project.description}
-                services={project.services}
-              />
-            ))}
-          </StaggerGroup>
-        </div>
+      <section className="studio-section section-space page-width" aria-labelledby="studio-title">
+        <div><p className="eyebrow">{copy.studioEyebrow}</p><h2 id="studio-title">{copy.studioTitle}</h2></div>
+        <div className="studio-summary"><p className="section-intro">{copy.studioDescription}</p><div className="artist-signatures" aria-label="Studio artists">{studio.roster.map(person => <span key={person.id} title={person.name}>{person.fallbackInitials}</span>)}</div><Link href="/about" className="text-link">{copy.studioLink}<ArrowUpRight size={17} /></Link></div>
       </section>
 
-      {/* Studio Team Roster */}
-      <section className="glass-stage py-24 bg-neutral-950 border-b border-neutral-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-900">
-            <div>
-              <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
-                Studio Roster
-              </Reveal>
-              <Reveal as="h2" className="text-3xl sm:text-5xl font-black uppercase tracking-tight">
-                Artists &amp; Colorists
-              </Reveal>
-            </div>
-            <Reveal as="p" className="text-xs sm:text-sm text-neutral-400 max-w-md mt-4 md:mt-0 font-mono">
-              Nine editors, colorists, and VFX supervisors collaborating across shared studio suites.
-            </Reveal>
-          </div>
-
-          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coreTeam.map((member) => (
-              <TeamCard
-                key={member.id}
-                name={member.name}
-                role={member.role}
-                specialty={member.specialty}
-                image={member.image}
-                fallbackInitials={member.fallbackInitials}
-                bio={member.bio}
-              />
-            ))}
-          </StaggerGroup>
-        </div>
-      </section>
-
-      {/* Direct Studio Inquiry Slate */}
-      <section className="glass-stage py-24 bg-black">
-        <GlassPanel className="max-w-4xl mx-auto p-6 sm:p-10 text-center">
-          <ProceduralTexture variant="grain" />
-          <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
-            Commissioning &amp; Bookings
-          </Reveal>
-          <Reveal as="h2" className="text-3xl sm:text-6xl font-black uppercase tracking-tight mb-6">
-            Initiate Project Timeline
-          </Reveal>
-          <Reveal as="p" className="text-neutral-400 text-sm sm:text-base mb-10 max-w-xl mx-auto leading-relaxed">
-            Whether for a national commercial broadcast turnaround, feature film DI color grade, or complex VFX sequence, let&apos;s review your raw camera specs and schedule.
-          </Reveal>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-neutral-200 transition-colors"
-            >
-              Request Studio Schedule
-            </Link>
-            <a
-              href="mailto:hello@fixitinpost.in"
-              className="px-8 py-4 border border-neutral-800 text-white font-semibold text-xs font-mono uppercase tracking-wider hover:border-white transition-colors"
-            >
-              hello@fixitinpost.in
-            </a>
-          </div>
-        </GlassPanel>
-      </section>
-
-      <VideoDialog open={showHeroVideo} onClose={() => setShowHeroVideo(false)} youtubeId="zF-ztC0lzJs" title="Fix it in Post Studios - 2025 VFX Showreel" />
+      <section className="home-commission accent-commission"><div className="page-width"><p className="eyebrow accent-text">{copy.ctaEyebrow}</p><h2>{copy.ctaTitle}</h2><Link href="/contact" className="pill-button pill-light">{copy.ctaLink}<ArrowUpRight size={18} /></Link></div></section>
+      {showLens && <LensStudy onClose={() => setShowLens(false)} />}
+      <VideoDialog open={!!video} onClose={() => setVideo(null)} youtubeId={video?.id ?? ''} title={video?.title ?? ''} />
     </div>
   );
 }

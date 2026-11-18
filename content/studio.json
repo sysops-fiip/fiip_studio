@@ -191,5 +191,121 @@
     "Awards detail behind the IMDb '2 wins, 1 nomination'.",
     "Whether to publish the Archives page from Frames automatically (needs API access), and what data Frames can expose.",
     "Engagement/pricing model: the current tier prices are unverified placeholders."
-  ]
+  ],
+  "homepage": {
+    "eyebrow": "Independent post-production · Chennai",
+    "headline": [
+      "The final",
+      "feeling."
+    ],
+    "intro": "The cut that holds you. The colour that stays with you. The effects you never question.",
+    "description": "Editorial, visual effects and colour for filmmakers and brands.",
+    "watchLabel": "Watch the studio reel",
+    "workLabel": "Explore the work",
+    "reelId": "zF-ztC0lzJs",
+    "workEyebrow": "01 / Selected work",
+    "workTitle": "Every frame. A point of view.",
+    "workIntro": "A few of the worlds we help bring into focus.",
+    "featured": [
+      {
+        "id": "project-kalyan-muhurat",
+        "title": "The colour of a moment.",
+        "name": "Kalyan Jewellers",
+        "subtitle": "Muhurat Bride",
+        "image": "/images/work/kalyan.webp",
+        "alt": "Gold bridal jewellery in a warm close-up from the Kalyan Jewellers campaign",
+        "contribution": "Colour grading · Beauty retouch · Finishing",
+        "source": "data/projects.json: project-kalyan-muhurat"
+      },
+      {
+        "id": "project-comfort-pushpa2",
+        "title": "Made to stand out.",
+        "name": "Comfort × Pushpa 2",
+        "subtitle": "Brand film",
+        "image": "/images/work/comfort.webp",
+        "alt": "Comfort product campaign frame featuring the Pushpa 2 collaboration",
+        "contribution": "Editorial · Colour grading · Finishing",
+        "source": "data/projects.json: project-comfort-pushpa2"
+      },
+      {
+        "id": "project-nippon-weatherbond",
+        "title": "Weather, with character.",
+        "name": "Nippon Paint",
+        "subtitle": "Weatherbond",
+        "image": "/images/work/nippon.webp",
+        "alt": "Frame from the Nippon Paint Weatherbond commercial",
+        "contribution": "Visual effects · Colour grading · Finishing",
+        "source": "data/projects.json: project-nippon-weatherbond"
+      }
+    ],
+    "archiveLabel": "Visit the archive",
+    "reelEyebrow": "The studio reel",
+    "reelTitle": "A little of what\nwe put into it.",
+    "reelAction": "Play reel",
+    "craftEyebrow": "02 / The craft",
+    "craftTitle": "From the first cut\nto the last detail.",
+    "craftIntro": "One close-knit team, working across the whole image.",
+    "craft": [
+      {
+        "title": "Editorial",
+        "text": "Find the rhythm. Shape the story. Make every cut count.",
+        "detail": "Offline & online · Narrative · Commercials"
+      },
+      {
+        "title": "Visual effects",
+        "text": "Build the impossible. Make the invisible feel entirely real.",
+        "detail": "Supervision · Compositing · CG integration"
+      },
+      {
+        "title": "Colour & finishing",
+        "text": "Give the image its voice. Carry it faithfully to every screen.",
+        "detail": "Look development · Grade · Conform & mastering"
+      }
+    ],
+    "craftLink": "Explore our disciplines",
+    "framesEyebrow": "03 / In the same frame",
+    "framesTitle": "Less back-and-forth.\nMore getting it right.",
+    "framesDescription": "Review with the artist who is making the work. Precise notes, clear versions and approvals, together in Frames.",
+    "framesLink": "Discover Frames",
+    "framesPortal": "Open review portal",
+    "studioEyebrow": "04 / The people behind the picture",
+    "studioTitle": "Small team.\nShared obsession.",
+    "studioDescription": "Editors, compositors and colourists who care about the whole film, not just their part of it.",
+    "studioLink": "Meet the studio",
+    "ctaEyebrow": "Have a picture in mind?",
+    "ctaTitle": "Let’s make it feel right.",
+    "ctaLink": "Start a conversation",
+    "footerDescription": "Editorial, visual effects and colour. Chennai, India."
+  },
+  "studioPage": {
+    "eyebrow": "The studio",
+    "title": "People who care\nabout the picture.",
+    "intro": "A close-knit post-production team in Chennai, working across editorial, visual effects, colour and finishing.",
+    "storyTitle": "Different disciplines.\nOne shared eye.",
+    "story": "We follow the image from the first cut to the final master. Editors, compositors and colourists work together, with the artist behind the shot close to the conversation.",
+    "rosterTitle": "Meet the artists.",
+    "rosterIntro": "Seven studio artists, joined by our cinematography collaborators.",
+    "collaboratorsTitle": "Our collaborators.",
+    "cta": "Tell us what you’re making."
+  },
+  "portraitDirection": {
+    "status": "awaiting-reference-photos",
+    "style": "Monochrome editorial portrait, dark graphite seamless background, soft large key light from camera-left, subtle rim, natural skin texture, relaxed expression, chest-up 4:5 crop, plain dark clothing. Preserve face, age, hair and distinguishing features from the real reference. No beauty reshaping.",
+    "source": "User will supply real team reference photos; do not generate fictional staff identities."
+  },
+  "contactPage": {
+    "eyebrow": "Start a conversation",
+    "title": "What are you\nmaking next?",
+    "intro": "Tell us about your film, the work it needs and when you need it. We’ll take it from there.",
+    "emailLabel": "Write to the studio",
+    "locationLabel": "Based in",
+    "formTitle": "A few details to get started.",
+    "formNote": "This prepares an email in your mail app. Review it there and press Send.",
+    "action": "Prepare email",
+    "prepared": "Your email draft is ready in your mail app. If it didn’t open, use the studio email link.",
+    "name": "Your name",
+    "email": "Email address",
+    "project": "Project / film title",
+    "message": "What do you have in mind?"
+  }
 }
