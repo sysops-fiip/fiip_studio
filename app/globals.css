@@ -437,3 +437,9 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
 .lens-keyboard-controls { display: flex; align-items: center; gap: 8px; }
 .lens-turn { width: 36px; height: 40px; display: grid; place-items: center; border: 1px solid #444; border-radius: 6px; }
 @media(max-width:480px) { .lens-dialog-controls { flex-wrap: wrap; } }
+
+/* Keyboard access beneath the fixed navigation. */
+.skip-link {position:fixed;top:8px;left:8px;z-index:100;padding:12px 18px;background:white;color:black;transform:translateY(-150%);}
+.skip-link:focus {transform:translateY(0);}
+#main-content {scroll-margin-top:80px;}
+.nav-link[aria-current="page"] {color:white;text-decoration:underline;text-underline-offset:6px;}

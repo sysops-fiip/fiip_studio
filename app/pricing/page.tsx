@@ -1,13 +1,15 @@
+import studio from '@/content/studio.json';
 import { Metadata } from 'next';
 import PricingPage from '../PricingPage';
 
 export const metadata: Metadata = {
-  title: 'Pricing',
-  description: 'Transparent pricing for AI-assisted VFX services. Three tiers: Creator, Brand, and Studio. Use our instant calculator to estimate your project costs.',
+  alternates: { canonical: '/pricing' },
+  title: studio.pageMetadata.pricing.title,
+  description: studio.pageMetadata.pricing.description,
   keywords: ['VFX pricing', 'video production costs', 'AI post-production pricing', 'transparent pricing', 'VFX service costs', 'project estimation'],
   openGraph: {
-    title: 'Pricing - Transparent AI-Assisted VFX Services',
-    description: 'Transparent pricing for AI-assisted VFX services. Three tiers with instant calculator to estimate your project costs.',
+    title: studio.pageMetadata.pricing.title,
+    description: studio.pageMetadata.pricing.description,
     url: 'https://fixitinpost.in/pricing',
     images: [
       {
@@ -19,8 +21,8 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: 'Pricing - Transparent AI-Assisted VFX Services',
-    description: 'Transparent pricing for AI-assisted VFX services with instant project cost calculator.',
+    title: studio.pageMetadata.pricing.title,
+    description: studio.pageMetadata.pricing.description,
     images: ['/web-app-manifest-512x512.png'],
   },
 };

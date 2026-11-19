@@ -1,0 +1,76 @@
+[
+  {
+    "url": "https://fixitinpost.in/",
+    "status": 200,
+    "final": "https://fixitinpost.in/"
+  },
+  {
+    "url": "https://fixitinpost.in/about",
+    "status": 200,
+    "final": "https://fixitinpost.in/about"
+  },
+  {
+    "url": "https://fixitinpost.in/contact",
+    "status": 200,
+    "final": "https://fixitinpost.in/contact"
+  },
+  {
+    "url": "https://fixitinpost.in/contact?tier=commercial",
+    "status": 200,
+    "final": "https://fixitinpost.in/contact?tier=commercial"
+  },
+  {
+    "url": "https://fixitinpost.in/contact?tier=feature-ott",
+    "status": 200,
+    "final": "https://fixitinpost.in/contact?tier=feature-ott"
+  },
+  {
+    "url": "https://fixitinpost.in/contact?tier=studio-retainer",
+    "status": 200,
+    "final": "https://fixitinpost.in/contact?tier=studio-retainer"
+  },
+  {
+    "url": "https://fixitinpost.in/contact?type=commercial&services=Editorial%20Assembly%2CDaVinci%20Resolve%20DI%20Color&timeline=standard",
+    "status": 200,
+    "final": "https://fixitinpost.in/contact?type=commercial&services=Editorial%20Assembly%2CDaVinci%20Resolve%20DI%20Color&timeline=standard"
+  },
+  {
+    "url": "https://fixitinpost.in/frames",
+    "status": 200,
+    "final": "https://fixitinpost.in/frames"
+  },
+  {
+    "url": "https://fixitinpost.in/nonexistent-audit-page",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://fixitinpost.in/portfolio",
+    "status": 200,
+    "final": "https://fixitinpost.in/portfolio"
+  },
+  {
+    "url": "https://fixitinpost.in/pricing",
+    "status": 200,
+    "final": "https://fixitinpost.in/pricing"
+  },
+  {
+    "url": "https://fixitinpost.in/robots.txt",
+    "status": 200,
+    "final": "https://fixitinpost.in/robots.txt"
+  },
+  {
+    "url": "https://fixitinpost.in/services",
+    "status": 200,
+    "final": "https://fixitinpost.in/services"
+  },
+  {
+    "url": "https://fixitinpost.in/sitemap.xml",
+    "status": 200,
+    "final": "https://fixitinpost.in/sitemap.xml"
+  },
+  {
+    "url": "https://frames.fixitinpost.in/",
+    "status": 200,
+    "final": "https://frames.fixitinpost.in/"
+  }
+]

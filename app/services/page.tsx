@@ -1,13 +1,15 @@
+import studio from '@/content/studio.json';
 import { Metadata } from 'next';
 import ServicesPage from '../ServicesPage';
 
 export const metadata: Metadata = {
-  title: 'Our Services',
-  description: 'Explore our three tiers of AI-powered VFX excellence: AI-Enhanced Post, Hybrid VFX, and Generative Visuals. From creator-friendly to studio-grade production.',
+  alternates: { canonical: '/services' },
+  title: studio.pageMetadata.services.title,
+  description: studio.pageMetadata.services.description,
   keywords: ['VFX services', 'AI post-production', 'video editing services', 'hybrid VFX', 'generative visuals', 'AI video production', 'professional VFX'],
   openGraph: {
-    title: 'Our Services - AI-Powered VFX & Post-Production',
-    description: 'Three tiers of AI-powered VFX excellence: AI-Enhanced Post, Hybrid VFX, and Generative Visuals. From creator-friendly to studio-grade.',
+    title: studio.pageMetadata.services.title,
+    description: studio.pageMetadata.services.description,
     url: 'https://fixitinpost.in/services',
     images: [
       {
@@ -19,8 +21,8 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: 'Our Services - AI-Powered VFX & Post-Production',
-    description: 'Three tiers of AI-powered VFX excellence for creators, brands, and studios.',
+    title: studio.pageMetadata.services.title,
+    description: studio.pageMetadata.services.description,
     images: ['/web-app-manifest-512x512.png'],
   },
 };

@@ -91,8 +91,9 @@ export default function RootLayout({
       <body className="bg-black text-white antialiased font-sans">
         <ProceduralTexture variant="grain" className="site-grain" />
         <ScrollProgress />
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <main className="min-h-screen">
+        <main id="main-content" tabIndex={-1} className="min-h-screen">
           {children}
         </main>
         <Footer />

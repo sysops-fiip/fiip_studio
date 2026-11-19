@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
+  const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -18,6 +21,15 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { setIsOpen(false); toggleRef.current?.focus(); }
+    };
+    document.addEventListener('keydown', close);
+    return () => document.removeEventListener('keydown', close);
+  }, [isOpen]);
 
   const navItems = [
     { label: 'Home', href: '/' },
@@ -56,6 +68,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 className="nav-link text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
               >
                 {item.label}
@@ -85,6 +98,8 @@ export function Navbar() {
             <button
               className="lg:hidden text-white p-2 hover:bg-neutral-900 transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
+              ref={toggleRef}
+              aria-controls="mobile-navigation"
               aria-label="Toggle navigation"
               aria-expanded={isOpen}
             >
@@ -95,11 +110,12 @@ export function Navbar() {
 
         {/* Mobile Navigation Dropdown */}
         {isOpen && (
-          <div className="lg:hidden bg-black border-t border-neutral-900 px-4 py-6 space-y-4">
+          <div id="mobile-navigation" style={{maxHeight: "calc(100dvh - 80px)", overflowY: "auto"}} className="lg:hidden bg-black border-t border-neutral-900 px-4 py-6 space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 onClick={() => setIsOpen(false)}
                 className="nav-link block text-sm font-mono uppercase tracking-wider text-neutral-400 hover:text-white py-2 border-b border-neutral-900"
               >

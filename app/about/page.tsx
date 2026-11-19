@@ -1,13 +1,15 @@
+import studio from '@/content/studio.json';
 import { Metadata } from 'next';
 import AboutPage from '../AboutPage';
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'Learn about Fix It In Post Studios - a Chennai-based VFX studio pioneering AI-assisted post-production. Meet our team of VFX artists, AI engineers, and creative directors.',
+  alternates: { canonical: '/about' },
+  title: studio.pageMetadata.about.title,
+  description: studio.pageMetadata.about.description,
   keywords: ['about VFX studio', 'AI post-production team', 'Chennai VFX company', 'creative team', 'VFX artists', 'AI engineers'],
   openGraph: {
-    title: 'About Fix It In Post Studios - AI-Assisted VFX & Video Production',
-    description: 'Learn about our Chennai-based VFX studio pioneering AI-assisted post-production. Meet our team of VFX artists, AI engineers, and creative directors.',
+    title: studio.pageMetadata.about.title,
+    description: studio.pageMetadata.about.description,
     url: 'https://fixitinpost.in/about',
     images: [
       {
@@ -19,8 +21,8 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: 'About Fix It In Post Studios',
-    description: 'Chennai-based VFX studio pioneering AI-assisted post-production. Meet our creative team.',
+    title: studio.pageMetadata.about.title,
+    description: studio.pageMetadata.about.description,
     images: ['/web-app-manifest-512x512.png'],
   },
 };

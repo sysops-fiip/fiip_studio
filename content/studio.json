@@ -307,5 +307,31 @@
     "email": "Email address",
     "project": "Project / film title",
     "message": "What do you have in mind?"
+  },
+  "pageMetadata": {
+    "home": {
+      "title": "Editorial, colour & visual effects",
+      "description": "Fix It In Post Studios. Editorial, visual effects and colour for films and brands. Chennai, India."
+    },
+    "services": {
+      "title": "Disciplines",
+      "description": "Editorial finishing, colour, conform, mastering and visual effects from our Chennai post-production studio."
+    },
+    "portfolio": {
+      "title": "Selected work",
+      "description": "Explore selected commercials, films and visual effects work from Fix It In Post Studios."
+    },
+    "pricing": {
+      "title": "Commissioning",
+      "description": "Plan your production scope and discuss editorial, colour and visual effects with our Chennai studio."
+    },
+    "about": {
+      "title": "The studio",
+      "description": "Meet the artists and collaborators behind Fix It In Post Studios, a post-production studio in Chennai."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Tell our Chennai studio about your film, the work it needs and your schedule. Start a conversation with Fix It In Post Studios."
+    }
   }
 }

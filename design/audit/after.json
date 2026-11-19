@@ -1,0 +1,156 @@
+[
+  {
+    "route": "/",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/services",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/services",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/portfolio",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/portfolio",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/pricing",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/pricing",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/about",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/about",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/frames",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/frames",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/contact",
+    "viewport": "desktop",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/contact",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/services",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/services",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/portfolio",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/portfolio",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/pricing",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/pricing",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/about",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/about",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/frames",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/frames",
+    "overflow": false,
+    "brokenImages": []
+  },
+  {
+    "route": "/contact",
+    "viewport": "mobile",
+    "status": 200,
+    "errors": [],
+    "bad": [],
+    "axe": [],
+    "canonical": "https://fixitinpost.in/contact",
+    "overflow": false,
+    "brokenImages": []
+  }
+]

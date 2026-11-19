@@ -57,6 +57,7 @@ export default function PortfolioPage() {
           {categories.map((category) => (
             <button
               key={category}
+              aria-pressed={selectedCategory === category}
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
                 selectedCategory === category
@@ -73,6 +74,8 @@ export default function PortfolioPage() {
 
       {/* Portfolio Grid */}
       <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h2 className="sr-only">Selected projects</h2>
+        <p className="sr-only" role="status">{filteredProjects.length} projects</p>
         <StaggerGroup key={selectedCategory}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >

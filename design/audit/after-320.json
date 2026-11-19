@@ -1,0 +1,30 @@
+[
+  {
+    "route": "/",
+    "overflow": false
+  },
+  {
+    "route": "/services",
+    "overflow": false
+  },
+  {
+    "route": "/portfolio",
+    "overflow": false
+  },
+  {
+    "route": "/pricing",
+    "overflow": false
+  },
+  {
+    "route": "/about",
+    "overflow": false
+  },
+  {
+    "route": "/frames",
+    "overflow": false
+  },
+  {
+    "route": "/contact",
+    "overflow": false
+  }
+]

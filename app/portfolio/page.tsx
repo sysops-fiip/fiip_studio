@@ -1,13 +1,15 @@
+import studio from '@/content/studio.json';
 import { Metadata } from 'next';
 import PortfolioPage from '../PortfolioPage';
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Explore our portfolio of AI-assisted VFX projects. See the transformation power of our VFX work across ads, music videos, AI shots, and post-production.',
+  alternates: { canonical: '/portfolio' },
+  title: studio.pageMetadata.portfolio.title,
+  description: studio.pageMetadata.portfolio.description,
   keywords: ['VFX portfolio', 'video production portfolio', 'AI VFX projects', 'advertisement VFX', 'music video production', 'post-production showcase'],
   openGraph: {
-    title: 'Portfolio - AI-Assisted VFX Projects',
-    description: 'Explore our portfolio showcasing the transformation power of AI-assisted VFX across ads, music videos, and post-production.',
+    title: studio.pageMetadata.portfolio.title,
+    description: studio.pageMetadata.portfolio.description,
     url: 'https://fixitinpost.in/portfolio',
     images: [
       {
@@ -19,8 +21,8 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: 'Portfolio - AI-Assisted VFX Projects',
-    description: 'Explore our showcase of AI-assisted VFX projects and transformations.',
+    title: studio.pageMetadata.portfolio.title,
+    description: studio.pageMetadata.portfolio.description,
     images: ['/web-app-manifest-512x512.png'],
   },
 };

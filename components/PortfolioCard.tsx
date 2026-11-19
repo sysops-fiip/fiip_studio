@@ -44,6 +44,7 @@ export function PortfolioCard({
         <div className="relative aspect-video w-full overflow-hidden bg-black">
           <img
             src={image}
+            width={640} height={360} loading="lazy" decoding="async"
             alt={title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102 opacity-85"
           />
@@ -74,7 +75,7 @@ export function PortfolioCard({
                 if (resolvedYoutubeId) {
                   setIsPlaying(true);
                 } else if (videoUrl) {
-                  window.open(videoUrl, '_blank');
+                  window.open(videoUrl, '_blank', 'noopener,noreferrer');
                 }
               }}
               className="w-12 h-12 bg-white text-black flex items-center justify-center group-hover:scale-105 transition-transform cursor-pointer"
