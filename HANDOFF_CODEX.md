@@ -2,11 +2,24 @@
 
 **Date:** 2026-11-17 · **Repo:** `/home/fiipadmin/workspace/fiip_studio` (this directory)
 **Stack:** Next 16.4.6 · React 19 · Tailwind v4 · framer-motion 12 · three 0.187
-**Production (Vercel):** `fixitinpost.in` — Pass 3 deployment is authorized but pending a connected Vercel MCP integration. Live version has not been re-verified in this pass.
+**Production (Vercel):** `fixitinpost.in` — Pass 3 commit `23faf70` published on 2026-11-19. Vercel reports Ready and assigns both apex and www domains.
 
 Read this whole file before touching code. Then confirm the plan in one short message and start.
 
 ---
+
+## Production deployment — 2026-11-19
+
+The user explicitly approved the authenticated CLI override (“Yeah go ahead”) after being told the handoff required MCP-only deployment. Deployment of source commit `23faf70` completed via Vercel CLI to the existing fiip-studio production project.
+
+- Deployment: `dpl_NKHN53Cm8hhQ5viQ6L7hHWMMSnA7`
+- Immutable URL: https://fiip-studio-8ik0yp5b3-sysops-fiips-projects.vercel.app
+- Vercel inspection reports **Ready**, target **production**, build duration **24s**.
+- Production aliases: https://fixitinpost.in and https://www.fixitinpost.in.
+- Status and aliases were checked via `vercel inspect --wait`; no new production browser audit was performed in this deployment turn. Previous desktop/mobile validation remains recorded below.
+- Team portraits still await real reference photos.
+
+The following Pass 3 pre-deployment notes are historical; their connection blocker is resolved by the explicit CLI override above.
 
 ## Pass 3 — ready for publication, 2026-11-18
 
