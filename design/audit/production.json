@@ -1,0 +1,44 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "title": "Editorial, colour &amp; visual effects",
+    "canonical": "https://fixitinpost.in"
+  },
+  {
+    "route": "/services",
+    "status": 200,
+    "title": "Disciplines | Fix It In Post Studios",
+    "canonical": "https://fixitinpost.in/services"
+  },
+  {
+    "route": "/portfolio",
+    "status": 200,
+    "title": "Selected work | Fix It In Post Studios",
+    "canonical": "https://fixitinpost.in/portfolio"
+  },
+  {
+    "route": "/pricing",
+    "status": 200,
+    "title": "Commissioning | Fix It In Post Studios",
+    "canonical": "https://fixitinpost.in/pricing"
+  },
+  {
+    "route": "/about",
+    "status": 200,
+    "title": "The studio | Fix It In Post Studios",
+    "canonical": "https://fixitinpost.in/about"
+  },
+  {
+    "route": "/frames",
+    "status": 200,
+    "title": "Frames \u2014 Picture Review | Fix It In Post Studios",
+    "canonical": "https://fixitinpost.in/frames"
+  },
+  {
+    "route": "/contact",
+    "status": 200,
+    "title": "Contact | Fix It In Post Studios",
+    "canonical": "https://fixitinpost.in/contact"
+  }
+]

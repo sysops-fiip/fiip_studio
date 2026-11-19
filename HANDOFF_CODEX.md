@@ -2,11 +2,19 @@
 
 **Date:** 2026-11-17 · **Repo:** `/home/fiipadmin/workspace/fiip_studio` (this directory)
 **Stack:** Next 16.4.6 · React 19 · Tailwind v4 · framer-motion 12 · three 0.187
-**Production (Vercel):** `fixitinpost.in` — Pass 3 commit `23faf70` published on 2026-11-19. Vercel reports Ready and assigns both apex and www domains.
+**Production (Vercel):** `fixitinpost.in` — Audit fixes commit `8f0776c` published on 2026-11-19. Vercel reports Ready and assigns both apex and www domains.
 
 Read this whole file before touching code. Then confirm the plan in one short message and start.
 
 ---
+
+## Page-by-page audit — 2026-11-19
+
+User requested a complete page-by-page check. Report: `design/audit/2026-11-19.md`; screenshot/JSON pack delivered to Telegram (message 697). All seven live pages reviewed at desktop/mobile widths, plus 320px overflow checks. Corrected local build has zero Axe violations, JS errors, failed resources or broken images across 14 route/viewport checks.
+
+Fixed commissioning-to-contact scope handoff, route canonicals and metadata, heading order, selected button states, mobile navigation Escape/landscape scrolling, skip link and archive image loading. Source commit `8f0776c` deployed through the previously approved CLI workflow. Vercel Ready: `dpl_FQMbteZFB3vQFEi8bvfR83r5No7z`; https://fiip-studio-d997ar9sb-sysops-fiips-projects.vercel.app; apex/www aliases assigned. All seven production routes returned 200 with corrected canonicals and metadata after deployment.
+
+Still open: real team photos; Galle/Picasso/Crime Patrol project video attribution; owner confirmation of pricing-card SLA/unlimited/schedule promises; URL-persistent archive filters; font performance and lint configuration. Do not describe YouTube playback, email delivery, authenticated Frames features or real-device browser coverage as fully tested.
 
 ## Production deployment — 2026-11-19
 
