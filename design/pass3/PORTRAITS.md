@@ -1,6 +1,6 @@
 # FIIP studio portrait direction
 
-Status: Sanjay and Venkat now have generated portraits based on the user-supplied photos, created with the built-in image tool on 2026-11-20. Masters and exact prompts are in `design/portraits/`; web derivatives are `public/images/team/*-generated-v1.webp`. Original JPEGs are retained. User also reports sending Iniyavan and Udhay photos, but these could not be located in accessible uploads; reattachment requested. Do not assume the user has not sent them. Other portraits remain pending.
+Status: Iniyavan, Sanjay and Venkat now have generated portraits based on the user-supplied photos, created with the built-in image tool on 2026-11-20. Masters and exact prompts are in `design/portraits/`; web derivatives are `public/images/team/*-generated-v1.webp`. Original JPEGs are retained. Iniyavan’s reference was reattached on 2026-11-20 and processed. Udhay’s previously reported photo still needs reattachment. Do not assume the user has not sent them. Other portraits remain pending.
 
 Use a consistent 4:5 chest-up crop, monochrome, dark graphite seamless background, a large soft key from camera-left and a restrained rim light. Keep eyes near the upper third with generous headroom. Natural skin texture, relaxed expressions, plain dark clothing.
 

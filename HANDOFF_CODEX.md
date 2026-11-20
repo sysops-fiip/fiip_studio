@@ -10,9 +10,9 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ## Team portraits — 2026-11-20
 
-User clarified that photos should be used as references for consistent generated portraits. Sanjay and Venkat now have matching monochrome editorial portraits generated with the built-in image tool. Originals remain in `public/images/team/`; masters and exact prompts are in `design/portraits/`; web derivatives are `*-generated-v1.webp`. Source content was synced into `data/team.json`.
+User clarified that photos should be used as references for consistent generated portraits. Iniyavan, Sanjay and Venkat now have matching monochrome editorial portraits generated with the built-in image tool. Originals remain in `public/images/team/`; masters and exact prompts are in `design/portraits/`; web derivatives are `*-generated-v1.webp`. Source content was synced into `data/team.json`.
 
-User reports also sending Iniyavan and Udhay photos. These could not be located in accessible uploads and reattachment was requested. Do not tell the user they only sent two; only two named reference files are currently accessible. Remaining roster portraits must use actual references.
+Iniyavan’s photo was reattached and processed on 2026-11-20. Three named reference photos are now available. Udhay’s previously reported photo still needs reattachment. Remaining roster portraits must use actual references.
 
 Generated portrait source commit: `0ab63f7`. Deployment `dpl_7R2R95XHZsj3Ld36i6dMuhbfyvFE` reports Ready. Build passes; desktop/mobile profile captures inspected, no JS errors, failed portraits or overflow. Generated masters delivered to Telegram messages 736 and 737.
 
@@ -141,3 +141,13 @@ Helper scripts already exist: `/tmp/shot_p1.py` (screenshots), `/tmp/probe_hero.
 
 ## 6. Out of scope
 Backend, auth, Frames portal integration, next/Content work. This pass is the marketing site only.
+
+## Refinement request — 20 November 2026
+
+User wants lens retained temporarily but future hero concept aligned with post-production, not acquisition. Preserve headline/selected-work direction. User now permits restrained ochre across pages, superseding commissioning-only rule. Current pass extracts FramesPreview with pointer tilt, removes fixed grain and stage dot field, reduces panel grain, adds small accent rules/interaction states. Checklist: `design/audit/WEBSITE-CHECKLIST.md` covers legal/business dependencies and technical acceptance. No fabricated legal policies.
+
+User explicitly identified uploaded pillar photo as Kousik (roster Koushik Raj) and glasses/white-shirt photo as Ganesh. Originals saved as `public/images/team/koushik-reference.jpg` and `ganesh-reference.jpg`. Matching generated versions pending. Iniyavan already wired; Udhay reference still unavailable; Akhil image expected later. Preserve all pre-existing portrait work.
+
+Validation: production build/typecheck passed; 14 local desktop/mobile route checks passed with zero Axe violations/errors/failed resources/broken images/overflow. Frames hover/reset/reduced-motion assertions passed. Desktop Frames and mobile homepage captures inspected. Changes are local; not deployed in this turn. Checklist and preview delivered via @codexfiipbot.
+
+Udhay reference received and explicitly identified by user on 20 November 2026 (upload 131433). Saved as public/images/team/udhay-reference.jpg and connected to Udhaya Kumar in source content. Uses supplied portrait directly with existing grayscale presentation; no newly generated portrait claimed. Local change, not deployed.

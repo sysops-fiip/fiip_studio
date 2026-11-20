@@ -3,7 +3,6 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import './globals.css';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
-import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fixitinpost.in'),
@@ -89,7 +88,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="bg-black text-white antialiased font-sans">
-        <ProceduralTexture variant="grain" className="site-grain" />
         <ScrollProgress />
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />

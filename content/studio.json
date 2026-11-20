@@ -30,11 +30,24 @@
       "name": "Iniyavan Pandiyan",
       "role": "Creative Director & VFX Producer",
       "specialty": "VFX production, editorial, pipeline architecture",
-      "alsoDoes": ["Editor", "Pipeline architecture"],
-      "image": null,
+      "alsoDoes": [
+        "Editor",
+        "Pipeline architecture"
+      ],
+      "image": "/images/team/iniyavan-generated-v1.webp",
       "fallbackInitials": "IN",
       "bio": "Runs the studio end to end — creative direction, VFX production and supervision, and the editorial eye behind the cut. Builds the pipeline the studio works on, from ingest through delivery, and has VFX supervised, produced or edited credits across Tamil and Telugu features, OTT series and brand films.",
-      "credits": ["A1 Express", "Kolai", "Fight Club", "Birthmark", "Athomugam", "Hot Spot", "DeAr", "The Akaali", "Rocket Driver"],
+      "credits": [
+        "A1 Express",
+        "Kolai",
+        "Fight Club",
+        "Birthmark",
+        "Athomugam",
+        "Hot Spot",
+        "DeAr",
+        "The Akaali",
+        "Rocket Driver"
+      ],
       "external": false,
       "verified": true
     },
@@ -43,8 +56,10 @@
       "name": "Udhaya Kumar",
       "role": "VFX Generalist",
       "specialty": "Compositing, cleanups, plate work",
-      "alsoDoes": ["Editorial support"],
-      "image": null,
+      "alsoDoes": [
+        "Editorial support"
+      ],
+      "image": "/images/team/udhay-reference.jpg",
       "fallbackInitials": "UK",
       "bio": "Hands-on generalist covering the day-to-day VFX load — cleanups, paint, rig and wire removal, comps and plate fixes — with enough editorial sense to work straight off the timeline.",
       "external": false,
@@ -55,7 +70,10 @@
       "name": "Ganesh",
       "role": "Commercial Editor",
       "specialty": "Ad films and brand content",
-      "alsoDoes": ["Conform", "Mastering"],
+      "alsoDoes": [
+        "Conform",
+        "Mastering"
+      ],
       "image": null,
       "fallbackInitials": "GA",
       "bio": "Cuts commercials and brand films, and carries the same work through conform and mastering so the approved cut is the delivered cut.",
@@ -67,7 +85,9 @@
       "name": "Ahilendra D",
       "role": "Conform & Mastering Artist",
       "specialty": "Finishing, conform, delivery masters",
-      "alsoDoes": ["Colour (developing)"],
+      "alsoDoes": [
+        "Colour (developing)"
+      ],
       "image": null,
       "fallbackInitials": "AH",
       "bio": "Owns finishing: conforms, online, and broadcast/theatrical masters. Also building out as a colourist under the studio's DI work.",
@@ -79,7 +99,11 @@
       "name": "Koushik Raj",
       "role": "Colorist & Conform Artist",
       "specialty": "Grading and finishing",
-      "alsoDoes": ["VFX", "Editing", "Cinematography"],
+      "alsoDoes": [
+        "VFX",
+        "Editing",
+        "Cinematography"
+      ],
       "image": null,
       "fallbackInitials": "KR",
       "bio": "Grades and conforms, with a cinematographer's eye for how the image was shot and a generalist's range across VFX and editorial.",
@@ -91,7 +115,9 @@
       "name": "Sanjay Kandasamy",
       "role": "Editor",
       "specialty": "Narrative editing, story structure",
-      "alsoDoes": ["Generative / AI-assisted VFX"],
+      "alsoDoes": [
+        "Generative / AI-assisted VFX"
+      ],
       "image": "/images/team/sanjay-generated-v1.webp",
       "fallbackInitials": "SK",
       "bio": "Editor working on story and narrative structure, and fluent in generative and AI-assisted techniques for shots that can't be got any other way.",
@@ -103,7 +129,11 @@
       "name": "Venkat",
       "role": "Post Production Supervisor & Editor",
       "specialty": "Post supervision, editorial",
-      "alsoDoes": ["VFX", "Grading", "Script and story"],
+      "alsoDoes": [
+        "VFX",
+        "Grading",
+        "Script and story"
+      ],
       "image": "/images/team/venkat-generated-v1.webp",
       "fallbackInitials": "VE",
       "bio": "Supervises post from the studio side — schedules, handoffs and delivery — and edits. All-rounder across VFX, grade and story, which is what makes the supervision work.",
@@ -136,24 +166,152 @@
     }
   ],
   "projects": [
-    { "title": "Hotspot 2 Much", "year": 2026, "role": "Visual Effects", "type": "feature", "status": "upcoming", "imdb": "tt33088887", "verified": true },
-    { "title": "Rocket Driver", "year": 2024, "role": "Visual Effects, Editor", "type": "feature", "imdb": "tt32639066", "verified": true },
-    { "title": "Bato: Road to Death", "year": 2024, "role": "Visual Effects", "type": "feature", "imdb": "tt27618765", "verified": true },
-    { "title": "The Akaali", "year": 2024, "role": "VFX Supervisor", "type": "feature", "imdb": "tt31913643", "verified": true, "note": "Feature; grade completed at the studio; shot by collaborator Shivraj." },
-    { "title": "Konjam Pesinaal Yenna", "year": 2024, "role": "Visual Effects", "type": "feature", "imdb": "tt19784570", "verified": true },
-    { "title": "DeAr", "year": 2024, "role": "VFX Producer", "type": "feature", "imdb": "tt24244300", "verified": true },
-    { "title": "Hot Spot", "year": 2024, "role": "VFX Producer", "type": "feature", "imdb": "tt31391056", "verified": true },
-    { "title": "Athomugam", "year": 2024, "role": "VFX Producer", "type": "feature", "imdb": "tt31124095", "verified": true },
-    { "title": "Birthmark", "year": 2024, "role": "VFX Supervisor, Editor", "type": "feature", "imdb": "tt27996409", "verified": true },
-    { "title": "Fight Club", "year": 2023, "role": "VFX Producer", "type": "feature", "imdb": "tt15561202", "verified": true },
-    { "title": "Kolai", "year": 2023, "role": "VFX Producer", "type": "feature", "imdb": "tt15709840", "verified": true },
-    { "title": "Jalan Lain", "year": 2023, "role": "Colour Department", "type": "feature", "imdb": "tt27679136", "verified": true },
-    { "title": "Two Worlds", "year": 2023, "role": "Editor", "type": "short", "imdb": "tt28153513", "verified": true },
-    { "title": "Never Out of Reach", "year": 2022, "role": "Visual Effects", "type": "feature", "imdb": "tt27678767", "verified": true },
-    { "title": "A1 Express", "year": 2021, "role": "VFX Supervisor", "type": "feature", "imdb": "tt11214972", "verified": true },
-    { "title": "Oh Manapenne!", "year": 2021, "role": "Assistant Editor", "type": "feature", "imdb": "tt11947256", "verified": true },
-    { "title": "Dharala Prabhu", "year": 2020, "role": "Assistant Editor", "type": "feature", "imdb": "tt11731984", "verified": true },
-    { "title": "Cobwebs", "year": 2016, "role": "Editor", "type": "short", "imdb": "tt6077618", "verified": true }
+    {
+      "title": "Hotspot 2 Much",
+      "year": 2026,
+      "role": "Visual Effects",
+      "type": "feature",
+      "status": "upcoming",
+      "imdb": "tt33088887",
+      "verified": true
+    },
+    {
+      "title": "Rocket Driver",
+      "year": 2024,
+      "role": "Visual Effects, Editor",
+      "type": "feature",
+      "imdb": "tt32639066",
+      "verified": true
+    },
+    {
+      "title": "Bato: Road to Death",
+      "year": 2024,
+      "role": "Visual Effects",
+      "type": "feature",
+      "imdb": "tt27618765",
+      "verified": true
+    },
+    {
+      "title": "The Akaali",
+      "year": 2024,
+      "role": "VFX Supervisor",
+      "type": "feature",
+      "imdb": "tt31913643",
+      "verified": true,
+      "note": "Feature; grade completed at the studio; shot by collaborator Shivraj."
+    },
+    {
+      "title": "Konjam Pesinaal Yenna",
+      "year": 2024,
+      "role": "Visual Effects",
+      "type": "feature",
+      "imdb": "tt19784570",
+      "verified": true
+    },
+    {
+      "title": "DeAr",
+      "year": 2024,
+      "role": "VFX Producer",
+      "type": "feature",
+      "imdb": "tt24244300",
+      "verified": true
+    },
+    {
+      "title": "Hot Spot",
+      "year": 2024,
+      "role": "VFX Producer",
+      "type": "feature",
+      "imdb": "tt31391056",
+      "verified": true
+    },
+    {
+      "title": "Athomugam",
+      "year": 2024,
+      "role": "VFX Producer",
+      "type": "feature",
+      "imdb": "tt31124095",
+      "verified": true
+    },
+    {
+      "title": "Birthmark",
+      "year": 2024,
+      "role": "VFX Supervisor, Editor",
+      "type": "feature",
+      "imdb": "tt27996409",
+      "verified": true
+    },
+    {
+      "title": "Fight Club",
+      "year": 2023,
+      "role": "VFX Producer",
+      "type": "feature",
+      "imdb": "tt15561202",
+      "verified": true
+    },
+    {
+      "title": "Kolai",
+      "year": 2023,
+      "role": "VFX Producer",
+      "type": "feature",
+      "imdb": "tt15709840",
+      "verified": true
+    },
+    {
+      "title": "Jalan Lain",
+      "year": 2023,
+      "role": "Colour Department",
+      "type": "feature",
+      "imdb": "tt27679136",
+      "verified": true
+    },
+    {
+      "title": "Two Worlds",
+      "year": 2023,
+      "role": "Editor",
+      "type": "short",
+      "imdb": "tt28153513",
+      "verified": true
+    },
+    {
+      "title": "Never Out of Reach",
+      "year": 2022,
+      "role": "Visual Effects",
+      "type": "feature",
+      "imdb": "tt27678767",
+      "verified": true
+    },
+    {
+      "title": "A1 Express",
+      "year": 2021,
+      "role": "VFX Supervisor",
+      "type": "feature",
+      "imdb": "tt11214972",
+      "verified": true
+    },
+    {
+      "title": "Oh Manapenne!",
+      "year": 2021,
+      "role": "Assistant Editor",
+      "type": "feature",
+      "imdb": "tt11947256",
+      "verified": true
+    },
+    {
+      "title": "Dharala Prabhu",
+      "year": 2020,
+      "role": "Assistant Editor",
+      "type": "feature",
+      "imdb": "tt11731984",
+      "verified": true
+    },
+    {
+      "title": "Cobwebs",
+      "year": 2016,
+      "role": "Editor",
+      "type": "short",
+      "imdb": "tt6077618",
+      "verified": true
+    }
   ],
   "awards": {
     "summary": "2 wins, 1 nomination (per IMDb)",
@@ -161,16 +319,44 @@
     "verified": false
   },
   "clients": [
-    { "name": "Asian Paints", "context": "Commercial, in production", "verified": true },
-    { "name": "Pumbu Har", "context": "Ad series", "verified": true }
+    {
+      "name": "Asian Paints",
+      "context": "Commercial, in production",
+      "verified": true
+    },
+    {
+      "name": "Pumbu Har",
+      "context": "Ad series",
+      "verified": true
+    }
   ],
   "clientsNote": "Client names above are the only ones confirmed in conversation. Do not pad the wall with logos that were not named.",
   "disciplines": [
-    { "id": "vfx", "title": "VFX Supervision & Production", "summary": "Supervision on set through final comp. Cleanups, paint, rig and wire removal, screen and set extensions, CG integration." },
-    { "id": "colour", "title": "Colour", "summary": "Show and spot grading in DaVinci Resolve, look development, and colour management across the delivery chain." },
-    { "id": "conform", "title": "Conform & Mastering", "summary": "Online conform, finishing, QC and delivery masters for theatrical, broadcast and streaming specs." },
-    { "id": "editorial", "title": "Editorial Finishing", "summary": "Offline and online editorial, assembly, story structure, and finishing the cut the client approved." },
-    { "id": "generative", "title": "AI-Assisted VFX", "summary": "Generative and neural tools used where they beat the conventional route — with a supervisor's judgement on when they don't." }
+    {
+      "id": "vfx",
+      "title": "VFX Supervision & Production",
+      "summary": "Supervision on set through final comp. Cleanups, paint, rig and wire removal, screen and set extensions, CG integration."
+    },
+    {
+      "id": "colour",
+      "title": "Colour",
+      "summary": "Show and spot grading in DaVinci Resolve, look development, and colour management across the delivery chain."
+    },
+    {
+      "id": "conform",
+      "title": "Conform & Mastering",
+      "summary": "Online conform, finishing, QC and delivery masters for theatrical, broadcast and streaming specs."
+    },
+    {
+      "id": "editorial",
+      "title": "Editorial Finishing",
+      "summary": "Offline and online editorial, assembly, story structure, and finishing the cut the client approved."
+    },
+    {
+      "id": "generative",
+      "title": "AI-Assisted VFX",
+      "summary": "Generative and neural tools used where they beat the conventional route — with a supervisor's judgement on when they don't."
+    }
   ],
   "frames": {
     "name": "Frames",

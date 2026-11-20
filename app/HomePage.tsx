@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ArrowDown, ArrowUpRight, Play } from 'lucide-react';
 import { VideoDialog } from '@/components/ui/VideoDialog';
 import { Reveal } from '@/components/ui/Reveal';
+import { FramesPreview } from '@/components/FramesPreview';
 import studio from '@/content/studio.json';
 import projects from '@/data/projects.json';
 
@@ -78,12 +79,7 @@ export default function HomePage() {
       <section className="frames-section section-space" aria-labelledby="frames-title">
         <div className="page-width frames-grid">
           <div><p className="eyebrow">{copy.framesEyebrow}</p><h2 id="frames-title">{copy.framesTitle}</h2><p className="section-intro">{copy.framesDescription}</p><div className="hero-actions"><Link href="/frames" className="pill-button">{copy.framesLink}<ArrowUpRight size={16} /></Link><a href={studio.frames.url} target="_blank" rel="noopener noreferrer" className="text-link">{copy.framesPortal}<ArrowUpRight size={15} /></a></div></div>
-          <div className="review-study" aria-label="Illustration of frame-based review">
-            <div className="review-header"><span>FRAMES</span><span>PICTURE REVIEW</span><i /></div>
-            <div className="review-image"><Image src="/images/work/comfort.webp" alt="Commercial image used to illustrate reviewing a frame" fill sizes="(max-width: 767px) 90vw, 45vw" /><span className="review-crosshair" aria-hidden="true" /><div className="review-timecode">01:00:14:18 <span>V02</span></div></div>
-            <div className="review-note"><span className="note-dot" /><p>A note. On the exact frame.</p><span>01</span></div>
-            <div className="review-timeline" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i key={i} />)}<span /></div>
-          </div>
+          <FramesPreview />
         </div>
       </section>
 
