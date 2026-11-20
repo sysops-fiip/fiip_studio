@@ -1,6 +1,6 @@
 # FIIP studio portrait direction
 
-Status: Sanjay Kandasamy’s portrait supplied by the user on 2026-11-20 and added as the original JPEG. The team card applies the existing monochrome treatment and 4:5 crop in CSS, preserving the original photograph. Venkat’s original portrait was also supplied and added on 2026-11-20, using the same CSS treatment. Awaiting photos for the remaining five studio artists and two collaborators.
+Status: Sanjay and Venkat now have generated portraits based on the user-supplied photos, created with the built-in image tool on 2026-11-20. Masters and exact prompts are in `design/portraits/`; web derivatives are `public/images/team/*-generated-v1.webp`. Original JPEGs are retained. User also reports sending Iniyavan and Udhay photos, but these could not be located in accessible uploads; reattachment requested. Do not assume the user has not sent them. Other portraits remain pending.
 
 Use a consistent 4:5 chest-up crop, monochrome, dark graphite seamless background, a large soft key from camera-left and a restrained rim light. Keep eyes near the upper third with generous headroom. Natural skin texture, relaxed expressions, plain dark clothing.
 
