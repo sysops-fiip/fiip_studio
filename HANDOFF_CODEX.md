@@ -10,9 +10,11 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ## Team portraits — 2026-11-20
 
-User supplied and identified portraits for Sanjay Kandasamy and Venkat. Both original JPEGs are now in `public/images/team/`, linked in `content/studio.json`, and synced into `data/team.json`. Existing CSS applies monochrome; portrait alignment now preserves headroom. No facial generation or retouching. Five resident artists and two collaborators still await photos.
+User clarified that photos should be used as references for consistent generated portraits. Sanjay and Venkat now have matching monochrome editorial portraits generated with the built-in image tool. Originals remain in `public/images/team/`; masters and exact prompts are in `design/portraits/`; web derivatives are `*-generated-v1.webp`. Source content was synced into `data/team.json`.
 
-Latest published source: `abda43a`. Deployment `dpl_BMrBF6tnoPVyeUsk5MQdhhRtGCqb` is Ready with apex/www aliases assigned. Build passes; desktop 1440×760 and mobile 390×844 portrait captures inspected, no JS errors, broken portraits or overflow. Captures: `delivery/portraits/`.
+User reports also sending Iniyavan and Udhay photos. These could not be located in accessible uploads and reattachment was requested. Do not tell the user they only sent two; only two named reference files are currently accessible. Remaining roster portraits must use actual references.
+
+Generated portrait source commit: `0ab63f7`. Deployment `dpl_7R2R95XHZsj3Ld36i6dMuhbfyvFE` reports Ready. Build passes; desktop/mobile profile captures inspected, no JS errors, failed portraits or overflow. Generated masters delivered to Telegram messages 736 and 737.
 
 ## Page-by-page audit — 2026-11-19
 
