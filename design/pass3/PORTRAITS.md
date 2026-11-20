@@ -1,6 +1,6 @@
 # FIIP studio portrait direction
 
-Status: awaiting real reference photos for the seven studio artists and two collaborators.
+Status: Sanjay Kandasamy’s portrait supplied by the user on 2026-11-20 and added as the original JPEG. The team card applies the existing monochrome treatment and 4:5 crop in CSS, preserving the original photograph. Awaiting photos for the remaining six studio artists and two collaborators.
 
 Use a consistent 4:5 chest-up crop, monochrome, dark graphite seamless background, a large soft key from camera-left and a restrained rim light. Keep eyes near the upper third with generous headroom. Natural skin texture, relaxed expressions, plain dark clothing.
 
