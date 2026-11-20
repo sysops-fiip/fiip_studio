@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 interface TeamCardProps {
+  id: string;
   name: string;
   role: string;
   specialty?: string;
@@ -11,10 +12,10 @@ interface TeamCardProps {
   bio?: string;
 }
 
-export function TeamCard({ name, role, image, fallbackInitials, bio }: TeamCardProps) {
+export function TeamCard({ id, name, role, image, fallbackInitials, bio }: TeamCardProps) {
   const [failedImage, setFailedImage] = useState<string | null>(null);
   const initials = fallbackInitials || name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
-  return <article className="portrait-card">
+  return <article id={id} className="portrait-card">
     <div className="portrait-image">
       {image && image !== failedImage ? <img src={image} alt={name} width="640" height="800" loading="lazy" onError={() => setFailedImage(image)} /> : <div className="portrait-monogram" aria-hidden="true">{initials}</div>}
     </div>

@@ -85,7 +85,7 @@ export default function HomePage() {
 
       <section className="studio-section section-space page-width" aria-labelledby="studio-title">
         <div><p className="eyebrow">{copy.studioEyebrow}</p><h2 id="studio-title">{copy.studioTitle}</h2></div>
-        <div className="studio-summary"><p className="section-intro">{copy.studioDescription}</p><div className="artist-signatures" aria-label="Studio artists">{studio.roster.map(person => <span key={person.id} title={person.name}>{person.fallbackInitials}</span>)}</div><Link href="/about" className="text-link">{copy.studioLink}<ArrowUpRight size={17} /></Link></div>
+        <div className="studio-summary"><p className="section-intro">{copy.studioDescription}</p><div className="artist-signatures" aria-label="Studio artists">{studio.roster.map(person => <Link key={person.id} href={`/about#${person.id}`} title={person.name} aria-label={`View ${person.name}’s profile`}>{person.image ? <Image src={person.image} alt="" width={56} height={56} sizes="56px" /> : <span aria-hidden="true">{person.fallbackInitials}</span>}</Link>)}</div><Link href="/about" className="text-link">{copy.studioLink}<ArrowUpRight size={17} /></Link></div>
       </section>
 
       <section className="home-commission accent-commission"><div className="page-width"><p className="eyebrow accent-text">{copy.ctaEyebrow}</p><h2>{copy.ctaTitle}</h2><Link href="/contact" className="pill-button pill-light">{copy.ctaLink}<ArrowUpRight size={18} /></Link></div></section>
