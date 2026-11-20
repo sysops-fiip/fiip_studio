@@ -8,6 +8,12 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## Team portraits — 2026-11-20
+
+User supplied and identified portraits for Sanjay Kandasamy and Venkat. Both original JPEGs are now in `public/images/team/`, linked in `content/studio.json`, and synced into `data/team.json`. Existing CSS applies monochrome; portrait alignment now preserves headroom. No facial generation or retouching. Five resident artists and two collaborators still await photos.
+
+Latest published source: `abda43a`. Deployment `dpl_BMrBF6tnoPVyeUsk5MQdhhRtGCqb` is Ready with apex/www aliases assigned. Build passes; desktop 1440×760 and mobile 390×844 portrait captures inspected, no JS errors, broken portraits or overflow. Captures: `delivery/portraits/`.
+
 ## Page-by-page audit — 2026-11-19
 
 User requested a complete page-by-page check. Report: `design/audit/2026-11-19.md`; screenshot/JSON pack delivered to Telegram (message 697). All seven live pages reviewed at desktop/mobile widths, plus 320px overflow checks. Corrected local build has zero Axe violations, JS errors, failed resources or broken images across 14 route/viewport checks.
