@@ -8,6 +8,22 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡ NEWEST — Claude, 21 Nov 2026 evening (supersedes the section below where they differ)
+
+Published: `3c6bc37` (cinematic pass, Vercel `dpl_BryyFQWx49jLT1EMGpE2rZr3eWei` Ready) and `f9ada46` (mnemonics + team order). User iterates from their phone, so keep publishing increments.
+
+Done and live:
+- **Team order** (user request): roster Iniyavan, Venkat, Ganesh, Udhay, Koushik, Sanjay, Ahilendra ("Akhil" = Ahilendra, unconfirmed). Collaborators: Sri Karthik, Balaji D, Balaji Sripathi, Shivraj.
+- **Mnemonics**: `components/Mnemonic.tsx` + `.mn-*` CSS in globals.css. Procedural animated SVG line loops (transparent, about 2 KB) for editorial/vfx/colour/conform/generative/review/archive/contact/studio. Placed on homepage craft rows, /services rows + intro, /about, /contact, /frames, /pricing, /portfolio. They pause offscreen and freeze under reduced motion. The user asked for "GIF with alpha". SVG was chosen instead and the user was told why.
+
+In progress (local, NOT committed):
+- **User feedback**: the studio-v2 portraits look deformed (Iniyavan, Shivraj, Ganesh) and the poses are inconsistent (Sri Karthik). They want straight poses, eyes on identical pixels, same scale and lighting, so the portraits overlay. Measured: roll up to ±9°, eye distance 124–186 px. Plan: regenerate with Nano Banana Pro (`vertexai/nano-banana-pro` via partner_generate), using the person photo plus a neutral mannequin pose/lighting template, then run `scripts/align-portraits.py` (insightface 5-point, similarity transform onto fixed eye pixels, writes an overlay check image).
+- **Hero rework**: the user found the lens-to-VFX film wonky. They want a real AI-generated shot, scroll-scrubbed, that freezes at hold frames while labelled passes wipe in, then continues. Built: `components/ScrollShot.tsx` (sticky canvas, frame sequence, coarse-to-fine preload, holds, pass cards + rail), `.scroll-shot`/`.pass-*` CSS, `scripts/procedural-passes.py` (Depth Anything V2 ONNX at `~/.cache/fiip-models/da2s.onnx` → depth, normal, clay, Delaunay wire, UV checker, SLIC ID matte, edges), `scripts/build-scroll-shot.py <video> --holds 0.45,0.8 --titles "A|B"` (writes `public/sequences/shot/*` + `data/scroll-shot.json`). HomePage currently imports ScrollShot. The sequence in public/sequences is a PLACEHOLDER built from the old film. Do not ship it.
+- **Blocked**: waiting on the user's "go" for Comfy credits (asked on Telegram, msg 109/114). Comfy spend needs explicit approval each time.
+- Gotcha: the global rule `main section > div:not(.absolute):not(.fixed):not(.sticky)` bit twice today. Any positioned wrapper must carry the matching utility class.
+
+---
+
 ## ⚡ LATEST — Claude takeover, 21 Nov 2026 (read this first, Codex)
 
 Codex hit its usage limit at 15:36 IST mid-way through the user's 21 Nov request (Comfy Cloud portraits + "inside the shot" cinematic hero + full Frames overview page). Claude picked it up. **State: everything built and verified locally, NOT committed, NOT pushed, NOT deployed.** The user has not yet said "publish" for this pass. Ask before pushing (pushing `main` auto-deploys to fixitinpost.in via Vercel Git).

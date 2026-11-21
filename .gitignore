@@ -51,3 +51,8 @@ design/portraits/studio-v2/*.png
 design/cinematic-v2/film/assets/
 design/cinematic-v2/film/.hyperframes/
 tsconfig.tsbuildinfo
+design/portraits/studio-v3/out/
+design/portraits/studio-v3/aligned/
+design/portraits/studio-v3/refs/
+design/portraits/studio-v3/template.png
+design/cinematic-v3/out/

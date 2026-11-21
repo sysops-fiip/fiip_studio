@@ -7,8 +7,7 @@ import { ArrowDown, ArrowUpRight, Play } from 'lucide-react';
 import { VideoDialog } from '@/components/ui/VideoDialog';
 import { Reveal } from '@/components/ui/Reveal';
 import { FramesExperience } from '@/components/FramesExperience';
-import { CinematicHero } from '@/components/CinematicHero';
-import { ShotBreakdown } from '@/components/ShotBreakdown';
+import { ScrollShot } from '@/components/ScrollShot';
 import { Mnemonic } from '@/components/Mnemonic';
 import studio from '@/content/studio.json';
 import projects from '@/data/projects.json';
@@ -20,8 +19,7 @@ export default function HomePage() {
   const openReel = () => setVideo({ id: copy.reelId, title: 'FIIP studio reel' });
   return (
     <div className="studio-home">
-      <CinematicHero onReel={openReel} />
-      <ShotBreakdown />
+      <ScrollShot onReel={openReel} />
 
       <section id="selected-work" className="selected-work section-space page-width" aria-labelledby="work-title">
         <div className="section-heading"><div><p className="eyebrow">{copy.workEyebrow}</p><h2 id="work-title">{copy.workTitle}</h2></div><Link href="/portfolio" className="text-link">{copy.archiveLabel}<ArrowUpRight size={17} /></Link></div>

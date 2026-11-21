@@ -1,0 +1,2 @@
+file 'out/Seedance2.0_flf2v.mp4'
+file 'out/Seedance2.5_i2v.mp4'
