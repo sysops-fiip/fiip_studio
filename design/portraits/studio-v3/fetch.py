@@ -1,5 +1,5 @@
 import sys,json,urllib.request,time
-sys.path.insert(0,'/tmp'); from fiip_comfy import call
+import os; sys.path.insert(0,os.path.expanduser('~/.cache/fiip-tools')); from fiip_comfy import call
 pid, out = sys.argv[1], sys.argv[2]
 for i in range(40):
     s=call('get_job_status',{'prompt_id':pid})['structuredContent']

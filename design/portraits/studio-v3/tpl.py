@@ -1,5 +1,5 @@
 import sys,json
-sys.path.insert(0,'/tmp'); from fiip_comfy import call
+import os; sys.path.insert(0,os.path.expanduser('~/.cache/fiip-tools')); from fiip_comfy import call
 args={"type":"image","model":"vertexai/nano-banana-pro","aspect_ratio":"4:5","description":"fiip-portrait-template",
  "prompt":"Studio lighting and posing reference for a corporate team photoshoot. A smooth matte mid-grey sculptor's bust of an adult male head, neck and shoulders, with no facial features rendered in detail (soft neutral generic face), wearing a plain matte black crew-neck t-shirt. Perfectly frontal: head upright and level with zero tilt and zero turn, shoulders square and level to camera, eyes on a horizontal line exactly 38 percent from the top of frame, face centred horizontally. Framing: vertical 4:5, top of head at 9 percent from top, crop at mid-chest. Background: seamless dark graphite studio paper, nearly black at the edges, soft grey gradient glow directly behind the head. Lighting: large octabox key 35 degrees camera-left and slightly above eye level, soft fill from camera-right at 1:3 ratio, thin hair light from behind camera-right separating the shoulders. Black and white, 85mm lens at f/5.6, camera at eye level. Clean, no text, no props.",
  "params":{"resolution":"2K"},"client_os":"linux"}

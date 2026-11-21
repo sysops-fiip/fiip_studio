@@ -1,5 +1,5 @@
 import sys,json
-sys.path.insert(0,'/tmp'); from fiip_comfy import call
+import os; sys.path.insert(0,os.path.expanduser('~/.cache/fiip-tools')); from fiip_comfy import call
 LENS="b87bb8dcdac8a782cbd1c85f6b83fd3f82a1a292cb7ad1e4eae9303516cf3ee7.png"
 PLATE="231324083f10f653ff5c2bd3ed87abe48d8599e75776adaa021f75da8b8dff07.png"
 style=" Photoreal feature-film VFX shot, monochrome silver night palette with a single warm ochre light from the circular portal. Physically plausible, no morphing, no warping architecture, no new objects, no people, no text, no logos. Locked exposure, filmic, smooth and steady."
