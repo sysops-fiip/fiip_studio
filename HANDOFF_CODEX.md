@@ -8,6 +8,11 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡ LATEST — portraits v4 + Balaji D (`ec2614f`)
+User: Ganesh overexposed; Balaji (Sripathi) and Shivraj "off"; supplied Balaji D photo (`public/images/team/balaji-d-reference.jpg`).
+- 4 Nano Banana Pro candidates per flagged person (`design/portraits/studio-v3/cand.py`), scored by ArcFace identity similarity vs the real photo (`scripts/score-portraits.py`). Winners: Ganesh 0.786, Balaji Sripathi 0.797, Shivraj 0.762, Balaji D 0.796. The same script normalises face-region exposure across all 11 (Ganesh face median was 136 vs set 94). Then `scripts/align-portraits.py`. Live files: `*-studio-v4.webp`; all 11 people now have portraits.
+- Weakest identity score: **Sri Karthik 0.554**. His reference is a seated, side-lit candid. Consider asking the user for a frontal photo or generating candidates.
+
 ## ⚡⚡⚡ NEWEST — Claude, 21 Nov 2026 night (`ec44a06`, live)
 
 User feedback: the scroll needs to be smoother (they asked for Topaz in-betweens), and the pass plates, Object ID especially, were weak, so regenerate them, cross-compare, and only use what is agreed.
