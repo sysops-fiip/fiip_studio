@@ -1,92 +1,92 @@
 {
-  "frames": 168,
+  "frames": 384,
   "width": 1920,
   "height": 1080,
   "base": "/sequences/shot/desktop",
   "mobileBase": "/sequences/shot/mobile",
   "ext": "webp",
-  "poster": "/sequences/shot/desktop/f0167.webp",
+  "poster": "/sequences/shot/desktop/f0383.webp",
   "holds": [
     {
-      "frame": 63,
+      "frame": 146,
       "title": "Frame 1 \u00b7 The world",
       "passes": [
         {
           "id": "depth",
           "label": "Depth",
-          "meta": "Z \u00b7 relative \u00b7 32-bit float \u00b7 frame 0063",
+          "meta": "Z \u00b7 median of 12 estimates \u00b7 frame 0146",
           "swatch": "#8f9399"
         },
         {
           "id": "wire",
           "label": "Geometry",
-          "meta": "Mesh \u00b7 triangulated from detail \u00b7 frame 0063",
+          "meta": "Mesh \u00b7 seeded on object boundaries \u00b7 frame 0146",
           "swatch": "#d9d9d4"
         },
         {
           "id": "normal",
           "label": "Normals",
-          "meta": "N \u00b7 tangent space \u00b7 frame 0063",
+          "meta": "N \u00b7 camera space \u00b7 frame 0146",
           "swatch": "#8f86d8"
         },
         {
           "id": "clay",
           "label": "Clay & light",
-          "meta": "Lambert + cavity \u00b7 untextured \u00b7 frame 0063",
+          "meta": "Key + fill \u00b7 multi-scale occlusion \u00b7 frame 0146",
           "swatch": "#b9b9b4"
         },
         {
           "id": "uv",
           "label": "UV checker",
-          "meta": "UV \u00b7 0\u20131 \u00b7 perspective \u00b7 frame 0063",
+          "meta": "UV \u00b7 one planar island per object \u00b7 frame 0146",
           "swatch": "#6f6f6c"
         },
         {
           "id": "id",
           "label": "Object ID",
-          "meta": "Cryptomatte \u00b7 18 mattes \u00b7 frame 0063",
+          "meta": "Cryptomatte \u00b7 consensus of 3 AI voters \u00b7 frame 0146",
           "swatch": "#ca943e"
         }
       ]
     },
     {
-      "frame": 155,
+      "frame": 356,
       "title": "Frame 2 \u00b7 The portal",
       "passes": [
         {
           "id": "depth",
           "label": "Depth",
-          "meta": "Z \u00b7 relative \u00b7 32-bit float \u00b7 frame 0155",
+          "meta": "Z \u00b7 median of 12 estimates \u00b7 frame 0356",
           "swatch": "#8f9399"
         },
         {
           "id": "wire",
           "label": "Geometry",
-          "meta": "Mesh \u00b7 triangulated from detail \u00b7 frame 0155",
+          "meta": "Mesh \u00b7 seeded on object boundaries \u00b7 frame 0356",
           "swatch": "#d9d9d4"
         },
         {
           "id": "normal",
           "label": "Normals",
-          "meta": "N \u00b7 tangent space \u00b7 frame 0155",
+          "meta": "N \u00b7 camera space \u00b7 frame 0356",
           "swatch": "#8f86d8"
         },
         {
           "id": "clay",
           "label": "Clay & light",
-          "meta": "Lambert + cavity \u00b7 untextured \u00b7 frame 0155",
+          "meta": "Key + fill \u00b7 multi-scale occlusion \u00b7 frame 0356",
           "swatch": "#b9b9b4"
         },
         {
           "id": "uv",
           "label": "UV checker",
-          "meta": "UV \u00b7 0\u20131 \u00b7 perspective \u00b7 frame 0155",
+          "meta": "UV \u00b7 one planar island per object \u00b7 frame 0356",
           "swatch": "#6f6f6c"
         },
         {
           "id": "id",
           "label": "Object ID",
-          "meta": "Cryptomatte \u00b7 18 mattes \u00b7 frame 0155",
+          "meta": "Cryptomatte \u00b7 consensus of 3 AI voters \u00b7 frame 0356",
           "swatch": "#ca943e"
         }
       ]

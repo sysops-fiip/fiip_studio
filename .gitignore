@@ -56,3 +56,7 @@ design/portraits/studio-v3/aligned/
 design/portraits/studio-v3/refs/
 design/portraits/studio-v3/template.png
 design/cinematic-v3/out/
+design/cinematic-v3/holds/
+design/cinematic-v3/ids/
+design/cinematic-v3/passes-*/
+design/cinematic-v3/dbg-*/

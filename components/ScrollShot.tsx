@@ -57,10 +57,10 @@ export function ScrollShot({ onReel }: { onReel: () => void }) {
     for (const step of [8, 4, 2, 1]) for (let i = 0; i < m.frames; i += step) load(i);
     m.holds.forEach((h, hi) => h.passes.forEach(p => { const im = new Image(); im.src = `${base}/hold${hi}-${p.id}.${m.ext}`; im.onload = () => { last = ''; draw(); }; passImgs.set(`${hi}-${p.id}`, im); }));
     const nearest = (i: number) => { for (let d = 0; d < m.frames; d++) { for (const j of [i - d, i + d]) { const f = frames[j]; if (f && f.complete && f.naturalWidth) return f; } } return null; };
-        function locate() {
-      const r = el!.getBoundingClientRect();
-      const span = r.height - innerHeight;
-      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, span)));
+    const target = () => { const r = el!.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight))); };
+    let shown = target();
+    function locate() {
+      const p = shown;
       let u = p * total;
       for (const g of segments) { if (u <= g.units) return { g, t: u / g.units, p }; u -= g.units; }
       const g = segments[segments.length - 1];
@@ -77,8 +77,16 @@ export function ScrollShot({ onReel }: { onReel: () => void }) {
       if (key === last) return; last = key;
       ctx.fillStyle = '#060707'; ctx.fillRect(0, 0, cv!.width, cv!.height);
       if (g.kind === 'play') {
-        const f = nearest(Math.round(g.from + (g.to - g.from) * t));
-        if (f) cover(f, f.naturalWidth, f.naturalHeight).draw();
+        const pos = g.from + (g.to - g.from) * t, i0 = Math.floor(pos), frac = pos - i0;
+        const a = frames[i0], b = frames[Math.min(m.frames - 1, i0 + 1)];
+        const ready = (x: HTMLImageElement | null) => !!x && x.complete && x.naturalWidth > 0;
+        if (ready(a) && ready(b) && frac > 0.02) {
+          cover(a!, a!.naturalWidth, a!.naturalHeight).draw();
+          ctx.globalAlpha = frac; cover(b!, b!.naturalWidth, b!.naturalHeight).draw(); ctx.globalAlpha = 1;
+        } else {
+          const f = nearest(Math.round(pos));
+          if (f) cover(f, f.naturalWidth, f.naturalHeight).draw();
+        }
         setState(s => (s.hold === -1 && Math.abs(s.progress - p) < 0.002 ? s : { hold: -1, pass: -1, wipe: 0, progress: p }));
         return;
       }
@@ -97,11 +105,18 @@ export function ScrollShot({ onReel }: { onReel: () => void }) {
     }
     const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2); cv.width = Math.round(cv.clientWidth * dpr); cv.height = Math.round(cv.clientHeight * dpr); last = ''; draw(); };
     let raf = 0;
-    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
+    // Ease the displayed position toward the scroll position: wheel steps and swipes glide instead of jumping.
+    const tick = () => {
+      const goal = target(), diff = goal - shown;
+      shown = Math.abs(diff) < 0.00005 ? goal : shown + diff * 0.16;
+      draw();
+      raf = shown === goal ? 0 : requestAnimationFrame(tick);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick); };
     size();
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('resize', size);
-    return () => { removeEventListener('scroll', onScroll); removeEventListener('resize', size); cancelAnimationFrame(raf); };
+    return () => { removeEventListener('scroll', onScroll); removeEventListener('resize', size); if (raf) cancelAnimationFrame(raf); };
   }, [segments, total]);
 
   const hold = state.hold >= 0 ? m.holds[state.hold] : null;
