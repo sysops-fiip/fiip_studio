@@ -1,103 +1,67 @@
 'use client';
 
-import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
-import { GlassPanel } from '@/components/ui/GlassPanel';
-import { StaggerGroup } from '@/components/ui/StaggerGroup';
-import { Reveal } from '@/components/ui/Reveal';
+import { useEffect, useMemo, useState } from 'react';
+import { Play } from 'lucide-react';
 import { Mnemonic } from '@/components/Mnemonic';
-
-import { useState, useMemo } from 'react';
-import { PortfolioCard } from '@/components/PortfolioCard';
+import { VideoDialog } from '@/components/ui/VideoDialog';
 import projectsData from '@/data/projects.json';
 
-type CategoryType = 'All' | 'Commercials' | 'Visual Effects' | 'Color & DI' | 'Feature & OTT';
+type Category = 'All' | 'Commercials' | 'Visual Effects' | 'Color & DI' | 'Feature & OTT';
+const CATEGORIES: Category[] = ['All', 'Commercials', 'Visual Effects', 'Color & DI', 'Feature & OTT'];
+const LABEL: Record<Category, string> = { All: 'All work', Commercials: 'Commercials', 'Visual Effects': 'Visual effects', 'Color & DI': 'Colour & DI', 'Feature & OTT': 'Feature & OTT' };
+const ytId = (p: { youtubeId?: string; videoUrl?: string }) => p.youtubeId || p.videoUrl?.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/)?.[1] || '';
 
 export default function PortfolioPage() {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All');
+  const [category, setCategory] = useState<Category>('All');
+  const [video, setVideo] = useState<{ id: string; title: string } | null>(null);
 
-  const categories: CategoryType[] = [
-    'All',
-    'Commercials',
-    'Visual Effects',
-    'Color & DI',
-    'Feature & OTT',
-  ];
+  // Filter state lives in the URL (?category=...), so a filtered view can be shared.
+  useEffect(() => {
+    const q = new URLSearchParams(location.search).get('category');
+    const match = CATEGORIES.find(c => c.toLowerCase().replace(/[^a-z]/g, '') === q);
+    if (match) setCategory(match);
+  }, []);
+  const choose = (c: Category) => {
+    setCategory(c);
+    const url = new URL(location.href);
+    if (c === 'All') url.searchParams.delete('category'); else url.searchParams.set('category', c.toLowerCase().replace(/[^a-z]/g, ''));
+    history.replaceState(null, '', url);
+  };
 
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === 'All') {
-      return projectsData.projects;
-    }
-    return projectsData.projects.filter((project) => project.category === selectedCategory);
-  }, [selectedCategory]);
+  const projects = useMemo(() => category === 'All' ? projectsData.projects : projectsData.projects.filter(p => p.category === category), [category]);
 
-  return (
-    <div className="min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
-      {/* Hero Header */}
-      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center border-b border-neutral-900">
-        <Reveal>
-          <GlassPanel tone="light" elevation={2} className="p-6 sm:p-10">
-            <ProceduralTexture variant="scan" className="opacity-[0.04]" />
-            <Mnemonic kind="archive" size={96} className="mx-auto mb-6" />
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
-              Production Archive
-            </p>
-            <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
-              Commercials &amp; Feature Slate
-            </h1>
-            <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
-              Selected broadcast campaigns, theatrical DI color mastering, and visual effects sequences delivered across India.
-            </p>
-          </GlassPanel>
-        </Reveal>
-      </section>
+  return <div className="studio-page archive-page">
+    <section className="page-width page-intro">
+      <p className="eyebrow">Production archive</p>
+      <h1>Commercials, features<br />and the frames between.</h1>
+      <p className="section-intro">Broadcast campaigns, theatrical colour and visual effects sequences, delivered across India.</p>
+      <Mnemonic kind="archive" shape="wide" size={288} className="page-mnemonic" />
+    </section>
 
-      {/* Filter Tabs */}
-      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Reveal>
-          <GlassPanel tone="light" elevation={0} className="glass-interactive p-4 flex flex-wrap justify-center gap-2">
-                <ProceduralTexture variant="mesh" className="opacity-[0.04]" />
-          {categories.map((category) => (
-            <button
-              key={category}
-              aria-pressed={selectedCategory === category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
-                selectedCategory === category
-                  ? 'bg-white text-black font-semibold'
-                  : 'bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600'
-              }`}
-            >
-              {category}
+    <section className="page-width section-space archive-body" aria-labelledby="archive-title">
+      <h2 id="archive-title" className="sr-only">Selected projects</h2>
+      <div className="archive-tabs" role="toolbar" aria-label="Filter projects">
+        {CATEGORIES.map((c, i) => <button key={c} aria-pressed={category === c} onClick={() => choose(c)}><span>0{i + 1}</span>{LABEL[c]}</button>)}
+      </div>
+      <p className="sr-only" role="status">{projects.length} projects</p>
+      <div className="archive-grid">
+        {projects.map(p => {
+          const id = ytId(p);
+          return <article key={p.id} className="archive-item">
+            <button className="archive-thumb" disabled={!id} onClick={() => id && setVideo({ id, title: p.title })} aria-label={id ? `Watch ${p.title}` : p.title}>
+              <img src={p.image} alt="" width={640} height={360} loading="lazy" decoding="async" />
+              <span className="archive-meta">{LABEL[p.category as Category] ?? p.category}</span>
+              {id && <span className="film-play"><Play size={16} fill="currentColor" /></span>}
             </button>
-          ))}
-        </GlassPanel>
-        </Reveal>
-      </section>
-
-      {/* Portfolio Grid */}
-      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="sr-only">Selected projects</h2>
-        <p className="sr-only" role="status">{filteredProjects.length} projects</p>
-        <StaggerGroup key={selectedCategory}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {filteredProjects.map((project) => (
-            <div key={project.id} className="h-full">
-              <PortfolioCard
-                id={project.id}
-                title={project.title}
-                client={project.client}
-                category={project.category}
-                image={project.image}
-                videoUrl={project.videoUrl}
-                youtubeId={project.youtubeId}
-                description={project.description}
-                services={project.services}
-              />
+            <div className="archive-caption">
+              <h3>{p.title}</h3>
+              {p.client && <p className="archive-client">{p.client}</p>}
+              {p.services?.length ? <p className="archive-services">{p.services.join(' · ')}</p> : null}
             </div>
-          ))}
-        </StaggerGroup>
-      </section>
-    </div>
-  );
+          </article>;
+        })}
+      </div>
+    </section>
+    <VideoDialog open={!!video} onClose={() => setVideo(null)} youtubeId={video?.id ?? ''} title={video?.title ?? ''} />
+  </div>;
 }

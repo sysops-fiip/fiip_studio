@@ -1,167 +1,46 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, Film, Palette, Clapperboard, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { ArrowUpRight, Check, Plus } from 'lucide-react';
+
+/* Scope builder: three choices that pre-fill the contact form. No prices or promises are shown. */
+const FORMATS = [
+  { id: 'commercial', label: 'Commercial', desc: 'TVC and digital campaign' },
+  { id: 'feature', label: 'Feature & series', desc: 'Theatrical, OTT, episodic' },
+  { id: 'brand', label: 'Brand & music film', desc: 'Long-form brand storytelling' },
+  { id: 'vfx', label: 'VFX sequence', desc: 'Shots, CG and set extensions' },
+] as const;
+const DISCIPLINES = ['Editorial', 'Colour grading', 'Visual effects & cleanup', '3D & CG', 'Conform & mastering', 'AI-assisted VFX'];
+const TIMING = [
+  { id: 'rush', label: 'As soon as possible', desc: 'We confirm availability' },
+  { id: 'standard', label: 'A set delivery date', desc: 'Agreed together' },
+  { id: 'flexible', label: 'Milestones', desc: 'Long-form schedule' },
+] as const;
 
 export function PricingCalculator() {
-  const [projectType, setProjectType] = useState<'commercial' | 'feature' | 'brand' | 'vfx'>('commercial');
-  const [selectedServices, setSelectedServices] = useState<string[]>([
-    'Editorial Assembly',
-    'DaVinci Resolve DI Color',
-  ]);
-  const [timeline, setTimeline] = useState<'rush' | 'standard' | 'flexible'>('standard');
+  const [format, setFormat] = useState<string>('commercial');
+  const [picked, setPicked] = useState<string[]>(['Editorial', 'Colour grading']);
+  const [timing, setTiming] = useState<string>('standard');
+  const toggle = (d: string) => setPicked(p => p.includes(d) ? (p.length > 1 ? p.filter(x => x !== d) : p) : [...p, d]);
+  const formatLabel = FORMATS.find(f => f.id === format)?.label;
 
-  const projectTypes = [
-    { id: 'commercial', label: 'Commercial TVC', icon: Clapperboard, desc: '15s to 90s Broadcast / Digital Ad' },
-    { id: 'feature', label: 'Feature / OTT Series', icon: Film, desc: 'Episodic or Theatrical Long-Form' },
-    { id: 'brand', label: 'Brand Film / Music Video', icon: Palette, desc: 'Cinematic Narrative Showcase' },
-    { id: 'vfx', label: 'VFX & 3D Sequence', icon: Sparkles, desc: 'Complex CGI & Node Compositing' },
-  ];
-
-  const serviceOptions = [
-    'Editorial Assembly',
-    'DaVinci Resolve DI Color',
-    'Invisible VFX & Cleanups',
-    'Blender 3D Animation',
-    'Multi-Language Dub Sync',
-    'Theatrical DCP / HDR Master',
-  ];
-
-  const toggleService = (srv: string) => {
-    if (selectedServices.includes(srv)) {
-      if (selectedServices.length > 1) {
-        setSelectedServices(selectedServices.filter(s => s !== srv));
-      }
-    } else {
-      setSelectedServices([...selectedServices, srv]);
-    }
-  };
-
-  return (
-    <div className="w-full max-w-4xl mx-auto border border-neutral-800 bg-neutral-950 p-6 sm:p-10">
-      {/* Step 1: Project Type */}
-      <div className="mb-10">
-        <p className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">
-          01 / Select Production Format
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {projectTypes.map((t) => {
-            const Icon = t.icon;
-            const isSelected = projectType === t.id;
-            return (
-              <button
-                key={t.id}
-                aria-pressed={isSelected}
-                type="button"
-                onClick={() => setProjectType(t.id as any)}
-                className={`p-4 text-left border transition-colors cursor-pointer flex flex-col justify-between ${
-                  isSelected
-                    ? 'accent-soft-bg accent-line text-white'
-                    : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <Icon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-neutral-400'}`} />
-                  <span className={`text-[10px] font-mono uppercase ${isSelected ? 'text-white font-bold' : 'text-neutral-400'}`}>
-                    {isSelected ? 'SELECTED' : 'OPTION'}
-                  </span>
-                </div>
-                <div>
-                  <p className="text-sm font-bold uppercase tracking-tight mb-1 text-white">
-                    {t.label}
-                  </p>
-                  <p className="text-xs text-neutral-400">{t.desc}</p>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Step 2: Services Needed */}
-      <div className="mb-10">
-        <p className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">
-          02 / Required Disciplines
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
-          {serviceOptions.map((srv) => {
-            const isSelected = selectedServices.includes(srv);
-            return (
-              <button
-                key={srv}
-                aria-pressed={isSelected}
-                type="button"
-                onClick={() => toggleService(srv)}
-                className={`px-4 py-3 text-left border transition-colors cursor-pointer flex items-center justify-between uppercase ${
-                  isSelected
-                    ? 'accent-soft-bg accent-line text-white font-semibold'
-                    : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                }`}
-              >
-                <span>{srv}</span>
-                <span>{isSelected ? '✓' : '+'}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Step 3: Turnaround Window */}
-      <div className="mb-10">
-        <p className="block font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-4">
-          03 / Schedule Turnaround
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {[
-            { id: 'rush', label: 'Rush Turnaround', desc: 'Subject to availability' },
-            { id: 'standard', label: 'Standard Delivery', desc: 'Agree a delivery date' },
-            { id: 'flexible', label: 'Feature Timeline', desc: 'Long-Form Milestones' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              aria-pressed={timeline === item.id}
-              type="button"
-              onClick={() => setTimeline(item.id as any)}
-              className={`p-3 border text-center transition-colors cursor-pointer ${
-                timeline === item.id
-                  ? 'accent-soft-bg accent-line text-white'
-                  : 'bg-neutral-900 border-neutral-800 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <p className="text-xs font-mono font-bold uppercase mb-0.5 text-white">
-                {item.label}
-              </p>
-              <p className="text-[10px] font-mono text-neutral-400">
-                {item.desc}
-              </p>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Scope Summary & Direct Consultation CTA */}
-      <div className="p-6 bg-black border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 block mb-1">
-            Production Scope Specification
-          </span>
-          <h3 className="text-base font-bold uppercase tracking-tight accent-text">
-            {projectTypes.find(p => p.id === projectType)?.label} · {selectedServices.length} Disciplines
-          </h3>
-          <p className="text-xs font-mono text-neutral-400 mt-1">
-            Bids are calibrated by raw camera codecs (Arri, RED, Sony Venice) and deliverable masters.
-          </p>
-        </div>
-
-        <Link
-          href={`/contact?type=${projectType}&services=${encodeURIComponent(selectedServices.join(','))}&timeline=${timeline}`}
-          className="px-6 py-3.5 bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-neutral-200 transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
-        >
-          Continue with scope
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
-      </div>
+  return <div className="scope-builder">
+    <fieldset>
+      <legend><span>01</span>The work</legend>
+      <div className="scope-options scope-4">{FORMATS.map(f => <button key={f.id} type="button" aria-pressed={format === f.id} onClick={() => setFormat(f.id)}><strong>{f.label}</strong><small>{f.desc}</small></button>)}</div>
+    </fieldset>
+    <fieldset>
+      <legend><span>02</span>The disciplines</legend>
+      <div className="scope-chips">{DISCIPLINES.map(d => <button key={d} type="button" aria-pressed={picked.includes(d)} onClick={() => toggle(d)}>{picked.includes(d) ? <Check size={13} /> : <Plus size={13} />}{d}</button>)}</div>
+    </fieldset>
+    <fieldset>
+      <legend><span>03</span>The timing</legend>
+      <div className="scope-options scope-3">{TIMING.map(t => <button key={t.id} type="button" aria-pressed={timing === t.id} onClick={() => setTiming(t.id)}><strong>{t.label}</strong><small>{t.desc}</small></button>)}</div>
+    </fieldset>
+    <div className="scope-summary">
+      <div><p className="eyebrow">Your brief so far</p><p className="scope-line">{formatLabel} · {picked.join(', ')}</p></div>
+      <Link className="pill-button pill-light" href={`/contact?type=${format}&services=${encodeURIComponent(picked.join(','))}&timeline=${timing}`}>Continue to the brief<ArrowUpRight size={16} /></Link>
     </div>
-  );
+  </div>;
 }

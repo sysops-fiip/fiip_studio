@@ -78,7 +78,7 @@ export function Navbar() {
               href="https://frames.fixitinpost.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] font-mono tracking-wider px-2.5 py-1 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-colors"
+              className="text-[11px] font-mono tracking-wider px-3.5 py-1.5 rounded-full border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-colors"
             >
               Frames Portal ↗
             </a>
@@ -96,7 +96,7 @@ export function Navbar() {
             </div>
 
             <button
-              className="lg:hidden text-white p-2 hover:bg-neutral-900 transition-colors cursor-pointer"
+              className="lg:hidden text-white p-2 rounded-full hover:bg-neutral-900 transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
               ref={toggleRef}
               aria-controls="mobile-navigation"
@@ -110,7 +110,7 @@ export function Navbar() {
 
         {/* Mobile Navigation Dropdown */}
         {isOpen && (
-          <div id="mobile-navigation" style={{maxHeight: "calc(100dvh - 80px)", overflowY: "auto"}} className="lg:hidden bg-black border-t border-neutral-900 px-4 py-6 space-y-4">
+          <div id="mobile-navigation" style={{maxHeight: "calc(100dvh - 80px)", overflowY: "auto"}} className="lg:hidden bg-[#050505] border-t border-neutral-900 px-2 py-6 space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -127,14 +127,14 @@ export function Navbar() {
                 href="https://frames.fixitinpost.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono uppercase tracking-wider py-2.5 border border-neutral-800 text-neutral-300 text-center"
+                className="pill-button justify-center"
               >
-                Frames Review Portal ↗
+                Frames review portal ↗
               </a>
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="w-full text-center py-3 bg-white text-black font-semibold text-xs font-mono uppercase tracking-wider"
+                className="pill-button pill-light justify-center"
               >
                 Let’s talk
               </Link>

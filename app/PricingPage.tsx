@@ -1,152 +1,45 @@
-'use client';
-import { StaggerGroup } from '@/components/ui/StaggerGroup';
-import { Reveal } from '@/components/ui/Reveal';
-import { Mnemonic } from '@/components/Mnemonic';
-import { GlassPanel } from '@/components/ui/GlassPanel';
-import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
-
-import { PricingCalculator } from '@/components/PricingCalculator';
-import pricingData from '@/data/pricing.json';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { Mnemonic } from '@/components/Mnemonic';
+import { PricingCalculator } from '@/components/PricingCalculator';
+import studio from '@/content/studio.json';
+
+const FORMATS = [
+  { kind: 'editorial', title: 'Commercial & brand', text: 'Campaign films, TVCs and their cutdowns: the edit, the grade, cleanups and finishing, delivered to every format the campaign runs in.' },
+  { kind: 'colour', title: 'Feature & series', text: 'Long-form colour, conform and visual effects for theatrical, OTT and episodic work, planned around the production schedule.' },
+  { kind: 'vfx', title: 'Studio partnership', text: 'Ongoing post capacity for production houses and agencies that bring us work regularly, with one team that knows the brand.' },
+];
+const STEPS = [
+  { title: 'Brief', text: 'Tell us about the film, the footage and the delivery you need. The scope builder below starts that conversation.' },
+  { title: 'Proposal', text: 'We come back with a scope, a team and a schedule written for this project.' },
+  { title: 'Review in Frames', text: 'Cuts, grades and shots are reviewed on the frame in Frames, with versions, notes and approvals in one place.' },
+  { title: 'Delivery', text: 'Masters are delivered to the specifications agreed in the proposal.' },
+];
 
 export default function PricingPage() {
-  return (
-    <div className="accent-commission min-h-screen pt-28 pb-20 bg-black text-white selection:bg-white selection:text-black">
-      {/* Hero Header */}
-      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
-        <Reveal>
-          <Mnemonic kind="conform" size={96} className="mx-auto mb-6" />
-          <p className="font-mono text-xs uppercase tracking-[0.25em] accent-text mb-3">
-            Commissioning &amp; Scope
-          </p>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
-            Production Engagement
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed font-mono">
-            Every production timeline involves tailored camera formats, deliverable specifications, and suite requirements.
-            We provide milestone-driven commissioning for commercial campaigns, episodic OTT, and feature films.
-          </p>
-        </Reveal>
-      </section>
+  return <div className="studio-page commission-page">
+    <section className="page-width page-intro">
+      <p className="eyebrow">Commissioning</p>
+      <h1>Every film is scoped<br />for what it needs.</h1>
+      <p className="section-intro">No packages and no fixed price list. Tell us about the work and we will shape a proposal around it.</p>
+      <Mnemonic kind="conform" shape="wide" size={288} className="page-mnemonic" />
+    </section>
 
-      {/* Interactive Scope Builder */}
-      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-neutral-900">
-        <div className="text-center mb-10">
-          <Reveal as="h2" className="text-xl sm:text-3xl font-bold uppercase tracking-tight mb-2">
-            Project Scope Builder
-          </Reveal>
-          <Reveal as="p" className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
-            Configure format and required disciplines for an official studio quotation
-          </Reveal>
-        </div>
-        <Reveal><PricingCalculator /></Reveal>
-      </section>
+    <section className="page-width section-space" aria-labelledby="formats-title">
+      <div className="section-heading"><div><p className="eyebrow">What we take on</p><h2 id="formats-title">Three ways to work together.</h2></div></div>
+      <div className="commission-formats">{FORMATS.map(f => <article key={f.title}><Mnemonic kind={f.kind} shape="wide" size={216} /><h3>{f.title}</h3><p>{f.text}</p></article>)}</div>
+    </section>
 
-      {/* Engagement Slates (Editorial Structure) */}
-      <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-neutral-900">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
-            Standard Slates
-          </Reveal>
-          <Reveal as="h2" className="text-2xl sm:text-4xl font-black uppercase tracking-tight">
-            Studio Retainer &amp; Project Models
-          </Reveal>
-        </div>
+    <section className="page-width section-space" aria-labelledby="scope-title">
+      <div className="section-heading"><div><p className="eyebrow">Scope builder</p><h2 id="scope-title">Start the brief.</h2></div><p className="section-intro">Three quick choices. They are carried into the message you send us, so nothing is submitted from this page.</p></div>
+      <PricingCalculator />
+    </section>
 
-        <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pricingData.engagementModels.map((model, index) => (
-            <div
-              key={model.id}
-              className="h-full"
-            >
-              <GlassPanel tone={model.featured ? 'tinted' : 'dark'} elevation={model.featured ? 2 : 1} className="p-8 h-full flex flex-col justify-between glass-interactive">
-                <ProceduralTexture variant="grain" />
-                {model.featured && (
-                  <span aria-hidden="true" className="absolute inset-x-0 top-0 border-t accent-line pointer-events-none" />
-                )}
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs uppercase tracking-wider accent-text">
-                    SLATE 0{index + 1}
-                  </span>
-                  {model.featured && (
-                    <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border accent-line accent-text">
-                      COMMERCIAL STANDARD
-                    </span>
-                  )}
-                </div>
+    <section className="page-width section-space" aria-labelledby="process-title">
+      <div className="section-heading"><div><p className="eyebrow">How a project runs</p><h2 id="process-title">From brief to master.</h2></div></div>
+      <ol className="commission-steps">{STEPS.map((s, i) => <li key={s.title}><span>0{i + 1}</span><h3>{s.title}</h3><p>{s.text}</p></li>)}</ol>
+    </section>
 
-                <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-1">
-                  {model.name}
-                </h3>
-                <p className="text-xs font-mono text-neutral-400 uppercase mb-6">{model.tagline}</p>
-                <p className="text-xs text-neutral-400 leading-relaxed mb-6 font-mono">{model.idealFor}</p>
-
-                <div className="p-4 bg-neutral-900 border border-neutral-800 space-y-2 mb-6 font-mono text-xs">
-                  <div>
-                    <span className="text-neutral-400 block text-[10px] uppercase">TARGET TURNAROUND</span>
-                    <span className="text-white font-medium">{model.turnaround}</span>
-                  </div>
-                  <div className="pt-2 border-t border-neutral-800">
-                    <span className="text-neutral-400 block text-[10px] uppercase">DELIVERABLES MASTER</span>
-                    <span className="text-white font-medium">{model.deliverables}</span>
-                  </div>
-                </div>
-
-                <ul className="space-y-2 pt-4 border-t border-neutral-900 font-mono text-xs text-neutral-400">
-                  {model.features.map((feat, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-white">·</span>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-8">
-                <Link
-                  href={`/contact?tier=${model.id}`}
-                  className={`w-full block text-center py-3.5 font-mono text-xs uppercase tracking-wider font-semibold transition-colors ${
-                    model.featured
-                      ? 'accent-bg text-black'
-                      : 'border border-neutral-800 text-neutral-300 hover:border-white hover:text-white'
-                  }`}
-                >
-                  Consult on {model.name}
-                </Link>
-              </div>
-              </GlassPanel>
-            </div>
-          ))}
-        </StaggerGroup>
-      </section>
-
-      {/* NDA / Direct Review Slate */}
-      <section className="glass-stage max-w-4xl mx-auto px-4 py-16 text-center">
-        <Reveal as="p" className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">
-          Confidentiality &amp; Pipeline
-        </Reveal>
-        <Reveal as="h2" className="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-4">
-          NDA &amp; Custom Workflow Audit
-        </Reveal>
-        <Reveal as="p" className="text-neutral-400 text-xs sm:text-sm font-mono mb-8 max-w-xl mx-auto leading-relaxed">
-          For unreleased feature scripts, NDA brand campaigns, and custom technical pipeline integrations, contact our studio supervisors directly.
-        </Reveal>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/contact"
-            className="px-8 py-3.5 bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-neutral-200 transition-colors"
-          >
-            Direct Inquiry
-          </Link>
-          <a
-            href="mailto:hello@fixitinpost.in"
-            className="px-8 py-3.5 border border-neutral-800 text-white font-mono text-xs uppercase tracking-wider font-semibold hover:border-white transition-colors"
-          >
-            hello@fixitinpost.in
-          </a>
-        </div>
-      </section>
-    </div>
-  );
+    <section className="home-commission accent-commission"><div className="page-width"><h2>Working under NDA?</h2><p className="section-intro commission-nda">Unreleased scripts and confidential campaigns are routine for us. Write to us and we will set up the right process before anything is shared.</p><Link href="/contact" className="pill-button pill-light">{studio.homepage.ctaLink}<ArrowUpRight size={16} /></Link></div></section>
+  </div>;
 }
