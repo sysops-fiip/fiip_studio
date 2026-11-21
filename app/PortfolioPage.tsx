@@ -4,6 +4,7 @@ import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { StaggerGroup } from '@/components/ui/StaggerGroup';
 import { Reveal } from '@/components/ui/Reveal';
+import { Mnemonic } from '@/components/Mnemonic';
 
 import { useState, useMemo } from 'react';
 import { PortfolioCard } from '@/components/PortfolioCard';
@@ -36,6 +37,7 @@ export default function PortfolioPage() {
         <Reveal>
           <GlassPanel tone="light" elevation={2} className="p-6 sm:p-10">
             <ProceduralTexture variant="scan" className="opacity-[0.04]" />
+            <Mnemonic kind="archive" size={96} className="mx-auto mb-6" />
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400 mb-3">
               Production Archive
             </p>

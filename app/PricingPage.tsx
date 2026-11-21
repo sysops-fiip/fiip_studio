@@ -1,6 +1,7 @@
 'use client';
 import { StaggerGroup } from '@/components/ui/StaggerGroup';
 import { Reveal } from '@/components/ui/Reveal';
+import { Mnemonic } from '@/components/Mnemonic';
 import { GlassPanel } from '@/components/ui/GlassPanel';
 import { ProceduralTexture } from '@/components/ui/ProceduralTexture';
 
@@ -14,6 +15,7 @@ export default function PricingPage() {
       {/* Hero Header */}
       <section className="glass-stage max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 text-center border-b border-neutral-900">
         <Reveal>
+          <Mnemonic kind="conform" size={96} className="mx-auto mb-6" />
           <p className="font-mono text-xs uppercase tracking-[0.25em] accent-text mb-3">
             Commissioning &amp; Scope
           </p>

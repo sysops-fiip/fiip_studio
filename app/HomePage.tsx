@@ -9,6 +9,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { FramesExperience } from '@/components/FramesExperience';
 import { CinematicHero } from '@/components/CinematicHero';
 import { ShotBreakdown } from '@/components/ShotBreakdown';
+import { Mnemonic } from '@/components/Mnemonic';
 import studio from '@/content/studio.json';
 import projects from '@/data/projects.json';
 
@@ -54,7 +55,7 @@ export default function HomePage() {
 
       <section className="craft-section section-space page-width" aria-labelledby="craft-title">
         <div className="section-heading"><div><p className="eyebrow">{copy.craftEyebrow}</p><h2 id="craft-title">{copy.craftTitle}</h2></div><p className="section-intro">{copy.craftIntro}</p></div>
-        <div className="craft-list">{copy.craft.map((item, index) => <Reveal key={item.title}><Link href="/services" className="craft-row"><span className="craft-number">0{index + 1}</span><h3>{item.title}</h3><div><p>{item.text}</p><span>{item.detail}</span></div><ArrowUpRight size={22} /></Link></Reveal>)}</div>
+        <div className="craft-list">{copy.craft.map((item, index) => <Reveal key={item.title}><Link href="/services" className="craft-row"><span className="craft-number">0{index + 1}</span><Mnemonic kind={item.title} size={56} /><h3>{item.title}</h3><div><p>{item.text}</p><span>{item.detail}</span></div><ArrowUpRight size={22} /></Link></Reveal>)}</div>
       </section>
 
       <section className="frames-section section-space" aria-labelledby="frames-title">

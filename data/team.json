@@ -15,16 +15,18 @@
       "external": false
     },
     {
-      "id": "team-udhay",
-      "name": "Udhaya Kumar",
-      "role": "VFX Generalist",
-      "specialty": "Compositing, cleanups, plate work",
+      "id": "team-venkat",
+      "name": "Venkat",
+      "role": "Post Production Supervisor & Editor",
+      "specialty": "Post supervision, editorial",
       "alsoDoes": [
-        "Editorial support"
+        "VFX",
+        "Grading",
+        "Script and story"
       ],
-      "image": "/images/team/udhay-studio-v2.webp",
-      "fallbackInitials": "UK",
-      "bio": "Hands-on generalist covering the day-to-day VFX load — cleanups, paint, rig and wire removal, comps and plate fixes — with enough editorial sense to work straight off the timeline.",
+      "image": "/images/team/venkat-studio-v2.webp",
+      "fallbackInitials": "VE",
+      "bio": "Supervises post from the studio side — schedules, handoffs and delivery — and edits. All-rounder across VFX, grade and story, which is what makes the supervision work.",
       "external": false
     },
     {
@@ -42,16 +44,16 @@
       "external": false
     },
     {
-      "id": "team-ahil",
-      "name": "Ahilendra D",
-      "role": "Conform & Mastering Artist",
-      "specialty": "Finishing, conform, delivery masters",
+      "id": "team-udhay",
+      "name": "Udhaya Kumar",
+      "role": "VFX Generalist",
+      "specialty": "Compositing, cleanups, plate work",
       "alsoDoes": [
-        "Colour (developing)"
+        "Editorial support"
       ],
-      "image": "/images/team/ahilendra-studio-v2.webp",
-      "fallbackInitials": "AH",
-      "bio": "Owns finishing: conforms, online, and broadcast/theatrical masters. Also building out as a colourist under the studio's DI work.",
+      "image": "/images/team/udhay-studio-v2.webp",
+      "fallbackInitials": "UK",
+      "bio": "Hands-on generalist covering the day-to-day VFX load — cleanups, paint, rig and wire removal, comps and plate fixes — with enough editorial sense to work straight off the timeline.",
       "external": false
     },
     {
@@ -83,41 +85,17 @@
       "external": false
     },
     {
-      "id": "team-venkat",
-      "name": "Venkat",
-      "role": "Post Production Supervisor & Editor",
-      "specialty": "Post supervision, editorial",
+      "id": "team-ahil",
+      "name": "Ahilendra D",
+      "role": "Conform & Mastering Artist",
+      "specialty": "Finishing, conform, delivery masters",
       "alsoDoes": [
-        "VFX",
-        "Grading",
-        "Script and story"
+        "Colour (developing)"
       ],
-      "image": "/images/team/venkat-studio-v2.webp",
-      "fallbackInitials": "VE",
-      "bio": "Supervises post from the studio side — schedules, handoffs and delivery — and edits. All-rounder across VFX, grade and story, which is what makes the supervision work.",
+      "image": "/images/team/ahilendra-studio-v2.webp",
+      "fallbackInitials": "AH",
+      "bio": "Owns finishing: conforms, online, and broadcast/theatrical masters. Also building out as a colourist under the studio's DI work.",
       "external": false
-    },
-    {
-      "id": "collab-balaji",
-      "name": "Balaji Sripathi",
-      "role": "Cinematographer",
-      "specialty": "Long-running collaborator",
-      "alsoDoes": [],
-      "image": "/images/team/balaji-sripathi-studio-v2.webp",
-      "fallbackInitials": "BS",
-      "bio": "Currently shooting the Asian Paints commercial with the studio.",
-      "external": true
-    },
-    {
-      "id": "collab-shivraj",
-      "name": "Shivraj",
-      "role": "Cinematographer",
-      "specialty": "Long-running collaborator",
-      "alsoDoes": [],
-      "image": "/images/team/shivraj-studio-v2.webp",
-      "fallbackInitials": "SH",
-      "bio": "Shot The Akaali feature, graded at the studio; also the Pumbu Har ad series and other shorts and ads.",
-      "external": true
     },
     {
       "id": "collab-sri-karthik",
@@ -139,6 +117,28 @@
       "image": null,
       "fallbackInitials": "BD",
       "bio": "",
+      "external": true
+    },
+    {
+      "id": "collab-balaji",
+      "name": "Balaji Sripathi",
+      "role": "Cinematographer",
+      "specialty": "Long-running collaborator",
+      "alsoDoes": [],
+      "image": "/images/team/balaji-sripathi-studio-v2.webp",
+      "fallbackInitials": "BS",
+      "bio": "Currently shooting the Asian Paints commercial with the studio.",
+      "external": true
+    },
+    {
+      "id": "collab-shivraj",
+      "name": "Shivraj",
+      "role": "Cinematographer",
+      "specialty": "Long-running collaborator",
+      "alsoDoes": [],
+      "image": "/images/team/shivraj-studio-v2.webp",
+      "fallbackInitials": "SH",
+      "bio": "Shot The Akaali feature, graded at the studio; also the Pumbu Har ad series and other shorts and ads.",
       "external": true
     }
   ]
