@@ -8,6 +8,20 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡ NEWEST — Claude, 21 Nov 2026 night (`ec44a06`, live)
+
+User feedback: the scroll needs to be smoother (they asked for Topaz in-betweens), and the pass plates, Object ID especially, were weak, so regenerate them, cross-compare, and only use what is agreed.
+- **Smoothness**: `scripts/topaz-interpolate.sh <src> <out.mov> apo-8 96` runs Topaz `tvai_fi` (Apollo) on fiip-ws03 over SSH, like the studio's topaz_upscale.sh. The "Unable to parse option value 0" lines are harmless. Master: `design/cinematic-v3/out/shot-apo8-96.mov` (1541 frames, git-ignored). The sequence is now 384 frames (desktop 1440w q62 = 22 MB, mobile 720w q58 = 7 MB). ScrollShot blends neighbouring frames at fractional positions and eases the displayed scroll position (lerp 0.16 per rAF).
+- **Passes** (`scripts/procedural-passes.py`, run with the hermes venv python `-I`; system python lacks cv2 under -I):
+  - Depth = median of 12 estimates (Depth Anything V2 Small+Base ONNX in `~/.cache/fiip-models/`, 3 scales, mirrored), scale/shift-aligned, trust-weighted by MAD, guided-filtered.
+  - Normals/clay are from the back-projected depth.
+  - Object ID = AI voters (Nano Banana Pro, GPT-Image-2, Nano Banana 2, Flux Kontext Max) generated from the exact hold frame. They are gated on flat-colour share (>0.8) and skyline registration (affine ECC on sky masks, IoU >0.88). Kontext is rejected every time because it returns a recoloured photo. The consensus is the medoid voter by mean adjusted Rand index, with edges snapped to the frame by a guided filter. UV = one planar island per ID object. Wire is seeded on ID boundaries.
+  - Rebuild: see the `--voters` usage in `scripts/build-scroll-shot.py`. Voter maps are in `design/cinematic-v3/ids/` (git-ignored); the submit scripts are committed.
+- Comfy helper moved to `~/.cache/fiip-tools/fiip_comfy.py` (+ `batch_wait.py`, `route_check.py`), because /tmp gets wiped.
+- Possible next: Safari/iOS scroll test on a real device; lighter desktop sequence (AVIF) if load time is a concern.
+
+---
+
 ## ⚡⚡ NEWEST — Claude, 21 Nov 2026 evening (supersedes the section below where they differ)
 
 Published: `3c6bc37` (cinematic pass, Vercel `dpl_BryyFQWx49jLT1EMGpE2rZr3eWei` Ready) and `f9ada46` (mnemonics + team order). User iterates from their phone, so keep publishing increments.
