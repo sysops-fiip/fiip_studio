@@ -118,6 +118,28 @@
       "fallbackInitials": "SH",
       "bio": "Shot The Akaali feature, graded at the studio; also the Pumbu Har ad series and other shorts and ads.",
       "external": true
+    },
+    {
+      "id": "collab-sri-karthik",
+      "name": "Sri Karthik",
+      "role": "FX Artist & 3D Generalist",
+      "specialty": "Collaborator",
+      "alsoDoes": [],
+      "image": "/images/team/sri-karthik-portrait.jpg",
+      "fallbackInitials": "SK",
+      "bio": "",
+      "external": true
+    },
+    {
+      "id": "collab-balaji-d",
+      "name": "Balaji D",
+      "role": "3D Generalist",
+      "specialty": "Collaborator",
+      "alsoDoes": [],
+      "image": null,
+      "fallbackInitials": "BD",
+      "bio": "",
+      "external": true
     }
   ]
 }

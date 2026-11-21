@@ -163,6 +163,28 @@
       "fallbackInitials": "SH",
       "external": true,
       "verified": true
+    },
+    {
+      "id": "collab-sri-karthik",
+      "name": "Sri Karthik",
+      "role": "FX Artist & 3D Generalist",
+      "relationship": "Collaborator",
+      "context": "",
+      "image": "/images/team/sri-karthik-portrait.jpg",
+      "fallbackInitials": "SK",
+      "external": true,
+      "verified": true
+    },
+    {
+      "id": "collab-balaji-d",
+      "name": "Balaji D",
+      "role": "3D Generalist",
+      "relationship": "Collaborator",
+      "context": "",
+      "image": null,
+      "fallbackInitials": "BD",
+      "external": true,
+      "verified": true
     }
   ],
   "projects": [
