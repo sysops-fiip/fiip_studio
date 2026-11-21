@@ -8,7 +8,10 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
-## ⚡⚡⚡⚡ LATEST — portraits v4 + Balaji D (`ec2614f`)
+## ⚡⚡⚡⚡⚡ LATEST — portraits v5 (`2a63d53`, live)
+User: Balaji Sripathi should look more like his reference, Shivraj trimmed and toned down, Sri Karthik "really bad". Fix: three-panel refs (`refs4/`: tight face crop + original + template) and per-person notes in `design/portraits/studio-v3/cand4.py`. 27 candidates; ArcFace picks: Balaji Sripathi 0.885 (was 0.797), Sri Karthik 0.666 (was 0.554), Shivraj 0.735 (trimmed look chosen on purpose; the bushier older candidates are in `out_superseded/`). Exposure re-matched across all 11 → `*-studio-v5.webp`. gpt-image-2 rejects size 1024x1280 (unbilled).
+
+## (previous) portraits v4 + Balaji D (`ec2614f`)
 User: Ganesh overexposed; Balaji (Sripathi) and Shivraj "off"; supplied Balaji D photo (`public/images/team/balaji-d-reference.jpg`).
 - 4 Nano Banana Pro candidates per flagged person (`design/portraits/studio-v3/cand.py`), scored by ArcFace identity similarity vs the real photo (`scripts/score-portraits.py`). Winners: Ganesh 0.786, Balaji Sripathi 0.797, Shivraj 0.762, Balaji D 0.796. The same script normalises face-region exposure across all 11 (Ganesh face median was 136 vs set 94). Then `scripts/align-portraits.py`. Live files: `*-studio-v4.webp`; all 11 people now have portraits.
 - Weakest identity score: **Sri Karthik 0.554**. His reference is a seated, side-lit candid. Consider asking the user for a frontal photo or generating candidates.
