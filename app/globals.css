@@ -554,7 +554,10 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
 @media(max-width:767px){.craft-row{grid-template-columns:22px 1fr 44px 22px}.craft-row .mnemonic{grid-column:3;grid-row:1/3;width:44px;height:44px;align-self:start}.discipline-details article{grid-template-columns:25px 1fr 56px}.discipline-details article .mnemonic{grid-column:3;grid-row:1;width:56px;height:56px}.discipline-details article p{grid-column:2/4}}
 
 /* Scroll-scrubbed opening shot (components/ScrollShot.tsx) */
-.scroll-shot{position:relative;background:#060707}
+/* Keep the scroll journey independent of interpolated frame count. */
+.scroll-shot{position:relative;background:#060707;height:650svh}
+.scroll-shot.is-still{height:auto}
+@media(max-width:767px){.scroll-shot:not(.is-still){height:550svh}}
 .scroll-shot-stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}
 .scroll-shot-canvas,.scroll-shot-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .scroll-shot-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.55) 32%,rgba(0,0,0,0) 70%),linear-gradient(0deg,#060707 0%,transparent 22%)}

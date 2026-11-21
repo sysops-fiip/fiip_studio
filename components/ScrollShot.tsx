@@ -124,7 +124,7 @@ export function ScrollShot({ onReel }: { onReel: () => void }) {
   const shownPass = hold ? (state.wipe > 0.5 ? activePass : (state.pass > 0 ? hold.passes[state.pass - 1] : null)) : null;
   const copyOpacity = still ? 1 : Math.max(0, 1 - state.progress * 9);
 
-  return <section ref={host} className={`scroll-shot ${still ? 'is-still' : ''}`} style={{ height: still ? undefined : `${Math.round(total * 55 + 100)}vh` }} aria-labelledby="hero-title">
+  return <section ref={host} className={`scroll-shot ${still ? 'is-still' : ''}`} aria-labelledby="hero-title">
     <div className="scroll-shot-stage sticky">
       {still ? <img className="scroll-shot-poster" src={m.poster} alt="" /> : <canvas ref={canvas} className="scroll-shot-canvas" aria-hidden="true" />}
       <div className="scroll-shot-shade" aria-hidden="true" style={{ opacity: 0.25 + 0.75 * copyOpacity }} />
