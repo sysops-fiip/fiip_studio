@@ -36,7 +36,7 @@ def main():
         r = face(cv2.imread(rp))
         if r is None:
             print('no face in reference', slug); continue
-        cands = [c for c in glob.glob(os.path.join(cdir, '*.png')) if f'-{slug}.' in c or f'-{slug}-s' in c]
+        cands = [c for c in glob.glob(os.path.join(cdir, '*.png')) if f'-{slug}.' in c or f'-{slug}-' in c]
         scored = []
         for c in cands:
             f = face(cv2.imread(c))
