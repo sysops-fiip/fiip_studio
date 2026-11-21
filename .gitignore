@@ -45,3 +45,9 @@ nul
 # Local visual review artifacts
 delivery/
 design/pass3/mesh-output/
+
+# Heavy generated masters (kept on disk, not in git)
+design/portraits/studio-v2/*.png
+design/cinematic-v2/film/assets/
+design/cinematic-v2/film/.hyperframes/
+tsconfig.tsbuildinfo

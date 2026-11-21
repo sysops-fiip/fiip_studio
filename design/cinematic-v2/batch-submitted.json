@@ -1,0 +1,30 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Submitted 11/11 job(s) as one batch.\nPoll the whole set with get_batch_status(\"batch_eyJ2IjoxLCJpdGVtcyI6W3siaWQiOiJhZDUzOTVkNy0zM2FhLTRkNmYtYTMxOC0xMDAwNmIwNGEwYTUiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtaW5peWF2YW4ifSx7ImlkIjoiNzllODBlYzEtNWU1Yy00ZWVmLWJjOTktMjNhNGE1YjYzMTczIiwibGFiZWwiOiJmaWlwLXBvcnRyYWl0LXVkaGF5In0seyJpZCI6IjY0MmVjMDcwLWM0OGQtNGU5MS1iZGE4LTdkODBiMTE2YTMxMiIsImxhYmVsIjoiZmlpcC1wb3J0cmFpdC1nYW5lc2gifSx7ImlkIjoiZDZlNjI2NDUtZjE2Mi00ZjNiLWEwY2EtN2RjYmZmMmM1NTYwIiwibGFiZWwiOiJmaWlwLXBvcnRyYWl0LWFoaWxlbmRyYSJ9LHsiaWQiOiIyZjI1NWRjYi1jNTAyLTQxMmItYjFiNC0wNGEzOTQ2MTExODYiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQta291c2hpayJ9LHsiaWQiOiIyN2ZmZGJiOC0zZThiLTRiYzYtOTFmOC0wZTgwNGY2Zjc2ZmIiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtc2FuamF5In0seyJpZCI6ImE1Y2I1OWMyLWVkZWItNGY4NS1iMjA5LTMwNWM3NGUyNjg5ZiIsImxhYmVsIjoiZmlpcC1wb3J0cmFpdC12ZW5rYXQifSx7ImlkIjoiOGNiMzFlNTYtNzhmMC00NThmLTlhOTQtNmJmZTAzMDljYzA2IiwibGFiZWwiOiJmaWlwLXBvcnRyYWl0LWJhbGFqaS1zcmlwYXRoaSJ9LHsiaWQiOiI4YjA0ODFhMi1mYjA2LTRlNjgtOTVlZC1iMmU0NTg3NWIwYTgiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtc2hpdnJhaiJ9LHsiaWQiOiJiOTg3YzUyYi0yZGVjLTRjOWUtODk3MC1iYjkzMDNlNjQ3NTgiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtc3JpLWthcnRoaWsifSx7ImlkIjoiODRjYWVjYTUtNGM3MS00ODY2LWFkZjktYTA4YzEwOWIyMTViIiwibGFiZWwiOiJmaWlwLW9ic2VydmF0b3J5LWZpbmFsIn1dfQ\"); pass that SAME batch_id to get_batch_output to collect every ready output. The id is also on structuredContent.batch_id."
+    }
+  ],
+  "structuredContent": {
+    "batch_id": "batch_eyJ2IjoxLCJpdGVtcyI6W3siaWQiOiJhZDUzOTVkNy0zM2FhLTRkNmYtYTMxOC0xMDAwNmIwNGEwYTUiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtaW5peWF2YW4ifSx7ImlkIjoiNzllODBlYzEtNWU1Yy00ZWVmLWJjOTktMjNhNGE1YjYzMTczIiwibGFiZWwiOiJmaWlwLXBvcnRyYWl0LXVkaGF5In0seyJpZCI6IjY0MmVjMDcwLWM0OGQtNGU5MS1iZGE4LTdkODBiMTE2YTMxMiIsImxhYmVsIjoiZmlpcC1wb3J0cmFpdC1nYW5lc2gifSx7ImlkIjoiZDZlNjI2NDUtZjE2Mi00ZjNiLWEwY2EtN2RjYmZmMmM1NTYwIiwibGFiZWwiOiJmaWlwLXBvcnRyYWl0LWFoaWxlbmRyYSJ9LHsiaWQiOiIyZjI1NWRjYi1jNTAyLTQxMmItYjFiNC0wNGEzOTQ2MTExODYiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQta291c2hpayJ9LHsiaWQiOiIyN2ZmZGJiOC0zZThiLTRiYzYtOTFmOC0wZTgwNGY2Zjc2ZmIiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtc2FuamF5In0seyJpZCI6ImE1Y2I1OWMyLWVkZWItNGY4NS1iMjA5LTMwNWM3NGUyNjg5ZiIsImxhYmVsIjoiZmlpcC1wb3J0cmFpdC12ZW5rYXQifSx7ImlkIjoiOGNiMzFlNTYtNzhmMC00NThmLTlhOTQtNmJmZTAzMDljYzA2IiwibGFiZWwiOiJmaWlwLXBvcnRyYWl0LWJhbGFqaS1zcmlwYXRoaSJ9LHsiaWQiOiI4YjA0ODFhMi1mYjA2LTRlNjgtOTVlZC1iMmU0NTg3NWIwYTgiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtc2hpdnJhaiJ9LHsiaWQiOiJiOTg3YzUyYi0yZGVjLTRjOWUtODk3MC1iYjkzMDNlNjQ3NTgiLCJsYWJlbCI6ImZpaXAtcG9ydHJhaXQtc3JpLWthcnRoaWsifSx7ImlkIjoiODRjYWVjYTUtNGM3MS00ODY2LWFkZjktYTA4YzEwOWIyMTViIiwibGFiZWwiOiJmaWlwLW9ic2VydmF0b3J5LWZpbmFsIn1dfQ",
+    "job_ids": [
+      "ad5395d7-33aa-4d6f-a318-10006b04a0a5",
+      "79e80ec1-5e5c-4eef-bc99-23a4a5b63173",
+      "642ec070-c48d-4e91-bda8-7d80b116a312",
+      "d6e62645-f162-4f3b-a0ca-7dcbff2c5560",
+      "2f255dcb-c502-412b-b1b4-04a394611186",
+      "27ffdbb8-3e8b-4bc6-91f8-0e804f6f76fb",
+      "a5cb59c2-edeb-4f85-b209-305c74e2689f",
+      "8cb31e56-78f0-458f-9a94-6bfe0309cc06",
+      "8b0481a2-fb06-4e68-95ed-b2e45875b0a8",
+      "b987c52b-2dec-4c9e-8970-bb9303e64758",
+      "84caeca5-4c71-4866-adf9-a08c109b215b"
+    ],
+    "submitted": 11,
+    "failed": [],
+    "result": {
+      "status": "succeeded",
+      "warnings": []
+    }
+  }
+}

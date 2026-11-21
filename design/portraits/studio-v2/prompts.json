@@ -1,0 +1,531 @@
+{
+  "items": [
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "2d1dd60f0657125fb046af7a2ac1bd82b1e0acfdbb60bafdae6d7b2ac11f8a99.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Iniyavan Pandiyan. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-iniyavan"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-iniyavan"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-iniyavan"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "f56ed8e9898f4f284e219ee61278e14140ecfdfdb8cd6ef4aa54573b932ca1b2.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Udhaya Kumar. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-udhay"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-udhay"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-udhay"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "22351de9dd0c24d1a69c9dafed6b871dba63ef29848c09d66ad003ca08b20f92.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Ganesh. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-ganesh"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-ganesh"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-ganesh"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "f4b56c027de19beed6da1e87b6a533b39c12694289be4053b93776d7149b3912.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Ahilendra D. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-ahilendra"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-ahilendra"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-ahilendra"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "d7fc43660262a64ac80b5d1c552fdd3e60f25f7be50682164f5e520fc0064dba.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Koushik Raj. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-koushik"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-koushik"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-koushik"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "c19515cd8fcff4052838dc948209b734a66094883af31e5c6d54c04157fbc130.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Sanjay Kandasamy. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-sanjay"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-sanjay"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-sanjay"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "5746ac86bfd5b4537c9bb815a9b880e41a02f2e0f8219e447375c1fc4d3cff31.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Venkat. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-venkat"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-venkat"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-venkat"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "34029bb5c8a0a54bcc2f4888606b139dac7cd79529346e327e55b86a23cb0fa4.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Balaji Sripathi. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-balaji-sripathi"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-balaji-sripathi"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-balaji-sripathi"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "bc0d1e276b03e23203873e483bca89f63e2666e345c4cfb8d22b63e22e3b9d01.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Shivraj. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-shivraj"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-shivraj"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-shivraj"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "ab0ff48aea53e4ab997d475faaf7694dc69a105bbb08b1626698e375f027c78b.jpg"
+          },
+          "_meta": {
+            "title": "Original identity reference"
+          }
+        },
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "Identity reference: Sri Karthik. Create one photorealistic editorial studio portrait of the exact person in the supplied photo. Exactly one person. Identity is the highest priority: retain the exact facial bone structure, face width, jawline, nose, eyes and their spacing, eyebrows, lip shape, hairline, hairstyle, beard and moustache pattern, age, skin texture and characteristic asymmetry. Retain eyeglasses and earrings if present. Do not beautify, slim, age, make younger or substitute another face. No plastic skin, airbrushing, overly perfect teeth, AI glamour or illustration. This is one image in a single coordinated FIIP Studio team photoshoot. All portraits use EXACTLY this setup: monochrome neutral black-and-white, vertical 4:5 chest-up portrait, subject facing camera with upright head, relaxed shoulders, natural restrained expression consistent with reference, camera at eye level, 85mm portrait lens, f/5.6. Top of hair at 8 percent from top, eyes at 37 percent, bottom crop at mid-chest. Plain matte black crewneck shirt, no logos. Seamless dark graphite studio backdrop, nearly black at edges, subtle broad soft grey gradient behind head. Large softbox 45 degrees camera-left and 20 degrees above eyes, gentle camera-right fill at 1:3 lighting ratio, narrow subtle shoulder separation. Retain pores, fine hair and believable shadow detail. Clean professional photographic finish with restrained contrast and soft highlight rolloff. Remove phone, hands, props, jewelry necklaces and original setting. No text, watermark, extra people, split panels or borders. Identity from the reference only; lighting and composition from this specification.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1024,
+            "model.custom_height": 1280,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21,
+            "model.images.image_1": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "fiip-portrait-sri-karthik"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-portrait-sri-karthik"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-portrait-sri-karthik"
+    },
+    {
+      "tool": "submit_workflow",
+      "workflow": {
+        "2": {
+          "class_type": "OpenAIGPTImageNodeV2",
+          "inputs": {
+            "prompt": "A cinematic visual effects hero environment, one immaculate photoreal frame, 16:9. A monumental circular brutalist observatory perched inside a vast dark basalt coastal canyon, shallow reflecting water in foreground, slim elevated bridge leading directly to a glowing circular aperture in the observatory at right of center. Layered cliffs and distant ocean haze behind. Night becoming dawn, moonlight silver, black graphite stone, restrained warm ochre light spilling from the circular doorway and reflecting on wet rock. Exquisite engineered architectural detail, weathered concrete, sharp rock strata, tiny water ripples, subtle atmospheric depth. Wide 28mm cinema lens, eye-level camera, balanced architectural perspective with circular portal at 65 percent width, horizon at 48 percent. No people, cars, signs, words, logos, UI, text, watermark. Art direction: premium monochrome VFX studio, almost black and silver with only one restrained ochre emissive accent. Crisp high-end feature-film still, realistic physically based lighting, beautiful but plausible, dramatic depth without excessive fog. Leave darker less detailed negative space in left third for website headline. This environment will be reconstructed in point splats, wireframe, clay, UV and normal passes, so silhouette and geometry must be visually distinct.",
+            "model": "gpt-image-2",
+            "model.size": "Custom",
+            "model.custom_width": 1536,
+            "model.custom_height": 864,
+            "model.background": "opaque",
+            "model.quality": "high",
+            "n": 1,
+            "seed": 21
+          },
+          "_meta": {
+            "title": "fiip-observatory-final"
+          }
+        },
+        "3": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "2",
+              0
+            ],
+            "filename_prefix": "fiip-observatory-final"
+          },
+          "_meta": {
+            "title": "Save master"
+          }
+        }
+      },
+      "description": "fiip-observatory-final"
+    }
+  ],
+  "client_os": "linux"
+}

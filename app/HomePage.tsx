@@ -2,44 +2,25 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { ArrowDown, ArrowUpRight, Play } from 'lucide-react';
 import { VideoDialog } from '@/components/ui/VideoDialog';
 import { Reveal } from '@/components/ui/Reveal';
-import { FramesPreview } from '@/components/FramesPreview';
+import { FramesExperience } from '@/components/FramesExperience';
+import { CinematicHero } from '@/components/CinematicHero';
+import { ShotBreakdown } from '@/components/ShotBreakdown';
 import studio from '@/content/studio.json';
 import projects from '@/data/projects.json';
 
-const LensStudy = dynamic(() => import('@/components/LensStudy'), { ssr: false });
 const copy = studio.homepage;
 
 export default function HomePage() {
   const [video, setVideo] = useState<{ id: string; title: string } | null>(null);
-  const [showLens, setShowLens] = useState(false);
   const openReel = () => setVideo({ id: copy.reelId, title: 'FIIP studio reel' });
   return (
     <div className="studio-home">
-      <section className="optics-hero" aria-labelledby="hero-title">
-        <div className="hero-object absolute" aria-hidden="true">
-          <picture>
-            <source media="(max-width: 767px)" srcSet="/images/optics/cinema-lens-mobile.webp" />
-            <img src="/images/optics/cinema-lens.webp" width="1280" height="1280" alt="" fetchPriority="high" />
-          </picture>
-        </div>
-        <div className="hero-editorial page-width">
-          <p className="eyebrow">{copy.eyebrow}</p>
-          <h1 id="hero-title">{copy.headline[0]}<br /><span>{copy.headline[1]}</span></h1>
-          <p className="hero-intro">{copy.intro}</p>
-          <p className="hero-description">{copy.description}</p>
-          <div className="hero-actions">
-            <button className="pill-button pill-light" onClick={openReel}><Play size={13} fill="currentColor" />{copy.watchLabel}</button>
-            <a className="text-link" href="#selected-work">{copy.workLabel}<ArrowDown size={16} /></a>
-          </div>
-        </div>
-        <button className="lens-explore" onClick={() => setShowLens(true)}>Explore the lens <ArrowUpRight size={13} /></button>
-        <div className="hero-footnote page-width absolute" aria-hidden="true"><span>FIX IT IN POST</span><span>EDIT / VFX / COLOUR / FINISH</span><span>SCROLL TO DISCOVER <ArrowDown size={12} /></span></div>
-      </section>
+      <CinematicHero onReel={openReel} />
+      <ShotBreakdown />
 
       <section id="selected-work" className="selected-work section-space page-width" aria-labelledby="work-title">
         <div className="section-heading"><div><p className="eyebrow">{copy.workEyebrow}</p><h2 id="work-title">{copy.workTitle}</h2></div><Link href="/portfolio" className="text-link">{copy.archiveLabel}<ArrowUpRight size={17} /></Link></div>
@@ -79,7 +60,7 @@ export default function HomePage() {
       <section className="frames-section section-space" aria-labelledby="frames-title">
         <div className="page-width frames-grid">
           <div><p className="eyebrow">{copy.framesEyebrow}</p><h2 id="frames-title">{copy.framesTitle}</h2><p className="section-intro">{copy.framesDescription}</p><div className="hero-actions"><Link href="/frames" className="pill-button">{copy.framesLink}<ArrowUpRight size={16} /></Link><a href={studio.frames.url} target="_blank" rel="noopener noreferrer" className="text-link">{copy.framesPortal}<ArrowUpRight size={15} /></a></div></div>
-          <FramesPreview />
+          <FramesExperience compact />
         </div>
       </section>
 
@@ -89,7 +70,6 @@ export default function HomePage() {
       </section>
 
       <section className="home-commission accent-commission"><div className="page-width"><p className="eyebrow accent-text">{copy.ctaEyebrow}</p><h2>{copy.ctaTitle}</h2><Link href="/contact" className="pill-button pill-light">{copy.ctaLink}<ArrowUpRight size={18} /></Link></div></section>
-      {showLens && <LensStudy onClose={() => setShowLens(false)} />}
       <VideoDialog open={!!video} onClose={() => setVideo(null)} youtubeId={video?.id ?? ''} title={video?.title ?? ''} />
     </div>
   );

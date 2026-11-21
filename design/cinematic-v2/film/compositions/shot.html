@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #060707; overflow: hidden; }
+    #root img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #shot-stage { position: absolute; inset: 0; }
+    .shot-edge { opacity: 0; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: #f3e6cf; box-shadow: 0 0 24px 4px rgba(202,148,62,.55); }
+    #shot-black { position: absolute; inset: 0; background: #060707; }
+  </style>
+  <div id="root" data-composition-id="shot" data-width="1920" data-height="1080">
+    <div id="shot-stage" class="clip" data-start="3.6" data-duration="16.4" data-track-index="1">
+      <img id="shot-splat" src="assets/observatory-splat.png" alt="" />
+      <img id="shot-wire" src="assets/observatory-wire.png" alt="" />
+      <img id="shot-clay" src="assets/observatory-clay.png" alt="" />
+      <img id="shot-normal" src="assets/observatory-normal.png" alt="" />
+      <img id="shot-uv" src="assets/observatory-uv.png" alt="" />
+      <img id="shot-final" src="assets/observatory-final.png" alt="" />
+      <div id="shot-edge-1" class="shot-edge"></div>
+      <div id="shot-edge-2" class="shot-edge"></div>
+      <div id="shot-edge-3" class="shot-edge"></div>
+      <div id="shot-edge-4" class="shot-edge"></div>
+      <div id="shot-edge-5" class="shot-edge"></div>
+    </div>
+    <img id="shot-lens" class="clip" data-start="0" data-duration="4.6" data-track-index="2" src="assets/observatory-lens.png" alt="" />
+    <div id="shot-black" class="clip" data-start="0" data-duration="20" data-track-index="3"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Open from black, push through the lens iris.
+    tl.fromTo("#shot-black", { opacity: 1 }, { opacity: 0, duration: 0.6, ease: "power2.out" }, 0);
+    tl.fromTo("#shot-lens", { scale: 1, opacity: 1 }, { scale: 2.6, duration: 4.6, ease: "power2.in" }, 0);
+    tl.fromTo("#shot-lens", { opacity: 1 }, { opacity: 0, duration: 0.9, ease: "power1.in", immediateRender: false }, 3.7);
+    // One continuous camera drift across the reconstruction.
+    tl.fromTo("#shot-stage", { scale: 1.16 }, { scale: 1.02, duration: 16.4, ease: "power1.out" }, 3.6);
+    tl.fromTo("#shot-splat", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power2.out" }, 3.6);
+    // Passes wipe in left to right, each with a glowing edge (chapter marks: 8 detail, 16 final).
+    const passes = ["#shot-wire", "#shot-clay", "#shot-normal", "#shot-uv", "#shot-final"];
+    const starts = [7.6, 9.8, 11.8, 13.8, 15.6];
+    const lengths = [1.4, 1.3, 1.3, 1.3, 1.8];
+    passes.forEach((sel, i) => {
+      const at = starts[i], edge = "#shot-edge-" + (i + 1);
+      tl.fromTo(sel, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: lengths[i], ease: "power3.inOut" }, at);
+      tl.fromTo(edge, { x: 0, opacity: 0 }, { x: 1920, opacity: 1, duration: lengths[i], ease: "power3.inOut" }, at);
+      tl.fromTo(edge, { opacity: 1 }, { opacity: 0, duration: 0.25, immediateRender: false }, at + lengths[i]);
+    });
+    // Close to black so the loop seam is clean.
+    tl.fromTo("#shot-black", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.in", immediateRender: false }, 19.4);
+    window.__timelines["shot"] = tl;
+  </script>
+</template>
