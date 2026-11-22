@@ -8,6 +8,14 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 22 Nov 2026 afternoon (`6479513`, `71974f4`, `e99d8d2`, live)
+- Mobile menu = full-screen overlay (`.mobile-menu`, Navbar.tsx). Heroes have scroll-snap beats (`.scroll-snap-beat`, `html{scroll-snap-type:y proximity}`); the headline lands at 92%.
+- Reduced motion (Samsung power saving / Remove animations) shows the still plus a "Play the shot" opt-in (in memory only; the privacy page says nothing is stored).
+- IMPORTANT: frames must stay `<img>`. ImageBitmaps for every frame pinned GBs and blanked the canvas. Only hold states use bitmaps.
+- Disciplines: range 0–139, the five hands are masked to the panel (`hero-states.py disciplines-panel` + `design/page-heroes/fix/panel-quad.json`). Work: range 0–198. Commissioning: range 0–48, `hold.keepLast`, procedural storyboard (`scripts/storyboard-sheet.py`, XDoG pencil from the site's own frames), paper quad in `fix/paper-quad.json`.
+- Cheap alt keyframes for Studio/Contact are in `design/page-heroes/alts/`, awaiting the user's pick.
+- Compliance record: `design/audit/COMPLIANCE-2026-11-22.md` (axe 0 violations, no storage, single host, www→apex 308).
+
 ## ⚡⚡⚡⚡⚡⚡⚡ LATEST — page heroes live (`eca9d0f`, 22 Nov 2026)
 - `components/ScrollHero.tsx` is the shared engine (homepage `ScrollShot` wraps it). Each page hero lives in `components/PageHeroes.tsx` with a manifest in `data/heroes/*.json` (frames, optional hold with states, optional `range`/`reverse`). Concepts: `design/page-heroes/CONCEPTS.md`.
 - Pipeline per page: keyframes and videos via Magnific on the LOCAL ComfyUI (`~/.cache/fiip-tools/magnific_gen.py`, `magnific_video.py`; files saved to Magnific project "Personal", never a client project; do NOT use frames edit_image, which writes into Picasso/AYON) → Topaz Apollo 96 fps on ws03 (`scripts/topaz-interpolate.sh`) → `scripts/hero-holdframe.sh` (exact hold frame) → `scripts/hero-states.py <disciplines|work|studio>` → `scripts/build-page-hero.py`.
