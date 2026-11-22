@@ -1,0 +1,23 @@
+[
+ {
+  "name": "disciplines-end",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/disciplines-a.png",
+  "ref_type": "image",
+  "seed": 31,
+  "prompt": "The camera has moved forward until the floating glass panel fills the entire frame edge to edge: we now see only the film still on it, full frame: a misty mountain valley at dawn with pine trees and soft low cloud, a calm lake in the foreground, cinematic composition with depth, finished and beautifully graded with gentle warm highlights. Only the image, no visible panel edges, no chamber. Same world, lighting and palette as the reference image: night, graphite and silver, one warm ochre light, photoreal feature-film still, premium and restrained. 16:9. No people, no text, no logos, no UI."
+ },
+ {
+  "name": "work-end",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/work-a.png",
+  "ref_type": "image",
+  "seed": 31,
+  "prompt": "The camera has travelled down the gallery and now faces the warm glowing glass plate at the far end straight on, the plate filling most of the frame, its soft ochre light spilling onto the wet stone floor; the side plates are out of focus at the frame edges. Same world, lighting and palette as the reference image: night, graphite and silver, one warm ochre light, photoreal feature-film still, premium and restrained. 16:9. No people, no text, no logos, no UI."
+ },
+ {
+  "name": "commissioning-end",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/commissioning-b.png",
+  "ref_type": "image",
+  "seed": 31,
+  "prompt": "The same slate desk from the same overhead angle, now at the end of a project: the blank sheet has become a spread of hand-drawn storyboard frames and handwritten notes, and beside them a slim reference monitor shows a finished, graded cinematic film frame (a lone figure on a misty shore at dawn) glowing softly; the brass lamp, film reels and notebook remain. Same world, lighting and palette as the reference image: night, graphite and silver, one warm ochre light, photoreal feature-film still, premium and restrained. 16:9. No people, no text, no logos, no UI."
+ }
+]

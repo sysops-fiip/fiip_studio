@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Mnemonic } from '@/components/Mnemonic';
+import { CommissionHero } from '@/components/PageHeroes';
 import { PricingCalculator } from '@/components/PricingCalculator';
 import studio from '@/content/studio.json';
 
@@ -17,20 +18,15 @@ const STEPS = [
 ];
 
 export default function PricingPage() {
-  return <div className="studio-page commission-page">
-    <section className="page-width page-intro">
-      <p className="eyebrow">Commissioning</p>
-      <h1>Every film is scoped<br />for what it needs.</h1>
-      <p className="section-intro">No packages and no fixed price list. Tell us about the work and we will shape a proposal around it.</p>
-      <Mnemonic kind="conform" shape="wide" size={288} className="page-mnemonic" />
-    </section>
+  return <div className="studio-page commission-page has-hero">
+    <CommissionHero />
 
-    <section className="page-width section-space" aria-labelledby="formats-title">
+    <section className="page-width section-space hero-follow" aria-labelledby="formats-title">
       <div className="section-heading"><div><p className="eyebrow">What we take on</p><h2 id="formats-title">Three ways to work together.</h2></div></div>
       <div className="commission-formats">{FORMATS.map(f => <article key={f.title}><Mnemonic kind={f.kind} shape="wide" size={216} /><h3>{f.title}</h3><p>{f.text}</p></article>)}</div>
     </section>
 
-    <section className="page-width section-space" aria-labelledby="scope-title">
+    <section id="scope" className="page-width section-space" aria-labelledby="scope-title">
       <div className="section-heading"><div><p className="eyebrow">Scope builder</p><h2 id="scope-title">Start the brief.</h2></div><p className="section-intro">Three quick choices. They are carried into the message you send us, so nothing is submitted from this page.</p></div>
       <PricingCalculator />
     </section>

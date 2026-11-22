@@ -1,0 +1,43 @@
+{
+  "frames": 237,
+  "base": "/sequences/disciplines-202611220727/desktop",
+  "mobileBase": "/sequences/disciplines-202611220727/mobile",
+  "ext": "webp",
+  "poster": "/sequences/disciplines-202611220727/desktop/f0236.webp",
+  "hold": {
+    "frame": 236,
+    "prefix": "hold",
+    "passes": [
+      {
+        "id": "raw",
+        "label": "Raw plate",
+        "meta": "Log \u00b7 ungraded \u00b7 on-set markers",
+        "swatch": "#7c7f7a"
+      },
+      {
+        "id": "cut",
+        "label": "Editorial",
+        "meta": "The cut \u00b7 timecode and slate",
+        "swatch": "#e4e4df"
+      },
+      {
+        "id": "vfx",
+        "label": "Visual effects",
+        "meta": "Rig wire and trackers removed",
+        "swatch": "#8f86d8"
+      },
+      {
+        "id": "colour",
+        "label": "Colour",
+        "meta": "The grade \u00b7 from log to final",
+        "swatch": "#ca943e"
+      },
+      {
+        "id": "master",
+        "label": "Conform & mastering",
+        "meta": "Delivery masters \u00b7 2.39:1",
+        "swatch": "#bdbdb8"
+      }
+    ]
+  }
+}

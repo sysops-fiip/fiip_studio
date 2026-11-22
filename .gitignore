@@ -69,3 +69,7 @@ design/cinematic-v3/v4/selected/
 design/cinematic-v3/v4/dbg/
 design/cinematic-v3/v4/hold.png
 design/page-heroes/keyframes/*.png
+design/page-heroes/video/*.mov
+design/page-heroes/video/*.mp4
+design/page-heroes/states/
+design/page-heroes/test/

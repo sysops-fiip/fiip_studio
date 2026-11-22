@@ -1,0 +1,31 @@
+{
+  "frames": 238,
+  "base": "/sequences/work-202611220733/desktop",
+  "mobileBase": "/sequences/work-202611220733/mobile",
+  "ext": "webp",
+  "poster": "/sequences/work-202611220733/desktop/f0237.webp",
+  "hold": {
+    "frame": 237,
+    "prefix": "hold",
+    "passes": [
+      {
+        "id": "kalyan-muhurat",
+        "label": "Kalyan Jewellers",
+        "meta": "Muhurat Bride \u00b7 Colour grading \u00b7 Beauty retouch \u00b7 Finishing",
+        "swatch": "#ca943e"
+      },
+      {
+        "id": "comfort-pushpa2",
+        "label": "Comfort \u00d7 Pushpa 2",
+        "meta": "Brand film \u00b7 Editorial \u00b7 Colour grading \u00b7 Finishing",
+        "swatch": "#ca943e"
+      },
+      {
+        "id": "nippon-weatherbond",
+        "label": "Nippon Paint",
+        "meta": "Weatherbond \u00b7 Visual effects \u00b7 Colour grading \u00b7 Finishing",
+        "swatch": "#ca943e"
+      }
+    ]
+  }
+}

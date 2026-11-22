@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { Play } from 'lucide-react';
-import { Mnemonic } from '@/components/Mnemonic';
+import { WorkHero } from '@/components/PageHeroes';
 import { VideoDialog } from '@/components/ui/VideoDialog';
 import projectsData from '@/data/projects.json';
 
@@ -30,15 +30,10 @@ export default function PortfolioPage() {
 
   const projects = useMemo(() => category === 'All' ? projectsData.projects : projectsData.projects.filter(p => p.category === category), [category]);
 
-  return <div className="studio-page archive-page">
-    <section className="page-width page-intro">
-      <p className="eyebrow">Production archive</p>
-      <h1>Commercials, features<br />and the frames between.</h1>
-      <p className="section-intro">Broadcast campaigns, theatrical colour and visual effects sequences, delivered across India.</p>
-      <Mnemonic kind="archive" shape="wide" size={288} className="page-mnemonic" />
-    </section>
+  return <div className="studio-page archive-page has-hero">
+    <WorkHero />
 
-    <section className="page-width section-space archive-body" aria-labelledby="archive-title">
+    <section id="archive" className="page-width section-space archive-body hero-follow" aria-labelledby="archive-title">
       <h2 id="archive-title" className="sr-only">Selected projects</h2>
       <div className="archive-tabs" role="toolbar" aria-label="Filter projects">
         {CATEGORIES.map((c, i) => <button key={c} aria-pressed={category === c} onClick={() => choose(c)}><span>0{i + 1}</span>{LABEL[c]}</button>)}

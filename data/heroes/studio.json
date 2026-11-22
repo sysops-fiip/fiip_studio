@@ -1,0 +1,41 @@
+{
+  "frames": 238,
+  "base": "/sequences/studio-202611220739/desktop",
+  "mobileBase": "/sequences/studio-202611220739/mobile",
+  "ext": "webp",
+  "poster": "/sequences/studio-202611220739/desktop/f0170.webp",
+  "hold": {
+    "frame": 77,
+    "prefix": "hold",
+    "passes": [
+      {
+        "id": "negative",
+        "label": "On the lightbox",
+        "meta": "Contact sheet \u00b7 negative",
+        "swatch": "#c98a55"
+      },
+      {
+        "id": "dev1",
+        "label": "Developing",
+        "meta": "Iniyavan \u00b7 Venkat \u00b7 Ganesh \u00b7 Udhaya",
+        "swatch": "#e4e4df"
+      },
+      {
+        "id": "dev2",
+        "label": "Developing",
+        "meta": "Koushik \u00b7 Sanjay \u00b7 Ahilendra \u00b7 Sri",
+        "swatch": "#e4e4df"
+      },
+      {
+        "id": "dev3",
+        "label": "Developing",
+        "meta": "Balaji \u00b7 Balaji \u00b7 Shivraj",
+        "swatch": "#e4e4df"
+      }
+    ]
+  },
+  "range": [
+    0,
+    170
+  ]
+}

@@ -1,0 +1,45 @@
+[
+ {
+  "name": "disciplines",
+  "start": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/disciplines-a.png",
+  "end": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/disciplines-end.png",
+  "prompt": "The camera glides slowly forward across the circular chamber and over the still water toward the floating glass panel, rising gently, until the film still on the panel fills the whole frame and the chamber disappears beyond its edges. One continuous, slow, steady camera move, no cuts, no morphing architecture, stable geometry, photoreal, cinematic, night palette with a single warm ochre light.",
+  "model": "google-veo3_1",
+  "duration": "8",
+  "resolution": "1080p",
+  "aspect": "16:9",
+  "seed": 7
+ },
+ {
+  "name": "work",
+  "start": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/work-a.png",
+  "end": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/work-end.png",
+  "prompt": "A slow, smooth dolly down the centre of the dark gallery, past the backlit glass plates on both sides, their glow reflecting on the wet stone floor, arriving face-on at the warm glowing plate at the far end. One continuous, slow, steady camera move, no cuts, no morphing architecture, stable geometry, photoreal, cinematic, night palette with a single warm ochre light.",
+  "model": "google-veo3_1",
+  "duration": "8",
+  "resolution": "1080p",
+  "aspect": "16:9",
+  "seed": 7
+ },
+ {
+  "name": "commissioning",
+  "start": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/commissioning-b.png",
+  "end": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/commissioning-end.png",
+  "prompt": "Locked overhead camera with a very slow push-in. On the desk, the blank sheet gradually fills with handwritten notes, then becomes a spread of storyboard frames, and a slim monitor rises into place beside it showing a finished, graded film frame, as if time-lapsed over a whole project. Lamp, reels and notebook stay still. One continuous, slow, steady camera move, no cuts, no morphing architecture, stable geometry, photoreal, cinematic, night palette with a single warm ochre light.",
+  "model": "google-veo3_1",
+  "duration": "8",
+  "resolution": "1080p",
+  "aspect": "16:9",
+  "seed": 7
+ },
+ {
+  "name": "studio",
+  "start": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/studio-b.png",
+  "prompt": "A slow, smooth push-in and gentle descent toward the glowing lightbox table, the camera settling into a near top-down view of the grid of glowing frames, the ochre loupe catching the light; dust in the air, everything else still. One continuous, slow, steady camera move, no cuts, no morphing architecture, stable geometry, photoreal, cinematic, night palette with a single warm ochre light.",
+  "model": "google-veo3_1",
+  "duration": "8",
+  "resolution": "1080p",
+  "aspect": "16:9",
+  "seed": 7
+ }
+]
