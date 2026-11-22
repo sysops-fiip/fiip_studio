@@ -8,6 +8,14 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡⚡⚡ LATEST — 22 Nov 2026 (`025d707`, `db13e0d`, live). Codex: your shorter-hero change was kept.
+- **Comfy Cloud is gone** (subscription cancelled by the user; credits exhausted). Use the studio's Magnific workflows (frames MCP: edit_image, run_magnific_*) for generation. Topaz: run locally on ws03 (`scripts/topaz-upscale.sh`, `scripts/topaz-interpolate.sh`). ws03 drops off Tailscale at times.
+- **Hero** (`components/ScrollShot.tsx`): ONE hold now (Depth, Geometry, Normals, Clay at frame 150), then the shot continues and the headline/CTAs land at the end as a handoff. Height = `--stage-h` (locked from JS) × 6.5 desktop / 5.5 mobile, i.e. your shortened length. Per-frame work writes to the DOM; frames are ImageBitmaps. Sequence = 384 frames from the Topaz 4K master, in a VERSIONED folder `public/sequences/shot-YYYYMMDD…` (immutable cache header) built by `scripts/build-hero-sequence.py <video> <holdFrame> <passesDir>`. Mobile measured at a steady 16.7 ms/frame; desktop is fine in medians, but headless Chromium has no GPU, so check on real hardware.
+- **AI passes were evaluated and rejected**: GPT-Image 2.6 / Nano Banana Pro repaint the scene 25–130 px off the frame (see `scripts/select-passes.py`, `design/cinematic-v3/v4/`). The shipped passes are frame-accurate procedural ones. UV and Object ID were dropped as weak.
+- **Design consistency**: Work and Commissioning rebuilt in the editorial system. Commissioning's unverified claims (turnarounds, unlimited, SLA, 24h bids) were removed; `data/pricing.json` is now unused. Nav is square and full-bleed (glass frame disabled on `.glass-nav`). Mnemonics rebuilt: SMIL-only, `shape="square|wide|tall"`.
+- **Legal/SEO**: /privacy and /terms (verified facts only), custom 404, self-hosted fonts in `public/fonts` (no Google requests), youtube-nocookie, Organization JSON-LD, `/og/fiip-og.jpg` 1200×630, dated sitemap, security headers in next.config.js.
+- **Waiting on the user**: (1) sign-off on the page-hero concepts in `design/page-heroes/CONCEPTS.md`; (2) the registered legal entity name, address and GSTIN for /privacy, /terms and the JSON-LD; (3) whether the brand is "Fix It In Post Studio" or "Studios" (content says Studio, logo says Studios).
+
 ## ⚡⚡⚡⚡⚡ LATEST — portraits v5 (`2a63d53`, live)
 User: Balaji Sripathi should look more like his reference, Shivraj trimmed and toned down, Sri Karthik "really bad". Fix: three-panel refs (`refs4/`: tight face crop + original + template) and per-person notes in `design/portraits/studio-v3/cand4.py`. 27 candidates; ArcFace picks: Balaji Sripathi 0.885 (was 0.797), Sri Karthik 0.666 (was 0.554), Shivraj 0.735 (trimmed look chosen on purpose; the bushier older candidates are in `out_superseded/`). Exposure re-matched across all 11 → `*-studio-v5.webp`. gpt-image-2 rejects size 1024x1280 (unbilled).
 
