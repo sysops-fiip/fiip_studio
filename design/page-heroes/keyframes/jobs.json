@@ -1,0 +1,74 @@
+[
+ {
+  "name": "disciplines-a",
+  "prompt": "Inside the observatory: a vast circular brutalist chamber of weathered dark concrete, a ring-shaped skylight high above. Floating at the centre, a single large rectangular glass panel showing a raw, flat, ungraded, low-contrast film still (a misty landscape), lit faintly from within, with a small tracking marker cross and a thin rig wire visible on it. Warm ochre light falls from the ring onto the floor. 28mm, eye level, symmetrical. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 11,
+  "model": "auto",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "disciplines-b",
+  "prompt": "Inside the observatory: a vast circular brutalist chamber of weathered dark concrete, a ring-shaped skylight high above. Floating at the centre, a single large rectangular glass panel showing a raw, flat, ungraded, low-contrast film still (a misty landscape), lit faintly from within, with a small tracking marker cross and a thin rig wire visible on it. Warm ochre light falls from the ring onto the floor. 28mm, eye level, symmetrical. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 23,
+  "model": "cinematic",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "work-a",
+  "prompt": "A long, dark gallery hall of polished graphite stone. On both sides, rows of large rectangular glass plates float at eye level, each softly backlit, each showing a different dim, blurred film still as a soft glow (no readable detail). The floor reflects them. At the far end, one plate glows warm ochre. Slow perspective down the centre line, 35mm, deep depth. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 11,
+  "model": "auto",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "work-b",
+  "prompt": "A long, dark gallery hall of polished graphite stone. On both sides, rows of large rectangular glass plates float at eye level, each softly backlit, each showing a different dim, blurred film still as a soft glow (no readable detail). The floor reflects them. At the far end, one plate glows warm ochre. Slow perspective down the centre line, 35mm, deep depth. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 23,
+  "model": "cinematic",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "commissioning-a",
+  "prompt": "Top-down overhead view of a dark slate desk at night. A single blank sheet of heavy white paper lies slightly off-centre under the warm ochre pool of a small brass desk lamp; a pencil beside it; the rest of the desk falls into shadow with faint film reels and a closed notebook at the edges. Precise, still, minimal, 50mm overhead. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 11,
+  "model": "auto",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "commissioning-b",
+  "prompt": "Top-down overhead view of a dark slate desk at night. A single blank sheet of heavy white paper lies slightly off-centre under the warm ochre pool of a small brass desk lamp; a pencil beside it; the rest of the desk falls into shadow with faint film reels and a closed notebook at the edges. Precise, still, minimal, 50mm overhead. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 23,
+  "model": "cinematic",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "studio-a",
+  "prompt": "A dark room with a large glowing lightbox table seen from a low three-quarter angle. On the lightbox lies a photographic contact sheet: a neat grid of eleven blank, softly glowing negative frames (empty, no faces). An ochre-tinted glass loupe rests on one frame. Cool silver ambient light, warm accent from the loupe, shallow depth of field. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 11,
+  "model": "auto",
+  "resolution": "2k",
+  "quality": "high"
+ },
+ {
+  "name": "studio-b",
+  "prompt": "A dark room with a large glowing lightbox table seen from a low three-quarter angle. On the lightbox lies a photographic contact sheet: a neat grid of eleven blank, softly glowing negative frames (empty, no faces). An ochre-tinted glass loupe rests on one frame. Cool silver ambient light, warm accent from the loupe, shallow depth of field. Match the reference image's cinematic language exactly: night, graphite and silver near-monochrome, a single warm ochre light source as the only colour, photoreal feature-film still, deep shadows, gentle atmospheric haze, premium and restrained. Wide 16:9 composition with calm negative space on the left third for a headline. No people, no text, no logos, no UI.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "seed": 23,
+  "model": "cinematic",
+  "resolution": "2k",
+  "quality": "high"
+ }
+]
