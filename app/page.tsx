@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import HomePage from './HomePage';
 
 export const metadata: Metadata = {
-  title: studio.pageMetadata.home.title,
+  title: { absolute: `Fix It In Post Studios · ${studio.pageMetadata.home.title} · Chennai` },
   description: studio.pageMetadata.home.description,
   keywords: ['VFX studio', 'AI video production', 'post-production services', 'video editing', 'visual effects', 'content creation'],
   openGraph: {
@@ -11,18 +11,13 @@ export const metadata: Metadata = {
     description: studio.pageMetadata.home.description,
     url: 'https://fixitinpost.in',
     images: [
-      {
-        url: '/web-app-manifest-512x512.png',
-        width: 512,
-        height: 512,
-        alt: 'Fix It In Post Studios - AI-Assisted VFX & Video Production',
-      },
+      { url: '/og/fiip-og.jpg', width: 1200, height: 630, alt: 'Fix It In Post Studios' },
     ],
   },
   twitter: {
     title: studio.pageMetadata.home.title,
     description: studio.pageMetadata.home.description,
-    images: ['/web-app-manifest-512x512.png'],
+    images: ['/og/fiip-og.jpg'],
   },
 };
 

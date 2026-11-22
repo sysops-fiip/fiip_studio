@@ -8,6 +8,10 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+  async redirects() {
+    // one canonical host: www -> apex
+    return [{ source: '/:path*', has: [{ type: 'host', value: 'www.fixitinpost.in' }], destination: 'https://fixitinpost.in/:path*', permanent: true }];
+  },
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
