@@ -8,6 +8,12 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡⚡⚡⚡ LATEST — page heroes live (`eca9d0f`, 22 Nov 2026)
+- `components/ScrollHero.tsx` is the shared engine (homepage `ScrollShot` wraps it). Each page hero lives in `components/PageHeroes.tsx` with a manifest in `data/heroes/*.json` (frames, optional hold with states, optional `range`/`reverse`). Concepts: `design/page-heroes/CONCEPTS.md`.
+- Pipeline per page: keyframes and videos via Magnific on the LOCAL ComfyUI (`~/.cache/fiip-tools/magnific_gen.py`, `magnific_video.py`; files saved to Magnific project "Personal", never a client project; do NOT use frames edit_image, which writes into Picasso/AYON) → Topaz Apollo 96 fps on ws03 (`scripts/topaz-interpolate.sh`) → `scripts/hero-holdframe.sh` (exact hold frame) → `scripts/hero-states.py <disciplines|work|studio>` → `scripts/build-page-hero.py`.
+- **User wants CHEAP models from now on** (Veo 3.1 Lite/Fast, "fast" image tier, low quality). The four page videos were already on full Veo 3.1 before that instruction.
+- Sequence weights (desktop/mobile MB): disciplines 14.7/4.4, work 12/3.8, commissioning 18.2/3.6, studio 8.1/3.2; contact reuses the homepage frames (range 150→383, reversed). Measured p95 16.8 ms on every page in headless Chromium.
+
 ## ⚡⚡⚡⚡⚡⚡ LATEST — 22 Nov 2026 (`025d707`, `db13e0d`, live). Codex: your shorter-hero change was kept.
 - **Comfy Cloud is gone** (subscription cancelled by the user; credits exhausted). Use the studio's Magnific workflows (frames MCP: edit_image, run_magnific_*) for generation. Topaz: run locally on ws03 (`scripts/topaz-upscale.sh`, `scripts/topaz-interpolate.sh`). ws03 drops off Tailscale at times.
 - **Hero** (`components/ScrollShot.tsx`): ONE hold now (Depth, Geometry, Normals, Clay at frame 150), then the shot continues and the headline/CTAs land at the end as a handoff. Height = `--stage-h` (locked from JS) × 6.5 desktop / 5.5 mobile, i.e. your shortened length. Per-frame work writes to the DOM; frames are ImageBitmaps. Sequence = 384 frames from the Topaz 4K master, in a VERSIONED folder `public/sequences/shot-YYYYMMDD…` (immutable cache header) built by `scripts/build-hero-sequence.py <video> <holdFrame> <passesDir>`. Mobile measured at a steady 16.7 ms/frame; desktop is fine in medians, but headless Chromium has no GPU, so check on real hardware.
