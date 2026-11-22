@@ -1,95 +1,37 @@
 {
   "frames": 384,
-  "width": 1920,
-  "height": 1080,
-  "base": "/sequences/shot/desktop",
-  "mobileBase": "/sequences/shot/mobile",
+  "base": "/sequences/shot-20261122/desktop",
+  "mobileBase": "/sequences/shot-20261122/mobile",
   "ext": "webp",
-  "poster": "/sequences/shot/desktop/f0383.webp",
-  "holds": [
-    {
-      "frame": 146,
-      "title": "Frame 1 \u00b7 The world",
-      "passes": [
-        {
-          "id": "depth",
-          "label": "Depth",
-          "meta": "Z \u00b7 median of 12 estimates \u00b7 frame 0146",
-          "swatch": "#8f9399"
-        },
-        {
-          "id": "wire",
-          "label": "Geometry",
-          "meta": "Mesh \u00b7 seeded on object boundaries \u00b7 frame 0146",
-          "swatch": "#d9d9d4"
-        },
-        {
-          "id": "normal",
-          "label": "Normals",
-          "meta": "N \u00b7 camera space \u00b7 frame 0146",
-          "swatch": "#8f86d8"
-        },
-        {
-          "id": "clay",
-          "label": "Clay & light",
-          "meta": "Key + fill \u00b7 multi-scale occlusion \u00b7 frame 0146",
-          "swatch": "#b9b9b4"
-        },
-        {
-          "id": "uv",
-          "label": "UV checker",
-          "meta": "UV \u00b7 one planar island per object \u00b7 frame 0146",
-          "swatch": "#6f6f6c"
-        },
-        {
-          "id": "id",
-          "label": "Object ID",
-          "meta": "Cryptomatte \u00b7 consensus of 3 AI voters \u00b7 frame 0146",
-          "swatch": "#ca943e"
-        }
-      ]
-    },
-    {
-      "frame": 356,
-      "title": "Frame 2 \u00b7 The portal",
-      "passes": [
-        {
-          "id": "depth",
-          "label": "Depth",
-          "meta": "Z \u00b7 median of 12 estimates \u00b7 frame 0356",
-          "swatch": "#8f9399"
-        },
-        {
-          "id": "wire",
-          "label": "Geometry",
-          "meta": "Mesh \u00b7 seeded on object boundaries \u00b7 frame 0356",
-          "swatch": "#d9d9d4"
-        },
-        {
-          "id": "normal",
-          "label": "Normals",
-          "meta": "N \u00b7 camera space \u00b7 frame 0356",
-          "swatch": "#8f86d8"
-        },
-        {
-          "id": "clay",
-          "label": "Clay & light",
-          "meta": "Key + fill \u00b7 multi-scale occlusion \u00b7 frame 0356",
-          "swatch": "#b9b9b4"
-        },
-        {
-          "id": "uv",
-          "label": "UV checker",
-          "meta": "UV \u00b7 one planar island per object \u00b7 frame 0356",
-          "swatch": "#6f6f6c"
-        },
-        {
-          "id": "id",
-          "label": "Object ID",
-          "meta": "Cryptomatte \u00b7 consensus of 3 AI voters \u00b7 frame 0356",
-          "swatch": "#ca943e"
-        }
-      ]
-    }
-  ]
+  "poster": "/sequences/shot-20261122/desktop/f0383.webp",
+  "hold": {
+    "frame": 150,
+    "title": "Inside the shot",
+    "passes": [
+      {
+        "id": "depth",
+        "label": "Depth",
+        "meta": "Z \u00b7 median of 12 estimates \u00b7 frame 0150",
+        "swatch": "#9a9c9f"
+      },
+      {
+        "id": "wire",
+        "label": "Geometry",
+        "meta": "Mesh \u00b7 seeded on object edges \u00b7 frame 0150",
+        "swatch": "#e4e4df"
+      },
+      {
+        "id": "normal",
+        "label": "Normals",
+        "meta": "N \u00b7 camera space \u00b7 frame 0150",
+        "swatch": "#8f86d8"
+      },
+      {
+        "id": "clay",
+        "label": "Clay & light",
+        "meta": "Key + fill \u00b7 occlusion \u00b7 frame 0150",
+        "swatch": "#bdbdb8"
+      }
+    ]
+  }
 }

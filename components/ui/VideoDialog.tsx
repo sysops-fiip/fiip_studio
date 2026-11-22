@@ -53,7 +53,7 @@ export function VideoDialog({ open, onClose, youtubeId, title }: VideoDialogProp
         <div className="flex justify-end pb-3">
           <button ref={close} type="button" onClick={onClose} aria-label="Close video" className="flex h-11 w-11 items-center justify-center border border-neutral-700 bg-black text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"><X size={18} /></button>
         </div>
-        <iframe src={`https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0`} title={title}
+        <iframe src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0`} title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
           className="aspect-video w-full border border-neutral-800 bg-black" style={{ maxHeight: 'calc(100dvh - 120px)' }} />
       </div>

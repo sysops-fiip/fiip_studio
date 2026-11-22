@@ -12,18 +12,13 @@ export const metadata: Metadata = {
     description: studio.pageMetadata.about.description,
     url: 'https://fixitinpost.in/about',
     images: [
-      {
-        url: '/web-app-manifest-512x512.png',
-        width: 512,
-        height: 512,
-        alt: 'Fix It In Post Studios Team',
-      },
+      { url: '/og/fiip-og.jpg', width: 1200, height: 630, alt: 'Fix It In Post Studios Team' },
     ],
   },
   twitter: {
     title: studio.pageMetadata.about.title,
     description: studio.pageMetadata.about.description,
-    images: ['/web-app-manifest-512x512.png'],
+    images: ['/og/fiip-og.jpg'],
   },
 };
 

@@ -1,146 +1,188 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, Play } from 'lucide-react';
 import studio from '@/content/studio.json';
 import manifest from '@/data/scroll-shot.json';
 
 /*
- * Scroll-scrubbed opening shot. The page scroll drives a frame sequence
- * (exported from the generated shot). At each "hold" the playback freezes and
- * the procedurally derived passes for that exact frame wipe in one after
- * another, each with a colour card, then the beauty wipes back and the shot
- * continues. Reduced motion: a still frame with the copy, no scrubbing.
+ * The opening shot, driven by scroll.
+ *   0 → A   Through the lens: the iris opens and the camera pushes into the world.
+ *   A → B   Inside the shot: the frame holds while each render pass wipes in, then the beauty returns.
+ *   B → C   The final frame: the camera continues toward the portal.
+ *   C → 1   Handoff: the picture settles and dims, the headline and actions arrive, and the page releases.
+ *
+ * Performance: every per-frame update writes straight to the DOM (no React re-render on scroll),
+ * frames are decoded before first draw, the displayed position eases toward the scroll position,
+ * and the stage height is locked at load so mobile URL-bar resizes never reflow the canvas.
  */
 
 type Pass = { id: string; label: string; meta: string; swatch: string };
-type Hold = { frame: number; title: string; passes: Pass[] };
-type Segment = { kind: 'play'; from: number; to: number; units: number } | { kind: 'wipe'; hold: number; pass: number; units: number };
-
-const m = manifest as { frames: number; width: number; height: number; base: string; mobileBase: string; ext: string; holds: Hold[]; poster: string };
+const m = manifest as { frames: number; base: string; mobileBase: string; ext: string; poster: string; hold: { frame: number; title: string; passes: Pass[] } };
 const pad = (n: number) => String(n).padStart(4, '0');
-
-function buildSegments(): Segment[] {
-  const segs: Segment[] = [];
-  let at = 0;
-  m.holds.forEach((h, hi) => {
-    segs.push({ kind: 'play', from: at, to: h.frame, units: Math.max(1, (h.frame - at) / 12) });
-    h.passes.forEach((_, pi) => segs.push({ kind: 'wipe', hold: hi, pass: pi, units: 1 }));
-    segs.push({ kind: 'wipe', hold: hi, pass: h.passes.length, units: 0.8 }); // beauty returns
-    at = h.frame;
-  });
-  segs.push({ kind: 'play', from: at, to: m.frames - 1, units: Math.max(1, (m.frames - 1 - at) / 12) });
-  return segs;
-}
+const A = 0.26, B = 0.6, C = 0.86; // phase boundaries in scroll progress
+const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+const span = (p: number, a: number, b: number) => clamp((p - a) / (b - a));
 
 export function ScrollShot({ onReel }: { onReel: () => void }) {
   const host = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [state, setState] = useState({ hold: -1, pass: -1, wipe: 0, progress: 0 });
+  const intro = useRef<HTMLDivElement>(null);
+  const outro = useRef<HTMLDivElement>(null);
+  const shade = useRef<HTMLDivElement>(null);
+  const chapter = useRef<HTMLDivElement>(null);
+  const passLabel = useRef<HTMLDivElement>(null);
+  const rail = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLElement>(null);
   const [still, setStill] = useState(false);
-  const segments = useMemo(buildSegments, []);
-  const total = segments.reduce((s, g) => s + g.units, 0);
 
   useEffect(() => {
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     if (motion.matches) { setStill(true); return; }
-    const el = host.current, cv = canvas.current;
-    if (!el || !cv) return;
-    const ctx = cv.getContext('2d')!;
+    const el = host.current!, cv = canvas.current!;
+    const ctx = cv.getContext('2d', { alpha: false })!;
     const mobile = innerWidth < 768;
     const base = mobile ? m.mobileBase : m.base;
-    let last = '';
-    const frames: (HTMLImageElement | null)[] = new Array(m.frames).fill(null);
-    const passImgs = new Map<string, HTMLImageElement>();
-    const load = (i: number) => { if (frames[i]) return; const im = new Image(); im.decoding = 'async'; im.src = `${base}/f${pad(i)}.${m.ext}`; frames[i] = im; im.onload = () => { last = ''; draw(); }; };
-    // Coarse-to-fine: every 8th frame first so scrubbing is immediately usable.
-    for (const step of [8, 4, 2, 1]) for (let i = 0; i < m.frames; i += step) load(i);
-    m.holds.forEach((h, hi) => h.passes.forEach(p => { const im = new Image(); im.src = `${base}/hold${hi}-${p.id}.${m.ext}`; im.onload = () => { last = ''; draw(); }; passImgs.set(`${hi}-${p.id}`, im); }));
-    const nearest = (i: number) => { for (let d = 0; d < m.frames; d++) { for (const j of [i - d, i + d]) { const f = frames[j]; if (f && f.complete && f.naturalWidth) return f; } } return null; };
-    const target = () => { const r = el!.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight))); };
-    let shown = target();
-    function locate() {
+    const passes = m.hold.passes, P = passes.length;
+    let dirty = true;
+
+    // Lock the stage height once (and again only on real width/orientation changes).
+    let lockedW = innerWidth;
+    const lock = () => { el.style.setProperty('--stage-h', `${innerHeight}px`); };
+    lock();
+
+    // Frames become ImageBitmaps once decoded: GPU-ready, so a draw costs almost nothing.
+    type Pic = HTMLImageElement | ImageBitmap;
+    const frames: Pic[] = new Array(m.frames);
+    const requested = new Uint8Array(m.frames), ready = new Uint8Array(m.frames);
+    const canBitmap = typeof createImageBitmap === 'function';
+    const load = (i: number) => {
+      if (requested[i]) return; requested[i] = 1;
+      const im = new Image(); im.src = `${base}/f${pad(i)}.${m.ext}`; frames[i] = im;
+      im.decode().then(() => canBitmap ? createImageBitmap(im).then(bm => { frames[i] = bm; }) : undefined)
+        .then(() => { ready[i] = 1; dirty = true; }).catch(() => {});
+    };
+    load(0); load(m.hold.frame);
+    for (const step of [16, 8, 4, 2, 1]) for (let i = 0; i < m.frames; i += step) load(i);
+    const passImgs: (Pic | null)[] = passes.map(() => null);
+    passes.forEach((p, k) => { const im = new Image(); im.src = `${base}/hold-${p.id}.${m.ext}`; im.decode().then((): Promise<Pic> | Pic => (canBitmap ? createImageBitmap(im) : im)).then(x => { passImgs[k] = x; dirty = true; }).catch(() => {}); });
+    const ok = (im?: Pic | null) => !!im;
+    const dims = (im: Pic) => ('naturalWidth' in im ? [im.naturalWidth, im.naturalHeight] : [im.width, im.height]);
+    const nearest = (i: number) => { for (let d = 0; d < m.frames; d++) for (const j of [i - d, i + d]) if (j >= 0 && j < m.frames && ready[j]) return frames[j]; return null; };
+
+    let W = 0, H = 0;
+    const focus = mobile ? 0.6 : 0.5;
+    const size = () => {
+      const dpr = Math.min(devicePixelRatio || 1, mobile ? 2 : 1.25);
+      W = cv.width = Math.round(cv.clientWidth * dpr); H = cv.height = Math.round(cv.clientHeight * dpr); dirty = true;
+    };
+    const draw = (im: Pic, alpha = 1, clipW = W) => {
+      const [iw, ih] = dims(im);
+      const s = Math.max(W / iw, H / ih), dw = iw * s, dh = ih * s;
+      ctx.save(); if (clipW < W) { ctx.beginPath(); ctx.rect(0, 0, clipW, H); ctx.clip(); }
+      ctx.globalAlpha = alpha; ctx.drawImage(im, (W - dw) * focus, (H - dh) / 2, dw, dh); ctx.restore();
+    };
+    const playFrame = (pos: number) => {
+      const i0 = Math.floor(pos), i1 = Math.min(m.frames - 1, i0 + 1), f = pos - i0;
+      if (ready[i0] && ready[i1]) { draw(frames[i0]); if (f > 0.02 && !fast) draw(frames[i1], f); }
+      else { const n = nearest(Math.round(pos)); if (n) draw(n); }
+    };
+
+    const target = () => { const r = el.getBoundingClientRect(); return clamp(-r.top / Math.max(1, r.height - innerHeight)); };
+    let shown = target(), raf = 0, lastKey = '', fast = false;
+
+    const setPass = (idx: number) => {
+      const key = String(idx);
+      if (key === lastKey) return;
+      lastKey = key;
+      const ps = idx >= 0 && idx < P ? passes[idx] : null;
+      passLabel.current!.innerHTML = ps ? `<i style="background:${ps.swatch}"></i><span><small>Pass ${String(idx + 1).padStart(2, '0')} / ${String(P).padStart(2, '0')}</small><strong>${ps.label}</strong><em>${ps.meta}</em></span>` : '';
+      passLabel.current!.style.opacity = ps ? '1' : '0';
+      rail.current!.querySelectorAll('span').forEach((s, i) => { s.className = i < idx ? 'done' : i === idx ? 'on' : ''; });
+    };
+
+    const render = () => {
       const p = shown;
-      let u = p * total;
-      for (const g of segments) { if (u <= g.units) return { g, t: u / g.units, p }; u -= g.units; }
-      const g = segments[segments.length - 1];
-      return { g, t: 1, p };
-    }
-    function cover(img: CanvasImageSource, iw: number, ih: number) {
-      const W = cv!.width, H = cv!.height, s = Math.max(W / iw, H / ih);
-      const dw = iw * s, dh = ih * s, dx = (W - dw) * (mobile ? 0.62 : 0.5), dy = (H - dh) / 2;
-      return { dx, dy, dw, dh, draw: () => ctx.drawImage(img, dx, dy, dw, dh) };
-    }
-    function draw() {
-      const { g, t, p } = locate();
-      const key = `${g === undefined ? '' : segments.indexOf(g)}:${t.toFixed(4)}:${cv!.width}`;
-      if (key === last) return; last = key;
-      ctx.fillStyle = '#060707'; ctx.fillRect(0, 0, cv!.width, cv!.height);
-      if (g.kind === 'play') {
-        const pos = g.from + (g.to - g.from) * t, i0 = Math.floor(pos), frac = pos - i0;
-        const a = frames[i0], b = frames[Math.min(m.frames - 1, i0 + 1)];
-        const ready = (x: HTMLImageElement | null) => !!x && x.complete && x.naturalWidth > 0;
-        if (ready(a) && ready(b) && frac > 0.02) {
-          cover(a!, a!.naturalWidth, a!.naturalHeight).draw();
-          ctx.globalAlpha = frac; cover(b!, b!.naturalWidth, b!.naturalHeight).draw(); ctx.globalAlpha = 1;
-        } else {
-          const f = nearest(Math.round(pos));
-          if (f) cover(f, f.naturalWidth, f.naturalHeight).draw();
-        }
-        setState(s => (s.hold === -1 && Math.abs(s.progress - p) < 0.002 ? s : { hold: -1, pass: -1, wipe: 0, progress: p }));
-        return;
-      }
-      const h = m.holds[g.hold];
-      const beauty = nearest(h.frame);
-      const under = g.pass === 0 ? beauty : passImgs.get(`${g.hold}-${h.passes[g.pass - 1].id}`);
-      const over = g.pass < h.passes.length ? passImgs.get(`${g.hold}-${h.passes[g.pass].id}`) : beauty;
-      if (under && under.naturalWidth) cover(under, under.naturalWidth, under.naturalHeight).draw();
-      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      if (over && over.naturalWidth) {
-        const c = cover(over, over.naturalWidth, over.naturalHeight);
-        ctx.save(); ctx.beginPath(); ctx.rect(0, 0, cv!.width * e, cv!.height); ctx.clip(); c.draw(); ctx.restore();
-        if (e > 0 && e < 1) { ctx.fillStyle = '#ca943e'; ctx.fillRect(cv!.width * e - 1, 0, 2, cv!.height); }
-      }
-      setState({ hold: g.hold, pass: g.pass, wipe: e, progress: p });
-    }
-    const size = () => { const dpr = Math.min(devicePixelRatio || 1, 2); cv.width = Math.round(cv.clientWidth * dpr); cv.height = Math.round(cv.clientHeight * dpr); last = ''; draw(); };
-    let raf = 0;
-    // Ease the displayed position toward the scroll position: wheel steps and swipes glide instead of jumping.
+      if (p <= A) { playFrame(span(p, 0, A) * m.hold.frame); setPass(-1); }
+      else if (p < B) {
+        const t = span(p, A, B) * (P + 1);               // P passes in, then the beauty returns
+        const k = Math.min(P, Math.floor(t)), w = ease(t - k);
+        const beauty = nearest(m.hold.frame);
+        const under = k === 0 ? beauty : passImgs[k - 1];
+        const over = k < P ? passImgs[k] : beauty;
+        if (ok(under)) draw(under!);
+        if (ok(over)) { draw(over!, 1, W * w); if (w > 0.002 && w < 0.998) { ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fillRect(W * w - 0.75, 0, 1.5, H); } }
+        setPass(w > 0.5 ? k : k - 1);
+      } else { playFrame(m.hold.frame + span(p, B, C) * (m.frames - 1 - m.hold.frame)); setPass(-1); }
+
+      const inP = 1 - span(p, 0.015, 0.07);
+      intro.current!.style.opacity = String(inP);
+      intro.current!.style.visibility = inP < 0.01 ? 'hidden' : 'visible';
+      const out = ease(span(p, C, 0.97));
+      const o = outro.current!;
+      o.style.opacity = String(out);
+      o.style.transform = `translate3d(0,${((1 - out) * 28).toFixed(1)}px,0)`;
+      o.style.pointerEvents = out > 0.6 ? 'auto' : 'none';
+      o.style.visibility = out < 0.01 ? 'hidden' : 'visible';
+      shade.current!.style.opacity = String(0.15 + 0.65 * out);
+      rail.current!.style.opacity = p > A - 0.012 && p < B + 0.012 ? '1' : '0';
+      chapter.current!.dataset.ch = String(p < A ? 0 : p < B ? 1 : 2);
+      chapter.current!.style.opacity = String((1 - out) * (1 - inP * 0.0));
+      bar.current!.style.transform = `scaleX(${p.toFixed(4)})`;
+    };
+
     const tick = () => {
       const goal = target(), diff = goal - shown;
-      shown = Math.abs(diff) < 0.00005 ? goal : shown + diff * 0.16;
-      draw();
-      raf = shown === goal ? 0 : requestAnimationFrame(tick);
+      fast = Math.abs(diff) > 0.01;
+      shown = Math.abs(diff) < 0.0001 ? goal : shown + diff * (mobile ? 0.22 : 0.14);
+      render(); dirty = false;
+      raf = shown !== goal ? requestAnimationFrame(tick) : 0;
     };
-    const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick); };
-    size();
-    addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', size);
-    return () => { removeEventListener('scroll', onScroll); removeEventListener('resize', size); if (raf) cancelAnimationFrame(raf); };
-  }, [segments, total]);
+    const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    const loader = setInterval(() => { if (dirty) kick(); }, 120);   // repaint as frames finish decoding
+    const onResize = () => { if (Math.abs(innerWidth - lockedW) > 2) { lockedW = innerWidth; lock(); } size(); kick(); };
+    size(); kick();
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', onResize);
+    return () => { removeEventListener('scroll', kick); removeEventListener('resize', onResize); clearInterval(loader); if (raf) cancelAnimationFrame(raf); };
+  }, []);
 
-  const hold = state.hold >= 0 ? m.holds[state.hold] : null;
-  const activePass = hold && state.pass < hold.passes.length ? hold.passes[state.pass] : null;
-  const shownPass = hold ? (state.wipe > 0.5 ? activePass : (state.pass > 0 ? hold.passes[state.pass - 1] : null)) : null;
-  const copyOpacity = still ? 1 : Math.max(0, 1 - state.progress * 9);
+  const copy = studio.homepage;
+  const actions = <div className="hero-actions"><button className="pill-button pill-light" onClick={onReel}><Play size={13} fill="currentColor" />Watch the studio reel</button><a className="text-link" href="#selected-work">See the work <ArrowDown size={16} /></a></div>;
 
-  return <section ref={host} className={`scroll-shot ${still ? 'is-still' : ''}`} aria-labelledby="hero-title">
+  if (still) return <section className="scroll-shot is-still" aria-labelledby="hero-title">
+    <div className="scroll-shot-stage">
+      <img className="scroll-shot-poster" src={m.poster} alt="" />
+      <div className="scroll-shot-shade" style={{ opacity: 0.8 }} />
+      <div className="scroll-shot-outro page-width" style={{ opacity: 1, visibility: 'visible' }}>
+        <p className="eyebrow">{copy.eyebrow}</p><h1 id="hero-title">The final<br /><span>feeling.</span></h1>
+        <p className="cinema-intro">A world imagined.<br />Every detail made real.</p>{actions}
+      </div>
+    </div>
+  </section>;
+
+  return <section ref={host} className="scroll-shot" aria-labelledby="hero-title">
     <div className="scroll-shot-stage sticky">
-      {still ? <img className="scroll-shot-poster" src={m.poster} alt="" /> : <canvas ref={canvas} className="scroll-shot-canvas" aria-hidden="true" />}
-      <div className="scroll-shot-shade" aria-hidden="true" style={{ opacity: 0.25 + 0.75 * copyOpacity }} />
-      <div className="scroll-shot-copy page-width" style={{ opacity: copyOpacity, visibility: copyOpacity < 0.02 ? 'hidden' : 'visible' }}>
-        <p className="eyebrow">{studio.homepage.eyebrow}</p>
+      <canvas ref={canvas} className="scroll-shot-canvas" aria-hidden="true" />
+      <div ref={shade} className="scroll-shot-shade" aria-hidden="true" />
+      <div ref={intro} className="scroll-shot-intro page-width">
+        <p className="eyebrow">{copy.eyebrow}</p>
+        <p className="scroll-shot-lede">Every frame,<br />from the inside.</p>
+        <span className="scroll-cue" aria-hidden="true">Scroll <ArrowDown size={14} /></span>
+      </div>
+      <div ref={chapter} className="scroll-shot-chapter page-width" aria-hidden="true" data-ch="0">
+        <span>01 · Through the lens</span><span>02 · Inside the shot</span><span>03 · The final frame</span>
+      </div>
+      <div ref={passLabel} className="scroll-shot-pass" aria-live="polite" />
+      <div ref={rail} className="scroll-shot-rail" aria-hidden="true">{m.hold.passes.map(p => <span key={p.id}><b style={{ background: p.swatch }} />{p.label}</span>)}</div>
+      <div ref={outro} className="scroll-shot-outro page-width">
+        <p className="eyebrow">{copy.eyebrow}</p>
         <h1 id="hero-title">The final<br /><span>feeling.</span></h1>
         <p className="cinema-intro">A world imagined.<br />Every detail made real.</p>
-        <div className="hero-actions"><button className="pill-button pill-light" onClick={onReel}><Play size={13} fill="currentColor" />Watch the studio reel</button><span className="text-link scroll-cue">Scroll to step inside the shot <ArrowDown size={16} /></span></div>
+        {actions}
       </div>
-      {!still && <>
-        <div className={`pass-card ${shownPass ? 'is-on' : ''}`} aria-live="polite">
-          {shownPass && <><span className="pass-swatch" style={{ background: shownPass.swatch }} /><div><strong>{shownPass.label}</strong><small>{shownPass.meta}</small></div></>}
-        </div>
-        {hold && <div className="pass-rail page-width" aria-hidden="true"><span className="pass-rail-title">{hold.title}</span>{hold.passes.map((p, i) => <span key={p.id} className={i === state.pass && state.wipe > 0.5 || (i === state.pass - 1 && state.wipe <= 0.5) ? 'is-active' : i < state.pass ? 'is-done' : ''}><i style={{ background: p.swatch }} />{p.label}</span>)}</div>}
-        <div className="scroll-shot-progress" aria-hidden="true"><i style={{ transform: `scaleX(${state.progress})` }} /></div>
-      </>}
+      <div className="scroll-shot-progress" aria-hidden="true"><i ref={bar} /></div>
     </div>
   </section>;
 }

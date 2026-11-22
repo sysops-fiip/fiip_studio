@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import './globals.css';
+import studio from '@/content/studio.json';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     default: 'Fix It In Post Studios | Editorial · Visual Effects · DI Color Suites',
     template: '%s | Fix It In Post Studios',
   },
-  description: 'Boutique post-production house delivering narrative editorial, photoreal 3D/VFX, and flagship DaVinci Resolve color grading for feature films, episodic OTT, and national commercial campaigns.',
+  description: studio.identity.description,
   keywords: [
     'Post-Production Studio', 'Film Editorial', 'DaVinci Resolve DI',
     'Color Grading Suite', 'Visual Effects', 'Photoreal 3D', 'Blender CGI',
@@ -56,22 +57,22 @@ export const metadata: Metadata = {
     url: 'https://fixitinpost.in',
     siteName: 'Fix It In Post Studios',
     title: 'Fix It In Post Studios | Editorial · Visual Effects · DI Color Suites',
-    description: 'Boutique post-production house delivering narrative editorial, photoreal 3D/VFX, and flagship DaVinci Resolve color grading for feature films, episodic OTT, and national commercial campaigns.',
+    description: studio.identity.description,
     images: [
       {
-        url: '/logo/Fix it in post Logo_Horizontal-White.png',
+        url: '/og/fiip-og.jpg',
         width: 1200,
         height: 630,
-        alt: 'Fix It In Post Studios Logo',
-        type: 'image/png',
+        alt: 'Fix It In Post Studios',
+        type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Fix It In Post Studios | Editorial · Visual Effects · DI Color Suites',
-    description: 'Boutique post-production house delivering narrative editorial, photoreal 3D/VFX, and flagship DaVinci Resolve color grading.',
-    images: ['/logo/Fix it in post Logo_Horizontal-White.png'],
+    description: studio.identity.description,
+    images: ['/og/fiip-og.jpg'],
   },
   other: {
     'theme-color': '#000000',
@@ -88,6 +89,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="bg-black text-white antialiased font-sans">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org', '@type': 'Organization',
+          name: 'Fix It In Post Studios', alternateName: 'FIIP', url: 'https://fixitinpost.in',
+          logo: 'https://fixitinpost.in/web-app-manifest-512x512.png', image: 'https://fixitinpost.in/og/fiip-og.jpg',
+          description: studio.identity.description, email: studio.contact.general,
+          address: { '@type': 'PostalAddress', addressLocality: studio.identity.city, addressCountry: 'IN' },
+          sameAs: [studio.identity.imdb].filter(Boolean),
+          knowsAbout: ['Visual effects', 'Colour grading', 'Conform and mastering', 'Film editing', 'Post-production'],
+        }) }} />
         <ScrollProgress />
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />

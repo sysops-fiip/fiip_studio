@@ -1,50 +1,19 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+
+// lastModified = when each page's content last changed (update when publishing content edits).
+const base = 'https://fixitinpost.in';
+const pages: [string, string, MetadataRoute.Sitemap[number]['changeFrequency'], number][] = [
+  ['/', '2026-11-22', 'weekly', 1],
+  ['/portfolio', '2026-11-22', 'weekly', 0.9],
+  ['/services', '2026-11-22', 'monthly', 0.9],
+  ['/frames', '2026-11-21', 'monthly', 0.8],
+  ['/about', '2026-11-22', 'monthly', 0.8],
+  ['/pricing', '2026-11-22', 'monthly', 0.7],
+  ['/contact', '2026-11-22', 'yearly', 0.7],
+  ['/privacy', '2026-11-22', 'yearly', 0.2],
+  ['/terms', '2026-11-22', 'yearly', 0.2],
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://fixitinpost.in'
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/frames`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-  ]
+  return pages.map(([path, date, changeFrequency, priority]) => ({ url: `${base}${path === '/' ? '' : path}`, lastModified: new Date(date), changeFrequency, priority }));
 }
