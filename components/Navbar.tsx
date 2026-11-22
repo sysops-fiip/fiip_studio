@@ -22,6 +22,12 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => { setIsOpen(false); }, [pathname]);
+  useEffect(() => {
+    document.documentElement.classList.toggle('menu-open', isOpen);
+    return () => document.documentElement.classList.remove('menu-open');
+  }, [isOpen]);
+
   useEffect(() => {
     if (!isOpen) return;
     const close = (event: KeyboardEvent) => {
@@ -43,7 +49,7 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
-        isScrolled
+        isScrolled || isOpen
           ? 'glass-panel glass-dark glass-elevation-1 glass-nav'
           : 'bg-transparent border-b border-transparent'
       }`}
@@ -108,39 +114,23 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
-        {isOpen && (
-          <div id="mobile-navigation" style={{maxHeight: "calc(100dvh - 80px)", overflowY: "auto"}} className="lg:hidden bg-[#050505] border-t border-neutral-900 px-2 py-6 space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                onClick={() => setIsOpen(false)}
-                className="nav-link block text-sm font-mono uppercase tracking-wider text-neutral-400 hover:text-white py-2 border-b border-neutral-900"
-              >
-                {item.label}
+        {/* Mobile navigation: full-screen editorial overlay */}
+      </div>
+      <div id="mobile-navigation" className={`mobile-menu lg:hidden ${isOpen ? 'is-open' : ''}`} aria-hidden={!isOpen} inert={!isOpen ? true : undefined}>
+        <ol className="mobile-menu-links">
+          {navItems.map((item, i) => (
+            <li key={item.href} style={{ transitionDelay: isOpen ? `${80 + i * 45}ms` : '0ms' }}>
+              <Link href={item.href} aria-current={pathname === item.href ? 'page' : undefined} onClick={() => setIsOpen(false)}>
+                <span>{String(i + 1).padStart(2, '0')}</span>{item.label}
               </Link>
-            ))}
-            <div className="pt-2 flex flex-col gap-3">
-              <a
-                href="https://frames.fixitinpost.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill-button justify-center"
-              >
-                Frames review portal ↗
-              </a>
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="pill-button pill-light justify-center"
-              >
-                Let’s talk
-              </Link>
-            </div>
-          </div>
-        )}
+            </li>
+          ))}
+        </ol>
+        <div className="mobile-menu-foot" style={{ transitionDelay: isOpen ? '380ms' : '0ms' }}>
+          <Link href="/contact" onClick={() => setIsOpen(false)} className="pill-button pill-light">Let’s talk</Link>
+          <a href="https://frames.fixitinpost.in" target="_blank" rel="noopener noreferrer" className="text-link">Frames review portal ↗</a>
+          <a href="mailto:hello@fixitinpost.in" className="mobile-menu-mail">hello@fixitinpost.in</a>
+        </div>
       </div>
     </nav>
   );

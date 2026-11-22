@@ -41,12 +41,15 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
   const rail = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLElement>(null);
   const [still, setStill] = useState(false);
+  const [optIn, setOptIn] = useState(false);   // reduced-motion visitors can still choose to play (kept in memory only)
   const hasHold = !!m.hold && m.hold.passes.length > 0;
-  const A = hasHold ? 0.26 : 0.86, B = hasHold ? 0.6 : 0.86, C = 0.86;
+  const A = hasHold ? 0.24 : 0.84, B = hasHold ? 0.62 : 0.84, C = 0.84, END = 0.92;
 
   useEffect(() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { setStill(true); return; }
-    const el = host.current!, cv = canvas.current!;
+    if (!optIn && matchMedia('(prefers-reduced-motion: reduce)').matches) { setStill(true); return; }
+    if (still) { setStill(false); return; }            // render the canvas first; the effect re-runs once it exists
+    const el = host.current, cv = canvas.current;
+    if (!el || !cv) return;
     const ctx = cv.getContext('2d', { alpha: false })!;
     const mobile = innerWidth < 768;
     const base = mobile ? m.mobileBase : m.base;
@@ -121,7 +124,7 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
       const inP = 1 - span(p, 0.015, 0.07);
       introEl.current!.style.opacity = String(inP);
       introEl.current!.style.visibility = inP < 0.01 ? 'hidden' : 'visible';
-      const out = ease(span(p, C, 0.97));
+      const out = ease(span(p, C, END));
       const o = outro.current!;
       o.style.opacity = String(out);
       o.style.transform = `translate3d(0,${((1 - out) * 28).toFixed(1)}px,0)`;
@@ -149,18 +152,25 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
     addEventListener('scroll', kick, { passive: true });
     addEventListener('resize', onResize);
     return () => { removeEventListener('scroll', kick); removeEventListener('resize', onResize); clearInterval(loader); if (raf) cancelAnimationFrame(raf); };
-  }, [raw, A, B, C, hasHold, chapters.length, statePrefix]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [raw, A, B, C, hasHold, chapters.length, statePrefix, optIn, still]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const style = { ['--hero-screens' as string]: screens[0], ['--hero-screens-m' as string]: screens[1] } as React.CSSProperties;
+  // Scroll-snap beats: the opening, the hold, each state fully revealed, the frame returning, the finished headline.
+  const P = m.hold?.passes.length ?? 0;
+  const beats = hasHold
+    ? [0, A, ...Array.from({ length: P }, (_, k) => A + ((k + 1) / (P + 1)) * (B - A)), B, END]
+    : [0, ...chapters.slice(1).map((_, k) => ((k + 1) / chapters.length) * C), END];
   if (still) return <section className="scroll-shot is-still" aria-labelledby={titleId}>
     <div className="scroll-shot-stage">
       <img className="scroll-shot-poster" src={m.poster} alt="" />
       <div className="scroll-shot-shade" style={{ opacity: 0.8 }} />
       <div className="scroll-shot-outro page-width" style={{ opacity: 1, visibility: 'visible' }}><p className="eyebrow">{eyebrow}</p><h1 id={titleId}>{title}</h1>{intro}{actions}</div>
+      <button type="button" className="scroll-shot-play" onClick={() => setOptIn(true)}><i aria-hidden="true">▶</i><span>Play the shot<small>Reduced motion is on for this device</small></span></button>
     </div>
   </section>;
 
   return <section ref={host} className="scroll-shot" style={style} aria-labelledby={titleId}>
+    {beats.map((b, i) => <i key={i} className="scroll-snap-beat" aria-hidden="true" style={{ ['--beat' as string]: b.toFixed(4) } as React.CSSProperties} />)}
     <div className="scroll-shot-stage sticky">
       <canvas ref={canvas} className="scroll-shot-canvas" aria-hidden="true" />
       <div ref={shade} className="scroll-shot-shade" aria-hidden="true" />

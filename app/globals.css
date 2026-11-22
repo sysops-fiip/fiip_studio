@@ -591,3 +591,27 @@ button:active, a[class*="px-"]:active, a[class*="py-"]:active { scale: 0.98; }
 .hero-follow{padding-top:clamp(72px,10vw,140px)}
 .hero-page-intro{max-width:520px;color:#d8d8d3}
 .scroll-shot-outro .hero-actions .text-link{color:#e6e6e2}
+/* Mobile menu: full-screen editorial overlay */
+.mobile-menu{position:fixed;inset:0;top:80px;z-index:-1;display:flex;flex-direction:column;justify-content:space-between;padding:28px 28px max(34px,env(safe-area-inset-bottom));background:radial-gradient(120% 70% at 85% 0%,#121314 0%,#050505 60%);opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.2,.7,.2,1),visibility 0s linear .35s;overflow-y:auto}
+.mobile-menu.is-open{opacity:1;visibility:visible;transition:opacity .35s cubic-bezier(.2,.7,.2,1)}
+.mobile-menu-links{list-style:none;margin:0;padding:0;border-top:1px solid #ffffff12}
+.mobile-menu-links li{border-bottom:1px solid #ffffff12;opacity:0;transform:translateY(14px);transition:opacity .45s cubic-bezier(.2,.7,.2,1),transform .45s cubic-bezier(.2,.7,.2,1)}
+.mobile-menu.is-open .mobile-menu-links li{opacity:1;transform:none}
+.mobile-menu-links a{display:flex;align-items:baseline;gap:18px;padding:17px 0;font-size:clamp(28px,8.6vw,40px);font-weight:400;letter-spacing:-.045em;line-height:1;color:#e9e9e5}
+.mobile-menu-links a span{font:10px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#6f6f6b;transform:translateY(-6px)}
+.mobile-menu-links a[aria-current=page]{color:#fff}.mobile-menu-links a[aria-current=page] span{color:var(--studio-accent)}
+.mobile-menu-links a[aria-current=page]::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--studio-accent);margin-left:auto;transform:translateY(-8px)}
+.mobile-menu-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;padding-top:32px;opacity:0;transform:translateY(10px);transition:opacity .45s,transform .45s}
+.mobile-menu.is-open .mobile-menu-foot{opacity:1;transform:none}
+.mobile-menu-foot .pill-button{padding:15px 26px}
+.mobile-menu-mail{width:100%;font:11px 'JetBrains Mono',monospace;letter-spacing:.06em;color:#8b8b87;margin-top:6px}
+html.menu-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.mobile-menu,.mobile-menu-links li,.mobile-menu-foot{transition:none}}
+/* Scroll-snap beats inside each hero (proximity: settles on the nearest beat when the scroll comes to rest) */
+html{scroll-snap-type:y proximity}
+html.menu-open{scroll-snap-type:none}
+.scroll-snap-beat{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-snap-align:start;top:calc(var(--stage-h) * (var(--hero-screens, 6.5) - 1) * var(--beat))}
+@media(max-width:767px){.scroll-snap-beat{top:calc(var(--stage-h) * (var(--hero-screens-m, 5.5) - 1) * var(--beat))}}
+.scroll-shot-play{position:absolute;z-index:5;right:max(20px,calc((100vw - min(1200px,100vw - 56px))/2));bottom:34px;display:flex;align-items:center;gap:12px;padding:12px 20px 12px 12px;border-radius:999px;background:rgba(6,7,7,.8);box-shadow:inset 0 0 0 1px #ffffff22;color:#eee;font-size:13px;text-align:left}
+.scroll-shot-play i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#efefea;color:#111;font-size:11px}
+.scroll-shot-play small{display:block;font:9px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#8d8d89;margin-top:3px}
