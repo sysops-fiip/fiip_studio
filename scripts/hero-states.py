@@ -130,11 +130,71 @@ def studio_dev(F, out):
     return states
 
 
+def disciplines_panel(F, out, quad_path):
+    """The five hands act only inside the floating panel: rectify it, treat it, warp it back."""
+    quad = np.array(json.load(open(quad_path)), np.float32)
+    tw = int(max(np.linalg.norm(quad[1] - quad[0]), np.linalg.norm(quad[2] - quad[3])))
+    th = int(max(np.linalg.norm(quad[3] - quad[0]), np.linalg.norm(quad[2] - quad[1])))
+    rect = np.array([[0, 0], [tw, 0], [tw, th], [0, th]], np.float32)
+    Hf = cv2.getPerspectiveTransform(quad, rect)
+    P = cv2.warpPerspective(F, Hf, (tw, th), flags=cv2.INTER_LANCZOS4)
+    inset = int(tw * 0.012); Pin = P[inset:th - inset, inset:tw - inset]  # keep the panel's metal edge untouched
+    states = disciplines(Pin, out)
+    # portrait panel: replace the 2.39 master with social delivery guides
+    ph, pw = Pin.shape[:2]
+    m = Image.fromarray(Pin[..., ::-1].copy()); d = ImageDraw.Draw(m)
+    fs = max(12, pw // 34); font = ImageFont.truetype(MONO, fs)
+    for ratio, label, col in [(9 / 16, '9:16', (230, 230, 224)), (4 / 5, '4:5', ACC)]:
+        gw = min(pw, ph * ratio) * 0.94; gh = gw / ratio
+        x0, y0 = (pw - gw) / 2, (ph - gh) / 2
+        d.rectangle((x0, y0, x0 + gw, y0 + gh), outline=col, width=max(1, pw // 380))
+        d.text((x0 + 10, y0 + 8), label, font=font, fill=col)
+    d.rectangle((0, ph - fs * 2.6, pw, ph), fill=(8, 8, 8))
+    d.text((12, ph - fs * 2), 'MASTERS · DCP · IMF · SOCIAL', font=font, fill=(214, 214, 208))
+    states[-1] = ('master', m, 'Conform & mastering', 'Delivery masters · every format', '#bdbdb8')
+    Hb = np.linalg.inv(Hf)
+    mask = np.zeros((th, tw), np.float32); mask[inset:th - inset, inset:tw - inset] = 1
+    mask = cv2.warpPerspective(cv2.GaussianBlur(mask, (0, 0), 0.8), Hb, (F.shape[1], F.shape[0]))
+    outs = []
+    for sid, img, label, meta, sw in states:
+        a = np.asarray(img)[..., ::-1]
+        full = P.copy(); full[inset:th - inset, inset:tw - inset] = a
+        back = cv2.warpPerspective(full, Hb, (F.shape[1], F.shape[0]), flags=cv2.INTER_LANCZOS4)
+        comp = (F * (1 - mask[..., None]) + back * mask[..., None]).astype(np.uint8)
+        outs.append((sid, Image.fromarray(comp[..., ::-1]), label, meta, sw))
+    return outs
+
+
+def commissioning(F, out, sheets_dir, quad_path=None):
+    """Brief -> storyboard drawn in -> review marks -> approved, laid onto the paper in the frame."""
+    quad = np.array(json.load(open(quad_path)), np.float32) if quad_path else find_bright_quad(F, 0.01)
+    # paper lighting: the lamp's falloff over the sheet, used to light the drawings
+    g = cv2.cvtColor(F, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    light = cv2.GaussianBlur(g, (0, 0), 18) / max(1, np.percentile(g, 99.5))
+    steps = [('brief', 'Brief', 'Your film, in a page'), ('board-a', 'Proposal', 'The storyboard takes shape'),
+             ('board', 'Proposal', 'Six shots, one sequence'), ('review', 'Review in Frames', 'Notes on the exact frame'),
+             ('approved', 'Delivery', 'Approved · masters delivered')]
+    states = []
+    for sid, label, meta in steps:
+        sh = cv2.imread(os.path.join(sheets_dir, sid + '.png'))
+        comp = place(F, sh, quad, 1.2, 1.0).astype(np.float32)
+        lit = np.clip(comp * np.clip(light[..., None] * 1.08, 0.35, 1.15), 0, 255)
+        m = cv2.warpPerspective(np.ones(sh.shape[:2], np.float32), cv2.getPerspectiveTransform(np.array([[0, 0], [sh.shape[1], 0], [sh.shape[1], sh.shape[0]], [0, sh.shape[0]]], np.float32), quad), (F.shape[1], F.shape[0]))
+        m = cv2.GaussianBlur(m, (0, 0), 1.0)[..., None]
+        img = (F * (1 - m) + lit * m)
+        # keep what lies ON the paper in the real frame (the pencil and its shadow): dark pixels inside the sheet
+        dark = (cv2.cvtColor(F, cv2.COLOR_BGR2GRAY) < 70).astype(np.float32)
+        dark = cv2.GaussianBlur(dark, (0, 0), 1.2)[..., None] * m
+        img = (img * (1 - dark) + F * dark).astype(np.uint8)
+        states.append((sid, Image.fromarray(img[..., ::-1]), label, meta, '#ca943e' if sid in ('review', 'approved') else '#e4e4df'))
+    return states
+
+
 if __name__ == '__main__':
     kind, frame, out = sys.argv[1:4]
     os.makedirs(out, exist_ok=True)
     F = cv2.imread(frame)
-    states = {'disciplines': disciplines, 'work': work, 'studio': studio_dev}[kind](F, out)
+    states = commissioning(F, out, sys.argv[4], sys.argv[5] if len(sys.argv) > 5 else None) if kind == 'commissioning' else disciplines_panel(F, out, sys.argv[4]) if kind == 'disciplines-panel' else {'disciplines': disciplines, 'work': work, 'studio': studio_dev}[kind](F, out)
     labels = []
     for sid, img, label, meta, sw in states:
         save(img, os.path.join(out, sid + '.png')); labels.append({'id': sid, 'label': label, 'meta': meta, 'swatch': sw})

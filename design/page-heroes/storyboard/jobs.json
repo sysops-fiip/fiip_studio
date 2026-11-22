@@ -1,0 +1,20 @@
+[
+ {
+  "name": "storyboard",
+  "model": "fast",
+  "quality": "low",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "seed": 5,
+  "prompt": "A professional film storyboard sheet, flat top-down scan of off-white drawing paper. A neat grid of 2 columns by 3 rows of 16:9 panels with thin ruled pencil borders. Each panel is a confident, skilled pencil and grey-marker cinematic sketch with strong composition and shading, telling one sequence: 1 wide misty mountain lake at dawn, 2 a lone figure in a long coat walking onto the stony shore, 3 close-up of the figure's face in profile, 4 footprints in wet sand with mist, 5 over-the-shoulder view toward the rising sun over the lake, 6 final wide silhouette of the figure small against the mountains. Small handwritten shot numbers and short camera notes under each panel (WIDE, MCU, CU, INSERT, OTS, EWS). Clean professional storyboard artist work, no colour except grey marker, whole sheet visible edge to edge, no background, no table."
+ },
+ {
+  "name": "notes",
+  "model": "fast",
+  "quality": "low",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "seed": 5,
+  "prompt": "Flat top-down scan of a single sheet of off-white paper covered in a director's handwritten brief in graphite pencil: a title 'DAWN \u2014 brand film' underlined, then short bullet notes about mood, misty lake at first light, a lone figure, quiet and cinematic, 60s and 15s cutdowns, delivery dates, a small sketched thumbnail frame in the margin and a few arrows. Natural handwriting, sparse and elegant, lots of white space, whole sheet visible edge to edge, no background."
+ }
+]

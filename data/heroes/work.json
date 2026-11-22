@@ -1,11 +1,11 @@
 {
   "frames": 238,
-  "base": "/sequences/work-202611220733/desktop",
-  "mobileBase": "/sequences/work-202611220733/mobile",
+  "base": "/sequences/work-202611221042/desktop",
+  "mobileBase": "/sequences/work-202611221042/mobile",
   "ext": "webp",
-  "poster": "/sequences/work-202611220733/desktop/f0237.webp",
+  "poster": "/sequences/work-202611221042/desktop/f0198.webp",
   "hold": {
-    "frame": 237,
+    "frame": 198,
     "prefix": "hold",
     "passes": [
       {
@@ -27,5 +27,9 @@
         "swatch": "#ca943e"
       }
     ]
-  }
+  },
+  "range": [
+    0,
+    198
+  ]
 }

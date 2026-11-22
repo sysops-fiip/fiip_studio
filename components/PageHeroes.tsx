@@ -22,8 +22,8 @@ export const WorkHero = () => <ScrollHero manifest={work as HeroManifest} screen
   eyebrow="Production archive" lede={<>Every frame<br />we have touched.</>} chapters={['01 · The archive', '02 · Selected work', '03 · Delivered']}
   titleId="archive-hero-title" title={<>Commercials, features<br />and the frames between.</>} intro={intro('Broadcast campaigns, theatrical colour and visual effects sequences, delivered across India.')} actions={down('#archive', 'Browse the work')} />;
 
-export const CommissionHero = () => <ScrollHero manifest={commissioning as HeroManifest} screens={[4.5, 4]}
-  eyebrow="Commissioning" lede={<>From a blank page<br />to the master.</>} chapters={['01 · Brief', '02 · Proposal', '03 · Review in Frames', '04 · Delivery']}
+export const CommissionHero = () => <ScrollHero manifest={commissioning as HeroManifest} screens={[4.5, 4]} statePrefix="Step"
+  eyebrow="Commissioning" lede={<>From a blank page<br />to the master.</>} chapters={['01 · The blank page', '02 · Brief to approval', '03 · Approved']}
   titleId="commission-title" title={<>Every film is scoped<br />for what it needs.</>} intro={intro('No packages and no fixed price list. Tell us about the work and we will shape a proposal around it.')} actions={down('#scope', 'Start the brief')} />;
 
 export const StudioHero = () => <ScrollHero manifest={studioHero as HeroManifest} screens={[5, 4.5]} statePrefix="Sheet"

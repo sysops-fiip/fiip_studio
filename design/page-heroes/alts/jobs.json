@@ -1,0 +1,38 @@
+[
+ {
+  "name": "studio-alt1",
+  "prompt": "A long dark gallery wall in the observatory with a single row of eleven tall empty portrait frames of brushed metal, each lit by its own narrow overhead spotlight, the light pools on a polished stone floor; one frame glows warm ochre. Match the reference image's world: night, graphite and silver, one warm ochre light, photoreal film still, premium and restrained, 16:9, calm negative space on the left, no people visible, no text, no logos.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "model": "fast",
+  "quality": "low",
+  "resolution": "1k",
+  "seed": 9
+ },
+ {
+  "name": "studio-alt2",
+  "prompt": "An empty colour-grading suite at night inside the observatory: a large reference monitor glowing softly, a grading panel with trackballs, two empty chairs, a curved concrete wall with a round window showing the moonlit lake; a single warm desk lamp. Match the reference image's world: night, graphite and silver, one warm ochre light, photoreal film still, premium and restrained, 16:9, calm negative space on the left, no people visible, no text, no logos.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "model": "fast",
+  "quality": "low",
+  "resolution": "1k",
+  "seed": 9
+ },
+ {
+  "name": "contact-alt1",
+  "prompt": "Seen from inside the observatory, looking out through the great round portal across the still water to the moonlit cliffs, the portal ring glowing warm ochre at its edge, mist on the lake, a slim bridge leading away. Match the reference image's world: night, graphite and silver, one warm ochre light, photoreal film still, premium and restrained, 16:9, calm negative space on the left, no people visible, no text, no logos.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "model": "fast",
+  "quality": "low",
+  "resolution": "1k",
+  "seed": 9
+ },
+ {
+  "name": "contact-alt2",
+  "prompt": "A small vintage brass signal lamp on a stone ledge at the edge of the lake at night, glowing warm ochre, its light reflected in the calm water, the distant observatory silhouette on the cliff behind, mist. Match the reference image's world: night, graphite and silver, one warm ochre light, photoreal film still, premium and restrained, 16:9, calm negative space on the left, no people visible, no text, no logos.",
+  "ref": "/home/fiipadmin/workspace/fiip_studio/design/page-heroes/keyframes/style-ref.png",
+  "model": "fast",
+  "quality": "low",
+  "resolution": "1k",
+  "seed": 9
+ }
+]

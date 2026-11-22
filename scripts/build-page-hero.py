@@ -26,7 +26,7 @@ for i, f in enumerate(files):
 m = {'frames': n, 'base': f'/sequences/{ver}/desktop', 'mobileBase': f'/sequences/{ver}/mobile', 'ext': 'webp', 'poster': f'/sequences/{ver}/desktop/f{n - 1:04d}.webp'}
 if '--reverse' in sys.argv: m['reverse'] = True; m['poster'] = f'/sequences/{ver}/desktop/f0000.webp'
 if arg('--states'):
-    hold = n - 1 if '--hold-end' in sys.argv else min(n - 1, round(float(arg('--hold-time')) / dur * n))
+    hold = int(arg('--hold-frame')) if arg('--hold-frame') else (n - 1 if '--hold-end' in sys.argv else min(n - 1, round(float(arg('--hold-time')) / dur * n)))
     labels = json.load(open(arg('--labels'))); prefix = arg('--prefix', 'hold')
     for s in labels:
         im = Image.open(os.path.join(arg('--states'), s['id'] + '.png')).convert('RGB')
@@ -34,6 +34,8 @@ if arg('--states'):
     m['hold'] = {'frame': hold, 'prefix': prefix, 'passes': labels}
     # also export the exact hold frame so states can be checked against it
     shutil.copyfile(f'{tmp}/{files[hold]}', os.path.join(arg('--states'), '_hold_frame.png'))
+if arg('--range'):
+    a, b = map(int, arg('--range').split(',')); m['range'] = [a, b]; m['poster'] = f'/sequences/{ver}/desktop/f{b:04d}.webp'
 json.dump(m, open(os.path.join(ROOT, 'data/heroes', f'{name}.json'), 'w'), indent=2)
 sz = lambda d: sum(os.path.getsize(os.path.join(d, x)) for x in os.listdir(d)) / 1e6
 print(f'{name}: {n} frames{", hold " + str(m["hold"]["frame"]) if "hold" in m else ""}; desktop {sz(out + "/desktop"):.1f} MB, mobile {sz(out + "/mobile"):.1f} MB')

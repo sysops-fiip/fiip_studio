@@ -16,7 +16,7 @@ import { ArrowDown } from 'lucide-react';
 export type HeroState = { id: string; label: string; meta: string; swatch: string };
 export type HeroManifest = {
   frames: number; base: string; mobileBase: string; ext: string; poster: string; reverse?: boolean; range?: [number, number]; focus?: number; mobileFocus?: number;
-  hold?: { frame: number; title?: string; prefix?: string; passes: HeroState[] };
+  hold?: { frame: number; title?: string; prefix?: string; keepLast?: boolean; passes: HeroState[] };
 };
 type Props = {
   manifest: HeroManifest; eyebrow: string; lede: ReactNode; chapters: string[];
@@ -68,8 +68,9 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
     const load = (i: number) => {
       if (i < 0 || i >= m.frames || requested[i]) return; requested[i] = 1;
       const im = new Image(); im.src = `${base}/f${pad(idx(i))}.${m.ext}`; frames[i] = im;
-      im.decode().then(() => canBitmap ? createImageBitmap(im).then(bm => { frames[i] = bm; }) : undefined)
-        .then(() => { ready[i] = 1; dirty = true; }).catch(() => {});
+      // Frames stay as <img>: the browser keeps the decode cache within memory limits (ImageBitmaps for every
+      // frame would pin hundreds of MB of uncompressed pixels and can blank the canvas on phones).
+      im.decode().then(() => { ready[i] = 1; dirty = true; }).catch(() => { ready[i] = im.complete && im.naturalWidth > 0 ? 1 : 0; dirty = true; });
     };
     load(0); load(holdF);
     for (const step of [16, 8, 4, 2, 1]) for (let i = 0; i < m.frames; i += step) load(i);
@@ -111,15 +112,17 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
       const p = shown;
       if (p <= A) { playFrame(span(p, 0, A) * holdF); setPass(-1); }
       else if (p < B) {
-        const t = span(p, A, B) * (P + 1);
-        const k = Math.min(P, Math.floor(t)), w = ease(t - k);
+        const keep = !!m.hold?.keepLast;
+        const t = span(p, A, B) * (P + (keep ? 0 : 1));   // keepLast: the final state stays instead of the frame returning
+        const k = Math.min(keep ? P - 1 : P, Math.floor(t)), w = keep && t >= P ? 1 : ease(t - k);
         const beauty = nearest(holdF);
         const under = k === 0 ? beauty : passImgs[k - 1];
         const over = k < P ? passImgs[k] : beauty;
         if (under) draw(under);
         if (over) { draw(over, 1, W * w); if (w > 0.002 && w < 0.998) { ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fillRect(W * w - 0.75, 0, 1.5, H); } }
         setPass(w > 0.5 ? k : k - 1);
-      } else { playFrame(hasHold ? holdF + span(p, B, C) * (m.frames - 1 - holdF) : m.frames - 1); setPass(-1); }
+      } else if (m.hold?.keepLast && passImgs[P - 1]) { draw(passImgs[P - 1]!); setPass(P - 1); }
+      else { playFrame(hasHold ? holdF + span(p, B, C) * (m.frames - 1 - holdF) : m.frames - 1); setPass(-1); }
 
       const inP = 1 - span(p, 0.015, 0.07);
       introEl.current!.style.opacity = String(inP);
@@ -158,7 +161,7 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
   // Scroll-snap beats: the opening, the hold, each state fully revealed, the frame returning, the finished headline.
   const P = m.hold?.passes.length ?? 0;
   const beats = hasHold
-    ? [0, A, ...Array.from({ length: P }, (_, k) => A + ((k + 1) / (P + 1)) * (B - A)), B, END]
+    ? [0, A, ...Array.from({ length: P }, (_, k) => A + ((k + 1) / (P + (m.hold?.keepLast ? 0 : 1))) * (B - A)), ...(m.hold?.keepLast ? [] : [B]), END]
     : [0, ...chapters.slice(1).map((_, k) => ((k + 1) / chapters.length) * C), END];
   if (still) return <section className="scroll-shot is-still" aria-labelledby={titleId}>
     <div className="scroll-shot-stage">
