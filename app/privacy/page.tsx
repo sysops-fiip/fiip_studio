@@ -4,6 +4,7 @@ import s from '../legal.module.css';
 
 export const metadata: Metadata = { title: 'Privacy', description: 'What this website collects, why, and how to reach us about your data.', alternates: { canonical: '/privacy' } };
 const UPDATED = '22 November 2026';
+const a = studio.identity.registeredAddress;
 
 export default function Privacy() {
   const mail = studio.contact.general;
@@ -11,7 +12,7 @@ export default function Privacy() {
     <section className="page-width page-intro"><p className="eyebrow">Privacy</p><h1>What this site<br />knows about you.</h1><p className="section-intro">Very little, by design. This page explains exactly what is collected when you visit {studio.identity.domain} and when you write to us.</p><p className={s.updated}>Last updated {UPDATED}</p></section>
     <section className={`page-width section-space ${s.body}`}>
       <h2>Who we are</h2>
-      <p>This website is operated by {studio.identity.fullName}, a post-production studio in {studio.identity.city}, {studio.identity.country}. For anything on this page, write to <a href={`mailto:${mail}`}>{mail}</a>.</p>
+      <p>This website is operated by {studio.identity.legalName}, a post-production studio registered at {a.street}, {a.city} {a.postalCode}, {a.region}, {a.country} (GSTIN {studio.identity.gstin}). For anything on this page, write to <a href={`mailto:${mail}`}>{mail}</a>.</p>
       <h2>Browsing the site</h2>
       <p>We do not use analytics, advertising or tracking tools, and the site sets no cookies and stores nothing in your browser. Fonts and images are served from our own domain.</p>
       <p>Like every website, our hosting provider (Vercel) processes technical request data such as your IP address, browser type and the pages requested, in order to deliver the site and protect it from abuse. We do not use this data to identify you.</p>

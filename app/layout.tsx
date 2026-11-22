@@ -91,10 +91,10 @@ export default function RootLayout({
       <body className="bg-black text-white antialiased font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org', '@type': 'Organization',
-          name: 'Fix It In Post Studios', alternateName: 'FIIP', url: 'https://fixitinpost.in',
+          name: 'Fix It In Post Studios', legalName: studio.identity.legalName, taxID: studio.identity.gstin, alternateName: 'FIIP', url: 'https://fixitinpost.in',
           logo: 'https://fixitinpost.in/web-app-manifest-512x512.png', image: 'https://fixitinpost.in/og/fiip-og.jpg',
           description: studio.identity.description, email: studio.contact.general,
-          address: { '@type': 'PostalAddress', addressLocality: studio.identity.city, addressCountry: 'IN' },
+          address: { '@type': 'PostalAddress', streetAddress: studio.identity.registeredAddress.street, addressLocality: studio.identity.registeredAddress.city, postalCode: studio.identity.registeredAddress.postalCode, addressRegion: studio.identity.registeredAddress.region, addressCountry: 'IN' },
           sameAs: [studio.identity.imdb].filter(Boolean),
           knowsAbout: ['Visual effects', 'Colour grading', 'Conform and mastering', 'Film editing', 'Post-production'],
         }) }} />

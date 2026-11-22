@@ -4,7 +4,7 @@
   "note": "SINGLE SOURCE OF TRUTH for fixitinpost.in content. Roster/roles here are authoritative as dictated by Iniyavan on 2026-11-16. Anything not in this file must not appear as a claim on the site. Fields marked null are UNVERIFIED — never invent them.",
   "identity": {
     "name": "Fix It In Post",
-    "fullName": "Fix It In Post Studio",
+    "fullName": "Fix It In Post Studios",
     "domain": "fixitinpost.in",
     "tagline": "Finishing, VFX and colour for film and brands.",
     "description": "A Chennai-based post-production studio handling VFX supervision and production, colour, conform and mastering, editorial finishing, and AI-assisted visual effects for feature films, OTT and brand films.",
@@ -12,14 +12,23 @@
     "city": "Chennai",
     "country": "India",
     "frames": "https://frames.fixitinpost.in",
-    "imdb": "https://www.imdb.com/name/nm8451602/"
+    "imdb": "https://www.imdb.com/name/nm8451602/",
+    "legalName": "Fix It In Post Studios LLP",
+    "gstin": "33AAHFF7663D1ZI",
+    "registeredAddress": {
+      "street": "Subalakshmi Nelayam, No 1, TNHB Road Extn, Kannappa Nagar, Thiruvanmiyur",
+      "city": "Chennai",
+      "postalCode": "600041",
+      "region": "Tamil Nadu",
+      "country": "India"
+    }
   },
   "contact": {
     "general": "hello@fixitinpost.in",
     "inquiries": null,
     "careers": null,
     "phone": null,
-    "address": null,
+    "address": "Subalakshmi Nelayam, No 1, TNHB Road Extn, Kannappa Nagar, Thiruvanmiyur, Chennai 600041, Tamil Nadu, India",
     "mapQuery": "Chennai, Tamil Nadu, India",
     "responseWindow": null,
     "note": "Only `general` is verified (used site-wide today). Fill inquiries/careers/phone/addresses before wiring the contact form, then set verified: true."
@@ -395,10 +404,10 @@
   "openQuestions": [
     "Studio street address, phone and map pin (for Google Maps embed).",
     "Which email IDs to wire: general, new-business inquiries, careers.",
-    "Founding year and correct studio legal name.",
     "Awards detail behind the IMDb '2 wins, 1 nomination'.",
     "Whether to publish the Archives page from Frames automatically (needs API access), and what data Frames can expose.",
-    "Engagement/pricing model: the current tier prices are unverified placeholders."
+    "Engagement/pricing model: the current tier prices are unverified placeholders.",
+    "Founding year."
   ],
   "homepage": {
     "eyebrow": "Independent post-production · Chennai",
