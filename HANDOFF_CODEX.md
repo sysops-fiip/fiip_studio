@@ -8,6 +8,12 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 23 Nov 2026: sharp phone frames (`e9cffce`, live)
+- Phones get 720x1440 PORTRAIT crops cut from Topaz 4K masters (`scripts/build-hero-4k.py <name> <clip4k> <states4k|-> --focus F`), centred per page; `mobileFocus: 0.5`. The homepage and contact use `mobileStep: 2` (every second frame on phones; contact range 150–382 so the reversed walk lands on even frames).
+- 4K exact-frame clips: `design/page-heroes/video/*-exact-4k.mov` (made by extracting the builder's exact sampled frames and encoding WITHOUT `-r` re-timing; `-r 24` broke the mapping once). Topaz appends a duplicate last frame, which the builder trims. Quads at 4K: `fix/*-quad-4k.json`. The homepage passes are at 2880 px in `design/cinematic-v3/v5/passes`.
+- Measured live on an emulated 390x844@3x phone: all heroes paint immediately, p95 16.7 ms; phone download per hero 3.8–9.1 MB.
+- Hosting question from the user (wants free): Vercel Hobby is for non-commercial use only, per Vercel's docs. The site is fully static (all routes ○), ~1,800 files. Options under discussion: Cloudflare Pages (free; static assets unlimited; 20k-file limit) via `output: 'export'` plus `_headers`/`_redirects`, or the studio's own server behind Cloudflare. Awaiting the user's decision; do not migrate without it.
+
 ## ⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 22 Nov 2026 afternoon (`6479513`, `71974f4`, `e99d8d2`, live)
 - Mobile menu = full-screen overlay (`.mobile-menu`, Navbar.tsx). Heroes have scroll-snap beats (`.scroll-snap-beat`, `html{scroll-snap-type:y proximity}`); the headline lands at 92%.
 - Reduced motion (Samsung power saving / Remove animations) shows the still plus a "Play the shot" opt-in (in memory only; the privacy page says nothing is stored).
