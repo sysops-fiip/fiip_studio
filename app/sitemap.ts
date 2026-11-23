@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import { MetadataRoute } from 'next';
 
 // lastModified = when each page's content last changed (update when publishing content edits).
