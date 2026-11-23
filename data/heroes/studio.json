@@ -1,7 +1,7 @@
 {
   "frames": 238,
-  "base": "/sequences/studio-202611220739/desktop",
-  "mobileBase": "/sequences/studio-202611220739/mobile",
+  "base": "/sequences/studio-202611231354/desktop",
+  "mobileBase": "/sequences/studio-202611231354/mobile",
   "ext": "webp",
   "poster": "/sequences/studio-202611220739/desktop/f0170.webp",
   "hold": {
@@ -37,5 +37,6 @@
   "range": [
     0,
     170
-  ]
+  ],
+  "mobileFocus": 0.5
 }

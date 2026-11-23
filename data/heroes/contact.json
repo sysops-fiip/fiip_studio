@@ -1,12 +1,14 @@
 {
   "frames": 384,
-  "base": "/sequences/shot-20261122/desktop",
-  "mobileBase": "/sequences/shot-20261122/mobile",
+  "base": "/sequences/shot-202611231356/desktop",
+  "mobileBase": "/sequences/shot-202611231356/mobile",
   "ext": "webp",
-  "poster": "/sequences/shot-20261122/desktop/f0150.webp",
+  "poster": "/sequences/shot-202611231356/desktop/f0150.webp",
   "reverse": true,
   "range": [
     150,
-    383
-  ]
+    382
+  ],
+  "mobileFocus": 0.5,
+  "mobileStep": 2
 }

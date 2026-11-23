@@ -1,7 +1,7 @@
 {
   "frames": 176,
-  "base": "/sequences/commissioning-202611221048/desktop",
-  "mobileBase": "/sequences/commissioning-202611221048/mobile",
+  "base": "/sequences/commissioning-202611231353/desktop",
+  "mobileBase": "/sequences/commissioning-202611231353/mobile",
   "ext": "webp",
   "poster": "/sequences/commissioning-202611221048/desktop/hold-approved.webp",
   "hold": {
@@ -44,5 +44,6 @@
   "range": [
     0,
     48
-  ]
+  ],
+  "mobileFocus": 0.5
 }

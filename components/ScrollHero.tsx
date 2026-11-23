@@ -15,7 +15,7 @@ import { ArrowDown } from 'lucide-react';
 
 export type HeroState = { id: string; label: string; meta: string; swatch: string };
 export type HeroManifest = {
-  frames: number; base: string; mobileBase: string; ext: string; poster: string; reverse?: boolean; range?: [number, number]; focus?: number; mobileFocus?: number;
+  frames: number; base: string; mobileBase: string; ext: string; poster: string; reverse?: boolean; range?: [number, number]; mobileStep?: number; focus?: number; mobileFocus?: number;
   hold?: { frame: number; title?: string; prefix?: string; keepLast?: boolean; passes: HeroState[] };
 };
 type Props = {
@@ -53,31 +53,34 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
     const ctx = cv.getContext('2d', { alpha: false })!;
     const mobile = innerWidth < 768;
     const base = mobile ? m.mobileBase : m.base;
-    const passes = m.hold?.passes ?? [], P = passes.length, holdF = m.hold?.frame ?? m.frames - 1;
+    // Phones can use every Nth frame (lighter download; neighbouring frames are blended anyway).
+    const step = mobile ? Math.max(1, raw.mobileStep ?? 1) : 1;
+    const count = Math.floor((m.frames - 1) / step) + 1;
+    const passes = m.hold?.passes ?? [], P = passes.length, holdF = Math.round((m.hold?.frame ?? m.frames - 1) / step);
     const r0 = raw.range ? raw.range[0] : 0;
-    const idx = (i: number) => r0 + (m.reverse ? m.frames - 1 - i : i);
+    const idx = (i: number) => r0 + (m.reverse ? m.frames - 1 - i * step : i * step);
     let dirty = true;
     let lockedW = innerWidth;
     const lock = () => { el.style.setProperty('--stage-h', `${innerHeight}px`); };
     lock();
 
     type Pic = HTMLImageElement | ImageBitmap;
-    const frames: Pic[] = new Array(m.frames);
-    const requested = new Uint8Array(m.frames), ready = new Uint8Array(m.frames);
+    const frames: Pic[] = new Array(count);
+    const requested = new Uint8Array(count), ready = new Uint8Array(count);
     const canBitmap = typeof createImageBitmap === 'function';
     const load = (i: number) => {
-      if (i < 0 || i >= m.frames || requested[i]) return; requested[i] = 1;
+      if (i < 0 || i >= count || requested[i]) return; requested[i] = 1;
       const im = new Image(); im.src = `${base}/f${pad(idx(i))}.${m.ext}`; frames[i] = im;
       // Frames stay as <img>: the browser keeps the decode cache within memory limits (ImageBitmaps for every
       // frame would pin hundreds of MB of uncompressed pixels and can blank the canvas on phones).
       im.decode().then(() => { ready[i] = 1; dirty = true; }).catch(() => { ready[i] = im.complete && im.naturalWidth > 0 ? 1 : 0; dirty = true; });
     };
     load(0); load(holdF);
-    for (const step of [16, 8, 4, 2, 1]) for (let i = 0; i < m.frames; i += step) load(i);
+    for (const s of [16, 8, 4, 2, 1]) for (let i = 0; i < count; i += s) load(i);
     const passImgs: (Pic | null)[] = passes.map(() => null);
     passes.forEach((p, k) => { const im = new Image(); im.src = `${base}/${m.hold?.prefix ?? 'hold'}-${p.id}.${m.ext}`; im.decode().then((): Promise<Pic> | Pic => (canBitmap ? createImageBitmap(im) : im)).then(x => { passImgs[k] = x; dirty = true; }).catch(() => {}); });
     const dims = (im: Pic) => ('naturalWidth' in im ? [im.naturalWidth, im.naturalHeight] : [im.width, im.height]);
-    const nearest = (i: number) => { for (let d = 0; d < m.frames; d++) for (const j of [i - d, i + d]) if (j >= 0 && j < m.frames && ready[j]) return frames[j]; return null; };
+    const nearest = (i: number) => { for (let d = 0; d < count; d++) for (const j of [i - d, i + d]) if (j >= 0 && j < count && ready[j]) return frames[j]; return null; };
 
     let W = 0, H = 0;
     const focus = mobile ? (m.mobileFocus ?? 0.6) : (m.focus ?? 0.5);
@@ -93,7 +96,7 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
     };
     let fast = false;
     const playFrame = (pos: number) => {
-      const i0 = Math.floor(pos), i1 = Math.min(m.frames - 1, i0 + 1), f = pos - i0;
+      const i0 = Math.floor(pos), i1 = Math.min(count - 1, i0 + 1), f = pos - i0;
       if (ready[i0] && ready[i1]) { draw(frames[i0]); if (f > 0.02 && !fast) draw(frames[i1], f); }
       else { const n = nearest(Math.round(pos)); if (n) draw(n); }
     };
@@ -122,7 +125,7 @@ export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titl
         if (over) { draw(over, 1, W * w); if (w > 0.002 && w < 0.998) { ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fillRect(W * w - 0.75, 0, 1.5, H); } }
         setPass(w > 0.5 ? k : k - 1);
       } else if (m.hold?.keepLast && passImgs[P - 1]) { draw(passImgs[P - 1]!); setPass(P - 1); }
-      else { playFrame(hasHold ? holdF + span(p, B, C) * (m.frames - 1 - holdF) : m.frames - 1); setPass(-1); }
+      else { playFrame(hasHold ? holdF + span(p, B, C) * (count - 1 - holdF) : count - 1); setPass(-1); }
 
       const inP = 1 - span(p, 0.015, 0.07);
       introEl.current!.style.opacity = String(inP);

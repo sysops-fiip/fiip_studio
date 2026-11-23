@@ -77,3 +77,7 @@ design/page-heroes/fix/*.png
 design/page-heroes/storyboard/*.png
 design/page-heroes/storyboard/sheets/
 design/page-heroes/alts/*.png
+design/page-heroes/video/*-exact*.mov
+design/page-heroes/video/*-used*.mov
+design/page-heroes/states4k/
+design/cinematic-v3/v5/
