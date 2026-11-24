@@ -41,6 +41,7 @@ export function Navbar() {
     { label: 'Home', href: '/' },
     { label: 'Disciplines', href: '/services' },
     { label: 'Work', href: '/portfolio' },
+    { label: 'Frames', href: '/frames' },
     { label: 'Commissioning', href: '/pricing' },
     { label: 'Studio', href: '/about' },
     { label: 'Contact', href: '/contact' },
@@ -69,13 +70,13 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
+          <div className="hidden xl:flex items-center gap-5 flex-1 justify-center">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={pathname === item.href ? "page" : undefined}
-                className="nav-link text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
+                className="nav-link text-[11px] font-mono uppercase tracking-wider whitespace-nowrap text-neutral-400 hover:text-white transition-colors"
               >
                 {item.label}
               </Link>
@@ -86,7 +87,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-[11px] font-mono tracking-wider px-3.5 py-1.5 rounded-full border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-colors"
             >
-              Frames Portal ↗
+              Client login ↗
             </a>
           </div>
 
@@ -102,11 +103,11 @@ export function Navbar() {
             </div>
 
             <button
-              className="lg:hidden text-white p-2 rounded-full hover:bg-neutral-900 transition-colors cursor-pointer"
+              className="xl:hidden text-white p-2 rounded-full hover:bg-neutral-900 transition-colors cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
               ref={toggleRef}
               aria-controls="mobile-navigation"
-              aria-label="Toggle navigation"
+              aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
               aria-expanded={isOpen}
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -116,7 +117,7 @@ export function Navbar() {
 
         {/* Mobile navigation: full-screen editorial overlay */}
       </div>
-      <div id="mobile-navigation" className={`mobile-menu lg:hidden ${isOpen ? 'is-open' : ''}`} aria-hidden={!isOpen} inert={!isOpen ? true : undefined}>
+      <div id="mobile-navigation" className={`mobile-menu xl:hidden ${isOpen ? 'is-open' : ''}`} aria-hidden={!isOpen} inert={!isOpen ? true : undefined}>
         <ol className="mobile-menu-links">
           {navItems.map((item, i) => (
             <li key={item.href} style={{ transitionDelay: isOpen ? `${80 + i * 45}ms` : '0ms' }}>
