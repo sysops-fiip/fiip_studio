@@ -1,4 +1,19 @@
-# Moving fixitinpost.in to Cloudflare Pages (free)
+# fixitinpost.in on Cloudflare Pages (free) — LIVE since 26 Nov 2026
+
+**How it's deployed now:** direct upload with Wrangler (no Git integration):
+```
+npm run build    # static export -> out/
+set -a; . ~/.config/fiip/cloudflare.env; set +a      # CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID (token "fiip-server-ops")
+~/.cache/fiip-tools/wrangler/node_modules/.bin/wrangler pages deploy out --project-name fiip-studio --branch main
+```
+- Pages project `fiip-studio` (https://fiip-studio.pages.dev), custom domains `fixitinpost.in` + `www.fixitinpost.in`.
+- DNS: apex and www are proxied CNAMEs to `fiip-studio.pages.dev`. Rollback = set both back to
+  `5a86b235e75450f2.vercel-dns-017.com` (Vercel project still exists).
+- www -> apex: zone redirect rule "www to apex" (301, keeps the query string).
+- The old Vercel deployment still exists until the owner removes the domains there.
+
+---
+## Original plan (kept for reference)
 
 Branch `cloudflare-pages` holds a static export (`output: 'export'`, `images.unoptimized`), security/cache headers in
 `public/_headers`, and static sitemap/robots. Verified under Wrangler's Pages emulator: all routes 200, real 404,

@@ -8,6 +8,13 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 26 Nov 2026: site moved to Cloudflare Pages (free)
+- fixitinpost.in + www now serve from Cloudflare Pages project `fiip-studio` (static export). Vercel is no longer in the path.
+- `main` now IS the static-export config (`output: 'export'`, `public/_headers`). Deploy = build + `wrangler pages deploy out
+  --project-name fiip-studio --branch main` (see CLOUDFLARE_PAGES.md; token in ~/.config/fiip/cloudflare.env). A git push alone does NOT deploy.
+- No server code: no API routes, middleware or `next/image` optimisation. Keep it that way or it stops being free.
+- www -> apex is a Cloudflare redirect rule (301). Rollback DNS values are in CLOUDFLARE_PAGES.md.
+
 ## ⚡⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 23 Nov 2026: sharp phone frames (`e9cffce`, live)
 - Phones get 720x1440 PORTRAIT crops cut from Topaz 4K masters (`scripts/build-hero-4k.py <name> <clip4k> <states4k|-> --focus F`), centred per page; `mobileFocus: 0.5`. The homepage and contact use `mobileStep: 2` (every second frame on phones; contact range 150–382 so the reversed walk lands on even frames).
 - 4K exact-frame clips: `design/page-heroes/video/*-exact-4k.mov` (made by extracting the builder's exact sampled frames and encoding WITHOUT `-r` re-timing; `-r 24` broke the mapping once). Topaz appends a duplicate last frame, which the builder trims. Quads at 4K: `fix/*-quad-4k.json`. The homepage passes are at 2880 px in `design/cinematic-v3/v5/passes`.
