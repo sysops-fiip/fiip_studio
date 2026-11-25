@@ -28,7 +28,7 @@ const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const span = (p: number, a: number, b: number) => clamp((p - a) / (b - a));
 
-export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titleId, intro, actions, screens = [6.5, 5.5], statePrefix = 'Pass' }: Props) {
+export function ScrollHero({ manifest: raw, eyebrow, lede, chapters, title, titleId, intro, actions, screens = [5, 4.25], statePrefix = 'Pass' }: Props) {
   // An optional file range plays only part of a sequence (e.g. contact reuses the homepage frames in reverse).
   const m = raw.range ? { ...raw, frames: raw.range[1] - raw.range[0] + 1 } : raw;
   const host = useRef<HTMLElement>(null);

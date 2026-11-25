@@ -81,18 +81,18 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="https://frames.fixitinpost.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] font-mono tracking-wider px-3.5 py-1.5 rounded-full border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600 transition-colors"
-            >
-              Client login ↗
-            </a>
           </div>
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-4">
+            <a
+              href="https://frames.fixitinpost.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline text-[11px] font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
+            >
+              Login<span className="sr-only"> to Frames, opens in a new tab</span>
+            </a>
             <div className="hidden sm:block">
               <Link
                 href="/contact"
@@ -129,7 +129,7 @@ export function Navbar() {
         </ol>
         <div className="mobile-menu-foot" style={{ transitionDelay: isOpen ? '380ms' : '0ms' }}>
           <Link href="/contact" onClick={() => setIsOpen(false)} className="pill-button pill-light">Let’s talk</Link>
-          <a href="https://frames.fixitinpost.in" target="_blank" rel="noopener noreferrer" className="text-link">Frames review portal ↗</a>
+          <a href="https://frames.fixitinpost.in" target="_blank" rel="noopener noreferrer" className="text-link">Client login ↗</a>
           <a href="mailto:hello@fixitinpost.in" className="mobile-menu-mail">hello@fixitinpost.in</a>
         </div>
       </div>
