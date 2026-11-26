@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/private/', '/admin/'],
+      disallow: ['/private/', '/admin/', '/lab/'],
     },
     sitemap: 'https://fixitinpost.in/sitemap.xml',
   }

@@ -6,9 +6,9 @@ import manifest from '@/data/scroll-shot.json';
 import { ScrollHero, HeroManifest } from './ScrollHero';
 
 /* Homepage opening: through the lens, inside the shot (render passes), the final frame, then the headline. */
-export function ScrollShot({ onReel }: { onReel: () => void }) {
+export function ScrollShot({ onReel, manifestOverride }: { onReel: () => void; manifestOverride?: HeroManifest }) {
   return <ScrollHero
-    manifest={manifest as HeroManifest}
+    manifest={manifestOverride ?? (manifest as HeroManifest)}
     eyebrow={studio.homepage.eyebrow}
     lede={<>Every frame,<br />from the inside.</>}
     chapters={['01 · Through the lens', '02 · Inside the shot', '03 · The final frame']}

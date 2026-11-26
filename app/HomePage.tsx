@@ -8,18 +8,19 @@ import { VideoDialog } from '@/components/ui/VideoDialog';
 import { Reveal } from '@/components/ui/Reveal';
 import { FramesExperience } from '@/components/FramesExperience';
 import { ScrollShot } from '@/components/ScrollShot';
+import type { HeroManifest } from '@/components/ScrollHero';
 import { Mnemonic } from '@/components/Mnemonic';
 import studio from '@/content/studio.json';
 import projects from '@/data/projects.json';
 
 const copy = studio.homepage;
 
-export default function HomePage() {
+export default function HomePage({ heroManifest }: { heroManifest?: HeroManifest } = {}) {
   const [video, setVideo] = useState<{ id: string; title: string } | null>(null);
   const openReel = () => setVideo({ id: copy.reelId, title: 'FIIP studio reel' });
   return (
     <div className="studio-home">
-      <ScrollShot onReel={openReel} />
+      <ScrollShot onReel={openReel} manifestOverride={heroManifest} />
 
       <section id="selected-work" className="selected-work section-space page-width" aria-labelledby="work-title">
         <div className="section-heading"><div><p className="eyebrow">{copy.workEyebrow}</p><h2 id="work-title">{copy.workTitle}</h2></div><Link href="/portfolio" className="text-link">{copy.archiveLabel}<ArrowUpRight size={17} /></Link></div>
