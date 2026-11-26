@@ -1,39 +1,39 @@
 {
-  "frames": 384,
-  "base": "/sequences/shot-202611231356/desktop",
-  "mobileBase": "/sequences/shot-202611231356/mobile",
+  "frames": 192,
+  "base": "/sequences/home3d-202611260944/desktop",
+  "mobileBase": "/sequences/home3d-202611260944/mobile",
   "ext": "webp",
-  "poster": "/sequences/shot-20261122/desktop/f0383.webp",
+  "poster": "/sequences/home3d-202611260944/desktop/f0191.webp",
+  "mobileFocus": 0.5,
+  "mobileStep": 1,
   "hold": {
-    "frame": 150,
+    "frame": 75,
     "title": "Inside the shot",
     "passes": [
       {
         "id": "depth",
         "label": "Depth",
-        "meta": "Z \u00b7 median of 12 estimates \u00b7 frame 0150",
+        "meta": "Z \u00b7 Blender render pass",
         "swatch": "#9a9c9f"
       },
       {
         "id": "wire",
         "label": "Geometry",
-        "meta": "Mesh \u00b7 seeded on object edges \u00b7 frame 0150",
+        "meta": "Mesh \u00b7 real geometry",
         "swatch": "#e4e4df"
       },
       {
         "id": "normal",
         "label": "Normals",
-        "meta": "N \u00b7 camera space \u00b7 frame 0150",
+        "meta": "N \u00b7 camera space",
         "swatch": "#8f86d8"
       },
       {
         "id": "clay",
         "label": "Clay & light",
-        "meta": "Key + fill \u00b7 occlusion \u00b7 frame 0150",
+        "meta": "Clay \u00b7 key + fill",
         "swatch": "#bdbdb8"
       }
     ]
-  },
-  "mobileFocus": 0.5,
-  "mobileStep": 2
+  }
 }
