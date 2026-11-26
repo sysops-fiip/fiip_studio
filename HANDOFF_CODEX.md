@@ -8,6 +8,14 @@ Read this whole file before touching code. Then confirm the plan in one short me
 
 ---
 
+## ⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 26 Nov 2026 morning: Blender rebuild of the heroes (staging only)
+- The AI heroes on the live site are UNCHANGED (owner: do not swap until he says so).
+- Hidden test page `/lab/3d` (noindex, robots-disallowed, not in sitemap, not linked) = homepage with the hero manifest swapped to
+  `data/heroes-3d/home.json` (placeholder = copy of the live manifest until the Blender sequence is published).
+  `ScrollShot` / `HomePage` take an optional manifest override; defaults are identical to before.
+- Blender project: /opt/ActiveProjects/FIIP_Website_Heroes (README there). Publish a rendered sequence to the site with
+  `python3 scripts/publish_seq.py render/seq_home_r1 150 --step 2` (writes public/sequences/home3d-*/ + data/heroes-3d/home.json), then build + wrangler deploy.
+
 ## ⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ LATEST — 26 Nov 2026: site moved to Cloudflare Pages (free)
 - fixitinpost.in + www now serve from Cloudflare Pages project `fiip-studio` (static export). Vercel is no longer in the path.
 - `main` now IS the static-export config (`output: 'export'`, `public/_headers`). Deploy = build + `wrangler pages deploy out
